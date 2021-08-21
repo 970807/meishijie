@@ -1,13 +1,9 @@
 <template>
   <div class="home">
-    美食杰
+    <HeaderArea />
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'Home'
-})
+<script setup>
+import HeaderArea from '@/components/HeaderArea'
 </script>

@@ -11,9 +11,15 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020
   },
+  globals: {
+    defineProps: true,
+    defineEmits: true
+  },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'vue/comment-directive': 'off'
+    'vue/comment-directive': 'off',
+    'space-before-function-paren': 'off',
+    '@typescript-eslint/no-var-requires': 'off'
   }
 }
