@@ -29,7 +29,9 @@ import HeaderUserInfo from './HeaderUserInfo'
       width: 100%;
       height: $headerHeight;
       background: rgba(246, 77, 54, .8);
-    background-image: linear-gradient(to right, rgba(250, 69, 81, .8), rgba(246, 77, 54, .8));
+      background-image: linear-gradient(to right, rgba(250, 69, 81, .8), rgba(246, 77, 54, .8));
+      backdrop-filter: blur(20px);
+      z-index: 999;
 
       .box {
         position: relative;
