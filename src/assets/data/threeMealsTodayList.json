@@ -1,0 +1,122 @@
+[
+  {
+    "id": "0",
+    "label": "早餐",
+    "list": [
+      {
+        "id": "00",
+        "title": "五彩虾仁炒饭",
+        "desc": "营养丰富，早餐最爱",
+        "coverUrl": "https://files.catbox.moe/fz35gv.jpg"
+      },
+      {
+        "id": "01",
+        "title": "爱心满满的黑椒蔬菜牛排",
+        "desc": "简单快手，分分钟搞定",
+        "coverUrl": "https://files.catbox.moe/w22jwi.jpg"
+      },
+      {
+        "id": "02",
+        "title": "鲜活时蔬面",
+        "desc": "简单美味，几分钟搞定早餐",
+        "coverUrl": "https://files.catbox.moe/6zviis.jpg"
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "label": "午餐",
+    "list": [
+      {
+        "id": "10",
+        "title": "蜜汁烤五花肉",
+        "desc": "经典家常，上桌就光盘",
+        "coverUrl": "https://files.catbox.moe/pmchpi.jpg"
+      },
+      {
+        "id": "11",
+        "title": "家常小炒",
+        "desc": "经济实惠，有滋有味",
+        "coverUrl": "https://files.catbox.moe/9lepkd.jpg"
+      },
+      {
+        "id": "12",
+        "title": "酱香洋葱烤鸡",
+        "desc": "营养美味，一吃停不下来",
+        "coverUrl": "https://files.catbox.moe/4r6fn9.jpg"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "label": "下午茶",
+    "list": [
+      {
+        "id": "20",
+        "title": "花朵酥脆曲奇",
+        "desc": "香气扑鼻，好吃过瘾",
+        "coverUrl": "https://files.catbox.moe/fswowm.jpg"
+      },
+      {
+        "id": "21",
+        "title": "舒芙蕾厚松饼",
+        "desc": "惊艳味蕾，好吃到爆",
+        "coverUrl": "https://files.catbox.moe/trt7nl.jpg"
+      },
+      {
+        "id": "22",
+        "title": "紫薯西米露",
+        "desc": "美味下午茶，让人欲罢不能",
+        "coverUrl": "https://files.catbox.moe/lmjtuq.jpg"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "label": "晚餐",
+    "list": [
+      {
+        "id": "30",
+        "title": "红烧猪蹄",
+        "desc": "美味飘香，满足味蕾",
+        "coverUrl": "https://files.catbox.moe/3b9yca.jpg"
+      },
+      {
+        "id": "31",
+        "title": "凉拌西兰花",
+        "desc": "鲜香可口，美味下饭",
+        "coverUrl": "https://files.catbox.moe/mxgede.jpg"
+      },
+      {
+        "id": "32",
+        "title": "减肥餐～苦瓜酿肉",
+        "desc": "家常经典，上桌被抢光",
+        "coverUrl": "https://files.catbox.moe/argb59.jpg"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "label": "夜宵",
+    "list": [
+      {
+        "id": "40",
+        "title": "孜然土豆",
+        "desc": "味道超赞，无比解馋",
+        "coverUrl": "https://files.catbox.moe/kthoie.jpg"
+      },
+      {
+        "id": "41",
+        "title": "酸辣鸡爪",
+        "desc": "均衡营养，滋补养生",
+        "coverUrl": "https://files.catbox.moe/tzfq6k.jpg"
+      },
+      {
+        "id": "42",
+        "title": "风味花生",
+        "desc": "美味过瘾，好吃停不下嘴",
+        "coverUrl": "https://files.catbox.moe/gztgr6.jpg"
+      }
+    ]
+  }
+]

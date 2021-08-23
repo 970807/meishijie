@@ -3,4 +3,5 @@ body {
     'Helvetica Neue', 'Open Sans', Arial, 'Hiragino Sans GB', 微软雅黑, STHeiti,
     'WenQuanYi Micro Hei', SimSun, sans-serif;
   word-wrap: break-word;
+  background: rgba(247, 246, 245);
 }
