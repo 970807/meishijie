@@ -5,3 +5,9 @@ body {
   word-wrap: break-word;
   background: rgba(247, 246, 245);
 }
+
+.ellipsis-l1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

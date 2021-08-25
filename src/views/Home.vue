@@ -53,8 +53,8 @@
         <div class="content">
           <div class="item" v-for="item in threeMealsTodayList[currentThreeMealsTabIndex].list" :key="item.id">
             <img class="cover" :src="item.coverUrl" />
-            <strong class="t">{{item.title}}</strong>
-            <p class="desc">{{item.desc}}</p>
+            <strong class="t ellipsis-l1">{{item.title}}</strong>
+            <p class="desc ellipsis-l1">{{item.desc}}</p>
           </div>
         </div>
       </div>
@@ -62,15 +62,39 @@
 
       <!-- 二维码-start -->
       <div class="qrcode">
-        <img class="bg-img" src="https://files.catbox.moe/tqrgyb.jpg" />
-        <img class="qr-img" src="https://files.catbox.moe/w32sjt.png" />
-        <img class="phone-img" src="https://files.catbox.moe/zlwl2s.png" />
+        <img class="bg-img" src="https://pic.rmb.bdstatic.com/bjh/95f438ba7f905f411a01536abedb8141.jpeg" />
+        <img class="qr-img" src="https://pic.rmb.bdstatic.com/bjh/632b55be8036f68d348ff4dff08a4b12.png" />
+        <img class="phone-img" src="https://pic.rmb.bdstatic.com/bjh/ae8de3365ddd894c919335cd8b35bbca.png" />
         <div class="desc">
           <strong>让吃饭变简单</strong>
           <span>www.Meishi.cc</span>
         </div>
       </div>
       <!-- 二维码-end -->
+    </div>
+
+    <div class="recomment-area">
+      <div class="list-wrap" v-for="item in recommentList" :key="item.id">
+        <div class="title">{{item.columnTitle}}</div>
+        <div class="list">
+          <div class="item" v-for="item2 in item.list" :key="item2.id">
+            <div
+              class="cover"
+              :style="{backgroundImage: `url(${item2.coverUrl})`}"
+            >
+              <i class="video-icon" v-if="item2.isVideo"></i>
+              <div class="author-info">
+                <div class="author-avatar" :style="{backgroundImage: `url(${item2.authorAvatar})`}"></div>
+                <strong class="author-name ellipsis-l1">{{item2.authorName}}</strong>
+              </div>
+            </div>
+            <div class="info">
+              <strong class="t ellipsis-l1">{{item2.title}}</strong>
+              <span class="desc ellipsis-l1">{{item2.desc}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -90,6 +114,8 @@ const currentThreeMealsTabIndex = ref(0)
 function onCurrentThreeMealsTabIndexChange(index) {
   currentThreeMealsTabIndex.value = index
 }
+
+const recommentList = require('@/assets/data/recommentList.json')
 </script>
 
 <style lang="scss" scoped>
@@ -320,17 +346,11 @@ function onCurrentThreeMealsTabIndexChange(index) {
             color: #222;
             padding: 10px 0;
             font-size: 18px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
           }
 
           .desc {
             font-size: 14px;
             color: #999;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
           }
         }
       }
@@ -390,6 +410,138 @@ function onCurrentThreeMealsTabIndexChange(index) {
           color: rgba(255, 255, 255, .8);
           text-shadow: 0 0 4px rgb(0 0 0 / 90%);
           line-height: 20px;
+        }
+      }
+    }
+  }
+
+  .recomment-area {
+    width: 1200px;
+    margin: 0 auto;
+
+    .list-wrap {
+      margin-top: 20px;
+
+      .title {
+        color: #222;
+        font-size: 24px;
+        font-weight: 600;
+        padding: 20px 0;
+      }
+
+      .list {
+        .item {
+          display: inline-block;
+          width: 224px;
+          height: 360px;
+          background: #fff;
+          border-radius: 12px;
+          overflow: hidden;
+          margin: 0 20px 20px 0;
+
+          &:nth-child(5n) {
+            margin-right: 0;
+          }
+
+          .cover {
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 280px;
+            cursor: pointer;
+            overflow: hidden;
+
+            &:hover {
+              .author-info {
+                bottom: 0;
+              }
+            }
+
+            .video-icon {
+              position: absolute;
+              top: 15px;
+              right: 15px;
+              width: 30px;
+              height: 30px;
+              background: url(../assets/images/sprite_04.png) 0px 0px no-repeat;
+              background-size: 30px 60px;
+            }
+
+            .author-info {
+              position: absolute;
+              bottom: -60px;
+              width: 100%;
+              height: 60px;
+              background: rgba(0,0,0,.5);
+              display: flex;
+              align-items: center;
+              padding: 0 20px;
+              box-sizing: border-box;
+              transition: bottom ease .3s;
+
+              &:hover {
+                .author-name {
+                  color: #f64d36;
+                }
+              }
+
+              .author-avatar {
+                flex-shrink: 0;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                margin-right: 16px;
+              }
+
+              .author-name {
+                color: #fff;
+                font-size: 14px;
+              }
+            }
+          }
+
+          .info {
+            cursor: pointer;
+
+            &:hover {
+              .t {
+                color: #f64d36;
+              }
+            }
+
+            .t {
+              display: block;
+              color: #222;
+              font-size: 16px;
+              font-weight: 600;
+              margin: 12px 20px 0;
+              line-height: 28px;
+            }
+
+            .desc {
+              position: relative;
+              color: #999;
+              font-size: 14px;
+              margin: 0 20px;
+              padding-left: 24px;
+              line-height: 33px;
+
+              &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 2px;
+                width: 16px;
+                height: 16px;
+                background: url(../assets/images/sprite_01.png) 0px -60px no-repeat;
+                background-size: 30px 150px;
+              }
+            }
+          }
         }
       }
     }
