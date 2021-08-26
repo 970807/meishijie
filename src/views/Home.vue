@@ -50,7 +50,8 @@
             >{{item.label}}</li>
           </ul>
         </h1>
-        <div class="content">
+        <div class="content"
+              v-if="threeMealsTodayList[currentThreeMealsTabIndex]">
           <div class="item" v-for="item in threeMealsTodayList[currentThreeMealsTabIndex].list" :key="item.id">
             <img class="cover" :src="item.coverUrl" />
             <strong class="t ellipsis-l1">{{item.title}}</strong>
@@ -155,23 +156,61 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script>
+import { ref, reactive, toRefs } from 'vue'
+import { getHotTodayVideoList, getHotTodaySearchList, getThreeMealsTodayList, getRecommentList } from '@/service/home'
 import HeaderArea from '@/components/HeaderArea'
 
-const hotTodayVideoList = require('@/assets/data/hotTodayVideoList.json')
+export default {
+  name: 'Home',
+  components: {
+    HeaderArea
+  },
+  setup() {
+    const state = reactive({
+      hotTodayVideoList: [],
+      hotTodaySearchList: [],
+      threeMealsTodayList: [],
+      recommentList: []
+    })
 
-const hotTodaySearchList = require('@/assets/data/hotTodaySearchList.json')
+    getHotTodayVideoList().then(res => {
+      state.hotTodayVideoList = res
+    }).catch(err => {
+      console.error(err)
+    })
 
-const threeMealsTodayList = require('@/assets/data/threeMealsTodayList.json')
+    getHotTodaySearchList().then(res => {
+      state.hotTodaySearchList = res
+    }).catch(err => {
+      console.error(err)
+    })
 
-const currentThreeMealsTabIndex = ref(0)
+    getThreeMealsTodayList().then(res => {
+      state.threeMealsTodayList = res
+    }).catch(err => {
+      console.error(err)
+    })
 
-function onCurrentThreeMealsTabIndexChange(index) {
-  currentThreeMealsTabIndex.value = index
+    getRecommentList().then(res => {
+      state.recommentList = res
+    }).catch(err => {
+      console.error(err)
+    })
+
+    const currentThreeMealsTabIndex = ref(0)
+
+    function onCurrentThreeMealsTabIndexChange(index) {
+      currentThreeMealsTabIndex.value = index
+    }
+
+    return {
+      ...toRefs(state),
+      currentThreeMealsTabIndex,
+      onCurrentThreeMealsTabIndexChange
+    }
+  }
 }
-
-const recommentList = require('@/assets/data/recommentList.json')
 </script>
 
 <style lang="scss" scoped>
