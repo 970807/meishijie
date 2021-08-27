@@ -8,8 +8,12 @@ app.use(cors())
 
 app.use(express.static('public'))
 
+app.get('/', (req, res) => {
+  res.render('./public/index.html')
+})
+
 app.use('/home', homeRouter)
 
 app.listen(3000, () => {
-  console.log('running server successful!')
+  console.log('server running successful!')
 })
