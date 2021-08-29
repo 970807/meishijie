@@ -3,24 +3,31 @@
 */
 
 const mysql = require('mysql')
+const path = require('path')
 
-exports.base = (sql, data) => {
+const pool = mysql.createPool(
+  require(path.join(__dirname, '../config/mysql.config.js'))
+)
+
+exports.query = (sql, data) => {
   return new Promise((resolve, reject) => {
-    const connection = mysql.createConnection(
-      require('../config/mysql.config.js')
-    )
-
-    connection.connect()
-
-    // 操作数据库（数据库操作也是异步的）
-    connection.query(sql, data, function(err, results) {
+    pool.getConnection((err, connection) => {
       if (err) {
-        reject(err)
-      } else {
-        resolve(results)
+        return reject(err)
       }
+      if (!connection) {
+        return reject(
+          new Error('mysql连接池，创建连接失败！-- connection为undefined')
+        )
+      }
+      // 操作数据库（数据库操作也是异步的）
+      connection.query(sql, data, (err, results) => {
+        connection.release()
+        if (err) {
+          return reject(err)
+        }
+        resolve(results)
+      })
     })
-
-    connection.end()
   })
 }

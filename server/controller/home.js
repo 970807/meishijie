@@ -2,7 +2,7 @@ const db = require('../db/index.js')
 
 exports.getHotTodayVideoList = async (req, res, next) => {
   try {
-    const hotTodayVideoList = await db.base(
+    const hotTodayVideoList = await db.query(
       'select * from hot_today_video_list',
       null
     )
@@ -14,7 +14,7 @@ exports.getHotTodayVideoList = async (req, res, next) => {
 
 exports.getHotTodaySearchList = async (req, res, next) => {
   try {
-    const hotTodaySearchList = await db.base(
+    const hotTodaySearchList = await db.query(
       'select * from hot_today_search_list',
       null
     )
@@ -27,8 +27,8 @@ exports.getHotTodaySearchList = async (req, res, next) => {
 exports.getThreeMealsTodayList = async (req, res, next) => {
   try {
     Promise.all([
-      db.base('select * from three_meals_today_first_category_list', null),
-      db.base('select * from three_meals_today_second_category_list', null)
+      db.query('select * from three_meals_today_first_category_list', null),
+      db.query('select * from three_meals_today_second_category_list', null)
     ]).then(([firstCategoryList, secondCategoryList]) => {
       const threeMealsTodayList = []
       for (const item of firstCategoryList) {
@@ -47,8 +47,8 @@ exports.getThreeMealsTodayList = async (req, res, next) => {
 exports.getRecommentList = async (req, res, next) => {
   try {
     Promise.all([
-      db.base('select * from home_recomment_first_category_list', null),
-      db.base('select * from home_recomment_second_category_list', null)
+      db.query('select * from home_recomment_first_category_list', null),
+      db.query('select * from home_recomment_second_category_list', null)
     ]).then(([firstCategoryList, secondCategoryList]) => {
       const recommentList = []
       for (const item of firstCategoryList) {
