@@ -17,9 +17,7 @@
 
 <script setup>
 import HeaderCategoryMenu from './HeaderCategoryMenu'
-function undevelopedTip() {
-  alert('功能暂未开发')
-}
+import undevelopedTip from '@/utils/undevelopedTip'
 </script>
 
 <style lang="scss" scoped>

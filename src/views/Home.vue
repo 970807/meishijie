@@ -63,9 +63,9 @@
 
       <!-- 二维码-start -->
       <div class="qrcode">
-        <img class="bg-img" src="https://pic.rmb.bdstatic.com/bjh/95f438ba7f905f411a01536abedb8141.jpeg" />
-        <img class="qr-img" src="https://pic.rmb.bdstatic.com/bjh/632b55be8036f68d348ff4dff08a4b12.png" />
-        <img class="phone-img" src="https://pic.rmb.bdstatic.com/bjh/ae8de3365ddd894c919335cd8b35bbca.png" />
+        <img class="bg-img" :src="require('@/assets/images/qr-code-bg.jpg')" />
+        <img class="qr-img" :src="require('@/assets/images/qr-code.png')" />
+        <img class="phone-img" :src="require('@/assets/images/qr-code-phone.png')" />
         <div class="desc">
           <strong>让吃饭变简单</strong>
           <span>www.Meishi.cc</span>
@@ -146,10 +146,13 @@
           <li>网站地图</li>
           <li>友情链接</li>
         </ul>
+<!--
         <p>京ICP备14030359号-1</p>
         <img src="https://st-cn.meishij.net/p2/20180208/20180208111357_93713.png" />
         <p>京公网安备11010802026928</p>
         <p> Copyright ? 2003-2021 MEISHIJ CO.,LTD.</p>
+-->
+
       </div>
     </footer>
     <!-- footer-end -->
@@ -725,7 +728,7 @@ export default {
     .bottom {
       width: 1200px;
       height: 120px;
-      margin: 23px auto 0;
+      margin: 50px auto 0;
       text-align: center;
 
       ul {
