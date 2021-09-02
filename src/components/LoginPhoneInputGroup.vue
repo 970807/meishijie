@@ -12,11 +12,21 @@
       :value="verificationCode"
       @input="$emit('update:verificationCode', $event.target.value)"
     />
-    <a class="get-v-code-btn" href="javascript:;">获取验证码</a>
+    <a
+      class="get-v-code-btn"
+      :class="{gray: !isGetVerificationCodeBtnEnable}"
+      href="javascript:;"
+      @click="onGetVerificationCode"
+    >
+      {{isGetVerificationCodeBtnEnable?'获取验证码':`${getVerificationCodeRemainingTime}秒后重新获取`}}
+    </a>
   </div>
 </template>
 
 <script>
+import { ref, computed } from 'vue'
+import { getVerificationCode } from '@/service/login'
+
 export default {
   props: {
     phone: {
@@ -28,7 +38,49 @@ export default {
       required: true
     }
   },
-  emits: ['update:phone', 'update:verificationCode']
+  emits: ['update:phone', 'update:verificationCode', 'setErrorTipText'],
+  setup(props, ctx) {
+    const getVerificationCodeRemainingTime = ref(0)
+
+    const isGetVerificationCodeBtnEnable = computed(
+      () => getVerificationCodeRemainingTime.value <= 0
+    )
+
+    // 获取验证码
+    function onGetVerificationCode() {
+      if (!isGetVerificationCodeBtnEnable.value) {
+        return
+      }
+      if (props.phone.length === 0) {
+        alert('请输入手机号')
+        return
+      }
+      if (!/^\d{5,11}$/.test(props.phone)) {
+        alert('手机号格式不正确')
+        return
+      }
+      getVerificationCodeRemainingTime.value = 60
+      const timer = setInterval(() => {
+        getVerificationCodeRemainingTime.value--
+        if (getVerificationCodeRemainingTime.value <= 0) {
+          clearInterval(timer)
+        }
+      }, 1000)
+
+      getVerificationCode({ phone: props.phone }).then(res => {
+        ctx.emit('update:verificationCode', res.data)
+        ctx.emit('setErrorTipText', '')
+      }).catch(err => {
+        err.msg && ctx.emit('setErrorTipText', err.msg)
+      })
+    }
+
+    return {
+      getVerificationCodeRemainingTime,
+      isGetVerificationCodeBtnEnable,
+      onGetVerificationCode
+    }
+  }
 }
 </script>
 
@@ -65,6 +117,11 @@ export default {
 
       &:hover {
         background: #75ab49;
+      }
+
+      &.gray {
+        color: #999;
+        background: #ddd;
       }
     }
   }

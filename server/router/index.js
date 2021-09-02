@@ -7,5 +7,6 @@ router.get('/', (req, res) => {
 })
 
 router.use('/home', require('./home'))
+router.use('/login', require('./login'))
 
 module.exports = router

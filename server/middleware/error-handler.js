@@ -2,6 +2,9 @@
 module.exports = () => {
   return (err, req, res, next) => {
     console.error(err)
-    res.status(500).end()
+    res.json({
+      code: '-1',
+      msg: '未知错误'
+    })
   }
 }

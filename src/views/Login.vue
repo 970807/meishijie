@@ -9,12 +9,14 @@
           &nbsp;&nbsp;|&nbsp;&nbsp;
           <span :class="{current: !isPhoneLogin}" @click="changeLoginWay('account')">账号密码登录</span>
         </div>
+        <div class="error-tip" v-if="loginErrorText">{{loginErrorText}}</div>
         <div class="main-login-area"
              :style="{transform: `translateX(${isPhoneLogin?0:'-480px'})`}">
           <div class="phone-login">
             <LoginPhoneInputGroup
               v-model:phone="loginModel.phoneLoginModel.phone"
               v-model:verificationCode="loginModel.phoneLoginModel.verificationCode"
+              @setErrorTipText="onSetLoginErrorText"
             />
             <LoginOperationBtns
               v-model:isAutoLoginNext="loginModel.phoneLoginModel.isAutoLoginNext"
@@ -37,9 +39,11 @@
       </div>
       <div class="register-box" v-show="isRegister">
         <div class="title">注册美食杰</div>
-        <LoginAccountInputGroup
-          v-model:account="registerModel.account"
-          v-model:password="registerModel.password"
+        <div class="error-tip" v-if="registerErrorText">{{registerErrorText}}</div>
+        <LoginPhoneInputGroup
+          v-model:phone="registerModel.phone"
+          v-model:verificationCode="registerModel.verificationCode"
+          @setErrorTipText="onSetRegisterErrorText"
         />
         <LoginRegisterOperationBtns
           v-model:isAcceptArgument="registerModel.isAcceptArgument"
@@ -54,6 +58,7 @@
 <script>
 import { reactive, computed, toRefs } from 'vue'
 import { useRoute } from 'vue-router'
+import { registerByPhone } from '@/service/login'
 import LoginNav from '@/components/LoginNav'
 import LoginPhoneInputGroup from '@/components/LoginPhoneInputGroup'
 import LoginAccountInputGroup from '@/components/LoginAccountInputGroup'
@@ -88,10 +93,12 @@ export default {
         }
       },
       registerModel: {
-        account: '',
-        password: '',
+        phone: '',
+        verificationCode: '',
         isAcceptArgument: true
-      }
+      },
+      loginErrorText: '',
+      registerErrorText: ''
     })
 
     const isPhoneLogin = computed(() => state.loginModel.currentLoginWay === 'phone')
@@ -109,10 +116,30 @@ export default {
     }
 
     function onRegisterBtnClick() {
-      const { account, password, isAcceptArgument } = state.registerModel
+      const { phone, verificationCode, isAcceptArgument } = state.registerModel
+      if (!phone || !verificationCode) {
+        alert('请输入手机号或验证码')
+        return
+      }
       if (!isAcceptArgument) {
         alert('请阅读并同意《用户协议》和《隐私策略》')
+        return
       }
+      registerByPhone({ phone, verificationCode }).then(res => {
+        console.log(res)
+      }).catch(err => {
+        if (err.msg) {
+          alert(err.msg)
+        }
+      })
+    }
+
+    function onSetLoginErrorText(text) {
+      state.loginErrorText = text
+    }
+
+    function onSetRegisterErrorText(text) {
+      state.registerErrorText = text
     }
 
     return {
@@ -121,7 +148,9 @@ export default {
       changeLoginWay,
       onToggleIsRegister,
       onLoginBtnClick,
-      onRegisterBtnClick
+      onRegisterBtnClick,
+      onSetLoginErrorText,
+      onSetRegisterErrorText
     }
   }
 }
@@ -173,6 +202,16 @@ export default {
           }
         }
 
+        .error-tip {
+          color: #fff;
+          background: #ea5d4e;
+          height: 44px;
+          line-height: 44px;
+          text-align: center;
+          border-radius: 4px;
+          margin: -20px 0 22px;
+        }
+
         .main-login-area {
           white-space: nowrap;
           transition: transform ease .3s;
@@ -194,6 +233,16 @@ export default {
           font-size: 24px;
           font-weight: 600;
           text-align: center;
+        }
+
+        .error-tip {
+          color: #fff;
+          background: #ea5d4e;
+          height: 44px;
+          line-height: 44px;
+          text-align: center;
+          border-radius: 4px;
+          margin: -20px 0 22px;
         }
       }
     }
