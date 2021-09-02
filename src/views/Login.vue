@@ -16,7 +16,6 @@
             <LoginPhoneInputGroup
               v-model:phone="loginModel.phoneLoginModel.phone"
               v-model:verificationCode="loginModel.phoneLoginModel.verificationCode"
-              @setErrorTipText="onSetLoginErrorText"
             />
             <LoginOperationBtns
               v-model:isAutoLoginNext="loginModel.phoneLoginModel.isAutoLoginNext"
@@ -40,10 +39,9 @@
       <div class="register-box" v-show="isRegister">
         <div class="title">注册美食杰</div>
         <div class="error-tip" v-if="registerErrorText">{{registerErrorText}}</div>
-        <LoginPhoneInputGroup
-          v-model:phone="registerModel.phone"
-          v-model:verificationCode="registerModel.verificationCode"
-          @setErrorTipText="onSetRegisterErrorText"
+        <LoginAccountInputGroup
+          v-model:account="registerModel.account"
+          v-model:password="registerModel.password"
         />
         <LoginRegisterOperationBtns
           v-model:isAcceptArgument="registerModel.isAcceptArgument"
@@ -57,8 +55,8 @@
 
 <script>
 import { reactive, computed, toRefs } from 'vue'
-import { useRoute } from 'vue-router'
-import { registerByPhone } from '@/service/login'
+import { useRoute, useRouter } from 'vue-router'
+import { registerByAccount } from '@/service/login'
 import LoginNav from '@/components/LoginNav'
 import LoginPhoneInputGroup from '@/components/LoginPhoneInputGroup'
 import LoginAccountInputGroup from '@/components/LoginAccountInputGroup'
@@ -76,6 +74,7 @@ export default {
     LoginRegisterOperationBtns
   },
   setup() {
+    const router = useRouter()
     const route = useRoute()
     const state = reactive({
       isRegister: !!route.query.isRegister,
@@ -93,13 +92,15 @@ export default {
         }
       },
       registerModel: {
-        phone: '',
-        verificationCode: '',
+        account: '',
+        password: '',
         isAcceptArgument: true
       },
       loginErrorText: '',
       registerErrorText: ''
     })
+
+    let btnLoading = false
 
     const isPhoneLogin = computed(() => state.loginModel.currentLoginWay === 'phone')
 
@@ -112,30 +113,42 @@ export default {
     }
 
     function onLoginBtnClick() {
-      undevelopedTip()
+      undevelopedTip('功能暂未开发，请使用账号密码登录')
     }
 
     function onRegisterBtnClick() {
-      const { phone, verificationCode, isAcceptArgument } = state.registerModel
-      if (!phone || !verificationCode) {
-        alert('请输入手机号或验证码')
+      const { account, password, isAcceptArgument } = state.registerModel
+      if (!account || !password) {
+        alert('请输入账号或密码')
+        return
+      }
+      if (account.length < 3 || account.length > 12) {
+        alert('账号的长度需在3到12位之间')
+        return
+      }
+      if (password.length < 6 || password.length > 18) {
+        alert('密码的长度需在6到18位之间')
         return
       }
       if (!isAcceptArgument) {
         alert('请阅读并同意《用户协议》和《隐私策略》')
         return
       }
-      registerByPhone({ phone, verificationCode }).then(res => {
-        console.log(res)
+      if (btnLoading) {
+        return
+      }
+      btnLoading = true
+      registerByAccount({ account, password }).then(res => {
+        state.registerErrorText = ''
+        btnLoading = false
+        localStorage.setItem('token', res.data.token)
+        router.replace('/')
       }).catch(err => {
+        btnLoading = false
         if (err.msg) {
-          alert(err.msg)
+          state.registerErrorText = err.msg
         }
       })
-    }
-
-    function onSetLoginErrorText(text) {
-      state.loginErrorText = text
     }
 
     function onSetRegisterErrorText(text) {
@@ -149,7 +162,6 @@ export default {
       onToggleIsRegister,
       onLoginBtnClick,
       onRegisterBtnClick,
-      onSetLoginErrorText,
       onSetRegisterErrorText
     }
   }

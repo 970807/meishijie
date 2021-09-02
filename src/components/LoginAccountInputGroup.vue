@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <input
-      class="input" type="text" placeholder="请输入密码"
+      class="input" type="password" placeholder="请输入密码"
       :value="password"
       @input="$emit('update:password', $event.target.value)"
     />

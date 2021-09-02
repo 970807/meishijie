@@ -1,79 +1,31 @@
-const tools = require('../utils/tools')
+const db = require('../db/index.js')
+const md5 = require('../utils/md5')
+const jwt = require('../utils/jwt')
+const { jwtSecret } = require('../config/default.config')
 
-let verificationCodeMap = []
-
-// 生成随机字符串
-function getRandomString(len = 4) {
-  const strs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  let res = ''
-  for (let i = 0; i < len; i++) {
-    res += strs.charAt(Math.floor(Math.random() * strs.length))
-  }
-  return res
-}
-
-// 生成验证码
-exports.getVerificationCode = (req, res, next) => {
-  const clearVerificationCodeMapByPhone = (phone) => {
-    verificationCodeMap = verificationCodeMap.filter(
-      (item) => item.phone !== phone
-    )
-  }
+// 通过账号密码注册
+exports.registerByAccount = async (req, res, next) => {
   try {
-    const phone = req.query.phone
-    const errMsg = tools.verifyPhoneNumber(phone)
-    if (errMsg) {
-      res.json({
-        code: '-1',
-        msg: errMsg
-      })
-      return
-    }
-    const verificationCode = getRandomString()
-    if (verificationCodeMap.find((item) => item.phone === phone)) {
-      clearVerificationCodeMapByPhone(phone)
-    }
-    verificationCodeMap.push({
-      phone,
-      verificationCode
+    const { account, password } = req.body
+
+    const curTime = new Date()
+    const { insertId: userId } = await db.query('insert into user_list set ?', {
+      account,
+      password: md5(password),
+      createTime: curTime,
+      updateTime: curTime
     })
-    setTimeout(() => {
-      clearVerificationCodeMapByPhone(phone)
-    }, 3 * 60 * 1000)
+    // 生成token
+    const token = await jwt.sign(
+      {
+        userId
+      },
+      jwtSecret
+    )
     res.json({
       code: '200',
-      data: verificationCode
+      data: { userId, account, token }
     })
-  } catch (err) {
-    next(err)
-  }
-}
-
-// 通过手机号注册
-exports.registerByPhone = (req, res, next) => {
-  try {
-    const { phone, verificationCode } = req.body
-    const errMsg = tools.verifyPhoneNumber(phone)
-    if (errMsg) {
-      res.json({
-        code: '-1',
-        msg: errMsg
-      })
-      return
-    }
-    if (
-      !verificationCodeMap.find(
-        (item) =>
-          item.phone === phone && item.verificationCode === verificationCode
-      )
-    ) {
-      res.json({
-        code: '-1',
-        msg: '验证码有误，请重新输入'
-      })
-      return
-    }
-    res.json({ code: '200', phone, verificationCode })
   } catch (err) {
     next(err)
   }
