@@ -11,4 +11,11 @@ router.post(
   loginCtrl.registerByAccount
 )
 
+// 通过账号密码登录
+router.post(
+  '/loginByAccount',
+  validator.loginByAccountValidator,
+  loginCtrl.loginByAccount
+)
+
 module.exports = router

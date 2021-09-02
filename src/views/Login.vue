@@ -56,7 +56,8 @@
 <script>
 import { reactive, computed, toRefs } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { registerByAccount } from '@/service/login'
+import { registerByAccount, loginByAccount } from '@/service/login'
+import { setToken } from '@/utils/token'
 import LoginNav from '@/components/LoginNav'
 import LoginPhoneInputGroup from '@/components/LoginPhoneInputGroup'
 import LoginAccountInputGroup from '@/components/LoginAccountInputGroup'
@@ -112,22 +113,51 @@ export default {
       state.isRegister = !state.isRegister
     }
 
+    function accountAndPasswordValidator(account, password) {
+      if (!account || !password) {
+        alert('请输入账号或密码')
+        return false
+      }
+      if (account.length < 3 || account.length > 12) {
+        alert('账号的长度需在3到12位之间')
+        return false
+      }
+      if (password.length < 6 || password.length > 18) {
+        alert('密码的长度需在6到18位之间')
+        return false
+      }
+      return true
+    }
+
     function onLoginBtnClick() {
-      undevelopedTip('功能暂未开发，请使用账号密码登录')
+      if (state.loginModel.currentLoginWay === 'phone') {
+        undevelopedTip('功能暂未开发，请使用账号密码登录')
+        return
+      }
+      const { account, password, isAutoLoginNext } = state.loginModel.accountLoginModel
+      if (!accountAndPasswordValidator(account, password)) {
+        return
+      }
+      if (btnLoading) {
+        return
+      }
+      btnLoading = true
+      loginByAccount({ account, password }).then(res => {
+        state.loginErrorText = ''
+        btnLoading = false
+        setToken(res.data.token, isAutoLoginNext)
+        router.replace('/')
+      }).catch(err => {
+        btnLoading = false
+        if (err.msg) {
+          state.loginErrorText = err.msg
+        }
+      })
     }
 
     function onRegisterBtnClick() {
       const { account, password, isAcceptArgument } = state.registerModel
-      if (!account || !password) {
-        alert('请输入账号或密码')
-        return
-      }
-      if (account.length < 3 || account.length > 12) {
-        alert('账号的长度需在3到12位之间')
-        return
-      }
-      if (password.length < 6 || password.length > 18) {
-        alert('密码的长度需在6到18位之间')
+      if (!accountAndPasswordValidator(account, password)) {
         return
       }
       if (!isAcceptArgument) {
@@ -141,7 +171,7 @@ export default {
       registerByAccount({ account, password }).then(res => {
         state.registerErrorText = ''
         btnLoading = false
-        localStorage.setItem('token', res.data.token)
+        setToken(res.data.token)
         router.replace('/')
       }).catch(err => {
         btnLoading = false
