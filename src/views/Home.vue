@@ -178,25 +178,25 @@ export default {
     })
 
     getHotTodayVideoList().then(res => {
-      state.hotTodayVideoList = res
+      state.hotTodayVideoList = res.data
     }).catch(err => {
       console.error(err)
     })
 
     getHotTodaySearchList().then(res => {
-      state.hotTodaySearchList = res
+      state.hotTodaySearchList = res.data
     }).catch(err => {
       console.error(err)
     })
 
     getThreeMealsTodayList().then(res => {
-      state.threeMealsTodayList = res
+      state.threeMealsTodayList = res.data
     }).catch(err => {
       console.error(err)
     })
 
     getRecommentList().then(res => {
-      state.recommentList = res
+      state.recommentList = res.data
     }).catch(err => {
       console.error(err)
     })

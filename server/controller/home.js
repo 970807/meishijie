@@ -6,7 +6,10 @@ exports.getHotTodayVideoList = async (req, res, next) => {
       'select * from hot_today_video_list',
       null
     )
-    res.json(hotTodayVideoList)
+    res.json({
+      code: '200',
+      data: hotTodayVideoList
+    })
   } catch (err) {
     next(err)
   }
@@ -18,7 +21,10 @@ exports.getHotTodaySearchList = async (req, res, next) => {
       'select * from hot_today_search_list',
       null
     )
-    res.json(hotTodaySearchList)
+    res.json({
+      code: '200',
+      data: hotTodaySearchList
+    })
   } catch (err) {
     next(err)
   }
@@ -37,7 +43,10 @@ exports.getThreeMealsTodayList = async (req, res, next) => {
           list: secondCategoryList.filter((item2) => item2.parentId === item.id)
         })
       }
-      res.json(threeMealsTodayList)
+      res.json({
+        code: '200',
+        data: threeMealsTodayList
+      })
     })
   } catch (err) {
     next(err)
@@ -57,7 +66,10 @@ exports.getRecommentList = async (req, res, next) => {
           list: secondCategoryList.filter((item2) => item2.parentId === item.id)
         })
       }
-      res.json(recommentList)
+      res.json({
+        code: '200',
+        data: recommentList
+      })
     })
   } catch (err) {
     next(err)

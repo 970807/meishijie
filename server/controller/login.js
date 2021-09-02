@@ -73,7 +73,7 @@ exports.registerByPhone = (req, res, next) => {
       })
       return
     }
-    res.json({ phone, verificationCode })
+    res.json({ code: '200', phone, verificationCode })
   } catch (err) {
     next(err)
   }
