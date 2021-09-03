@@ -18,7 +18,8 @@ module.exports = async (req, res, next) => {
     }
     req.userInfo = r[0]
     next()
-  } catch {
+  } catch (err) {
+    console.error(err.message)
     res.json({ code: '401' })
   }
 }

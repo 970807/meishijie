@@ -9,7 +9,10 @@ async function generateTokenByUserId(userId) {
     {
       userId
     },
-    jwtSecret
+    jwtSecret,
+    {
+      expiresIn: '12h'
+    }
   )
   return token
 }
