@@ -11,6 +11,7 @@
       class="input" type="password" placeholder="请输入密码"
       :value="password"
       @input="$emit('update:password', $event.target.value)"
+      @keyup.enter="$emit('finish')"
     />
   </div>
 </template>
@@ -27,7 +28,7 @@ export default {
       required: true
     }
   },
-  emits: ['update:account', 'update:password']
+  emits: ['update:account', 'update:password', 'finish']
 }
 </script>
 

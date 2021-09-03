@@ -7,16 +7,37 @@
         </a>
         <HeaderSearchInput />
         <HeaderNavbar />
-        <HeaderUserInfo />
+        <HeaderLoginBtns v-if="!hasToken" />
+        <HeaderUserInfo v-else />
       </div>
     </div>
   </header>
 </template>
 
-<script setup>
+<script>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 import HeaderSearchInput from './HeaderSearchInput'
 import HeaderNavbar from './HeaderNavbar'
-import HeaderUserInfo from './HeaderUserInfo'
+import HeaderLoginBtns from './HeaderLoginBtns'
+import HeaderUserInfo from './HeaderUserInfo.vue'
+
+export default {
+  components: {
+    HeaderSearchInput,
+    HeaderNavbar,
+    HeaderLoginBtns,
+    HeaderUserInfo
+  },
+  setup() {
+    const store = useStore()
+    const hasToken = computed(() => !!store.state.token)
+
+    return {
+      hasToken
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

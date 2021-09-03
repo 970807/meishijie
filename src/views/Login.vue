@@ -27,6 +27,7 @@
             <LoginAccountInputGroup
               v-model:account="loginModel.accountLoginModel.account"
               v-model:password="loginModel.accountLoginModel.password"
+              @finish="onLoginBtnClick"
             />
             <LoginOperationBtns
               v-model:isAutoLoginNext="loginModel.accountLoginModel.isAutoLoginNext"
@@ -42,6 +43,7 @@
         <LoginAccountInputGroup
           v-model:account="registerModel.account"
           v-model:password="registerModel.password"
+          @finish="onRegisterBtnClick"
         />
         <LoginRegisterOperationBtns
           v-model:isAcceptArgument="registerModel.isAcceptArgument"
@@ -56,8 +58,8 @@
 <script>
 import { reactive, computed, toRefs } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 import { registerByAccount, loginByAccount } from '@/service/login'
-import { setToken } from '@/utils/token'
 import LoginNav from '@/components/LoginNav'
 import LoginPhoneInputGroup from '@/components/LoginPhoneInputGroup'
 import LoginAccountInputGroup from '@/components/LoginAccountInputGroup'
@@ -77,6 +79,7 @@ export default {
   setup() {
     const router = useRouter()
     const route = useRoute()
+    const store = useStore()
     const state = reactive({
       isRegister: !!route.query.isRegister,
       loginModel: {
@@ -145,7 +148,13 @@ export default {
       loginByAccount({ account, password }).then(res => {
         state.loginErrorText = ''
         btnLoading = false
-        setToken(res.data.token, isAutoLoginNext)
+        store.commit('setToken', res.data.token)
+        if (isAutoLoginNext) {
+          localStorage.setItem('token', res.data.token)
+        } else {
+          localStorage.removeItem('token')
+        }
+
         router.replace('/')
       }).catch(err => {
         btnLoading = false
@@ -168,11 +177,12 @@ export default {
         return
       }
       btnLoading = true
-      registerByAccount({ account, password }).then(res => {
+      registerByAccount({ account, password }).then(() => {
         state.registerErrorText = ''
         btnLoading = false
-        setToken(res.data.token)
-        router.replace('/')
+        alert('注册成功')
+        state.loginModel.currentLoginWay = 'account'
+        state.isRegister = false
       }).catch(err => {
         btnLoading = false
         if (err.msg) {
