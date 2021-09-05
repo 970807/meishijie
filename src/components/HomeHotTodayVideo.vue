@@ -3,10 +3,22 @@
     <div class="inner">
       <h1 class="title">今日热门视频菜谱</h1>
       <div class="video-list">
-        <div class="item" v-for="item in hotTodayVideoList" :key="item.id">
+        <div
+          class="item"
+          v-for="(item, index) in hotTodayVideoList"
+          :key="item.id"
+          :style="{width: getVideoWrapperWidth(index)}"
+        >
           <div class="mask"></div>
           <img class="cover" :src="item.coverUrl" />
-          <i class="play-btn"></i>
+          <i class="play-btn" @click="onPlayBtnClick(index)"></i>
+          <video
+            loop="loop"
+            :ref="setVideoRef"
+            :src="item.videoUrl"
+            @click="onPauseVideo(index)"
+            v-show="isPlayingVideoNow && currentPlayVideoIndex === index"
+          ></video>
           <div class="info">
             <div class="t">{{item.title}}</div>
             <div class="row">
@@ -22,11 +34,62 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
   props: {
     hotTodayVideoList: {
       type: Array,
       default: () => []
+    }
+  },
+  setup() {
+    const videRefList = []
+
+    const isPlayingVideoNow = ref(false)
+    const currentPlayVideoIndex = ref(0)
+    function onPlayBtnClick(index) {
+      isPlayingVideoNow.value = true
+      currentPlayVideoIndex.value = index
+      videRefList.forEach((item, index) => {
+        if (index !== currentPlayVideoIndex.value) {
+          item.pause()
+        }
+      })
+      const willPlayVideEl = videRefList[index]
+      if (!willPlayVideEl) {
+        return
+      }
+      willPlayVideEl.play()
+    }
+
+    function onPauseVideo(index) {
+      videRefList[index].pause()
+      isPlayingVideoNow.value = false
+    }
+
+    function setVideoRef(el) {
+      videRefList.push(el)
+    }
+
+    function getVideoWrapperWidth(index) {
+      if (!isPlayingVideoNow.value) {
+        return '285px'
+      }
+      if (currentPlayVideoIndex.value === index) {
+        return '350px'
+      } else {
+        return '263px'
+      }
+    }
+
+    return {
+      isPlayingVideoNow,
+      currentPlayVideoIndex,
+      onPlayBtnClick,
+      onPauseVideo,
+      setVideoRef,
+      getVideoWrapperWidth
     }
   }
 }
@@ -54,11 +117,11 @@ export default {
 
       .item {
         position: relative;
-        width: 285px;
         height: 526px;
         margin-right: 20px;
         border-radius: 12px;
         overflow: hidden;
+        transition: width .4s ease;
         cursor: pointer;
 
         &:nth-child(4n) {
@@ -81,6 +144,15 @@ export default {
           object-fit: cover;
           filter: blur(8px);
           opacity: .5;
+        }
+
+        video {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 350px;
+          z-index: 20;
         }
 
         .play-btn {

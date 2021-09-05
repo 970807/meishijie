@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : my
+ Source Server         : MySql
  Source Server Type    : MySQL
  Source Server Version : 80023
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 29/08/2021 21:37:34
+ Date: 06/09/2021 05:21:36
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `home_recomment_first_category_list`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `columnTitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of home_recomment_first_category_list
@@ -79,7 +79,7 @@ CREATE TABLE `hot_today_search_list`  (
   `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `isHot` tinyint(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of hot_today_search_list
@@ -107,15 +107,15 @@ CREATE TABLE `hot_today_video_list`  (
   `coverUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `videoUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of hot_today_video_list
 -- ----------------------------
-INSERT INTO `hot_today_video_list` VALUES (1, '葱油拌面', '菜菜美食日记', 'https://z3.ax1x.com/2021/08/29/hGcz2n.jpg', 'https://i.meishi.cc/daren_task/article_detail.php?id=131036', 'https://z3.ax1x.com/2021/08/29/hG6Sij.jpg', 'http://gslb.miaopai.com/stream/AydNGOZYO9Spgn37hZjXuZNp~qbLHDqf3QX32w__.mp4?vend=miaopai');
-INSERT INTO `hot_today_video_list` VALUES (2, '凉拌藕片', '馋哭姐', 'https://z3.ax1x.com/2021/08/29/hGg9K0.jpg', 'https://i.meishi.cc/daren_task/article_detail.php?id=90617', 'https://z3.ax1x.com/2021/08/29/hG6yTg.jpg', 'https://v2.meishij.net/test/1195478806/3273b2dbf84ff1cd2233440d787c2dcb.mp4?k=b8d6e61f32d35d02&t=1629517036');
-INSERT INTO `hot_today_video_list` VALUES (3, '瘦身冬瓜汤', '舌里美食记', 'https://z3.ax1x.com/2021/08/29/hGgPbT.jpg', 'https://i.meishi.cc/daren_task/article_detail.php?id=146633', 'https://z3.ax1x.com/2021/08/29/hGcLVS.jpg', 'https://v2.meishij.net/3rd/dy/5200514/v_6775372880894102797.mp4?k=f2f0dd4a7ad4b17f&t=1629517036');
-INSERT INTO `hot_today_video_list` VALUES (4, '茄子豆角', '新东方小食神', 'https://z3.ax1x.com/2021/08/29/hGgA54.jpg', 'https://www.meishij.net/zuofa/qiezidoujiao_15.html', 'https://z3.ax1x.com/2021/08/29/hGcx8s.jpg', 'https://v2.meishij.net/test/81648328/f9e542c2387759019de80916ad2514fa.mp4?k=ee0348ab0587c033&t=1629517036');
+INSERT INTO `hot_today_video_list` VALUES (1, '葱油拌面', '菜菜美食日记', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/avatar_菜菜美食日记.jpg?versionId=CAEQKhiBgMDaodLd3RciIGMxNTY3N2JkNTU1NzQwOTc5ZjI3NjMxYjM5MDU2MGRl', 'https://i.meishi.cc/daren_task/article_detail.php?id=131036', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/葱油拌面.jpg?versionId=CAEQKhiBgICugsTd3RciIGMzY2Q3YzQwZDM2NzQzYWQ4N2NmMDFkYjI4ZmZhMzQ2', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/video_葱油拌面.mp4?versionId=CAEQKhiBgICUwZHe3RciIDFhNjIyYjg4ZWZmMjRjNTVhNWNiMjU5YWFkOWJjODky');
+INSERT INTO `hot_today_video_list` VALUES (2, '凉拌藕片', '馋哭姐', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/avatar_馋哭姐.jpg?versionId=CAEQKhiBgIDYodLd3RciIDA4MTFhNzk3ZDc3ODRhMzk4MDE5NTcxMjFhM2U2MjI0', 'https://i.meishi.cc/daren_task/article_detail.php?id=90617', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/凉拌藕片.jpg?versionId=CAEQKhiBgIDsgcTd3RciIDdkZTk2MzJkODI4ODRhNjc5YzY0YjQ0NDRmNTIxYjhh', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/video_凉拌藕片.mp4?versionId=CAEQKhiBgICpv5He3RciIGRkN2NhYTFmODI0ODQxZjZhZDdkNzc2MWNiZTVjMDJk');
+INSERT INTO `hot_today_video_list` VALUES (3, '瘦身冬瓜汤', '舌里美食记', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/avatar_舌里美食记.jpg?versionId=CAEQKhiBgMDKodLd3RciIGVlOTQxNjFmODY1MjRiZGE5NjMwNWUzMmVjYjBkNWU4', 'https://i.meishi.cc/daren_task/article_detail.php?id=146633', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/瘦身冬瓜汤.jpg?versionId=CAEQKhiBgMDXgcTd3RciIDM1MjBlM2ZlMWVlZTRjMWU4ODEyMDk2M2UwN2U3MDE2', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/video_瘦身冬瓜汤.mp4?versionId=CAEQKhiBgMDbv5He3RciIDE2NmNmNmU3YzFiZTQ3MWU4OGU5OTRhZmY0ZjQxMGI0');
+INSERT INTO `hot_today_video_list` VALUES (4, '茄子豆角', '新东方小食神', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/avatar_新东方小食神.jpg?versionId=CAEQKhiBgIDDodLd3RciIGYxNzFkZGU1M2IzNDRhNjA4MTgyZGUzMDc1YTFjMWI3', 'https://www.meishij.net/zuofa/qiezidoujiao_15.html', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/茄子豆角.jpg?versionId=CAEQKhiBgMD.gcTd3RciIDE3ZDQzMWEwNDg2ZTQyZDVhZTY0NDZiYzk5NWEwMTc2', 'https://meishijie210906.oss-cn-shenzhen.aliyuncs.com/hotTodayVideo/video_茄子豆角.mp4?versionId=CAEQKhiBgMDTwJHe3RciIGE3NDc2OGJhYTNiNDQ1ZDQ5YjExNTYyYjhjZjY3ZTQ4');
 
 -- ----------------------------
 -- Table structure for three_meals_today_first_category_list
@@ -125,7 +125,7 @@ CREATE TABLE `three_meals_today_first_category_list`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of three_meals_today_first_category_list
@@ -147,7 +147,7 @@ CREATE TABLE `three_meals_today_second_category_list`  (
   `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `coverUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of three_meals_today_second_category_list
@@ -167,5 +167,24 @@ INSERT INTO `three_meals_today_second_category_list` VALUES (12, 4, '减肥餐�
 INSERT INTO `three_meals_today_second_category_list` VALUES (13, 5, '孜然土豆', '味道超赞，无比解馋', 'https://z3.ax1x.com/2021/08/29/hG2T78.jpg');
 INSERT INTO `three_meals_today_second_category_list` VALUES (14, 5, '酸辣鸡爪', '均衡营养，滋补养生', 'https://z3.ax1x.com/2021/08/29/hG2qhQ.jpg');
 INSERT INTO `three_meals_today_second_category_list` VALUES (15, 5, '风味花生', '美味过瘾，好吃停不下嘴', 'https://z3.ax1x.com/2021/08/29/hG2jcn.jpg');
+
+-- ----------------------------
+-- Table structure for user_list
+-- ----------------------------
+DROP TABLE IF EXISTS `user_list`;
+CREATE TABLE `user_list`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `account` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `createTime` datetime NOT NULL,
+  `updateTime` datetime NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_list
+-- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;
