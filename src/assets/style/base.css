@@ -11,3 +11,19 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(84, 64, 14, 0.3);
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: rgba(84, 64, 14, 0.2);
+}
