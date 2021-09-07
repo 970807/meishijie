@@ -46,12 +46,12 @@
         <li>网站地图</li>
         <li>友情链接</li>
       </ul>
-<!--
-      <p>京ICP备14030359号-1</p>
-      <img src="https://st-cn.meishij.net/p2/20180208/20180208111357_93713.png" />
-      <p>京公网安备11010802026928</p>
-      <p> Copyright ? 2003-2021 MEISHIJ CO.,LTD.</p>
--->
+
+        <a class="beian" style="margin-right: 20px;" href="https://beian.miit.gov.cn/">桂ICP备20006161号-2</a>
+        <!-- <img src="https://st-cn.meishij.net/p2/20180208/20180208111357_93713.png" /> -->
+        <!-- <p>京公网安备11010802026928</p> -->
+        <p>© 2009-2019 Aliyun.com 版权所有。</p>
+
     </div>
   </footer>
 </template>
@@ -143,6 +143,7 @@ footer {
     text-align: center;
 
     ul {
+      margin-bottom: 20px;
 
       li {
         display: inline-block;
@@ -160,7 +161,8 @@ footer {
       }
     }
 
-    p {
+    p,
+    a {
       display: inline-block;
       color: #999;
       font-size: 12px;
