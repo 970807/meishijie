@@ -6,8 +6,8 @@
       <i class="arrow-icon"></i>
       <HeaderCategoryMenu class="category-menu" />
     </a>
-    <a class="item" href="javascript:;" @click="undevelopedTip">美食达人</a>
-    <a class="item" href="javascript:;" @click="undevelopedTip">家居馆</a>
+    <a class="item" href="javascript:;" @click="undevelopedTip()">美食达人</a>
+    <a class="item" href="javascript:;" @click="undevelopedTip()">家居馆</a>
     <a class="item" href="https://j.meishi.cc/" target="_blank">
       <i class="app-icon"></i>
       APP下载

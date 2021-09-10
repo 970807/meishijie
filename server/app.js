@@ -1,12 +1,15 @@
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
+const history = require('connect-history-api-fallback')
 const router = require('./router')
 const errorHandler = require('./middleware/error-handler')
 
 const app = express()
 
 app.use(express.json())
+
+app.use(history())
 
 app.use(morgan('combined'))
 

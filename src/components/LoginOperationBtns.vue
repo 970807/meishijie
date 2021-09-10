@@ -8,7 +8,7 @@
       />
       <span>下次自动登录</span>
     </label>
-    <a class="forget-password-btn" href="javascript:;" @click="undevelopedTip">忘记密码？</a>
+    <a class="forget-password-btn" href="javascript:;" @click="undevelopedTip()">忘记密码？</a>
   </div>
   <a class="login-btn" href="javascript:;" @click="$emit('loginBtnClick')">登录</a>
   <a class="go-register-btn" href="javascript:;" @click="$emit('toggleIsRegister')">没有账号？立即注册</a>

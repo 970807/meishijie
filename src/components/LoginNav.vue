@@ -9,22 +9,22 @@
           <router-link to="/">首页</router-link>
         </li>
         <li>
-          <a href="javascript:;" @click="undevelopedTip">菜谱大全</a>
+          <a href="javascript:;" @click="undevelopedTip()">菜谱大全</a>
         </li>
         <li>
-          <a href="javascript:;" @click="undevelopedTip">饮食健康</a>
+          <a href="javascript:;" @click="undevelopedTip()">饮食健康</a>
         </li>
         <li>
-          <a href="javascript:;" @click="undevelopedTip">美食菜单</a>
+          <a href="javascript:;" @click="undevelopedTip()">美食菜单</a>
         </li>
         <li>
-          <a href="javascript:;" @click="undevelopedTip">美食达人</a>
+          <a href="javascript:;" @click="undevelopedTip()">美食达人</a>
         </li>
         <li>
-          <a href="javascript:;" @click="undevelopedTip">菜谱视频</a>
+          <a href="javascript:;" @click="undevelopedTip()">菜谱视频</a>
         </li>
         <li>
-          <a href="javascript:;" @click="undevelopedTip">产品下载</a>
+          <a href="javascript:;" @click="undevelopedTip()">产品下载</a>
         </li>
       </ul>
     </div>
