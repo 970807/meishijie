@@ -16,10 +16,10 @@ exports.registerByAccountValidator = async (req, res, next) => {
         msg: '账号的长度需在3到12位之间'
       })
     }
-    if (password.length < 6 || password.length > 18) {
+    if (password.length < 3 || password.length > 15) {
       return res.json({
         code: '-1',
-        msg: '密码的长度需在6到18位之间'
+        msg: '密码的长度需在3到15位之间'
       })
     }
     // 查找账号是否存在
@@ -54,10 +54,10 @@ exports.loginByAccountValidator = async (req, res, next) => {
         msg: '账号的长度需在3到12位之间'
       })
     }
-    if (password.length < 6 || password.length > 18) {
+    if (password.length < 3 || password.length > 15) {
       return res.json({
         code: '-1',
-        msg: '密码的长度需在6到18位之间'
+        msg: '密码的长度需在3到15位之间'
       })
     }
     // 查找对应账号

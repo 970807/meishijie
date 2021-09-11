@@ -3,7 +3,12 @@
     <div class="list-wrap" v-for="item in recommentList" :key="item.id">
       <div class="title">{{item.columnTitle}}</div>
       <div class="list">
-        <div class="item" v-for="item2 in item.list" :key="item2.id">
+        <router-link
+          class="item"
+          :to="{path:`/recipe-detail/1`}"
+          v-for="item2 in item.list"
+          :key="item2.id"
+        >
           <div
             class="cover"
             :style="{backgroundImage: `url(${item2.coverUrl})`}"
@@ -18,7 +23,7 @@
             <strong class="t ellipsis-l1">{{item2.title}}</strong>
             <span class="desc ellipsis-l1">{{item2.desc}}</span>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>

@@ -125,8 +125,8 @@ export default {
         alert('账号的长度需在3到12位之间')
         return false
       }
-      if (password.length < 6 || password.length > 18) {
-        alert('密码的长度需在6到18位之间')
+      if (password.length < 3 || password.length > 15) {
+        alert('密码的长度需在3到15位之间')
         return false
       }
       return true
