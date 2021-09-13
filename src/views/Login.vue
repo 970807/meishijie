@@ -158,8 +158,8 @@ export default {
         router.replace('/')
       }).catch(err => {
         btnLoading = false
-        if (err.msg) {
-          state.loginErrorText = err.msg
+        if (err.message) {
+          state.loginErrorText = err.message
         }
       })
     }
@@ -185,8 +185,8 @@ export default {
         state.isRegister = false
       }).catch(err => {
         btnLoading = false
-        if (err.msg) {
-          state.registerErrorText = err.msg
+        if (err.message) {
+          state.registerErrorText = err.message
         }
       })
     }

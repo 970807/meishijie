@@ -7,19 +7,19 @@ exports.registerByAccountValidator = async (req, res, next) => {
     if (!account || !password) {
       return res.json({
         code: '-1',
-        msg: '账号或密码不能为空'
+        message: '账号或密码不能为空'
       })
     }
     if (account.length < 3 || account.length > 12) {
       return res.json({
         code: '-1',
-        msg: '账号的长度需在3到12位之间'
+        message: '账号的长度需在3到12位之间'
       })
     }
     if (password.length < 3 || password.length > 15) {
       return res.json({
         code: '-1',
-        msg: '密码的长度需在3到15位之间'
+        message: '密码的长度需在3到15位之间'
       })
     }
     // 查找账号是否存在
@@ -30,7 +30,7 @@ exports.registerByAccountValidator = async (req, res, next) => {
     if (r.length > 0) {
       return res.json({
         code: '-1',
-        msg: '注册失败，该账号已存在'
+        message: '注册失败，该账号已存在'
       })
     }
     next()
@@ -45,19 +45,19 @@ exports.loginByAccountValidator = async (req, res, next) => {
     if (!account || !password) {
       return res.json({
         code: '-1',
-        msg: '账号或密码不能为空'
+        message: '账号或密码不能为空'
       })
     }
     if (account.length < 3 || account.length > 12) {
       return res.json({
         code: '-1',
-        msg: '账号的长度需在3到12位之间'
+        message: '账号的长度需在3到12位之间'
       })
     }
     if (password.length < 3 || password.length > 15) {
       return res.json({
         code: '-1',
-        msg: '密码的长度需在3到15位之间'
+        message: '密码的长度需在3到15位之间'
       })
     }
     // 查找对应账号
@@ -68,14 +68,14 @@ exports.loginByAccountValidator = async (req, res, next) => {
     if (r.length === 0) {
       return res.json({
         code: '-1',
-        msg: '登录失败，账号不存在'
+        message: '登录失败，账号不存在'
       })
     }
     const userInfo = r[0]
     if (userInfo.password !== md5(password)) {
       return res.json({
         code: '-1',
-        msg: '登录失败，密码错误'
+        message: '登录失败，密码错误'
       })
     }
     req.userId = userInfo.id
