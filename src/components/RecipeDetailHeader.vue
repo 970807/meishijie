@@ -1,27 +1,27 @@
 <template>
   <div class="recipe-detail-header">
-    <img class="cover" src="https://st-cn.meishij.net/r/222/140/4535222/s4535222_143798044848659.jpg" />
+    <img class="cover" :src="coverUrl" />
     <div class="info">
-      <h1 class="title">酸辣土豆丝</h1>
+      <h1 class="title">{{recipeName}}</h1>
       <div class="statistics">
-        by 家乐 · 17 收藏 · 46662 浏览
+        by {{authorNickname}} · {{favCount}} 收藏 · {{browerCount}} 浏览
       </div>
       <div class="evaluation">
         <div class="item">
           <span>工艺</span>
-          <span>炒</span>
+          <span>{{simpleIntroductionTechnology}}</span>
         </div>
         <div class="item">
           <span>口味</span>
-          <span>家常味</span>
+          <span>{{simpleIntroductionTaste}}</span>
         </div>
         <div class="item">
           <span>时间</span>
-          <span>10分钟</span>
+          <span>{{simpleIntroductionTime}}</span>
         </div>
         <div class="item">
           <span>难度</span>
-          <span>新手尝试</span>
+          <span>{{simpleIntroductionDifficulty}}</span>
         </div>
       </div>
       <div class="recipe">
@@ -31,9 +31,10 @@
             <span>main</span>
           </div>
           <div class="right">
-            <strong>土豆 300克</strong>
-            <strong>干辣椒 100克</strong>
-            <span>2人份</span>
+            <strong
+              v-for="item in mainIngredientList"
+              :key="item.ingredientId"
+            >{{item.ingredientName}} {{item.ingredientDose}}</strong>
           </div>
         </div>
         <div class="box">
@@ -42,19 +43,17 @@
             <span>main</span>
           </div>
           <div class="right">
-            <strong>盐 1/2茶匙</strong>
-            <strong>家乐鸡精 1/2茶匙</strong>
-            <strong>香醋 4茶匙</strong>
-            <strong>蒜末 适量</strong>
-            <strong>香葱末 适量</strong>
-            <strong>油 适量</strong>
+            <strong
+              v-for="item in subIngredientList"
+              :key="item.ingredientId"
+            >{{item.ingredientName}} {{item.ingredientDose}}</strong>
           </div>
         </div>
       </div>
     </div>
     <div class="qrcode-box">
       <div class="qrcode">
-        <img src="https://www.meishij.net/ajax/qrcode_wap.php?i=1641782">
+        <img v-if="recipeQrcode" :src="recipeQrcode">
       </div>
       <div class="qrcode-des">
         <span class="t">扫描手机二维码</span>
@@ -62,7 +61,7 @@
       </div>
       <div class="fav-btn">
         <i class="icon"></i>
-        <span>收藏(17)</span>
+        <span>收藏({{favCount}})</span>
       </div>
       <div class="dotline">
         <span class="dot1"></span>
@@ -70,13 +69,41 @@
         <span class="dot2"></span>
       </div>
       <div class="copyright">
-        创建时间：2015-07-29
+        创建时间：{{createDate}}
         <br>
-        酸辣土豆丝的版权归作者所有，没有作者本人的书面许可任何人不得转载或使用其中整体或任何部分内容。
+        {{recipeName}}的版权归作者所有，没有作者本人的书面许可任何人不得转载或使用其中整体或任何部分内容。
       </div>
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent, computed } from 'vue'
+
+export default defineComponent({
+  props: {
+    isVideo: Number,
+    coverUrl: String,
+    videoUrl: String,
+    recipeName: String,
+    authorNickname: String,
+    favCount: Number,
+    browerCount: Number,
+    simpleIntroductionTechnology: String,
+    simpleIntroductionTaste: String,
+    simpleIntroductionTime: String,
+    simpleIntroductionDifficulty: String,
+    mainIngredientList: Array,
+    subIngredientList: Array,
+    recipeQrcode: String,
+    createTime: String
+  },
+  setup(props:any) {
+    const createDate = computed(() => props.createTime && props.createTime.split(' ')[0])
+    return { createDate }
+  }
+})
+</script>
 
 <style lang="scss" scoped>
   .recipe-detail-header {

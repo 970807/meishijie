@@ -3,19 +3,33 @@
     <div class="author">
       <div
         class="avatar"
-        style="background: url('https://s1.st.meishij.net/user/222/140/t4535222_143693960773371.jpg')"
+        :style="{backgroundImage: `url(${authorAvatar || require('../assets/images/avatar_default.png')})`}"
       ></div>
       <div class="info">
-        <a href="https://i.meishi.cc/cook.php?id=4535222" target="_blank">家乐</a>
-        <span>84菜谱&nbsp;&nbsp;5649粉丝</span>
+        <a href="javascript:;">{{authorNickname}}</a>
+        <span>{{authorRecipeCount}}菜谱&nbsp;&nbsp;{{authorFanCount}}粉丝</span>
       </div>
     </div>
     <i class="quote-icon"></i>
     <div class="author-words">
-      <p>酸辣土豆丝，是一道普通又经典的家常菜，是每个妈妈的必备技能和秘密武器。我家的晚饭，经常有这道菜，每次都很受欢迎。就算材料廉价，做法简单，我依然十分爱它。酸辣的滋味，能让胃口变得特别好，也超级下饭。我还知道能让它变得更好吃的秘密，已经迫不及待想要告诉身边的人了。</p>
+      <p>{{authorWords}}</p>
     </div>
   </div>
 </template>
+
+<script>
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  props: {
+    authorNickname: String,
+    authorAvatar: String,
+    authorRecipeCount: Number,
+    authorFanCount: Number,
+    authorWords: String
+  }
+})
+</script>
 
 <style lang="scss" scoped>
   .author-info {
@@ -37,6 +51,8 @@
         width: 60px;
         height: 60px;
         border-radius: 30px;
+        background-repeat: no-repeat;
+        background-size: contain;
       }
 
       .info {

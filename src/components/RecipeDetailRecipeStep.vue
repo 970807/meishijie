@@ -1,10 +1,10 @@
 <template>
-  <h2 class="title">酸辣土豆丝的做法</h2>
+  <h2 class="title">{{recipeName}}的做法</h2>
   <div class="recipe-step-box">
     <div
       class="recipe-step"
-      v-for="(item, index) in stepArr"
-      :key="item.id"
+      v-for="(item, index) in stepList"
+      :key="index"
     >
       <div class="step-num">
         <strong>步骤</strong>
@@ -13,61 +13,23 @@
       </div>
       <div class="step-content">
         <img
-          v-if="item.stepImg"
-          :src="item.stepImg"
+          v-if="item.img"
+          :src="item.img"
           title="酸辣土豆丝的做法"
         />
-        <p v-if="item.stepContent">{{item.stepContent}}</p>
+        <p v-if="item.content">{{item.content}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
-  setup() {
-    const stepArr = reactive([
-      {
-        id: 0,
-        stepImg: 'https://st-cn.meishij.net/rs/222/140/4535222/n4535222_143798048317836.jpg',
-        stepContent: '全部食材'
-      },
-      {
-        id: 1,
-        stepImg: 'https://st-cn.meishij.net/rs/222/140/4535222/n4535222_143798045119295.jpg',
-        stepContent: '将土豆洗净去皮后切成细丝'
-      },
-      {
-        id: 2,
-        stepImg: 'https://st-cn.meishij.net/rs/222/140/4535222/n4535222_143798045354615.jpg',
-        stepContent: '将切好的土豆丝放入清水中，漂洗3次左右，去掉多余的淀粉'
-      },
-      {
-        id: 3,
-        stepImg: 'https://st-cn.meishij.net/rs/222/140/4535222/n4535222_143798045542664.jpg',
-        stepContent: '干红辣椒洗净，切成丝'
-      },
-      {
-        id: 4,
-        stepImg: 'https://st-cn.meishij.net/rs/222/140/4535222/n4535222_143798045729396.jpg',
-        stepContent: '锅中放油烧至五成热，将蒜末、干红辣椒丝倒入爆香'
-      },
-      {
-        id: 5,
-        stepImg: 'https://st-cn.meishij.net/rs/222/140/4535222/n4535222_143798045921717.jpg',
-        stepContent: '然后将土豆丝沥干水分，放入一同翻炒3分钟左右至熟'
-      },
-      {
-        id: 6,
-        stepContent: '最后加入盐、家乐鸡精、香醋翻炒均匀，最后撒上葱末即可。鸡精的加入，能极大地提升菜品的鲜美口味，令人食欲大开'
-      }
-    ])
-
-    return {
-      stepArr
-    }
+  props: {
+    recipeName: String,
+    stepList: Array
   }
 })
 </script>

@@ -1,9 +1,18 @@
 <template>
-  <h2 class="title">酸辣土豆丝的成品图</h2>
+  <h2 class="title">{{recipeName}}的成品图</h2>
   <div class="finish-image-box">
-    <img src="https://st-cn.meishij.net/rs/222/140/4535222/n4535222_143798047652763.jpg">
+    <img :src="finishFoodImgList[0]">
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    recipeName: String,
+    finishFoodImgList: Array
+  }
+}
+</script>
 
 <style lang="scss" scoped>
   h2.title {
