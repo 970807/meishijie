@@ -72,7 +72,6 @@ export default defineComponent({
 
     function getRecipeDetail(id) {
       getDetail({ id }).then(res => {
-        console.log(res.data)
         state.recipeInfo = res.data
       })
     }

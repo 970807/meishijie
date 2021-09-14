@@ -32,8 +32,8 @@
           </div>
           <div class="right">
             <strong
-              v-for="item in mainIngredientList"
-              :key="item.ingredientId"
+              v-for="(item, index) in mainIngredientList"
+              :key="index"
             >{{item.ingredientName}} {{item.ingredientDose}}</strong>
           </div>
         </div>
