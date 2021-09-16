@@ -55,7 +55,9 @@ exports.getThreeMealsTodayList = async (req, res, next) => {
 
 exports.getRecommentList = async (req, res, next) => {
   try {
-    const results = await db.query('select * from home_recommend_column_list')
+    const results = await db.query(
+      'select * from home_recommend_column_list order by sort'
+    )
     const allRecipeIdList = results
       .map((item) => item.recipeListStr.slice(0, -1).split(';'))
       .flat(1)
