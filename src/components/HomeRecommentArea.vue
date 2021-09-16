@@ -5,7 +5,7 @@
       <div class="list">
         <router-link
           class="item"
-          :to="{path:`/recipe-detail/1`}"
+          :to="{path:`/recipe-detail/${item2.id}`}"
           v-for="item2 in item.list"
           :key="item2.id"
         >
@@ -20,8 +20,8 @@
             </div>
           </div>
           <div class="info">
-            <strong class="t ellipsis-l1">{{item2.title}}</strong>
-            <span class="desc ellipsis-l1">{{item2.desc}}</span>
+            <strong class="t ellipsis-l1">{{item2.recipeName}}</strong>
+            <span class="ingredient ellipsis-l1">{{item2.ingredientStr}}</span>
           </div>
         </router-link>
       </div>
@@ -148,7 +148,7 @@ export default {
             line-height: 28px;
           }
 
-          .desc {
+          .ingredient {
             display: block;
             position: relative;
             color: #999;
