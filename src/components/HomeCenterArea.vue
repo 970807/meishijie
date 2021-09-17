@@ -21,23 +21,31 @@
             :class="{current: index===currentThreeMealsTabIndex}"
             v-for="(item, index) in threeMealsTodayList"
             :key="item.id"
-            @click="onCurrentThreeMealsTabIndexChange(index)"
+            @click="onThreeMealsTabItemClick(index)"
           >{{item.label}}</li>
         </ul>
       </h1>
-      <div class="content"
-            v-if="threeMealsTodayList[currentThreeMealsTabIndex]">
-        <router-link
-          class="item"
-          v-for="item in threeMealsTodayList[currentThreeMealsTabIndex].list"
+      <swiper
+        class="swiper"
+        @swiper="onThreeMealsSwiper"
+        @slideChange="onThreeMealsSlideChange"
+      >
+        <swiper-slide
+          v-for="item in threeMealsTodayList"
           :key="item.id"
-          :to="`/recipe-detail/${item.id}`"
         >
-          <img class="cover" :src="item.coverUrl" />
-          <strong class="t ellipsis-l1">{{item.recipeName}}</strong>
-          <p class="desc ellipsis-l1">{{item.desc}}</p>
-        </router-link>
-      </div>
+           <router-link
+              class="item"
+              v-for="item2 in item.list"
+              :key="item2.id"
+              :to="`/recipe-detail/${item2.id}`"
+            >
+              <img class="cover" :src="item2.coverUrl" />
+              <strong class="t ellipsis-l1">{{item2.recipeName}}</strong>
+              <p class="desc ellipsis-l1">{{item2.desc}}</p>
+            </router-link>
+        </swiper-slide>
+      </swiper>
     </div>
     <!-- 今日三餐-end -->
 
@@ -57,6 +65,8 @@
 
 <script>
 import { ref } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/swiper.min.css'
 
 export default {
   props: {
@@ -69,15 +79,32 @@ export default {
       default: () => []
     }
   },
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   setup() {
     const currentThreeMealsTabIndex = ref(0)
 
-    function onCurrentThreeMealsTabIndexChange(index) {
+    let threeMealsSwiper = null
+
+    function onThreeMealsTabItemClick(index) {
       currentThreeMealsTabIndex.value = index
+      threeMealsSwiper && threeMealsSwiper.slideTo(index)
+    }
+
+    const onThreeMealsSwiper = (swiper) => {
+      threeMealsSwiper = swiper
+    }
+
+    const onThreeMealsSlideChange = (e) => {
+      currentThreeMealsTabIndex.value = e.activeIndex
     }
     return {
       currentThreeMealsTabIndex,
-      onCurrentThreeMealsTabIndexChange
+      onThreeMealsTabItemClick,
+      onThreeMealsSwiper,
+      onThreeMealsSlideChange
     }
   }
 }
@@ -175,8 +202,9 @@ export default {
       }
     }
 
-    .content {
+    .swiper {
       padding-left: 20px;
+      box-sizing: border-box;
 
       .item {
         display: inline-block;
