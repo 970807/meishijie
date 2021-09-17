@@ -64,6 +64,11 @@ export default {
         border-radius: 12px;
         overflow: hidden;
         margin: 0 20px 20px 0;
+        transition: all ease .3s;
+
+        &:hover {
+          box-shadow: 0px 4px 12px rgb(0 0 0 /10%);
+        }
 
         &:nth-child(5n) {
           margin-right: 0;
