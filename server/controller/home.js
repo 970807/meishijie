@@ -32,22 +32,43 @@ exports.getHotTodaySearchList = async (req, res, next) => {
 
 exports.getThreeMealsTodayList = async (req, res, next) => {
   try {
-    Promise.all([
-      db.query('select * from three_meals_today_first_category_list', null),
-      db.query('select * from three_meals_today_second_category_list', null)
-    ]).then(([firstCategoryList, secondCategoryList]) => {
-      const threeMealsTodayList = []
-      for (const item of firstCategoryList) {
-        threeMealsTodayList.push({
-          ...item,
-          list: secondCategoryList.filter((item2) => item2.parentId === item.id)
+    const results = await db.query(
+      'select * from today_three_meals_list order by sort'
+    )
+    const allRecipeIdList = results
+      .map((item) => item.recipeListStr.slice(0, -1).split(';'))
+      .flat(1)
+      .map((item) => item.split(',')[0])
+    const allRecipeList = await db.query(
+      'select * from recipe_detail_list where id in (?)',
+      [allRecipeIdList]
+    )
+    const columnList = []
+    for (const item of results) {
+      const { id, columnTitle: label, showRecipeCount, recipeListStr } = item
+      const recipeList = recipeListStr
+        .slice(0, -1)
+        .split(';')
+        .map((item2) => {
+          const [recipeId, sort, desc] = item2.split(',')
+          return { recipeId, sort, desc }
         })
-      }
-      res.json({
-        code: '200',
-        data: threeMealsTodayList
-      })
-    })
+        .sort((a, b) => a.sort - b.sort)
+        .slice(0, showRecipeCount)
+        .map((item2) => {
+          const r =
+            allRecipeList.find((item3) => item3.id === item2.recipeId) || {}
+          const { id, coverUrl, recipeName } = r
+          return {
+            id,
+            coverUrl,
+            recipeName,
+            desc: item2.desc
+          }
+        })
+      columnList.push({ id, label, list: recipeList })
+    }
+    res.json({ code: '200', data: columnList })
   } catch (err) {
     next(err)
   }

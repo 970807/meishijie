@@ -12,7 +12,7 @@
     <!-- 今日热搜-end -->
 
     <!-- 今日三餐-start -->
-    <div class="three-meals-today">
+    <div class="three-meals-today" v-if="threeMealsTodayList.length">
       <h1 class="title">
         今日三餐
         <ul class="tabs">
@@ -27,11 +27,16 @@
       </h1>
       <div class="content"
             v-if="threeMealsTodayList[currentThreeMealsTabIndex]">
-        <div class="item" v-for="item in threeMealsTodayList[currentThreeMealsTabIndex].list" :key="item.id">
+        <router-link
+          class="item"
+          v-for="item in threeMealsTodayList[currentThreeMealsTabIndex].list"
+          :key="item.id"
+          :to="`/recipe-detail/${item.id}`"
+        >
           <img class="cover" :src="item.coverUrl" />
-          <strong class="t ellipsis-l1">{{item.title}}</strong>
+          <strong class="t ellipsis-l1">{{item.recipeName}}</strong>
           <p class="desc ellipsis-l1">{{item.desc}}</p>
-        </div>
+        </router-link>
       </div>
     </div>
     <!-- 今日三餐-end -->

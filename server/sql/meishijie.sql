@@ -11,7 +11,7 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 16/09/2021 08:46:34
+ Date: 17/09/2021 14:01:58
 */
 
 SET NAMES utf8mb4;
@@ -25,69 +25,20 @@ CREATE TABLE `home_recommend_column_list`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `column_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `show_recipe_count` int NOT NULL,
+  `sort` int NOT NULL,
   `recipe_list_str` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '菜谱id,排序值;菜谱id,排序值;菜谱id,排序值;',
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of home_recommend_column_list
 -- ----------------------------
-INSERT INTO `home_recommend_column_list` VALUES (1, '时令菜肴', 5, '4ac932f0-128c-45f0-9ecc-c6b0f1853ddf,3;585c9581-8e91-4f8e-950f-ec1571507b99,5;2972563b-4184-4383-9d4b-5417b17b5419,7;', '2021-09-16 07:08:16', '2021-09-16 07:08:16');
-
--- ----------------------------
--- Table structure for home_recomment_first_category_list
--- ----------------------------
-DROP TABLE IF EXISTS `home_recomment_first_category_list`;
-CREATE TABLE `home_recomment_first_category_list`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `columnTitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of home_recomment_first_category_list
--- ----------------------------
-INSERT INTO `home_recomment_first_category_list` VALUES (1, '新鲜推荐');
-INSERT INTO `home_recomment_first_category_list` VALUES (2, '时令菜肴');
-INSERT INTO `home_recomment_first_category_list` VALUES (3, '肉食精选');
-
--- ----------------------------
--- Table structure for home_recomment_second_category_list
--- ----------------------------
-DROP TABLE IF EXISTS `home_recomment_second_category_list`;
-CREATE TABLE `home_recomment_second_category_list`  (
-  `id` int NOT NULL,
-  `parentId` int NULL DEFAULT NULL,
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `isVideo` tinyint(1) NULL DEFAULT NULL,
-  `linkUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `authorName` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `authorAvatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `coverUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of home_recomment_second_category_list
--- ----------------------------
-INSERT INTO `home_recomment_second_category_list` VALUES (1, 1, '食光有约之茄汁南瓜夹', '南瓜、大虾、鸡蛋', 0, 'https://www.meishij.net/zuofa/shiguangyouyuezhiqiezhinanguajia.html', '慕容食光', 'https://z3.ax1x.com/2021/08/29/hGWCrt.jpg', 'https://z3.ax1x.com/2021/08/29/hGRsvn.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (2, 1, '食光有约之炸鸡脯丸', '鸡脯肉、蛋白', 0, 'https://www.meishij.net/zuofa/shiguangyouyuezhizhajifuwan.html', '慕容食光', 'https://z3.ax1x.com/2021/08/29/hGWCrt.jpg', 'https://z3.ax1x.com/2021/08/29/hGRWUU.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (3, 1, '香酥豌豆', '豌豆', 0, 'https://www.meishij.net/zuofa/xiangsuwandou.html', '糖糖食味记', 'https://z3.ax1x.com/2021/08/29/hGWFVf.jpg', 'https://z3.ax1x.com/2021/08/29/hGR4C4.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (4, 1, '【烧汁金菇肥牛卷】', '肥牛、金针菇、洋葱', 0, 'https://www.meishij.net/zuofa/shaozhijingufeiniujuan.html', '甜叮妈咪', 'https://z3.ax1x.com/2021/08/29/hGXYKf.jpg', 'https://z3.ax1x.com/2021/08/29/hGR7K1.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (5, 1, '超大口牛肉酱拌面', '玉米粒、豌豆', 0, 'https://www.meishij.net/zuofa/chaodakouniuroujiangbanmian.html', '尘暁', 'https://z3.ax1x.com/2021/08/29/hGXWa4.jpg', 'https://z3.ax1x.com/2021/08/29/hGRLVK.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (6, 2, '炒合菜', '芹菜,香干,胡萝卜,绿豆芽', 1, 'https://www.meishij.net/zuofa/chaohecai_11.html', '美食小编', 'https://z3.ax1x.com/2021/08/29/hGXzRI.jpg', 'https://z3.ax1x.com/2021/08/29/hGXIR1.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (7, 2, '重口味，轻挑战的水煮鱼片做法', '黑鱼肉片,莴笋尖,芹菜,蒜苗,黄豆芽,辣椒酱', 1, 'https://www.meishij.net/zuofa/zhongkouweiqingtiaozhandeshuizhuyupianzuofa.html', '白白白云OoO', 'https://z3.ax1x.com/2021/08/29/hGj9QP.jpg', 'https://z3.ax1x.com/2021/08/29/hGX7M6.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (8, 2, '醒酒汤', '绿豆芽', 1, 'https://www.meishij.net/zuofa/xingjiutang_1.html', '美食小编', 'https://z3.ax1x.com/2021/08/29/hGXzRI.jpg', 'https://z3.ax1x.com/2021/08/29/hGXOde.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (9, 2, '麻辣水煮鱼', '鱼,豆芽,芹菜,蒜苗', 1, 'https://www.meishij.net/zuofa/malashuizhuyu_35.html', '食客姐', 'https://z3.ax1x.com/2021/08/29/hGjCsf.jpg', 'https://z3.ax1x.com/2021/08/29/hGXXIH.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (10, 2, '豆芽炒肉', '猪五花,绿豆芽', 1, 'https://www.meishij.net/zuofa/douyachaorou_15.html', '美食小编', 'https://z3.ax1x.com/2021/08/29/hGXzRI.jpg', 'https://z3.ax1x.com/2021/08/29/hGXvid.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (11, 3, '鲜虾披萨', '高筋面粉,低筋面粉,虾', 0, 'https://www.meishij.net/zuofa/xianxiapisa_5.html', '木予的烘焙时光机', 'https://z3.ax1x.com/2021/08/29/hGjdOK.jpg', 'https://z3.ax1x.com/2021/08/29/hGjAoQ.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (12, 3, '巨好吃香辣烤鸡翅，超简单', '鸡翅中,贝贝南瓜,水果玉米,香菇', 1, 'https://www.meishij.net/zuofa/juhaochixianglakaojichichaojiandan.html', '蝶舞九天', 'https://z3.ax1x.com/2021/08/29/hGj0eO.jpg', 'https://z3.ax1x.com/2021/08/29/hGjleU.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (13, 3, '生姜这样吃，给肉都不换', '生姜,大葱,瘦肉', 1, 'https://www.meishij.net/zuofa/shengjiangzheyangchigeiroudubuhuan.html', '木木木木de健康生活', 'https://z3.ax1x.com/2021/08/29/hGjsFH.jpg', 'https://z3.ax1x.com/2021/08/29/hGjJY9.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (14, 3, '青萝卜丝鸡肉丸子汤', '青萝卜,粉丝,鸡胸肉,木耳,青椒', 0, 'https://www.meishij.net/zuofa/qingluobosijirouwanzitang.html', '霖食记', 'https://z3.ax1x.com/2021/08/29/hGjgSI.jpg', 'https://z3.ax1x.com/2021/08/29/hGjUQx.jpg');
-INSERT INTO `home_recomment_second_category_list` VALUES (15, 3, '农家小炒肉', '五花肉,香豆干,大蒜叶,生姜', 0, 'https://www.meishij.net/zuofa/nongjiaxiaochaorouwucan.html', '我叫一尾鱼', 'https://z3.ax1x.com/2021/08/29/hGj2lt.jpg', 'https://z3.ax1x.com/2021/08/29/hGjay6.jpg');
+INSERT INTO `home_recommend_column_list` VALUES (1, '时令菜肴', 5, 0, 'ed08d6ea-1ad9-48c0-b1d5-b0472e5f42ce,0;c95703bb-b17e-4441-830b-28f758c0e16e,1;9a7c3fe4-0abe-4e85-8623-bd906a459e6f,2;d812d7df-15bf-4a22-82e1-6535d2e0e24a,3;5e160fe5-5f5d-478f-9be7-1ff047e7a813,4;', '2021-09-17 13:54:30', '2021-09-17 13:54:30');
+INSERT INTO `home_recommend_column_list` VALUES (2, '肉食精选', 5, 1, 'aeb3e08b-9325-44a2-b90d-a5fd8338dda5,0;0cea17a5-9a6c-4ec8-ae47-51e07b870d6e,1;f038922d-0fd4-4c08-8c08-10903b2b741b,2;c755dd39-7db0-4917-9b2c-a45fe107b5ad,3;10d280ee-ad83-4f96-a81f-5c2d654feb04,4;', '2021-09-17 13:56:29', '2021-09-17 13:56:29');
+INSERT INTO `home_recommend_column_list` VALUES (3, '健康素食', 5, 2, '628cedf8-56c7-4369-a25b-b6352d49f484,0;2f81397a-3cd1-489e-bea4-a1331ce7803a,1;80e36825-2dc1-4a68-bedb-2cd28284db90,2;897414eb-2ce4-44cf-b137-b5a203deef3d,3;3c6e8e2a-ea6c-4eb9-bfd9-d08d7ba4e658,4;', '2021-09-17 13:58:23', '2021-09-17 13:58:23');
+INSERT INTO `home_recommend_column_list` VALUES (4, '烘焙', 5, 3, 'a53c66db-98f8-4bf3-abf9-baa282562b3c,0;5ff6ec9b-9813-4787-bbb1-971976ec10c5,1;9a8ca8a3-a896-478f-8a6f-b3df8b783754,2;1da07882-ead5-420e-b865-51e139db4305,3;ff5a0564-6447-4896-b11d-54704b8f4a96,4;', '2021-09-17 14:00:21', '2021-09-17 14:00:21');
 
 -- ----------------------------
 -- Table structure for hot_today_search_list
@@ -143,7 +94,7 @@ DROP TABLE IF EXISTS `recipe_detail_list`;
 CREATE TABLE `recipe_detail_list`  (
   `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `is_video` tinyint UNSIGNED NOT NULL COMMENT '是否是视频菜谱 1 => 是 0 => 否',
-  `cover_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '菜谱封面地址',
+  `cover_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '菜谱封面地址',
   `video_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '菜谱视频地址',
   `recipe_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '菜谱名称',
   `fav_count` int NOT NULL COMMENT '收藏数',
@@ -157,9 +108,9 @@ CREATE TABLE `recipe_detail_list`  (
   `sub_ingredients_str` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '辅料',
   `people_count` int NOT NULL COMMENT '例：3人份',
   `author_id` int NOT NULL COMMENT '作者用户id',
-  `author_words` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `author_words` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `finish_food_imgs_str` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `steps_str` varchar(2000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '菜谱步骤：格式 =>  步骤图片,步骤内容;步骤图片,步骤内容;',
+  `steps_str` varchar(5000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '菜谱步骤：格式 =>  步骤图片,步骤内容;步骤图片,步骤内容;',
   `recipe_tips` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `origin_web_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '美食杰官方对应的链接',
   `create_time` datetime NOT NULL,
@@ -170,796 +121,65 @@ CREATE TABLE `recipe_detail_list`  (
 -- ----------------------------
 -- Records of recipe_detail_list
 -- ----------------------------
-INSERT INTO `recipe_detail_list` VALUES ('2972563b-4184-4383-9d4b-5417b17b5419', 1, 'https://st-cn.meishij.net/r/239/17/2941989/s2941989_158177917020040.jpg', 'https://v2.meishij.net/my/2941989/1581779105078.mp4?k=b147bbf35d322e7f&t=1631749054', '腌制辣白菜', 1, 3315, '腌', '家常味', '90分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1956797', '白菜:1颗;苹果:1个;雪梨:1个;白萝卜:半根;蒜苗:3根;虾皮:30克;', '糯米粉:200克;水:150克;辣椒粉:200克;糖:2勺;盐:3勺;姜:30克;蒜:30克;', 2, 3, '每逢过年都会腌制一些菜，今天做个韩式辣白菜，做法很简单哦', 'https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178540865284.jpg;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178540947667.jpg;', 'https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178535225625.jpg,白菜一颗;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178536243186.jpg,切成2半，涂抹上盐，腌制4个小时;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178536200377.jpg,准备酱料的食材;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178536509086.jpg,白萝卜，蒜苗切丝;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178538734190.jpg,糯米粉用水煮开;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178538838404.jpg,加入辣椒粉，虾皮，姜蒜沫;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178538504885.jpg,放入白萝卜，苹果，梨和蒜苗;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178539149482.jpg,拌匀后加入糖和盐;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178539751143.jpg,搅拌均匀，涂抹到白菜上;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178540233214.jpg,放入容器里，密封腌制3-5天。;', '', NULL, '2021-09-16 07:07:42', '2021-09-16 07:07:42');
-INSERT INTO `recipe_detail_list` VALUES ('4ac932f0-128c-45f0-9ecc-c6b0f1853ddf', 1, 'https://st-cn.meishij.net/r/150/151/14787900/s14787900_161647441951905.jpg', 'https://v2.meishij.net/my/14787900/1616474392066.mp4?k=65a5b6f60da13687&t=1631749025', '春天不可错过，野菜这样吃味道超赞…蒸豌', 399, 6148, '蒸', '家常味', '30分钟', '未知', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1981774', '豌豆苗:500克;面粉:适量;', '盐:适量;蒜瓣:10瓣;蒜苗:2根;生抽:2勺;陈醋:2勺;白糖:1勺;油辣椒:1勺;芝麻油:适量;', 3, 2, '春天真是各种野菜上市的时候，春天的滋味不可错过。\n简单面粉拌一拌蒸一蒸，绝美滋味！', 'https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641461140233.jpg;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641461889429.jpg;', 'https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641456506731.jpg,豌豆苗洗净沥干水分。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641456768143.jpg,把豌豆苗均匀的拌上干面粉放入蒸笼。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641457075990.jpg,蒸锅上汽放入蒸笼大火蒸至10分钟。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641457306671.jpg,把蒜瓣，蒜苗切碎。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641457684674.jpg,小碗中加入生抽，陈醋，糖油辣椒，香油拌均匀。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641458014785.jpg,蒸好的豌豆苗加入盐，蒜末，蒜苗拌均匀。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641458731776.jpg,随蘸料上桌食用。;', '蒸野菜的时候，野菜一定要把水分沥干，最好是晒一下，然后再拌面粉蒸至，这样才能保证野菜口感好。', NULL, '2021-09-16 07:07:22', '2021-09-16 07:07:22');
-INSERT INTO `recipe_detail_list` VALUES ('585c9581-8e91-4f8e-950f-ec1571507b99', 1, 'https://st-cn.meishij.net/r/41/203/113291/s113291_155082461119028.jpg', 'http://gslb.miaopai.com/stream/h~4AoQyPfrg2WsM4ba-Rhx17PDHXBGs2NYLx3g__.mp4?', '蒜苗回锅肉', 94, 36611, '炒', '家常味', '30分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1919709', '蒜苗:50克;五花肉:100克;', '姜:5克;葱:10克;蒜:8克;', 1, 1, '无', 'https://st-cn.meishij.net/rs/41/203/113291/n113291_155082473777384.jpg;', 'https://st-cn.meishij.net/rs/41/203/113291/n113291_155082469456562.jpg,姜丝5克，葱花10克，蒜片8克，蒜苗50克切段，五花肉100克切块;https://st-cn.meishij.net/rs/41/203/113291/n113291_155082470331756.jpg,锅中食用油5ML，倒入蒜片，葱花，大火爆香;https://st-cn.meishij.net/rs/41/203/113291/n113291_155082471382386.jpg,倒入五花肉，煸炒至肉块变色;https://st-cn.meishij.net/rs/41/203/113291/n113291_155082472160064.jpg,倒入花椒1克、豆豉15克，翻炒均匀，豆瓣酱20克，生抽50克，翻炒出红油;https://st-cn.meishij.net/rs/41/203/113291/n113291_155082473214110.jpg,倒入蒜苗，翻炒均匀;', '', NULL, '2021-09-16 07:06:59', '2021-09-16 07:06:59');
+INSERT INTO `recipe_detail_list` VALUES ('0cea17a5-9a6c-4ec8-ae47-51e07b870d6e', 0, 'https://st-cn.meishij.net/r/191/07/3939441/s3939441_143832935503255.jpg', NULL, '黄金奥尔良鸡肉披萨', 6, 12386, '烤', '家常味', '15分钟', '初级入门', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1642282', '高筋面粉:50克;低筋面粉:30克;玉米面:20克;细砂糖:5克;盐:1/4小勺;酵母:1克;牛奶:55克;橄榄油:5克;鸡胸肉:100克;', '水:7克;玉米粒:适量;洋葱:1/2个;尖椒:1小块;小红辣椒:3个;番茄酱:1个勺;马苏里拉奶酪:50克;披萨草:少许;奥尔良烤肉料:7克;', 3, 18, '黄金奥尔良鸡肉披萨,朋友聚会必备!\\(≧▽≦)/', 'https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143833026457652.jpg;https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143833027032912.jpg;https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143833027225876.jpg;https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143833027424423.jpg;', 'https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143832968734763.jpg,鸡胸肉切丁，奥尔良烤肉料用水调匀，腌制3小时以上;https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143832968927153.jpg,把除橄榄油外的所有饼底材料依次放入面包机，静置10分钟，启动和面程序20分钟，加入橄榄油，再次启动和面程序10分钟，面团到扩展阶段，放入容器，盖上潮湿的纱布，放置温暖处进行基础发酵;https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143832969383413.jpg,待面团发酵至2.5倍大时取出，重新排气、滚圆，擀成圆饼形，直径大于披萨盘2厘米，盖上纱布，放入冰箱冷藏半小时定型;https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143832969617912.jpg,取出定型后的饼皮，放入已抹油的披萨盘，用叉子在饼皮上扎一些小孔;https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143832969950790.jpg,在饼皮上涂一层番茄酱，边缘留出1厘米的宽度，均匀撒1/3奶酪丝;https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143832970379851.jpg,放上洋葱圈;https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143832970658444.jpg,将腌制好的鸡肉丁放入洋葱圈，周围铺上玉米粒、尖椒丁和小红辣椒;https://st-cn.meishij.net/rs/191/07/3939441/n3939441_143832971092048.jpg,撒上剩余的奶酪丝，再撒少许披萨草，烤箱200度预热，上下火烤15分左右;', '1. 饼皮冷藏定性，可以防止回缩。\n2. 饼皮放入披萨盘，要将边缘贴紧，以免烘烤时爆裂。\n3. 铺材料之前，将饼坯扎一些小孔，可以防止受热时饼坯膨胀。\n4. 如果喜欢奶酪拉丝的效果，可以增大马苏里拉奶酪的用量。', 'https://www.meishij.net/zuofa/huangjinaoerliangjiroupisa.html', '2021-09-17 13:54:59', '2021-09-17 13:54:59');
+INSERT INTO `recipe_detail_list` VALUES ('10d280ee-ad83-4f96-a81f-5c2d654feb04', 0, 'https://st-cn.meishij.net/r/04/143/2598254/s2598254_03617.jpg', NULL, '灌汤蟹黄小笼包', 7, 6841, '蒸', '家常味', '30分钟', '初中水平', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1615383', '猪肉馅:250克;蟹黄:100克;猪油:60克;鸡蛋:1个;酱油:1汤匙;食盐:1茶匙;白糖:少许;料酒:1汤匙;葱:1段;姜:1块;', '饺子粉:200克;水:90克;食盐:1茶匙;', 3, 19, '~打开蒸笼,烟雾缭绕,小笼包晶莹剔透的,夹起来透明的皮中汤汁呼之欲出.浓郁蟹黄加上甜美汤汁,流出来的一瞬间,那一刻的心情无法言语。', 'https://st-cn.meishij.net/rs/04/143/2598254/n2598254_04992.jpg;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_85792.jpg;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_28591.jpg;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_49035.jpg;', 'https://st-cn.meishij.net/rs/04/143/2598254/n2598254_18237.jpg,大约20个左右,具体数量视包子大小而馅料:猪肉馅250克、蟹黄100克、猪油60克、鸡蛋一个、酱油一勺、盐、糖、料酒、大葱、姜适量；包子皮:饺子粉200克、水90克、盐少许；蟹黄是买的包好的蟹黄，猪油在菜市场买到\n;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_70650.jpg,将猪油切成小块,入锅耗猪油~猪油渐渐消失,最后成为油渣儿~油渣儿扔掉不要~小时候还吃过油渣儿呢,在那时也是一道美食;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_01811.jpg,倒入蟹黄,小火翻炒一会~直到猪油和蟹黄融合,成为颜色漂亮的蟹黄油;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_52265.jpg,蟹黄出锅，备用;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_23727.jpg,灌汤必须的肉皮冻,制作肉皮冻:(此步骤建议提前一天完成)猪皮洗干净拔毛神马的~~随便哪个肉摊都能买到,买白白净净的那种哈~\n;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_42998.jpg,加入水,没过猪皮即可,如果中途水量不够可以补，加入少许盐和料酒~ ;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_22914.jpg,煮开后撇去浮沫;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_97357.jpg,熬煮两个小时以上,猪皮就会变得软软的失去弹性了，这时候汤就差不多熬好了~;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_21929.jpg,猪皮不要哈,把汤过滤一下,装入饭盒中(这样最后比较好切)，晾凉后放入冰箱冷藏，这个步骤建议提前一天制作,汤过夜后会凝结的很好;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_06971.jpg,等待肉皮冻彻底凝结后,肉皮冻刮去上面的浮油,倒出来就是一块blingbling的白白嫩嫩肉皮冻,满满的胶原蛋白哦~;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_23769.jpg,切块备用~如果肉皮冻煮得比较多,可以只用一半,剩下的密封冷藏保存,留作下次再用;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_94111.jpg,面皮的制作:将包子皮所有材料混合,揉成面团.包子皮的面团较硬,一定要有耐心有力气的多揉一会,将面团均匀混合成光滑面团,有韧性,这样擀包子皮的时候才能将皮子擀得很薄,蒸出来才会晶莹剔透,这样口感才好.揉面可以使用面包机,老公机等多种工具.我是练了臂力了,一身大汗；大厨揉面其实是包好后用脚踩,你们不介意的也可以用；揉好后盖好布醒半小时;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_80146.jpg,制作肉馅:将肉馅中猪肉馅、鸡蛋、酱油、盐、糖、料酒、大葱、姜所需材料放入盆中搅拌均匀;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_39497.jpg,放入之前制作好的蟹黄,搅拌均匀;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_89849.jpg,最后放入肉皮冻切块,搅拌均匀;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_88898.jpg,面团制作好后,切剂子,擀皮哈~;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_57874.jpg,擀皮,一定要将皮擀到很薄,能够透过皮子看到案板的纹路，前面揉面到位的话,这一步很轻松,不到位这一步不会成功;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_19581.jpg,放入肉馅,包包子;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_73447.jpg,转圈儿捏褶儿，亲们老说照片看不到动作,看我这次多体贴~~不会包的亲们,我录了个包包子的小视频,放在微博了哈,包教包~~~http://weibo.com/1162042633/profiletopnav=1&wvr=5;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_28363.jpg,最后中间不用封口;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_48930.jpg,包好的包子放入笼屉;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_95225.jpg,可在收口处点上一点蟹黄作为装饰;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_35510.jpg,锅中上气后,蒸8-10分钟;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_56278.jpg,如果不用蒸笼也可以哈~~~锅中放上屉布,直接摆上小笼包即可~~\n\n;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_51820.jpg,刚出锅的小笼包应该是这样的哈,皮子晶莹剔透,夹起来软软的,里面的汤汁会往下坠,呼之欲出~~~想要这样的效果就是擀皮一定要薄;https://st-cn.meishij.net/rs/04/143/2598254/n2598254_26991.jpg,小笼包请趁热食用~;', '', 'https://www.meishij.net/zuofa/guantangxiehuangxiaolongbao.html', '2021-09-17 13:55:31', '2021-09-17 13:55:31');
+INSERT INTO `recipe_detail_list` VALUES ('154c03f9-49e6-40fc-8a8b-19d70fe6540b', 0, 'https://st-cn.meishij.net/r/246/137/1534496/s1534496_151228778693326.jpg', NULL, '红糖蓝莓糍粑', 5, 19689, '煎', '酸甜味', '5分钟', '初级入门', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1872416', '糯米糍粑:1块;红糖:2块;', '油:5克;蓝莓酱:1汤匙;清水:适量;', 1, 6, '从小到大，一直很喜欢吃糯米做的小吃，软糯筋道，越嚼越有味道。尤其喜欢吃糯米做的糍粑，随意煎一煎，表面金黄焦脆，里面柔软糯香，咸的，甜的都对胃口。因美食认识了一位远在湖南的美食达人，聊天中得知我喜欢吃糍粑，她竟然亲自上街选了一袋当地的糯米粑粑邮寄给我，看着这包有两种口味的糯米粑粑，而且还是干爽易保存的，这种贴心太让我感动了。\n这种糍粑能做汤，还能蒸熟或烤着吃。食尚用一贯来的做法，把它煎成焦黄色，搭配红糖吃，然后再淋上一点蓝莓酱，酸酸甜甜的，解腻又开胃，每次要吃一大个才觉得过瘾。总之没隔几天，就特别馋它。相信有很多喜欢吃糯米的朋友会和我一样喜爱它的糯香、嚼劲十足的口感。有了它，可以不吃米饭。', 'https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228801762689.jpg;https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228802131524.jpg;https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228802571921.jpg;https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228803745575.jpg;', 'https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228790971181.jpg,备好食材；;https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228791125066.jpg,烧热锅，倒入少许油，将糯米糍粑煎成两面焦黄色；;https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228791224592.jpg,此时加入红糖块；;https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228791558825.jpg,倒入小半碗清水；;https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228791622250.jpg,遮上锅盖，煎焗2分钟左右；;https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228800091114.jpg,煮至红糖溶化，糍粑柔软，铲起装盘，淋上蓝莓酱即可。;https://st-cn.meishij.net/rs/246/137/1534496/n1534496_151228805709478.jpg,蓝莓酱不是必须品，家里有可以加一勺进去，没有可以省略。红糖或白糖都行。;', '食尚小贴士：\n\n这种煎糍粑做法相对简单，煎制时，火候不能太大，用小火，加入红糖后，要记得加一点清水，让红糖在锅中慢慢融化，渗透到糍粑中，吃起来又香又甜。', 'https://www.meishij.net/zuofa/hongtanglanmeiciba.html', '2021-09-17 13:48:17', '2021-09-17 13:48:17');
+INSERT INTO `recipe_detail_list` VALUES ('1da07882-ead5-420e-b865-51e139db4305', 1, 'https://st-cn.meishij.net/r/106/232/3995606/s3995606_161513185289821.jpg', 'https://v2.meishij.net/my/3995606/161513178981883.mp4?k=407c7e3c14882d72&t=1631860146', '教你薯条最简单做法，无盐少油比买的更好', 6, 1452, '炸', '甜味', '30分钟', '初中水平', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1981147', '土豆:1个;', '核桃油:适量;番茄沙司:适量;', 1, 27, '孩子爱吃的薯条不用买，教你最简单做法，不油炸比买的更好吃，一个大土豆孩子能吃饱，而且完全可以放心吃，外焦里糯，口感一点都不差，自己做货真价实，物美价廉，吃得健康，顶饱还不胖人。', 'https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513161985141.jpg;https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513161962060.jpg;https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513161907722.jpg;https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513161956745.jpg;', 'https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513153799353.jpg,薯条是孩子们的最爱，三天两头点名要吃，在家自己做非常方便，选大个的土豆，一个就够吃，烤一炉刚刚好，土豆去皮洗净。;https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513153817516.jpg,洗干净的土豆切条，宽度和厚度大约在1厘米左右，不要太细，否则口感不好。;https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513153709996.jpg,切好的土豆条入冷水中浸泡10分钟左右，泡出表面的淀粉，然后再清洗两遍。;https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513153844255.jpg,捞出控净水分，或者用厨房纸吸干水分。空气炸锅烤蓝铺上锡纸，也可以用烤盘，不用锡纸，不过还是用锡纸比较好清洗。铺好锡纸，码入薯条，空气炸烤箱启动电源，选择空气炸功能，190度炸20分钟。;https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513153882354.jpg,大约七八分钟的时候取出来，薯条表面上薄薄地刷层油，我用的是核桃油，没有什么油都可以。;https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513153844729.jpg,190度继续烤到20分钟，烤熟为止。中间注意翻动两次，可以再刷点油，让薯条均匀受热，烘烤时间依据土豆条的薄厚而定。;https://st-cn.meishij.net/rs/106/232/3995606/n3995606_161513223455873.jpg,出锅装盘。简单、省油、健康，口感好，蘸番茄酱吃无可挑剔。格琳诺尔冷榨核桃油，更适合宝宝的健康好油！;', '', 'https://www.meishij.net/zuofa/jiaonishutiaozuijiandanzuofawuyanshaoyoubimaidegenghaochidingbaohuanbupangren.html', '2021-09-17 13:59:11', '2021-09-17 13:59:11');
+INSERT INTO `recipe_detail_list` VALUES ('2f81397a-3cd1-489e-bea4-a1331ce7803a', 0, 'https://st-cn.meishij.net/r/93/190/13922593/s13922593_158261474201749.jpg', NULL, '南瓜馒头', 5, 6587, '蒸', '甜味', '90分钟', '未知', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1957383', '南瓜:250克;中筋面粉:400克;', '酵母:4克;白糖:40克;', 3, 21, '特殊时期被关在家，闲着无聊，想着冰箱里还有一块南瓜，做锅馒头当早餐', 'https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261477600394.jpg;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261477978193.jpg;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261478110059.jpg;', 'https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261474477701.jpg,南瓜去皮;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261474738544.jpg,切片;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261475078818.jpg,上锅蒸熟;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261475355328.jpg,压成泥;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261475687702.jpg,放入白糖;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261475963232.jpg,待温热放入酵母;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261476175626.jpg,加入面粉;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261476440678.jpg,放厨师机中低档搅拌无干粉;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261476625210.jpg,揉成光滑的面团;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261476961963.jpg,搓成长条;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261477224593.jpg,切成大小一至;https://st-cn.meishij.net/rs/93/190/13922593/n13922593_158261477494923.jpg,摆入蒸锅中醒发二位大，大火蒸，水开后蒸15分钟，焖2分钟出锅;', '', 'https://www.meishij.net/zuofa/nanguamantou_69.html', '2021-09-17 13:56:50', '2021-09-17 13:56:50');
+INSERT INTO `recipe_detail_list` VALUES ('318e9304-beae-46c2-8b10-16ba5b4059e0', 0, 'https://st-cn.meishij.net/r/32/219/3992282/s3992282_151660396060245.jpg', NULL, '南瓜面包', 7, 8660, '烘焙', '甜味', '数小时', '初中水平', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1878629', '高筋面粉:260克;牛奶:100克;糖:45克;鸡蛋:1个;玉米油:30克;酵母:4克;盐:3克;', '南瓜泥:50克;', 3, 12, '南瓜含有丰富的营养，蒸一些南瓜泥做面包，做成小巧可爱的小餐包给孩子当早餐，孩子非常喜欢。这个配方做的面包，松软香甜，非常好吃。', 'https://st-cn.meishij.net/rs/32/219/3992282/n3992282_151660427376592.jpg;https://st-cn.meishij.net/rs/32/219/3992282/n3992282_151660427480918.jpg;https://st-cn.meishij.net/rs/32/219/3992282/n3992282_151660427978271.jpg;https://st-cn.meishij.net/rs/32/219/3992282/n3992282_151660428108505.jpg;', 'https://st-cn.meishij.net/rs/32/219/3992282/n3992282_151660403797060.jpg,准备食材。;https://st-cn.meishij.net/rs/32/219/3992282/n3992282_151660404474344.jpg,面包机桶内，先加入牛奶、鸡蛋、玉米油，盐、糖对角线放置，再加入高筋粉、南瓜泥，最后在面粉上面挖一个小洞，放入酵母。切记不要让酵母接触到盐。;https://st-cn.meishij.net/rs/32/219/3992282/n3992282_151660406544938.jpg,两个揉面程序以后检查面团，可以很轻松的拉出薄膜即可。;https://st-cn.meishij.net/rs/32/219/3992282/n3992282_151660407061678.jpg,整理好面团，面包机选择发酵程序，进行发酵。;https://st-cn.meishij.net/rs/32/219/3992282/n3992282_151660409158828.jpg,面团发酵到2倍大，面包机选择烘烤模式。;https://st-cn.meishij.net/rs/32/219/3992282/n3992282_151660426867708.jpg,时间结束后，立即取出脱模，晾凉。\n切片。\n;', '', 'https://www.meishij.net/zuofa/nanguamianbao_21.html', '2021-09-17 13:51:35', '2021-09-17 13:51:35');
+INSERT INTO `recipe_detail_list` VALUES ('3c6e8e2a-ea6c-4eb9-bfd9-d08d7ba4e658', 1, 'https://st-cn.meishij.net/r/220/165/13666470/s13666470_158329716180844.jpg', 'https://v2.meishij.net/my/13666470/1583297159998.mp4?k=956fff64e09481d7&t=1631860034', '炒馒头', 4, 4276, '炒', '家常味', '30分钟', '未知', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1958102', '馒头:2个;鸡蛋:3个;', '青椒:2个;红椒:2个;洋葱:半个;葱花:少量;姜丝:少量;生抽:适量;蚝油:适量;盐:适量;纯净水:少许;', 3, 23, '家里的剩馒头不要浪费扔掉，加点青菜一炒，又是一顿美味佳肴！*^_^*', 'https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325050280158.jpg;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325050357086.jpg;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325050420088.jpg;', 'https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325048648393.jpg,馒头切小块，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325048944509.jpg,鸡蛋加少量盐、水搅打均匀，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325049100878.jpg,青椒洗净切条，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325049239497.jpg,红椒洗净切条，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325049341406.jpg,洋葱也切成条，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325049432116.jpg,将蛋液倒入馒头块里，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325049696843.jpg,尽量将馒头块沾满蛋液，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325049791604.jpg,一勺油小火将馒头煎制焦黄，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325049854985.jpg,另起锅少油爆香葱姜丝，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325049990889.jpg,倒入青红椒，生抽蚝油调味，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325050041628.jpg,炒至断生，倒入洋葱翻炒几下，;https://st-cn.meishij.net/rs/220/165/13666470/n13666470_158325050146107.jpg,倒入馒头块，翻炒均匀即可。;', '馒头必须要剩的，我这个剩的时间有点短，炒的有点散，见谅！', 'https://www.meishij.net/zuofa/chaomantou_21.html', '2021-09-17 13:57:20', '2021-09-17 13:57:20');
+INSERT INTO `recipe_detail_list` VALUES ('432d2522-44da-408e-9902-10af55b3111a', 0, 'https://st-cn.meishij.net/r/97/227/6681847/s6681847_149663111460194.jpg', NULL, '高考必吃的鲜蒸冬瓜', 4040, 10913, '蒸', '咸鲜味', '30分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1842455', '冬瓜:300克;虾皮:50克;平菇片:50克;', '油:10毫升;鸡汤:适量;盐:适量;葱花:少许;', 2, 5, '这个鲜蒸冬瓜含有很多维生素和矿物质，补脑缓解紧张。蒸或考，只要火候到了都能有美味的结果呢~考生们一定要记得吃哦', 'https://st-cn.meishij.net/rs/97/227/6681847/n6681847_149663143104691.jpg;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_149663144779336.jpg;', 'https://st-cn.meishij.net/rs/97/227/6681847/n6681847_149663137684452.jpg,准备好所有的食材;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_149663136059318.jpg,将冬瓜切成0.5厘米的薄片;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_149663136892636.jpg,准备好鸡汤、虾皮、葱花、油和盐;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_149663139064188.jpg,平菇撕成小片之后，和冬瓜一起平铺摆盘，撒上虾皮;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_149663140562995.jpg,加入适量的盐，鸡汤均匀倒入。放入蒸烤箱，选择蒸汽模式，110度蒸25分钟;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_149663141611972.jpg,蒸完之后取出撒上葱花点缀即可;', '1、冬瓜性寒，最好不要吃生冷的\n2、冬瓜忌和鲫鱼共食\n', 'https://www.meishij.net/zuofa/gaokaobichidexianzhengdonggua.html', '2021-09-17 13:46:57', '2021-09-17 13:46:57');
+INSERT INTO `recipe_detail_list` VALUES ('432ff9d8-f9a5-44c9-9cb9-ce32339df939', 0, 'https://st-cn.meishij.net/r/152/221/9805402/s9805402_151227366365024.jpg', NULL, '柠檬水的正确泡法', 8, 86928, '其它工艺', '甜味', '5分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1872560', '柠檬:3个;', '蜂蜜:适量;盐:适量;', 2, 7, '#罐头小厨#柠檬水正确泡法！掌握这些小窍门，让你一杯轻松熬过干燥冬季', 'https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151227393228447.jpg;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151227394027649.jpg;', 'https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151227370676320.jpg,柠檬3个用湿毛巾擦净，用盐搓去表面果蜡，再用清水洗净，用厨房纸擦干柠檬，置于干燥通风处晾5分钟;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151227370800442.jpg, 将柠檬切成均匀的薄片，剔籽;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151227371464552.jpg, 消毒好的密封罐中铺一层柠檬片，倒一层蜂蜜，层层铺好;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151227374505222.jpg,盖上盖子密封，放入冰冷藏腌渍2天;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151227374869513.jpg,饮用时取柠檬片和蜂蜜，倒入70℃以下的温水泡开即可;', '', 'https://www.meishij.net/zuofa/ningmengshuidezhengquepaofa.html', '2021-09-17 13:48:27', '2021-09-17 13:48:27');
+INSERT INTO `recipe_detail_list` VALUES ('468911e0-9788-49e1-b8cd-d6f1c05c407f', 0, 'https://st-cn.meishij.net/r/208/102/1025708/s1025708_151513197464398.jpg', NULL, '南瓜浓汤', 609, 8965, '煮', '甜味', '15分钟', '中级掌勺', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1876864', '南瓜:200克;', '白砂糖:两勺;淡奶油:50克;', 2, 4, '香浓的一碗南瓜浓汤，细化无比，充满了奶香味，既可以当餐前汤，也可以当餐后甜品，简单、方便、营养、美味，赞。', 'https://st-cn.meishij.net/rs/208/102/1025708/n1025708_151513211515579.jpg;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_151513211660093.jpg;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_151513211899349.jpg;', 'https://st-cn.meishij.net/rs/208/102/1025708/n1025708_151513202857376.jpg,南瓜削皮洗净;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_151513202832185.jpg,放入蒸锅，开大火把南瓜蒸熟，用筷子能扎进去即可;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_151513203093074.jpg,将蒸熟的南瓜盛出来稍微放凉;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_151513203172402.jpg,放入料理杯中，加入细砂糖;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_151513203282838.jpg,加入淡奶油;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_151513203358248.jpg,将料理杯盖上盖子，装上料理机;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_151513210959268.jpg,启动料理机，将南瓜泥打几十秒，倒出来即可;', '糖的量根据自己的口味调整。', 'https://www.meishij.net/zuofa/nanguanongtang_11.html', '2021-09-17 13:51:13', '2021-09-17 13:51:13');
+INSERT INTO `recipe_detail_list` VALUES ('5e160fe5-5f5d-478f-9be7-1ff047e7a813', 1, 'https://st-cn.meishij.net/r/41/203/113291/s113291_154173447418429.jpg', 'http://gslb.miaopai.com/stream/aditZ~dtErQ5coQAzJ8CCcH7rL8y0N7RmMuQ4g__.mp4', '萝卜汤', 30, 26035, '炖', '咸鲜味', '60分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1903202', '白萝卜:200克;胡萝卜:30克;芹菜:20克;猪瘦肉:20克;', '香葱:适量;香菜:适量;食用油:5毫升;盐:3克;鸡粉:5克;白胡椒粉:3克;', 2, 13, '无', 'https://st-cn.meishij.net/rs/41/203/113291/n113291_154173494446246.jpg;', 'https://st-cn.meishij.net/rs/41/203/113291/n113291_154173467085721.jpg,白萝卜切丝，胡萝卜切末，芹菜切末，香菜切段，香葱切末，猪肉切丝;https://st-cn.meishij.net/rs/41/203/113291/n113291_154173470292060.jpg,倒入食用油，倒入葱末、猪瘦肉，煸炒至变色;https://st-cn.meishij.net/rs/41/203/113291/n113291_154173478513214.jpg,倒入萝卜条，翻炒均匀;https://st-cn.meishij.net/rs/41/203/113291/n113291_154173481468145.jpg,加水500ML;https://st-cn.meishij.net/rs/41/203/113291/n113291_154173482589301.jpg,大火煮沸;https://st-cn.meishij.net/rs/41/203/113291/n113291_154173488272561.jpg,加盐、鸡粉、白胡椒粉，大火煮沸;https://st-cn.meishij.net/rs/41/203/113291/n113291_154173490823061.jpg,倒入胡萝卜末、芹菜末，大火煮沸;', '', 'https://www.meishij.net/zuofa/luobotang_12.html', '2021-09-17 13:53:35', '2021-09-17 13:53:35');
+INSERT INTO `recipe_detail_list` VALUES ('5ff6ec9b-9813-4787-bbb1-971976ec10c5', 0, 'https://st-cn.meishij.net/r/72/104/4151072/s4151072_153544776558357.jpg', NULL, '潍坊香酥肉火烧', 1428, 15624, '蒸', '家常味', '2小时', '初级入门', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1896637', '普通面粉:300克;猪五花肉馅:300克;酵母:3克;干海米:20克;泡发黑木耳:25克;鸡蛋:1个;', '花椒:10克;小葱:80克;生姜:5克;白糖:5克;老抽:5克;生抽:10克;胡椒粉:1克;料酒:10克;橄榄油:60克;香油:5克;面粉:40克;水:175克;', 4, 25, '潍坊火烧的特点是饼皮采用发面团与油酥实现起层的效果。潍坊火烧种类繁多，但肉火烧以其肉香浓郁干焦酥脆尤为让人喜爱。', 'https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544755505150.jpg;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544756463847.jpg;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544778356989.jpg;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544774762072.jpg;', 'https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544614915874.jpg,酵母用适量的水化开，倒入面粉里搅成絮状;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544615194661.jpg,和成光滑的面团发酵;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544615292701.jpg,至两倍大小时发酵结束;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544621894700.jpg,花椒放入碗中加入100的开水，浸泡10分钟;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544626819956.jpg,海米放入水中泡软捞出切碎;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544627075802.jpg,黑木耳泡发后切碎;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544627281155.jpg,鸡蛋打散加一汤勺的水搅匀，放入蒸锅蒸5分钟成鸡蛋糕，放凉切碎;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544630148670.jpg,肉馅五花肉馅分次加入花椒水;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544630204194.jpg,搅打上劲;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544630549750.jpg,肉馅中除香葱碎、姜碎外的调味料放入容器内，顺一个方向搅拌上劲;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544630730578.jpg,加入橄榄油和姜葱碎搅拌;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544631035248.jpg,将调好的肉馅放入冰箱冷藏腌制20分钟后在使用;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544631359124.jpg,再放入海米粒、鸡蛋碎、黑木耳;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544631540258.jpg,拌匀成火烧馅;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544735864178.jpg,面粉40克与橄榄油40克搅匀集成油酥;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544631784670.jpg,发好的面团揉匀;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544631902306.jpg,擀开，擀成0.3cm的椭圆形面片;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544632117871.jpg,抹上油酥;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544632431088.jpg,由底边卷起来;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544632944439.jpg,均分大小揪成8个剂子;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544633168621.jpg,用手指在剂子的中间按下，再把剂子四角收向中间，按扁;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544633397717.jpg,擀成中间厚边缘薄的面皮;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544633647257.jpg,放入适量的肉馅;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544633887653.jpg,延边拿摺包起来;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544634196735.jpg,收口朝下;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544634331121.jpg,手按扁放入烤盘中，表面可刷油;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544634574368.jpg,用200度上下火烤18分钟左右;https://st-cn.meishij.net/rs/72/104/4151072/n4151072_153544634769059.jpg,表面上色即成;', '小英子心语：\n1.	判断烤的饼熟不熟，用手碰一下饼的边，如果迅速回弹百分百熟了，不过要小心烫着自己。\n2.	猪肉馅要选五花肉，海米、鸡蛋糕、葱花，花椒水，是必须要用的，少了则就失去了传统的味道\n3.	调制好的肉馅冷藏一段时间后比较容易包\n4.	包的时候尽量不要露馅，露馅不好看也不好吃了。\n5.	调馅用油不拘于橄榄油，只要是植物油就可以。\n', 'https://www.meishij.net/zuofa/weifangxiangsurouhuoshao_1.html', '2021-09-17 13:58:48', '2021-09-17 13:58:48');
+INSERT INTO `recipe_detail_list` VALUES ('6068a3bd-2f43-4485-91f5-4873fcc4d826', 0, 'https://st-cn.meishij.net/r/208/102/1025708/s1025708_149663916013140.jpg', NULL, '玉米山药炖排骨', 17, 12880, '煲', '家常味', '30分钟', '中级掌勺', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1842477', '排骨:一根;', '盐:一朵;胡萝卜:一个;玉米:一个;土豆:两个;山药:半根;', 0, 4, '很喜欢这道菜，简单的几种食材，因为有了排骨的加入，汤汁清甜滋润，口感超好呢，我喜欢在里面添加些颜色丰富的食材，这样五颜六色的一大锅，看着就有食欲。', 'https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149664042920782.jpg;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149664043118743.jpg;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149664043170772.jpg;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149664043377254.jpg;', 'https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663931049182.jpg,排骨切成小段，冷水下锅汆烫，捞出备用;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663931385949.jpg,所有的食材都切成同样大小的块状;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663931501397.jpg,排骨倒入高压锅，加入清水;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663931624768.jpg,将排骨、玉米、山药、土豆都倒入高压锅，盖上盖子，煮熟;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663931642655.jpg,加入盐，拌匀;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663931777973.jpg,出锅装盘即可;', '所有的食材都切成相同的大小，就不会出现有的熟有的不熟的情况了。', 'https://www.meishij.net/zuofa/yumishanyaodunpaigu_2.html', '2021-09-17 13:46:45', '2021-09-17 13:46:45');
+INSERT INTO `recipe_detail_list` VALUES ('628cedf8-56c7-4369-a25b-b6352d49f484', 0, 'https://st-cn.meishij.net/r/235/249/13687485/s13687485_157468404246039.jpg', NULL, '黑糯米发面饼', 0, 3599, '烙', '甜味', '30分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1947779', '中筋面粉:250克;花生油:10克;白糖:10克;清水:140克;酵母:2克;', '黑糯米:1/2杯;糯米:1杯;油:1大匙;', 2, 20, '非常香软的糯米馅饼，放凉了饼皮也不会变硬。馅也很好吃，软糯有黑糯米的米香味。喜欢糯米食品的可以试一下。', 'https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468411638247.jpg;https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468411754276.jpg;', 'https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468406033924.jpg,把米洗净浸泡一夜，加入比平时蒸饭少点的水蒸成米饭。;https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468406225405.jpg,炒锅放1大匙油烧热，放入糯米饭，放适量白糖，小火翻炒一会，炒到米饭把糖和油全部吸收抱团，放凉备用。;https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468407115668.jpg,把主材料放入盆中，揉成软一点的面团发酵到两倍大。;https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468407488255.jpg,发酵好的面团稍微揉匀，分成8份。;https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468407781443.jpg,擀皮。;https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468407923211.jpg,放上糯米馅。多放一点，皮薄馅多好吃。我差不多放了45克。;https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468408618157.jpg,擀成博饼。糯米做馅不容易擀破，所以擀薄一点。;https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468409391799.jpg,平底锅刷油烧热，饼坯两面也刷点油，放入锅中。;https://st-cn.meishij.net/rs/235/249/13687485/n13687485_157468409512403.jpg,盖盖烙，小火两面金黄即可。;', '糯米不好消化，一次不要吃太多。', 'https://www.meishij.net/zuofa/heinuomifamianbing.html', '2021-09-17 13:56:40', '2021-09-17 13:56:40');
+INSERT INTO `recipe_detail_list` VALUES ('80e36825-2dc1-4a68-bedb-2cd28284db90', 0, 'https://st-cn.meishij.net/r/62/147/599312/s599312_153544464822570.jpg', NULL, '香煎黑椒杏鲍菇', 1751, 11894, '煎', '家常味', '5分钟', '初级入门', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1896619', '杏鲍菇:1个;', '油:1勺;盐:1小勺;黑胡椒粉:2克;', 3, 22, '将杏鲍菇切薄片，然后用平底锅煎熟之后撒上黑胡椒粉，换个方式吃杏鲍菇，有木有吃西餐的赶脚，呵呵。比起简单的炒菜来，口感大有不同哦，不妨试试看吧。', 'https://st-cn.meishij.net/rs/62/147/599312/n599312_153544478461253.jpg;https://st-cn.meishij.net/rs/62/147/599312/n599312_153544478728712.jpg;https://st-cn.meishij.net/rs/62/147/599312/n599312_153544478985430.jpg;https://st-cn.meishij.net/rs/62/147/599312/n599312_153544479125195.jpg;', 'https://st-cn.meishij.net/rs/62/147/599312/n599312_153544471358841.jpg,杏鲍菇一个;https://st-cn.meishij.net/rs/62/147/599312/n599312_153544471525183.jpg,将杏鲍菇切片;https://st-cn.meishij.net/rs/62/147/599312/n599312_153544471798360.jpg,平底锅热油;https://st-cn.meishij.net/rs/62/147/599312/n599312_153544472061854.jpg,将杏鲍菇片摆入锅中;https://st-cn.meishij.net/rs/62/147/599312/n599312_153544472272676.jpg,将两面煎至微黄成熟;https://st-cn.meishij.net/rs/62/147/599312/n599312_153544472419259.jpg,撒一点盐;https://st-cn.meishij.net/rs/62/147/599312/n599312_153544472681333.jpg,最后撒一些黑胡椒粉就可以吃啦;', '小火慢煎', 'https://www.meishij.net/zuofa/xiangjianheijiaoxingbaogu_8.html', '2021-09-17 13:56:59', '2021-09-17 13:56:59');
+INSERT INTO `recipe_detail_list` VALUES ('897414eb-2ce4-44cf-b137-b5a203deef3d', 0, 'https://st-cn.meishij.net/r/97/227/6681847/s6681847_151625806118957.jpg', NULL, '鲜姜橙子温暖冬日', 3, 16367, '榨汁', '姜汁味', '5分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1878255', '橙子:2个;苹果:2个;姜:1块;', '', 3, 5, '你讨厌吃生姜吗？是的，我很讨厌。那你讨厌生病吗？好吧，我更讨厌。冬天很冷，独自租的房子最怕发烧咳嗽，难受又懒得去医院。橙子和生姜一起打汁可以减少生姜的刺激，生姜和橙子都有助于止咳，在冬天简直是温暖到心里的果汁了，加点苹果调味。我想你应该会需要的，善待独自生活的你。', 'https://st-cn.meishij.net/rs/97/227/6681847/n6681847_151625923211597.jpg;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_151625924818303.jpg;', 'https://st-cn.meishij.net/rs/97/227/6681847/n6681847_151625914798961.jpg,准备好所有食材;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_151625915020543.jpg,橙子去皮切块，苹果去皮切块，生姜去皮;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_151625915382187.jpg,将处理好的食材都放入料理杯内;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_151625915537892.jpg,选择蔬果键运行结束;https://st-cn.meishij.net/rs/97/227/6681847/n6681847_151625915813773.jpg,倒出即可饮用;', '1、根据自己的口味可以加蜂蜜调味\n2、做完之后尽快饮用哦\n3、冬天要注意保暖小心感冒呢', 'https://www.meishij.net/zuofa/xianjiangchengziwennuandongri.html', '2021-09-17 13:57:09', '2021-09-17 13:57:09');
+INSERT INTO `recipe_detail_list` VALUES ('92483c8f-9c61-44c9-808c-46ecccb2d675', 0, 'https://st-cn.meishij.net/r/178/49/1824928/s1824928_151211304755252.jpg', NULL, '枣泥紫薯麻球', 4, 20209, '煎', '甜味', '2小时', '未知', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1872139', '糯米粉:250克;枣泥:150克;紫薯:200克;', '油:适量;白芝麻:适量;', 3, 8, '自制的枣泥，喜欢紫薯的颜色，用过两食材搭配做了枣泥紫薯麻球', 'https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305576002.jpg;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305602335.jpg;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305735815.jpg;', 'https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211304901533.jpg,所有食材;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211304992544.jpg,紫薯洗净煮熟;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305058254.jpg,煮熟的紫薯去皮捣泥再煮开;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305167172.jpg,煮开的紫薯泥倒入糯米粉中搅拌;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305147801.jpg,揉成光滑面团;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305200880.jpg,取一面团揉成碗状，放入枣泥;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305318873.jpg,收口揉成圆团;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305301477.jpg,再滚上白芝麻;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305428818.jpg,起油锅加热，放入麻球用小火慢慢煎;https://st-cn.meishij.net/rs/178/49/1824928/n1824928_151211305491074.jpg,煎至麻球上浮彭涨即出锅;', '煎时要小火慢慢煎', 'https://www.meishij.net/zuofa/zaonizishumaqiu.html', '2021-09-17 13:48:38', '2021-09-17 13:48:38');
+INSERT INTO `recipe_detail_list` VALUES ('9a7c3fe4-0abe-4e85-8623-bd906a459e6f', 1, 'https://st-cn.meishij.net/r/239/17/2941989/s2941989_158177917020040.jpg', 'https://v2.meishij.net/my/2941989/1581779105078.mp4?k=82f4e22c9dba9c1f&t=1631859792', '腌制辣白菜', 1, 3425, '腌', '家常味', '90分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1956797', '白菜:1颗;苹果:1个;雪梨:1个;白萝卜:半根;蒜苗:3根;虾皮:30克;', '糯米粉:200克;水:150克;辣椒粉:200克;糖:2勺;盐:3勺;姜:30克;蒜:30克;', 2, 15, '每逢过年都会腌制一些菜，今天做个韩式辣白菜，做法很简单哦', 'https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178540865284.jpg;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178540947667.jpg;', 'https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178535225625.jpg,白菜一颗;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178536243186.jpg,切成2半，涂抹上盐，腌制4个小时;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178536200377.jpg,准备酱料的食材;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178536509086.jpg,白萝卜，蒜苗切丝;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178538734190.jpg,糯米粉用水煮开;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178538838404.jpg,加入辣椒粉，虾皮，姜蒜沫;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178538504885.jpg,放入白萝卜，苹果，梨和蒜苗;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178539149482.jpg,拌匀后加入糖和盐;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178539751143.jpg,搅拌均匀，涂抹到白菜上;https://st-cn.meishij.net/rs/239/17/2941989/n2941989_158178540233214.jpg,放入容器里，密封腌制3-5天。;', '', 'https://www.meishij.net/zuofa/yanzhilabaicai.html', '2021-09-17 13:53:17', '2021-09-17 13:53:17');
+INSERT INTO `recipe_detail_list` VALUES ('9a8ca8a3-a896-478f-8a6f-b3df8b783754', 0, 'https://st-cn.meishij.net/r/87/44/636087/s636087_76276.jpg', NULL, '大理石戚风蛋糕', 3, 8814, '烘焙', '甜味', '60分钟', '初级入门', 'https://www.meishij.net/ajax/qrcode_wap.php?i=615152', '鸡蛋:3个;低筋面粉:68克;砂糖:45克;', '色拉油:10克;咖啡粉:5克;牛奶:30克;', 2, 26, '我们家人都喜欢素面朝天的蛋糕，不用太多的装饰，简简单单就很好~我自己吧最喜欢戚风蛋糕，虽然不像奶油蛋糕那么好看，但是可以用~手~掰~着~大块大块的吃，十分符合我的风格哈哈~但是一个素面朝天的戚风蛋糕也不算怎么好看，索性来个双色的大理石戚风蛋糕吧！', 'https://st-cn.meishij.net/rs/87/44/636087/n636087_88700.jpg;https://st-cn.meishij.net/rs/87/44/636087/n636087_74113.jpg;https://st-cn.meishij.net/rs/87/44/636087/n636087_14797.jpg;https://st-cn.meishij.net/rs/87/44/636087/n636087_98711.jpg;', 'https://st-cn.meishij.net/rs/87/44/636087/n636087_10777.jpg,蛋黄和蛋白分开，蛋白放到无水无油的盆里面;https://st-cn.meishij.net/rs/87/44/636087/n636087_74440.jpg,三个蛋黄先放到一起打碎之后分到两个小盆里面;https://st-cn.meishij.net/rs/87/44/636087/n636087_15901.jpg,白蛋糕糊的所有配料放进盆里面，其中，白色蛋糕糊：蛋黄1.5个、低筋粉35克、牛奶15克、色拉油1小勺;https://st-cn.meishij.net/rs/87/44/636087/n636087_93501.jpg,手动打蛋器搅拌均匀;https://st-cn.meishij.net/rs/87/44/636087/n636087_22868.jpg,咖啡蛋糕糊所有配料放进盆里面，其中，咖啡蛋糕糊：蛋黄1.5个、咖啡粉5克、低筋粉33克、牛奶15克、色拉油1小勺;https://st-cn.meishij.net/rs/87/44/636087/n636087_77460.jpg,手动打蛋器搅拌均匀;https://st-cn.meishij.net/rs/87/44/636087/n636087_61695.jpg,现在开始打发蛋清，打蛋器的头也要无油无水哦;https://st-cn.meishij.net/rs/87/44/636087/n636087_64142.jpg,先直接低速搅打，打到粗泡;https://st-cn.meishij.net/rs/87/44/636087/n636087_39786.jpg,加入15g砂糖;https://st-cn.meishij.net/rs/87/44/636087/n636087_69019.jpg,打到细腻泡沫;https://st-cn.meishij.net/rs/87/44/636087/n636087_84536.jpg,加入15g砂糖;https://st-cn.meishij.net/rs/87/44/636087/n636087_80893.jpg,最后达到稍微有纹路;https://st-cn.meishij.net/rs/87/44/636087/n636087_20278.jpg,加入15g砂糖;https://st-cn.meishij.net/rs/87/44/636087/n636087_80994.jpg,然后开高速搅打，一直到有直立的尖尖小角九分发状态，为了避免大泡沫，换成低速十几秒;https://st-cn.meishij.net/rs/87/44/636087/n636087_39866.jpg,先把蛋白分成两半，然后拿一半里面三分之一的的蛋白放进蛋黄糊里面;https://st-cn.meishij.net/rs/87/44/636087/n636087_18740.jpg,先拌均匀蛋黄糊，倒回蛋白糊里面，上下翻拌均匀，千万不要画圈哦;https://st-cn.meishij.net/rs/87/44/636087/n636087_05212.jpg,蛋糕糊拌好的样子;https://st-cn.meishij.net/rs/87/44/636087/n636087_09928.jpg,咖啡色蛋糕糊也是同样，拿一半里面三分之一的的蛋白放进蛋黄糊里;https://st-cn.meishij.net/rs/87/44/636087/n636087_28260.jpg,先拌均匀蛋黄糊，倒回蛋白糊里面，上下翻拌均匀，千万不要画圈哦;https://st-cn.meishij.net/rs/87/44/636087/n636087_39673.jpg,蛋糕糊拌好的样子;https://st-cn.meishij.net/rs/87/44/636087/n636087_60839.jpg,然后先把咖啡色蛋糕糊从高处倒进模具里面;https://st-cn.meishij.net/rs/87/44/636087/n636087_57687.jpg,白色蛋糕糊盖在上面;https://st-cn.meishij.net/rs/87/44/636087/n636087_34854.jpg,见证奇迹的时刻！刮刀稍微拌一下，不要太均匀;https://st-cn.meishij.net/rs/87/44/636087/n636087_67256.jpg,高处磕几下，放到最底层，上火140度下火155度，45分钟即可！出炉后记得马上倒扣！;', '', 'https://www.meishij.net/zuofa/dalishiqifengdangao_3.html', '2021-09-17 13:59:01', '2021-09-17 13:59:01');
+INSERT INTO `recipe_detail_list` VALUES ('a3003d22-7660-44f6-993b-03313076268b', 0, 'https://st-cn.meishij.net/r/245/200/4487745/s4487745_144353738090416.jpg', NULL, '微波炉版凉拌蒸茄子', 10, 9265, '蒸', '家常味', '30分钟', '初级入门', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1648792', '茄子(紫皮，长):1个;', '油:1大勺;盐:1/2勺;小葱:1根;生抽:1/4勺;醋:2大勺;柠檬沙拉汁:1/4勺;', 2, 11, '家常味，最经典！', 'https://st-cn.meishij.net/rs/245/200/4487745/n4487745_144353768315654.jpg;https://st-cn.meishij.net/rs/245/200/4487745/n4487745_144353768598897.jpg;', 'https://st-cn.meishij.net/rs/245/200/4487745/n4487745_144353755975016.jpg,材料;https://st-cn.meishij.net/rs/245/200/4487745/n4487745_144353756652609.jpg,茄子切片，放进微波炉自带的微波蒸宝;https://st-cn.meishij.net/rs/245/200/4487745/n4487745_144353757330110.jpg,放进微波炉，高火，10分钟;https://st-cn.meishij.net/rs/245/200/4487745/n4487745_144353758099324.jpg,蒸软的茄子用纱布包裹挤去水分;https://st-cn.meishij.net/rs/245/200/4487745/n4487745_144353758894701.jpg,将茄子撕条;https://st-cn.meishij.net/rs/245/200/4487745/n4487745_144353759822695.jpg,小葱切碎放上，大蒜拍碎放上;https://st-cn.meishij.net/rs/245/200/4487745/n4487745_144353760365918.jpg,炒锅烧油，放入花椒炸花椒油;https://st-cn.meishij.net/rs/245/200/4487745/n4487745_144353761079499.jpg,将炸好的花椒油趁热浇在大蒜和小葱上，调入生抽、醋、柠檬沙拉汁和适量盐，搅拌均匀即可;', '提示：\n1、茄子不要蒸的过软。\n2、浇上花椒油很香哦！', 'https://www.meishij.net/zuofa/weibolubanliangbanzhengqiezi.html', '2021-09-17 13:50:09', '2021-09-17 13:50:09');
+INSERT INTO `recipe_detail_list` VALUES ('a502c2fc-20f6-40b9-b2d9-a056da783dca', 0, 'https://st-cn.meishij.net/r/136/141/13410386/s13410386_154668532094547.jpg', NULL, '馒头披萨', 4, 4413, '烘焙', '咸鲜味', '30分钟', '中级掌勺', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1914371', '大虾:三只;馒头:一个;', '芝士:30克;番茄酱:20克;火腿:适量;', 1, 3, '馒头披萨是一种很多人都喜欢吃的美食，那么如何做馒头披萨才好吃呢？关于这个问题，小编就和大家分享一下我的经验，希望能够帮助到大家。如果大家喜欢小编的文章，记得关注小编并转发哦！谢谢大家！', 'https://st-cn.meishij.net/rs/136/141/13410386/n13410386_154668586564684.jpg;https://st-cn.meishij.net/rs/136/141/13410386/n13410386_154668586696231.jpg;', 'https://st-cn.meishij.net/rs/136/141/13410386/n13410386_154668533552173.jpg,首先准备好所有的食材，如下图所示。小贴士：大虾三只，馒头一个，芝士30克，番茄酱20克，火腿肠适量。;https://st-cn.meishij.net/rs/136/141/13410386/n13410386_154668534166646.jpg,然后将虾去虾线下锅煮熟，如下图所示。;https://st-cn.meishij.net/rs/136/141/13410386/n13410386_154668534320434.jpg,接着将馒头切成薄片涂抹上番茄酱，如下图所示。;https://st-cn.meishij.net/rs/136/141/13410386/n13410386_154668534712351.jpg,然后将芝士和火腿肠一起平铺在表面，如下图所示。;https://st-cn.meishij.net/rs/136/141/13410386/n13410386_154668534904438.jpg,接着将做好的馒头披萨放到烤盘中，之后放入烤箱，上下火180°烤15到20分钟就可以了。;https://st-cn.meishij.net/rs/136/141/13410386/n13410386_154668535313125.jpg,一道美味可口的馒头披萨就做好了，希望大家能够喜欢。你学会了吗？赶快动手试一试吧。如果大家对小编的做法有什么好的建议或者是不同的看法，欢迎大家给小编留言，谢谢大家。记得关注小编，转发小编的作品。小编将一如既往的给大家提供美食教程，你的支持将是小编创作最大的动力。;', '', 'https://www.meishij.net/zuofa/mantoupisa_4.html', '2021-09-17 13:45:42', '2021-09-17 13:45:42');
+INSERT INTO `recipe_detail_list` VALUES ('a53c66db-98f8-4bf3-abf9-baa282562b3c', 1, 'https://st-cn.meishij.net/r/73/127/10031823/s10031823_160779132257993.jpg', 'https://v2.meishij.net/my/10031823/160779121018164.mp4?k=6588055dfadcc467&t=1631860111', '南瓜蛋黄吐司，步骤详细让你在家轻松做', 0, 1010, '烘焙', '奶香味', '60分钟', '初级入门', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1977524', '高筋面粉:250克;奶粉:10克;蛋黄:40克;淡奶油:60克;炼乳:10克;牛奶:35克;纯净水:25克;黄油:20克;南瓜泥:50克;细砂糖:30克;', '耐高糖酵母:3克;玫瑰海盐:2克;', 0, 24, '面团内南瓜跟蛋黄让吐司的颜色十分吸睛且营养十足，再加上多种奶制品的搭配，柔软拉丝的效果也非常棒，且这款吐司做法步骤很容易掌握，烘焙小白也可以轻松搞定，家里有烤箱，还喜欢吐司的小伙伴真的可以试一试哟!', 'https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779156561355.jpg;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779157970943.jpg;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779160921034.jpg;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779159738670.jpg;', 'https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779145115867.jpg,首先准备好全部的食材，称重备用。;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779145779550.jpg,除黄油外的全部食材放入厨师机面桶内，把面团打至粗膜的状态，加入软化好的黄油，继续打至能扯出较为结实的透明薄膜。;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779147309884.jpg,收拢光滑放入盆内，发酵至两倍大。;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779148171203.jpg,将发酵好的面团取出排气，简单收拢光滑后均分成两等分，简单揉搓整圆。;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779149268889.jpg,直接取一个面团，擀长，若有小气泡直接拍掉。;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779149686885.jpg,翻面，自上而下卷起，另一个也同法卷好，然后保鲜膜盖好，再次松弛十分钟。;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779151249880.jpg,取一个擀卷的面团，将其用手掌轻轻压扁，再次用擀面杖轻轻的擀长，自上而下卷起。;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779152770326.jpg,然后放入250g水立方吐司盒内。;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779153603957.jpg,放入烤箱设置38度进行二次发酵，发酵至八分满左右。;https://st-cn.meishij.net/rs/73/127/10031823/n10031823_160779155012741.jpg,放入提前预热的烤箱下层，上下管180度烘烤35分钟左右，出炉震一下脱模冷却即可。;', '1.面粉品牌不同，吸水量也不同，液体根据面团状态进行调整。 \n2.擀卷时力道要轻柔，如果面团湿度大可以配合少许手粉或者油，少许即可不可过量。  ', 'https://www.meishij.net/zuofa/nanguadanhuangtusibuzhouxiangxirangnizaijiaqingsongzuo.html', '2021-09-17 13:58:38', '2021-09-17 13:58:38');
+INSERT INTO `recipe_detail_list` VALUES ('aeb3e08b-9325-44a2-b90d-a5fd8338dda5', 1, 'https://st-cn.meishij.net/r/96/156/6789096/s6789096_161165073483673.jpg', 'https://v2.meishij.net/my/6789096/video_1611650608.mp4?k=f4cf4dae8fd8ff06&t=1631859880', '咸香酥脆的咸蛋黄脆皮虾', 0, 2127, '煎', '咸鲜味', '30分钟', '未知', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1979452', '虾:300克;', '咸蛋黄酱:2勺;料酒:1勺;姜:3片;白胡椒粉:1克;淀粉:1勺;盐:2克;', 3, 17, '今天和大家分享一道咸蛋黄菜式，话说咸蛋黄谁不爱呢？小时候我的梦想就是支持咸蛋黄不要吃蛋清。这道脆皮虾外壳脆脆，虾仁Q弹，再裹上一层咸蛋黄，真的绝了！马上要过年了，在家露一手吧！', 'https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165074911459.jpg;https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165075020013.jpg;', 'https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165073648372.jpg,虾摘头去虾线用厨房剪开背。;https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165073743466.jpg,放入料酒，生姜，白胡椒抓匀腌制一下去腥。;https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165073997923.jpg,放入一勺淀粉拌匀。;https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165074093695.jpg,锅内放适量油，把虾煎熟。\n;https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165074113599.jpg,煎到两面金黄酥脆捞出。;https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165074366648.jpg,锅里留底油，放两勺咸蛋黄酱。;https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165074468285.jpg,炒到蛋黄冒小泡泡的时候放入虾。;https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165074591714.jpg,再加入盐。;https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165074798195.jpg,翻炒均匀就可以出锅啦！;https://st-cn.meishij.net/rs/96/156/6789096/n6789096_161165074822967.jpg,咸香酥脆，好吃到舔手指。;', '虾的表皮沾上淀粉，油煎了才可以酥酥脆脆，淀粉不能不放哦！', 'https://www.meishij.net/zuofa/xianxiangsucuidexiandanhuangcuipixia.html', '2021-09-17 13:54:48', '2021-09-17 13:54:48');
+INSERT INTO `recipe_detail_list` VALUES ('ba067802-84df-481d-b3d1-f831e4ce0f51', 0, 'https://st-cn.meishij.net/r/115/13/2253365/s2253365_148955511958283.jpg', NULL, '土豆腊肠饭', 6, 16504, '煮', '家常味', '60分钟', '中级掌勺', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1824146', '大米:200克;腊肠:1根;土豆:1个;', '植物油:30克;小葱:1颗;大蒜:3瓣;生抽:3勺;香醋:2勺;盐:0.5小勺;细砂糖:0.5小勺;', 2, 10, '常常听朋友说，家里的小朋友不爱吃米饭。遇着喜欢的菜，就多吃两口；不喜欢的菜，那是一口不吃。米饭那更是一点不吃，朋友总是端着小饭碗一边哄，一边追，就希望自家的小宝贝能多吃点饭。\n朋友很苦恼，问我咋办。我就把这道【土豆腊肠饭】推荐给她。没成想，她家小宝贝不但不挑食，还吃了整整1大碗。不用人哄哦，吃完了还要吃。朋友担心她吃撑，就没再给她添饭。可就在我朋友守着小宝贝吃饭的功夫，这道【土豆腊肠饭】就见底了。还真是全家都抢着吃，去晚了就没了。由此可见，如果你要做这道饭，可千万别煮少了，否则真心不够吃啊。当然食材可以换成自己喜欢的食材，调料也可按个人口味调整哦。\n后来朋友来我家做客，我又做了这道【土豆腊肠饭】。朋友吃着很纳闷：“怎么你做的【土豆腊肠饭】更好吃呢？”我心里那个得意，自然是因为五常大米啊！', 'https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955545304591.jpg;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955545699952.jpg;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955545921958.jpg;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955546144230.jpg;', 'https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955528088557.jpg,备好食材：大米，腊肠，土豆，大蒜，小葱；土豆削皮洗净，大蒜去掉蒜衣，洗净；小葱洗净；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955528251253.jpg,大米淘洗干净；土豆切丁；腊肠切丁；1瓣大蒜切片；2瓣大蒜切粒；小葱切成葱花；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955528511916.jpg,将大米放入电饭煲内胆，倒入适量清水；具体水量需按平时个人喜好的口感调整；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955528870182.jpg,接通电源，选择“标准煮”功能；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955529024907.jpg,炒锅烧热，倒入适量植物油烧热，放入蒜片炒香；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955529323992.jpg,放入腊肠翻炒；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955529582622.jpg,再放入土豆丁翻炒；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955529878717.jpg,食材8成熟时，调入适量生抽，香醋，细砂糖，盐，翻炒均匀，关火；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955530129912.jpg,电饭煲没有冒烟时，倒入土豆腊肠，合上盖子，让煮饭程序继续；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955530576937.jpg,蒜粒同适量生抽，香醋混合，搅拌均匀；\n;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955530719186.jpg,煮饭程序结束后，将内胆端出（这步可省略）；趁热倒入蒜粒调料；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955531010495.jpg,再迅速拌匀；;https://st-cn.meishij.net/rs/115/13/2253365/n2253365_148955531341842.jpg,盛出，点缀葱花；【土豆腊肠饭】做好啦。;', '1、调料可根据个人口味调整；\n', 'https://www.meishij.net/zuofa/tudoulachangfan_1.html', '2021-09-17 13:49:59', '2021-09-17 13:49:59');
+INSERT INTO `recipe_detail_list` VALUES ('c755dd39-7db0-4917-9b2c-a45fe107b5ad', 0, 'https://st-cn.meishij.net/r/152/221/9805402/s9805402_151487799185785.jpg', NULL, '零难度啤酒烧鲍鱼', 7, 7211, '炒', '咸鲜味', '60分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1876361', '鲍鱼:8只;啤酒:100毫升;蚝油:12毫升;', '葱末:20克;姜末:30克;蒜末:30克;生抽:10毫升;香油:3毫升;水淀粉:20毫升;白砂糖:3克;盐:适量;', 2, 7, '啤酒烧鲍鱼，做法简单，但味道一点不输高档餐厅', 'https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151487855262695.jpg;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151487855713020.jpg;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151487856213413.jpg;', 'https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151487804262374.jpg,鲍鱼8只撒盐，用牙刷清理表面污垢，清水洗净;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151487804488197.jpg,用勺子挖出鲍鱼肉，去除内脏，洗净鲍鱼肉和鲍鱼壳，在鲍鱼肉表面切菱形花纹;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151487804547454.jpg,锅中倒油，开火烧热，倒入葱末20 g、姜末30g、蒜末30g，煸香，加入蚝油12ml、生抽10ml、白砂糖3g、盐少许，翻炒均匀;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151487804852438.jpg,倒入鲍鱼翻炒均匀，加入啤酒100ml，炖煮约2分钟，盛出装盘;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151487804945853.jpg,锅中剩余汤汁中放入20ml水淀粉勾芡，加入香油3ml，大火把汤汁煮开;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151487805206608.jpg,淋上芡汁，即可享用;', '', 'https://www.meishij.net/zuofa/lingnandupijiushaobaoyu.html', '2021-09-17 13:55:20', '2021-09-17 13:55:20');
+INSERT INTO `recipe_detail_list` VALUES ('c95703bb-b17e-4441-830b-28f758c0e16e', 1, 'https://st-cn.meishij.net/r/150/151/14787900/s14787900_161647441951905.jpg', 'https://v2.meishij.net/my/14787900/1616474392066.mp4?k=4e6db0a1a0322ded&t=1631859782', '春天不可错过，野菜这样吃味道超赞…蒸豌', 399, 6193, '蒸', '家常味', '30分钟', '未知', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1981774', '豌豆苗:500克;面粉:适量;', '盐:适量;蒜瓣:10瓣;蒜苗:2根;生抽:2勺;陈醋:2勺;白糖:1勺;油辣椒:1勺;芝麻油:适量;', 3, 14, '春天真是各种野菜上市的时候，春天的滋味不可错过。\n简单面粉拌一拌蒸一蒸，绝美滋味！', 'https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641461140233.jpg;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641461889429.jpg;', 'https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641456506731.jpg,豌豆苗洗净沥干水分。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641456768143.jpg,把豌豆苗均匀的拌上干面粉放入蒸笼。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641457075990.jpg,蒸锅上汽放入蒸笼大火蒸至10分钟。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641457306671.jpg,把蒜瓣，蒜苗切碎。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641457684674.jpg,小碗中加入生抽，陈醋，糖油辣椒，香油拌均匀。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641458014785.jpg,蒸好的豌豆苗加入盐，蒜末，蒜苗拌均匀。;https://st-cn.meishij.net/rs/150/151/14787900/n14787900_161641458731776.jpg,随蘸料上桌食用。;', '蒸野菜的时候，野菜一定要把水分沥干，最好是晒一下，然后再拌面粉蒸至，这样才能保证野菜口感好。', 'https://www.meishij.net/zuofa/chuntianbukecuoguoyecaizheyangchiweidaochaozanzhengwandoumiao.html', '2021-09-17 13:53:07', '2021-09-17 13:53:07');
+INSERT INTO `recipe_detail_list` VALUES ('ce4a5ba4-c849-4e81-8271-d6fd7763b495', 0, 'https://st-cn.meishij.net/r/208/102/1025708/s1025708_149663051570128.jpg', NULL, '肉末豆腐', 4001, 13283, '烧', '咸鲜味', '15分钟', '中级掌勺', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1842452', '豆腐:一块;肉末:100克;黄豆酱:一大勺;', '盐:一撮;油:一勺;花椒:几颗;干红辣椒:几个;姜:一块;', 0, 4, '豆腐是我比较喜欢的一种食材，营养好，还不含脂肪，素有“植物肉”的美称。豆腐的消化吸收率达95%以上。两小块豆腐，即可满足一个人一天钙的需要量。\n豆腐为补益清热养生食品，常食可补中益气、清热润燥、生津止渴、清洁肠胃。更适于热性体质、口臭口渴、肠胃不清、热病后调养者食用。非常适合夏天吃哦', 'https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663193771397.jpg;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663312891485.jpg;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663313069453.jpg;', 'https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663093268966.jpg,各种食材准备好;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663093396205.jpg,豆腐入锅，汆烫;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663093489404.jpg,油锅烧热，爆香花椒、干红辣椒，捞出食材不用;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663093518199.jpg,花椒油爆香蒜末，倒入黄豆酱炒出香味;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663093611328.jpg,将肉泥倒进去，翻炒至微微变色;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663093797817.jpg,肉泥变色的时候，淋入半碗水，将豆腐块倒进去;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_149663093757268.jpg,烧至收汁，撒上葱花、调入盐调味即可出锅;', '豆腐汆烫不要太久，嫩嫩的口感才好。整个过程要大火快炒。肉末、豆腐嫩嫩的才好吃哦', 'https://www.meishij.net/zuofa/roumodoufu_48.html', '2021-09-17 13:47:07', '2021-09-17 13:47:07');
+INSERT INTO `recipe_detail_list` VALUES ('d812d7df-15bf-4a22-82e1-6535d2e0e24a', 1, 'https://st-cn.meishij.net/r/30/75/4706280/s4706280_155411993876257.jpg', 'https://v2.meishij.net/my/4706280/1554119936597.mp4?k=5a375e3e9a16fcd1&t=1631859801', '蒜苗五花肉', 4, 5443, '炒', '咸鲜味', '10分钟', '初级入门', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1924192', '蒜苗:少许;亚麻籽油:1勺;', '盐:少许;酱油:少许;', 2, 16, '蒜苗是这个季节最好的蔬菜，用亚麻籽油来炒更健康。', 'https://st-cn.meishij.net/rs/30/75/4706280/n4706280_155411994501755.jpg;', 'https://st-cn.meishij.net/rs/30/75/4706280/n4706280_155411994060886.jpg,把蒜苗洗净备用;https://st-cn.meishij.net/rs/30/75/4706280/n4706280_155411994141296.jpg,锅里加入亚麻籽油;https://st-cn.meishij.net/rs/30/75/4706280/n4706280_155411994262539.jpg,入葱姜爆香，倒入五花肉片煸炒出油;https://st-cn.meishij.net/rs/30/75/4706280/n4706280_155411994308087.jpg,加酱油烹一下炒匀，倒入蒜苗煸炒;https://st-cn.meishij.net/rs/30/75/4706280/n4706280_155411994355027.jpg,加盐调味出锅，即成。亚麻公社，正宗亚麻籽油，呵护家人健康的放心油！;', '这菜大火煸炒才好吃。', 'https://www.meishij.net/zuofa/suanmiaowuhuarou_5.html', '2021-09-17 13:53:25', '2021-09-17 13:53:25');
+INSERT INTO `recipe_detail_list` VALUES ('d881d3fa-a977-428f-a240-5dbc2651004d', 0, 'https://st-cn.meishij.net/r/152/221/9805402/s9805402_151626029540015.jpg', NULL, '泡面秒变汉堡包', 730, 17984, '煎', '酱香味', '30分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1878240', '泡面面饼:1个;鸡蛋:1个;鸡排:1块;', '生菜:2片;食用油:适量;芝士片:1片;番茄酱:适量;', 1, 7, '拉面汉堡你居然没听过？这可是从纽约“飞”来的超级网红，一露面就刷爆了吃货的朋友圈！这回终于可以在家自己做啦~', 'https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151626046747306.jpg;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151626047027819.jpg;', 'https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151626034352522.jpg,泡面面饼1个，用热水泡软，捞出沥干;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151626034304569.jpg,鸡蛋1个打散，放入泡面，搅拌均匀;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151626034565838.jpg, 将鸡蛋泡面分装入两只圆碗中，垫上保鲜膜，压实，再压上重物静置30分钟定型;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151626034635367.jpg,炒锅倒油开火烧热，将面饼扣入锅中，煎至两面金黄，盛出;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151626034869052.jpg, 取一块煎好的面饼，放上生菜2片、鸡排1块，挤上番茄酱，再放上芝士片1片、煎蛋1个;https://st-cn.meishij.net/rs/152/221/9805402/n9805402_151626034914445.jpg,最后盖上另一块面饼，即可享用;', '', 'https://www.meishij.net/zuofa/paomianmiaobianhanbaobao.html', '2021-09-17 13:51:26', '2021-09-17 13:51:26');
+INSERT INTO `recipe_detail_list` VALUES ('ea94f86d-ce5b-4895-a1b1-54b918d1e490', 0, 'https://st-cn.meishij.net/r/102/220/13242602/s13242602_154718559458928.jpg', NULL, '猪肉锅贴', 1078, 9549, '煎', '咸鲜味', '10分钟', '初级入门', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1914986', '饺子皮:20个;猪肉馅:200克;鹌鹑蛋:10个;葱:1个;姜:1个;', '黄记煌藤椒汁:2勺（30克）;油:1碗（30克）;', 2, 2, '作为一个在北方长大的南方人，我妈学会的第一个北方小吃，应该就是锅贴。锅贴是类似于煎烙馅类的小吃，特别是煎熟的底部呈现诱人的金黄色，酥脆可口，油香四溢，让人看着就流口水。我甚至还出现过把锅贴的底儿和馅儿吃了，留下上面的面皮骗我妈的“恶劣行径”，足以看出那层香酥油底儿的魅力。\n\n长大以后，去的地方多了，发现全国各地都有锅贴。山东的纯肉大锅贴，一个比一个体型大，放在油汪汪的巨大平底锅里，一开锅已是香气扑鼻，十足的肉馅更让人大饱口福；东北的水煎包锅贴，做成包子形状，馅儿确实鲜嫩的牛肉，灌汤流油，吃包先喝汤的传统也是当地的特色之一；就连日本人平时最爱的日式饺子，其实也是锅贴的一种，猪肉玉米馅儿别出心裁，水润的玉米加五香的猪肉，也是绝配。\n\n说到这儿，不免有人疑惑，你说的不是煎饺子吧？当然不是，锅贴和煎饺这对“堂兄妹”的区别在于：煎饺的制作需要先煎后煮，或者煮熟了再煎，盖上锅盖要一次成型；而锅贴却只能小火慢慢煎，期间还得不断转动锅子，甚至需要开盖淋点儿水才行。你看，虽说前期制作方法是一模一样，可这后期的烹饪方法却完全不同，这才使得锅贴的油底儿酥脆又不会干糊，留有油香又可口。\n\n今天教大家这个锅贴，既能够保留油煎的口感，又省略了那些油煎喷水的过程，用简单的小技巧帮你又快又省事的做出一盘猪肉小锅贴。', 'https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718576314981.jpg;https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718576545964.jpg;', 'https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718567874937.jpg,这些都是食材，提前准备好;https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718569564228.jpg,备菜：姜块去皮，切末，葱也切碎，肉馅中分批次加入清水，搅拌上劲;https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718569677462.jpg,调馅：然后放入葱姜末，2勺藤椒汁和一点儿油，搅拌均匀之后静置5分钟;https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718569871166.jpg,叠皮：拿一张饺子皮，上面刷一层薄油，然后再叠加一张，继续刷油，如此重复7-8层;https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718570388919.jpg,擀皮：最后一张饺子皮不放油，用擀面杖慢慢把饺子皮擀开，成椭圆形最好;https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718570536577.jpg,取皮：稍微静置一会儿，等油浸透，找到皮边儿，慢慢撕下一张，放在案板上;https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718570832511.jpg,放馅：放一勺肉馅放在皮中间，用拇指在肉馅中间按个洞，洞里打入一个鹌鹑蛋;https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718571010077.jpg,包裹：先把长边包起来，在用短边包裹，锅贴包好后翻个个儿放入5成热的油锅中;https://st-cn.meishij.net/rs/102/220/13242602/n13242602_154718571219530.jpg,油煎：中火慢煎，2分钟换一面，直到锅贴两面都呈金黄色，即可出锅;', '1、和馅儿的小秘诀：肉馅选择肥瘦三七开，肉馅提前分批次加入少许清水，搅拌上劲，然后再放入其他食材和调味品搅拌均匀，腌制一会儿更入味。肉馅和水的比例是6:1为佳。\n2、利用腌制肉馅的时间，可以把做好的锅贴皮上锅蒸15分钟，皮会更加晶莹剔透。\n3、注意油煎的火候，如果火太大时间太短，会出现肉熟了蛋不熟的现象，小火慢慢煎才是正道，不要着急。', 'https://www.meishij.net/zuofa/zhurouguotie_4.html', '2021-09-17 13:45:31', '2021-09-17 13:45:31');
+INSERT INTO `recipe_detail_list` VALUES ('ebc54936-abe7-432e-aa7f-80522f46cf02', 0, 'https://st-cn.meishij.net/r/53/149/2912303/s2912303_146115396244532.jpg', NULL, '浇汁肉末豆腐', 7, 61097, '煮', '家常味', '15分钟', '中级掌勺', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1673876', '内酯豆腐:1块;猪肉:120克;', '葱花:5克;盐:1勺;老抽:5克;鸡精:1克;老汤:1500克;水淀粉:40克;五香粉:2克;香菜:2克;', 2, 9, '对于一个上班族来说，每天下班能够快速的吃上饭菜，就是最幸福的事情。我每天特别辛苦，早上7点之前就要到学校，晚上5点多到家。家中有老父亲等待着我，我一般都是以豹的速度做饭菜，三口之家，三菜一汤。每天不仅要荤素搭配合理，还要考虑难易程度，老父亲的牙口不好，都要在考虑范围之内。这款菜，不仅简单，还快，而且老少皆宜，喜欢的看看：', 'https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115422683607.jpg;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115423128835.jpg;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115423412193.jpg;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115424100862.jpg;', 'https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115420200863.jpg,准备一块内酯豆腐（或者普通豆腐）;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115417316018.jpg,将豆腐切成小块\n;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115417366061.jpg,锅里烧水，加入一小勺精盐，水开烫一下豆腐。;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115417778492.jpg,然后捞出控水备用\n;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115417424612.jpg,将肉切成小粒\n;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115417501987.jpg,准备适量葱花\n;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115417833759.jpg,锅烧热，加少许底油，葱花炝锅\n;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115417903261.jpg,下肉煸炒变色，高温时候加适量料酒，然后加老抽\n;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115418091141.jpg,加入适量老汤（平时烀肉的汤），没有老汤加清水，加适量的盐和五香粉;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115418180654.jpg,大火烧开，适量水淀粉勾芡，然后关火加鸡精。;https://st-cn.meishij.net/rs/53/149/2912303/n2912303_146115422011578.jpg,将肉末浇在豆腐上，撒上香菜;', '没有老汤的可以用清水，也可以加一块浓汤宝来提味。', 'https://www.meishij.net/zuofa/jiaozhiroumodoufu.html', '2021-09-17 13:49:48', '2021-09-17 13:49:48');
+INSERT INTO `recipe_detail_list` VALUES ('ed08d6ea-1ad9-48c0-b1d5-b0472e5f42ce', 1, 'https://st-cn.meishij.net/r/41/203/113291/s113291_155082461119028.jpg', 'http://gslb.miaopai.com/stream/h~4AoQyPfrg2WsM4ba-Rhx17PDHXBGs2NYLx3g__.mp4?', '蒜苗回锅肉', 97, 36753, '炒', '家常味', '30分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1919709', '蒜苗:50克;五花肉:100克;', '姜:5克;葱:10克;蒜:8克;', 1, 13, '无', 'https://st-cn.meishij.net/rs/41/203/113291/n113291_155082473777384.jpg;', 'https://st-cn.meishij.net/rs/41/203/113291/n113291_155082469456562.jpg,姜丝5克，葱花10克，蒜片8克，蒜苗50克切段，五花肉100克切块;https://st-cn.meishij.net/rs/41/203/113291/n113291_155082470331756.jpg,锅中食用油5ML，倒入蒜片，葱花，大火爆香;https://st-cn.meishij.net/rs/41/203/113291/n113291_155082471382386.jpg,倒入五花肉，煸炒至肉块变色;https://st-cn.meishij.net/rs/41/203/113291/n113291_155082472160064.jpg,倒入花椒1克、豆豉15克，翻炒均匀，豆瓣酱20克，生抽50克，翻炒出红油;https://st-cn.meishij.net/rs/41/203/113291/n113291_155082473214110.jpg,倒入蒜苗，翻炒均匀;', '', 'https://www.meishij.net/zuofa/suanmiaohuiguorou_30.html', '2021-09-17 13:52:58', '2021-09-17 13:52:58');
+INSERT INTO `recipe_detail_list` VALUES ('ef9961c6-ab54-4605-915e-1b3650077ac5', 0, 'https://st-cn.meishij.net/r/10/120/30010/s30010_154735498541094.jpg', NULL, '芙蓉蛋卷', 4, 12918, '煮', '咸鲜味', '10分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1915223', '鲜虾:12只;胡萝卜:1根 ;鸡蛋:3个;', '盐:适量;食用油:少许;料酒:少许;', 2, 1, '为孩子做早餐，既要好看又要好吃，更要营养，这道早餐芙蓉蛋卷就能完美的满足了所有要求！金灿灿的蛋卷包裹着鲜嫩的虾糜，不仅色泽诱人，口感吃起来又软又香，孩子吃再合适不过了\n\n百搭的鸡蛋搭配鸡肉、猪肉末、火腿、芝士、胡萝卜、香葱、鲜虾、番茄...只需要备好食材，摊一摊，卷一卷就好了。滑嫩的蛋卷中透出淡淡的肉香和蔬菜香，松软可口，不止大人喜爱，就连不爱吃饭的小孩子也被它征服！\n\n这次一共公布两种蛋卷的做法，视频中是未加虾糜的做法，图文是加虾糜的做法，好吃又毫无难度的鸡蛋卷，百变口味尽情享用吧～', 'https://st-cn.meishij.net/rs/10/120/30010/n30010_154735516410144.jpg;https://st-cn.meishij.net/rs/10/120/30010/n30010_154735517174418.jpg;', 'https://st-cn.meishij.net/rs/10/120/30010/n30010_154735505031913.gif,\n胡萝卜去皮，切小碎丁。;https://st-cn.meishij.net/rs/10/120/30010/n30010_154735505169372.gif,\n鲜虾去壳，用刀剁成虾糜。（鲜虾放入冰箱先冷冻20分钟左右，再取出更好剥壳。）\n;https://st-cn.meishij.net/rs/10/120/30010/n30010_154735505335714.gif,胡萝卜丁和虾糜放在碗中，打入1个鸡蛋。调入少许盐和料酒，用筷子搅拌均匀。\n;https://st-cn.meishij.net/rs/10/120/30010/n30010_154735505563054.gif,\n另取碗打入2个鸡蛋，撒上少许盐，划散成蛋液。\n;https://st-cn.meishij.net/rs/10/120/30010/n30010_154735505706926.gif,\n平底锅刷上一层薄油，烧热后倒入蛋液。;https://st-cn.meishij.net/rs/10/120/30010/n30010_154735505838658.gif,\n\n摊成圆圆的蛋饼，2个鸡蛋可做2张蛋饼。\n;https://st-cn.meishij.net/rs/10/120/30010/n30010_154735506059761.gif,\n\n蛋饼煎好后取出，平铺在案板上，稍稍放凉，再将混合好的虾糜在蛋饼上铺满，轻轻卷起蛋饼，卷好后放入盘中备用。\n;https://st-cn.meishij.net/rs/10/120/30010/n30010_154735506238618.gif,\n蒸锅中倒入适量冷水，将蛋卷放入锅中，大火蒸12-15分钟。\n\n;https://st-cn.meishij.net/rs/10/120/30010/n30010_154735506322172.gif,\n蒸好后取出，切段后趁热食用。（可搭配个人喜欢的酱汁，比如寿司酱油或醋汁。）\n\n;', 'TIPS\n\n1/  蒸制时间需根据蛋卷的数量和肉馅的多少适度调整。\n\n2/ 最好用鲜虾来制作虾糜，如果没有也可用超市的冷冻虾仁。', 'https://www.meishij.net/zuofa/furongdanjuan_2.html', '2021-09-17 13:45:19', '2021-09-17 13:45:19');
+INSERT INTO `recipe_detail_list` VALUES ('f038922d-0fd4-4c08-8c08-10903b2b741b', 1, 'https://st-cn.meishij.net/r/208/102/1025708/s1025708_159125407384924.jpg', 'https://v2.meishij.net/my/1025708/video_1591254071.mp4?k=b0ea962da4502857&t=1631859903', '榴莲炖鸡', 425, 3105, '炖', '家常味', '2小时', '中级掌勺', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1965945', '鸡:半只;曾公子榴莲肉:一盒;', '水:适量;盐:适量;料酒:适量;姜片:适量;', 0, 4, '这菜冬天吃不起，夏天便宜放肆吃！有人喜欢有人怕，其实特滋补！夏天到了，吃货们最是开心，因为有很多冬天特别昂贵的食材，到了夏天价格就逐渐变得能接受了。美美是个对钱不是很敏感的人，买东西也比较随性，喜欢吃什么就买什么，平时对食材的价格也没有太大的感觉，不过今年春节在家待了那么久，天天买食材做美食，一个月花了平时几个月的伙食费，这下才发现，平时关注下食材的价格，每个月的伙食费都可以省出很多呢。春节的时候，不知咋地突然就迷上了榴莲，每天都馋，冬天的榴莲多贵呀！三四十块钱一斤，每次找最小的挑，都得好几百！对于我这样特别喜欢吃榴​莲​的人来说，一个榴莲真的没几分钟就搞定了！吃得真是肉疼啊！夏天的榴莲明显亲民了很多，十来块二十几块，可以吃个过瘾了！趁便宜的时候咱们还可以换着花样来做，榴莲的做法可多了，各种酥皮的甜品自然不再话​在，用来做菜也是超级美味哦！今天美美就给大家带来一道用榴莲做的滋补菜，香气浓郁，清甜滋润，喝上一口，真的是美滋滋的。平日里只舍得用榴莲壳炖鸡，今天咱们奢侈一下，用榴莲肉来炖鸡！我感觉这道菜肯定是有人喜欢有人怕，但真心希望大家能尝尝，不仅味道特别好，同时也特别滋补！榴莲炖鸡的功效', 'https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159127259793854.jpg;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159127259754383.jpg;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159127259771368.jpg;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159127259793085.jpg;', 'https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159125407699324.jpg,榴莲肉和鸡都准备好，鸡事先剁成小块备用，榴莲肉根据自己的喜好放吧，我直接吃了一半，留一半炖鸡，吃剩下的榴莲核可以清洗干净一起炖哦。这个牌子的榴莲肉肉质特别厚，口感清甜细腻，比一般的榴莲品质要好很多。推荐。;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159125407743194.jpg,榴莲核清洗干净备用。榴莲这么贵，核当然也不要丢弃啦！榴莲核有清补益气、滋润养阴的功效。广东民间就有用榴莲核煲汤的做法。相对榴莲果肉，榴莲核质地温和，煮汤有补肾、健脾的作用。榴莲果核用来煲汤，剥去外皮后和主料一起下锅炖烂，口感软糯像芋头，也像栗子，有补肾、健脾的作用，甚至有说营养价;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159125407827509.jpg,姜片备用，榴莲核和榴莲肉都准备好。;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159125407848509.jpg,鸡块冷水下锅，开火加热，加入几勺料酒和几片姜去腥，一起烧开。;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159125407928714.jpg,开锅后，将表面的浮沫都细心撇掉。这样炖出来的鸡一点都没腥味。;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159125408004434.jpg,将煮开的鸡肉捞出来，放入电砂锅中，加入没过鸡块的开水，将榴莲核和生姜片一起加进去。;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159125408216615.jpg,盖上盖子，用炖鸡鸭键炖熟即可，大约一个半小时，如果想要快一点，可以用高压锅炖十分钟。;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159125408326430.jpg,最后十分钟的时候将榴莲肉倒入，稍微搅拌，将榴莲肉搅碎了，汤汁的味道更浓郁哦！强烈推荐这款曾公子猫山王榴莲，冰淇淋般的香甜果肉，是我吃过的最美味的榴莲！;https://st-cn.meishij.net/rs/208/102/1025708/n1025708_159125408313711.jpg,曾公子猫山王榴莲，冰激凌般的香甜果肉！;', '鸡事先要汆烫，这样炖出来的糖才清爽，而且没有异味。如果喜欢汤里的香味更浓郁，可以提前放入榴莲肉，稍微炖烂一点，让榴莲果肉完全融合到汤里，味道更好，我为了菜谱的完整美观，就留下整块的榴莲了。这道榴莲炖鸡，清甜滋补，趁夏天榴莲价格不贵，多给家人补补哦！', 'https://www.meishij.net/zuofa/liuliandunji_6.html', '2021-09-17 13:55:09', '2021-09-17 13:55:09');
+INSERT INTO `recipe_detail_list` VALUES ('ff5a0564-6447-4896-b11d-54704b8f4a96', 1, 'https://st-cn.meishij.net/r/141/154/4351141/s4351141_160014924089561.jpg', 'https://v2.meishij.net/my/4351141/1600149141611.mp4?k=a2a9b8a8473962b5&t=1631860155', '榴莲华夫饼', 0, 1619, '烤', '其它口味', '30分钟', '新手尝试', 'https://www.meishij.net/ajax/qrcode_wap.php?i=1972441', '中筋面粉:105克;食盐:2克;低筋面粉:100克;纯奶牛:80克;全蛋液:40克;白砂糖:25克;奶粉:10克;黄油:25克;酵母粉:3克;榴莲:100克;', '华夫饼机:一台;', 2, 28, '华夫饼的做法很简单，自己做既健康又实惠，我这次做的是酵母版的，对泡打粉介意的朋友们可以尝试一下这个版本的。\n酵母版的华夫饼也很适合做早餐，可以晚上提前揉好面团，放冰箱冷藏发酵。这样早上十几分钟也可以吃到热腾腾的华夫饼了，再配上一杯暖暖的热牛奶，美味早餐就可以上桌了！', 'https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014924592802.jpg;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014924882160.jpg;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014925132262.jpg;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014925417730.jpg;', 'https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014929228282.jpg,准备好食材：中筋面粉105克、低筋面粉100克、白砂糖25克、全蛋液40克、牛奶80克、酵母3克、黄油25克、奶粉10克、食盐2克、榴莲果肉100克；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014929570965.jpg,将中筋面粉105克、低筋面粉100克、白砂糖25克、酵母3克、奶粉10克、食盐2克放入和面盆中；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014936404788.jpg,再将鸡蛋液40克和牛奶80克放入和面盆中，先揉成面团；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014936894223.jpg,然后加入软化好的黄油继续揉成光滑的面团，不用出膜；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014937849478.jpg,将做好的面团用保鲜膜包起来，发酵至2倍大或者放冰箱冷藏一晚；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014939105125.jpg,发酵到两倍大小左右，排气揉圆；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014939791119.jpg,将面团分割成等大的小份，用保鲜膜盖起来醒发15分钟；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014940303103.jpg,将100克榴莲果肉分成每个约8克的小块；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014941060885.jpg,取一个小面团，用擀面杖擀成片状，将榴莲果肉放进去包起来；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014941538059.jpg,像包包子一样包起来，收口向下；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014941825441.jpg,华夫饼机先预热几分钟，放入一个面团；;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014942223689.jpg,盖上盖子，加热3分钟左右，具体看自己机器的火力，掌握时间哦！;https://st-cn.meishij.net/rs/141/154/4351141/n4351141_160014924327936.jpg,曾公子猫山王榴莲，芝士般丝滑软糯甜到爆！;', '1、面团用低筋面粉，是为了让华夫饼口感更松软，但是不好成团。也可以换成等量的中筋面粉，揉成团即可。\n2、面团的湿度大，口感比较松软；面团湿度小，口感比较扎实。所以要注意由于面粉的吸水性不同导致差异。\n3、面团较粘手，揉均匀基本成团就可以了。\n4、如果打算冷藏过夜，可揉成团后，室温发酵大约半小时，放冰箱冷藏。第二天拿出来后，再继续后面的步骤。\n5、不同华夫饼机的加热温度和时间都有差异，注意控制火候。一般看到冒白烟，闻到香味即可，比较松软；烘烤时间长的话口感偏干一些。', 'https://www.meishij.net/zuofa/liulianhuafubing.html', '2021-09-17 13:59:20', '2021-09-17 13:59:20');
 
 -- ----------------------------
--- Table structure for recipe_ingredient_category_list
+-- Table structure for today_three_meals_list
 -- ----------------------------
-DROP TABLE IF EXISTS `recipe_ingredient_category_list`;
-CREATE TABLE `recipe_ingredient_category_list`  (
+DROP TABLE IF EXISTS `today_three_meals_list`;
+CREATE TABLE `today_three_meals_list`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '食材分类名称',
+  `column_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `show_recipe_count` int NOT NULL,
+  `recipe_list_str` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `sort` int NULL DEFAULT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of recipe_ingredient_category_list
+-- Records of today_three_meals_list
 -- ----------------------------
-INSERT INTO `recipe_ingredient_category_list` VALUES (1, '蔬果类', '2021-09-12 00:32:18', '2021-09-12 00:32:18');
-INSERT INTO `recipe_ingredient_category_list` VALUES (2, '生鲜类', '2021-09-12 00:32:27', '2021-09-12 00:32:27');
-INSERT INTO `recipe_ingredient_category_list` VALUES (3, '五谷', '2021-09-12 00:32:35', '2021-09-12 00:32:35');
-INSERT INTO `recipe_ingredient_category_list` VALUES (4, '食品与饮品', '2021-09-12 00:32:45', '2021-09-12 00:32:45');
-INSERT INTO `recipe_ingredient_category_list` VALUES (5, '维生素', '2021-09-12 00:32:52', '2021-09-12 00:32:52');
-INSERT INTO `recipe_ingredient_category_list` VALUES (6, '体质', '2021-09-12 00:32:58', '2021-09-12 00:32:58');
-INSERT INTO `recipe_ingredient_category_list` VALUES (7, '茎叶花类', '2021-09-12 00:33:10', '2021-09-12 00:33:10');
-INSERT INTO `recipe_ingredient_category_list` VALUES (8, '根茎类', '2021-09-12 00:33:21', '2021-09-12 00:33:21');
-INSERT INTO `recipe_ingredient_category_list` VALUES (9, '瓜果类', '2021-09-12 00:33:29', '2021-09-12 00:33:29');
-INSERT INTO `recipe_ingredient_category_list` VALUES (10, '菌类', '2021-09-12 00:33:35', '2021-09-12 00:33:35');
-INSERT INTO `recipe_ingredient_category_list` VALUES (11, '葱蒜类', '2021-09-12 00:33:51', '2021-09-12 00:33:51');
-INSERT INTO `recipe_ingredient_category_list` VALUES (12, '鲜豆类', '2021-09-12 00:34:08', '2021-09-12 00:34:08');
-INSERT INTO `recipe_ingredient_category_list` VALUES (13, '猪肉', '2021-09-12 00:34:16', '2021-09-12 00:34:16');
-INSERT INTO `recipe_ingredient_category_list` VALUES (14, '牛肉', '2021-09-12 00:34:22', '2021-09-12 00:34:22');
-INSERT INTO `recipe_ingredient_category_list` VALUES (15, '羊肉', '2021-09-12 00:34:30', '2021-09-12 00:34:30');
-INSERT INTO `recipe_ingredient_category_list` VALUES (16, '鸡肉', '2021-09-12 00:34:37', '2021-09-12 00:34:37');
-INSERT INTO `recipe_ingredient_category_list` VALUES (17, '鸭肉', '2021-09-12 00:34:43', '2021-09-12 00:34:43');
-INSERT INTO `recipe_ingredient_category_list` VALUES (18, '肉制品', '2021-09-12 00:34:53', '2021-09-12 00:34:53');
-INSERT INTO `recipe_ingredient_category_list` VALUES (19, '其他肉类', '2021-09-12 00:35:02', '2021-09-12 00:35:02');
-INSERT INTO `recipe_ingredient_category_list` VALUES (20, '淡水鱼', '2021-09-12 00:35:09', '2021-09-12 00:35:09');
-INSERT INTO `recipe_ingredient_category_list` VALUES (21, '咸水鱼', '2021-09-12 00:35:15', '2021-09-12 00:35:15');
-INSERT INTO `recipe_ingredient_category_list` VALUES (22, '鱼制品', '2021-09-12 00:35:22', '2021-09-12 00:35:22');
-INSERT INTO `recipe_ingredient_category_list` VALUES (23, '虾', '2021-09-12 00:35:28', '2021-09-12 00:35:28');
-INSERT INTO `recipe_ingredient_category_list` VALUES (24, '蟹', '2021-09-12 00:35:34', '2021-09-12 00:35:34');
-INSERT INTO `recipe_ingredient_category_list` VALUES (25, '藻类', '2021-09-12 00:35:40', '2021-09-12 00:35:40');
-INSERT INTO `recipe_ingredient_category_list` VALUES (26, '贝', '2021-09-12 00:35:47', '2021-09-12 00:35:47');
-INSERT INTO `recipe_ingredient_category_list` VALUES (27, '其他水产', '2021-09-12 00:35:54', '2021-09-12 00:35:54');
-INSERT INTO `recipe_ingredient_category_list` VALUES (28, '蛋类', '2021-09-12 00:35:59', '2021-09-12 00:35:59');
-INSERT INTO `recipe_ingredient_category_list` VALUES (29, '奶类', '2021-09-12 00:36:03', '2021-09-12 00:36:03');
-INSERT INTO `recipe_ingredient_category_list` VALUES (30, '豆类', '2021-09-12 00:36:09', '2021-09-12 00:36:09');
-INSERT INTO `recipe_ingredient_category_list` VALUES (31, '豆制品', '2021-09-12 00:36:14', '2021-09-12 00:36:14');
-INSERT INTO `recipe_ingredient_category_list` VALUES (32, '水果', '2021-09-12 00:36:21', '2021-09-12 00:36:21');
-INSERT INTO `recipe_ingredient_category_list` VALUES (33, '干果', '2021-09-12 00:36:28', '2021-09-12 00:36:28');
-INSERT INTO `recipe_ingredient_category_list` VALUES (34, '药材', '2021-09-12 00:37:04', '2021-09-12 00:37:04');
-INSERT INTO `recipe_ingredient_category_list` VALUES (35, '调味品', '2021-09-12 00:37:15', '2021-09-12 01:20:21');
-
--- ----------------------------
--- Table structure for recipe_ingredient_list
--- ----------------------------
-DROP TABLE IF EXISTS `recipe_ingredient_list`;
-CREATE TABLE `recipe_ingredient_list`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `category_id` int NOT NULL,
-  `ingredient_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `create_time` datetime NULL DEFAULT NULL,
-  `update_time` datetime NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 669 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of recipe_ingredient_list
--- ----------------------------
-INSERT INTO `recipe_ingredient_list` VALUES (1, 1, '蔬菜', '2021-09-12 02:39:21', '2021-09-12 02:39:21');
-INSERT INTO `recipe_ingredient_list` VALUES (2, 1, '水果', '2021-09-12 02:39:40', '2021-09-12 02:39:40');
-INSERT INTO `recipe_ingredient_list` VALUES (3, 1, '薯类淀粉', '2021-09-12 02:39:53', '2021-09-12 02:39:53');
-INSERT INTO `recipe_ingredient_list` VALUES (4, 1, '菌藻', '2021-09-12 02:40:15', '2021-09-12 02:40:15');
-INSERT INTO `recipe_ingredient_list` VALUES (5, 2, '畜肉', '2021-09-12 02:40:42', '2021-09-12 02:40:42');
-INSERT INTO `recipe_ingredient_list` VALUES (6, 2, '禽肉', '2021-09-12 02:41:01', '2021-09-12 02:41:01');
-INSERT INTO `recipe_ingredient_list` VALUES (7, 2, '鱼虾蟹贝', '2021-09-12 02:41:16', '2021-09-12 02:41:16');
-INSERT INTO `recipe_ingredient_list` VALUES (8, 2, '蛋类', '2021-09-12 02:41:27', '2021-09-12 02:41:27');
-INSERT INTO `recipe_ingredient_list` VALUES (9, 3, '谷类', '2021-09-12 02:41:38', '2021-09-12 02:41:38');
-INSERT INTO `recipe_ingredient_list` VALUES (10, 3, '干豆', '2021-09-12 02:41:48', '2021-09-12 02:41:48');
-INSERT INTO `recipe_ingredient_list` VALUES (11, 3, '坚果种子', '2021-09-12 02:42:00', '2021-09-12 02:42:00');
-INSERT INTO `recipe_ingredient_list` VALUES (12, 4, '速食食品', '2021-09-12 02:42:14', '2021-09-12 02:42:14');
-INSERT INTO `recipe_ingredient_list` VALUES (13, 4, '婴幼儿食品', '2021-09-12 02:42:36', '2021-09-12 02:42:36');
-INSERT INTO `recipe_ingredient_list` VALUES (14, 4, '小吃甜饼', '2021-09-12 02:42:51', '2021-09-12 02:42:51');
-INSERT INTO `recipe_ingredient_list` VALUES (15, 4, '糖蜜饯', '2021-09-12 02:43:09', '2021-09-12 02:43:09');
-INSERT INTO `recipe_ingredient_list` VALUES (16, 4, '乳类', '2021-09-12 02:43:20', '2021-09-12 02:43:20');
-INSERT INTO `recipe_ingredient_list` VALUES (17, 4, '软饮料', '2021-09-12 02:43:35', '2021-09-12 02:43:35');
-INSERT INTO `recipe_ingredient_list` VALUES (18, 4, '酒精饮料', '2021-09-12 02:43:46', '2021-09-12 02:43:46');
-INSERT INTO `recipe_ingredient_list` VALUES (19, 5, '维生素A', '2021-09-12 02:43:58', '2021-09-12 02:43:58');
-INSERT INTO `recipe_ingredient_list` VALUES (20, 5, '维生素B1', '2021-09-12 02:44:08', '2021-09-12 02:44:08');
-INSERT INTO `recipe_ingredient_list` VALUES (21, 5, '维生素B2', '2021-09-12 02:44:19', '2021-09-12 02:44:19');
-INSERT INTO `recipe_ingredient_list` VALUES (22, 5, '维生素B6', '2021-09-12 02:44:30', '2021-09-12 02:44:30');
-INSERT INTO `recipe_ingredient_list` VALUES (23, 5, '维生素B12', '2021-09-12 02:44:39', '2021-09-12 02:44:39');
-INSERT INTO `recipe_ingredient_list` VALUES (24, 5, '维生素C', '2021-09-12 02:44:52', '2021-09-12 02:44:52');
-INSERT INTO `recipe_ingredient_list` VALUES (25, 5, '维生素E', '2021-09-12 02:45:01', '2021-09-12 02:45:01');
-INSERT INTO `recipe_ingredient_list` VALUES (26, 6, '阳虚质', '2021-09-12 02:45:19', '2021-09-12 02:45:19');
-INSERT INTO `recipe_ingredient_list` VALUES (27, 6, '阴虚质', '2021-09-12 02:45:30', '2021-09-12 02:45:30');
-INSERT INTO `recipe_ingredient_list` VALUES (28, 6, '气虚质', '2021-09-12 02:45:39', '2021-09-12 02:45:39');
-INSERT INTO `recipe_ingredient_list` VALUES (29, 6, '气郁质', '2021-09-12 02:45:57', '2021-09-12 02:45:57');
-INSERT INTO `recipe_ingredient_list` VALUES (30, 6, '痰湿质', '2021-09-12 02:46:10', '2021-09-12 02:46:10');
-INSERT INTO `recipe_ingredient_list` VALUES (31, 6, '湿热质', '2021-09-12 02:46:21', '2021-09-12 02:46:21');
-INSERT INTO `recipe_ingredient_list` VALUES (32, 6, '血瘀质', '2021-09-12 02:46:34', '2021-09-12 02:46:34');
-INSERT INTO `recipe_ingredient_list` VALUES (33, 6, '特禀质', '2021-09-12 02:46:45', '2021-09-12 02:46:45');
-INSERT INTO `recipe_ingredient_list` VALUES (34, 6, '平和质', '2021-09-12 02:46:56', '2021-09-12 02:46:56');
-INSERT INTO `recipe_ingredient_list` VALUES (35, 7, '白菜', '2021-09-12 02:47:13', '2021-09-12 02:47:13');
-INSERT INTO `recipe_ingredient_list` VALUES (36, 7, '菜花', '2021-09-12 02:47:32', '2021-09-12 02:47:32');
-INSERT INTO `recipe_ingredient_list` VALUES (37, 7, '小白菜', '2021-09-12 02:47:41', '2021-09-12 02:47:41');
-INSERT INTO `recipe_ingredient_list` VALUES (38, 7, '娃娃菜', '2021-09-12 02:47:49', '2021-09-12 02:47:49');
-INSERT INTO `recipe_ingredient_list` VALUES (39, 7, '芥菜', '2021-09-12 02:47:57', '2021-09-12 02:47:57');
-INSERT INTO `recipe_ingredient_list` VALUES (40, 7, '茼蒿', '2021-09-12 02:48:09', '2021-09-12 02:48:09');
-INSERT INTO `recipe_ingredient_list` VALUES (41, 7, '梅菜', '2021-09-12 02:48:23', '2021-09-12 02:48:23');
-INSERT INTO `recipe_ingredient_list` VALUES (42, 7, '茴香', '2021-09-12 02:48:34', '2021-09-12 02:48:34');
-INSERT INTO `recipe_ingredient_list` VALUES (43, 7, '苦菊', '2021-09-12 02:48:43', '2021-09-12 02:48:43');
-INSERT INTO `recipe_ingredient_list` VALUES (44, 7, '春笋', '2021-09-12 02:48:52', '2021-09-12 02:48:52');
-INSERT INTO `recipe_ingredient_list` VALUES (45, 7, '木耳菜', '2021-09-12 02:49:03', '2021-09-12 02:49:03');
-INSERT INTO `recipe_ingredient_list` VALUES (46, 7, '萝卜苗', '2021-09-12 02:49:15', '2021-09-12 02:49:15');
-INSERT INTO `recipe_ingredient_list` VALUES (47, 7, '香芹', '2021-09-12 02:49:26', '2021-09-12 02:49:26');
-INSERT INTO `recipe_ingredient_list` VALUES (48, 7, '苜蓿', '2021-09-12 02:49:39', '2021-09-12 02:49:39');
-INSERT INTO `recipe_ingredient_list` VALUES (49, 7, '雪菜', '2021-09-12 02:49:47', '2021-09-12 02:49:47');
-INSERT INTO `recipe_ingredient_list` VALUES (50, 7, '芝麻菜', '2021-09-12 02:49:58', '2021-09-12 02:49:58');
-INSERT INTO `recipe_ingredient_list` VALUES (51, 7, '刺儿菜', '2021-09-12 02:50:10', '2021-09-12 02:50:10');
-INSERT INTO `recipe_ingredient_list` VALUES (52, 7, '萝卜叶', '2021-09-12 02:50:27', '2021-09-12 02:50:27');
-INSERT INTO `recipe_ingredient_list` VALUES (53, 7, '豆瓣菜', '2021-09-12 02:50:39', '2021-09-12 02:50:39');
-INSERT INTO `recipe_ingredient_list` VALUES (54, 7, '紫背天葵', '2021-09-12 02:50:51', '2021-09-12 02:50:51');
-INSERT INTO `recipe_ingredient_list` VALUES (55, 7, '莼菜', '2021-09-12 02:51:03', '2021-09-12 02:51:03');
-INSERT INTO `recipe_ingredient_list` VALUES (56, 7, '芹菜', '2021-09-12 02:51:14', '2021-09-12 02:51:14');
-INSERT INTO `recipe_ingredient_list` VALUES (57, 7, '西兰花', '2021-09-12 02:51:34', '2021-09-12 02:51:34');
-INSERT INTO `recipe_ingredient_list` VALUES (58, 7, '卷心菜', '2021-09-12 02:51:44', '2021-09-12 02:51:44');
-INSERT INTO `recipe_ingredient_list` VALUES (59, 7, '油菜', '2021-09-12 02:51:55', '2021-09-12 02:51:55');
-INSERT INTO `recipe_ingredient_list` VALUES (60, 7, '西芹', '2021-09-12 02:52:04', '2021-09-12 02:52:04');
-INSERT INTO `recipe_ingredient_list` VALUES (61, 7, '竹笋', '2021-09-12 02:52:11', '2021-09-12 02:52:11');
-INSERT INTO `recipe_ingredient_list` VALUES (62, 7, '芦笋', '2021-09-12 02:52:20', '2021-09-12 02:52:20');
-INSERT INTO `recipe_ingredient_list` VALUES (63, 7, '梅干菜', '2021-09-12 02:52:31', '2021-09-12 02:52:31');
-INSERT INTO `recipe_ingredient_list` VALUES (64, 7, '芦荟', '2021-09-12 02:52:38', '2021-09-12 02:52:38');
-INSERT INTO `recipe_ingredient_list` VALUES (65, 7, '空心菜', '2021-09-12 02:52:46', '2021-09-12 02:52:46');
-INSERT INTO `recipe_ingredient_list` VALUES (66, 7, '豌豆尖', '2021-09-12 02:52:53', '2021-09-12 02:52:53');
-INSERT INTO `recipe_ingredient_list` VALUES (67, 7, '圆生菜', '2021-09-12 02:53:05', '2021-09-12 02:53:05');
-INSERT INTO `recipe_ingredient_list` VALUES (68, 7, '香菜', '2021-09-12 02:53:12', '2021-09-12 02:53:12');
-INSERT INTO `recipe_ingredient_list` VALUES (69, 7, '韭菜', '2021-09-12 02:53:18', '2021-09-12 02:53:18');
-INSERT INTO `recipe_ingredient_list` VALUES (70, 7, '黄花菜', '2021-09-12 02:53:28', '2021-09-12 02:53:28');
-INSERT INTO `recipe_ingredient_list` VALUES (71, 7, '红菜苔', '2021-09-12 02:53:39', '2021-09-12 02:53:39');
-INSERT INTO `recipe_ingredient_list` VALUES (72, 7, '枸杞菜', '2021-09-12 02:53:51', '2021-09-12 02:53:51');
-INSERT INTO `recipe_ingredient_list` VALUES (73, 7, '蒲菜', '2021-09-12 02:54:00', '2021-09-12 02:54:00');
-INSERT INTO `recipe_ingredient_list` VALUES (74, 7, '马齿苋', '2021-09-12 02:54:11', '2021-09-12 02:54:11');
-INSERT INTO `recipe_ingredient_list` VALUES (75, 7, '龙蒿', '2021-09-12 02:54:26', '2021-09-12 02:54:26');
-INSERT INTO `recipe_ingredient_list` VALUES (76, 7, '菠菜', '2021-09-12 02:54:34', '2021-09-12 02:54:34');
-INSERT INTO `recipe_ingredient_list` VALUES (77, 7, '酸白菜', '2021-09-12 02:54:44', '2021-09-12 02:54:44');
-INSERT INTO `recipe_ingredient_list` VALUES (78, 7, '莴笋', '2021-09-12 02:54:52', '2021-09-12 02:54:52');
-INSERT INTO `recipe_ingredient_list` VALUES (79, 7, '百合', '2021-09-12 02:55:00', '2021-09-12 02:55:00');
-INSERT INTO `recipe_ingredient_list` VALUES (80, 7, '苋菜', '2021-09-12 02:55:12', '2021-09-12 02:55:12');
-INSERT INTO `recipe_ingredient_list` VALUES (81, 7, '紫甘蓝', '2021-09-12 02:55:20', '2021-09-12 02:55:20');
-INSERT INTO `recipe_ingredient_list` VALUES (82, 7, '荠菜', '2021-09-12 02:55:30', '2021-09-12 02:55:30');
-INSERT INTO `recipe_ingredient_list` VALUES (83, 7, '芹菜叶', '2021-09-12 02:55:39', '2021-09-12 02:55:39');
-INSERT INTO `recipe_ingredient_list` VALUES (84, 7, '芥兰', '2021-09-12 02:55:49', '2021-09-12 02:55:49');
-INSERT INTO `recipe_ingredient_list` VALUES (85, 7, '橄榄菜', '2021-09-12 02:55:58', '2021-09-12 02:55:58');
-INSERT INTO `recipe_ingredient_list` VALUES (86, 7, '油麦菜', '2021-09-12 02:56:09', '2021-09-12 02:56:09');
-INSERT INTO `recipe_ingredient_list` VALUES (87, 7, '芥蓝', '2021-09-12 02:56:24', '2021-09-12 02:56:24');
-INSERT INTO `recipe_ingredient_list` VALUES (88, 7, '霸王花', '2021-09-12 02:56:32', '2021-09-12 02:56:32');
-INSERT INTO `recipe_ingredient_list` VALUES (89, 7, '生菜', '2021-09-12 02:56:41', '2021-09-12 02:56:41');
-INSERT INTO `recipe_ingredient_list` VALUES (90, 7, '马兰头', '2021-09-12 02:56:49', '2021-09-12 02:56:49');
-INSERT INTO `recipe_ingredient_list` VALUES (91, 7, '刺老芽', '2021-09-12 02:56:58', '2021-09-12 02:56:58');
-INSERT INTO `recipe_ingredient_list` VALUES (92, 7, '菊花脑', '2021-09-12 02:57:05', '2021-09-12 02:57:05');
-INSERT INTO `recipe_ingredient_list` VALUES (93, 7, '藜蒿', '2021-09-12 02:57:17', '2021-09-12 02:57:17');
-INSERT INTO `recipe_ingredient_list` VALUES (94, 7, '牛心菜', '2021-09-12 02:57:25', '2021-09-12 02:57:25');
-INSERT INTO `recipe_ingredient_list` VALUES (95, 7, '槐米', '2021-09-12 02:57:35', '2021-09-12 02:57:35');
-INSERT INTO `recipe_ingredient_list` VALUES (96, 8, '土豆', '2021-09-12 02:57:46', '2021-09-12 02:57:46');
-INSERT INTO `recipe_ingredient_list` VALUES (97, 8, '胡萝卜', '2021-09-12 02:57:59', '2021-09-12 02:57:59');
-INSERT INTO `recipe_ingredient_list` VALUES (98, 8, '魔芋', '2021-09-12 02:58:08', '2021-09-12 02:58:08');
-INSERT INTO `recipe_ingredient_list` VALUES (99, 8, '牛蒡', '2021-09-12 02:58:18', '2021-09-12 02:58:18');
-INSERT INTO `recipe_ingredient_list` VALUES (100, 8, '青萝卜', '2021-09-12 02:58:26', '2021-09-12 02:58:26');
-INSERT INTO `recipe_ingredient_list` VALUES (101, 8, '菱角', '2021-09-12 02:58:38', '2021-09-12 02:58:38');
-INSERT INTO `recipe_ingredient_list` VALUES (102, 8, '心里美萝卜', '2021-09-12 02:58:47', '2021-09-12 02:58:47');
-INSERT INTO `recipe_ingredient_list` VALUES (103, 8, '野蒜', '2021-09-12 02:59:02', '2021-09-12 02:59:02');
-INSERT INTO `recipe_ingredient_list` VALUES (104, 8, '苤蓝', '2021-09-12 02:59:11', '2021-09-12 02:59:11');
-INSERT INTO `recipe_ingredient_list` VALUES (105, 8, '红薯', '2021-09-12 02:59:18', '2021-09-12 02:59:18');
-INSERT INTO `recipe_ingredient_list` VALUES (106, 8, '白萝卜', '2021-09-12 02:59:25', '2021-09-12 02:59:25');
-INSERT INTO `recipe_ingredient_list` VALUES (107, 8, '山药', '2021-09-12 02:59:35', '2021-09-12 02:59:35');
-INSERT INTO `recipe_ingredient_list` VALUES (108, 8, '荸荠', '2021-09-12 02:59:46', '2021-09-12 02:59:46');
-INSERT INTO `recipe_ingredient_list` VALUES (109, 8, '春笋', '2021-09-12 03:03:14', '2021-09-12 03:03:14');
-INSERT INTO `recipe_ingredient_list` VALUES (110, 8, '慈菇', '2021-09-12 03:03:42', '2021-09-12 03:03:42');
-INSERT INTO `recipe_ingredient_list` VALUES (111, 8, '甜菜根', '2021-09-12 03:03:57', '2021-09-12 03:03:57');
-INSERT INTO `recipe_ingredient_list` VALUES (112, 8, '藠头', '2021-09-12 03:04:09', '2021-09-12 03:04:09');
-INSERT INTO `recipe_ingredient_list` VALUES (113, 8, '芋头', '2021-09-12 03:04:18', '2021-09-12 03:04:18');
-INSERT INTO `recipe_ingredient_list` VALUES (114, 8, '竹笋', '2021-09-12 03:04:26', '2021-09-12 03:04:26');
-INSERT INTO `recipe_ingredient_list` VALUES (115, 8, '藕', '2021-09-12 03:04:57', '2021-09-12 03:04:57');
-INSERT INTO `recipe_ingredient_list` VALUES (116, 8, '紫薯', '2021-09-12 03:05:05', '2021-09-12 03:05:05');
-INSERT INTO `recipe_ingredient_list` VALUES (117, 8, '冬笋', '2021-09-12 03:05:11', '2021-09-12 03:05:11');
-INSERT INTO `recipe_ingredient_list` VALUES (118, 8, '藕带', '2021-09-12 03:05:19', '2021-09-12 03:05:19');
-INSERT INTO `recipe_ingredient_list` VALUES (119, 8, '红萝卜', '2021-09-12 03:05:29', '2021-09-12 03:05:29');
-INSERT INTO `recipe_ingredient_list` VALUES (120, 8, '铁棍山药', '2021-09-12 03:05:38', '2021-09-12 03:05:38');
-INSERT INTO `recipe_ingredient_list` VALUES (121, 9, '茄子', '2021-09-12 03:05:47', '2021-09-12 03:05:47');
-INSERT INTO `recipe_ingredient_list` VALUES (122, 9, '黄瓜', '2021-09-12 03:05:56', '2021-09-12 03:05:56');
-INSERT INTO `recipe_ingredient_list` VALUES (123, 9, '南瓜', '2021-09-12 03:06:06', '2021-09-12 03:06:06');
-INSERT INTO `recipe_ingredient_list` VALUES (124, 9, '葫芦', '2021-09-12 03:06:15', '2021-09-12 03:06:15');
-INSERT INTO `recipe_ingredient_list` VALUES (125, 9, '佛手瓜', '2021-09-12 03:06:27', '2021-09-12 03:06:27');
-INSERT INTO `recipe_ingredient_list` VALUES (126, 9, '辣椒', '2021-09-12 03:06:34', '2021-09-12 03:06:34');
-INSERT INTO `recipe_ingredient_list` VALUES (127, 9, '黄秋葵', '2021-09-12 03:06:43', '2021-09-12 03:06:43');
-INSERT INTO `recipe_ingredient_list` VALUES (128, 9, '青椒', '2021-09-12 03:06:52', '2021-09-12 03:06:52');
-INSERT INTO `recipe_ingredient_list` VALUES (129, 9, '冬瓜', '2021-09-12 03:06:59', '2021-09-12 03:06:59');
-INSERT INTO `recipe_ingredient_list` VALUES (130, 9, '丝瓜', '2021-09-12 03:07:05', '2021-09-12 03:07:05');
-INSERT INTO `recipe_ingredient_list` VALUES (131, 9, '红椒', '2021-09-12 03:07:13', '2021-09-12 03:07:13');
-INSERT INTO `recipe_ingredient_list` VALUES (132, 9, '彩椒', '2021-09-12 03:07:34', '2021-09-12 03:07:34');
-INSERT INTO `recipe_ingredient_list` VALUES (133, 9, '茄子（绿皮）', '2021-09-12 03:07:50', '2021-09-12 03:07:50');
-INSERT INTO `recipe_ingredient_list` VALUES (134, 9, '方瓜', '2021-09-12 03:08:00', '2021-09-12 03:08:00');
-INSERT INTO `recipe_ingredient_list` VALUES (135, 9, '西红柿', '2021-09-12 03:08:07', '2021-09-12 03:08:07');
-INSERT INTO `recipe_ingredient_list` VALUES (136, 9, '苦瓜', '2021-09-12 03:08:14', '2021-09-12 03:08:14');
-INSERT INTO `recipe_ingredient_list` VALUES (137, 9, '西葫芦', '2021-09-12 03:08:23', '2021-09-12 03:08:23');
-INSERT INTO `recipe_ingredient_list` VALUES (138, 9, '瓠瓜', '2021-09-12 03:08:36', '2021-09-12 03:08:36');
-INSERT INTO `recipe_ingredient_list` VALUES (139, 9, '茄子（圆）', '2021-09-12 03:08:45', '2021-09-12 03:08:45');
-INSERT INTO `recipe_ingredient_list` VALUES (140, 9, '笋瓜', '2021-09-12 03:08:54', '2021-09-12 03:08:54');
-INSERT INTO `recipe_ingredient_list` VALUES (141, 9, '节瓜', '2021-09-12 03:09:02', '2021-09-12 03:09:02');
-INSERT INTO `recipe_ingredient_list` VALUES (142, 10, '香菇', '2021-09-12 03:09:11', '2021-09-12 03:09:11');
-INSERT INTO `recipe_ingredient_list` VALUES (143, 10, '平菇', '2021-09-12 03:09:22', '2021-09-12 03:09:22');
-INSERT INTO `recipe_ingredient_list` VALUES (144, 10, '茶树菇', '2021-09-12 03:09:32', '2021-09-12 03:09:59');
-INSERT INTO `recipe_ingredient_list` VALUES (145, 10, '猴头菇', '2021-09-12 03:09:40', '2021-09-12 03:09:54');
-INSERT INTO `recipe_ingredient_list` VALUES (146, 10, '蘑菇', '2021-09-12 03:09:48', '2021-09-12 03:09:48');
-INSERT INTO `recipe_ingredient_list` VALUES (147, 10, '雪莲菌', '2021-09-12 03:10:11', '2021-09-12 03:10:11');
-INSERT INTO `recipe_ingredient_list` VALUES (148, 10, '木耳（水发）', '2021-09-12 03:10:21', '2021-09-12 03:10:21');
-INSERT INTO `recipe_ingredient_list` VALUES (149, 10, '鸡油菌', '2021-09-12 03:10:31', '2021-09-12 03:10:31');
-INSERT INTO `recipe_ingredient_list` VALUES (150, 10, '地衣（水浸）', '2021-09-12 03:10:40', '2021-09-12 03:10:40');
-INSERT INTO `recipe_ingredient_list` VALUES (151, 10, '虫草花', '2021-09-12 03:10:50', '2021-09-12 03:10:50');
-INSERT INTO `recipe_ingredient_list` VALUES (152, 10, '金针菇', '2021-09-12 03:10:59', '2021-09-12 03:10:59');
-INSERT INTO `recipe_ingredient_list` VALUES (153, 10, '草菇', '2021-09-12 03:11:07', '2021-09-12 03:11:07');
-INSERT INTO `recipe_ingredient_list` VALUES (154, 10, '木耳', '2021-09-12 03:11:12', '2021-09-12 03:11:12');
-INSERT INTO `recipe_ingredient_list` VALUES (155, 10, '白蘑菇', '2021-09-12 03:11:20', '2021-09-12 03:11:20');
-INSERT INTO `recipe_ingredient_list` VALUES (156, 10, '竹笋', '2021-09-12 03:11:29', '2021-09-12 03:11:29');
-INSERT INTO `recipe_ingredient_list` VALUES (157, 10, '羊肚菌', '2021-09-12 03:11:38', '2021-09-12 03:11:38');
-INSERT INTO `recipe_ingredient_list` VALUES (158, 10, '榛蘑', '2021-09-12 03:11:47', '2021-09-12 03:11:47');
-INSERT INTO `recipe_ingredient_list` VALUES (159, 10, '乳牛肝菌（干）', '2021-09-12 03:11:56', '2021-09-12 03:11:56');
-INSERT INTO `recipe_ingredient_list` VALUES (160, 10, '红菌菇', '2021-09-12 03:12:13', '2021-09-12 03:12:13');
-INSERT INTO `recipe_ingredient_list` VALUES (161, 10, '杏鲍菇', '2021-09-12 03:12:21', '2021-09-12 03:12:21');
-INSERT INTO `recipe_ingredient_list` VALUES (162, 10, '口蘑', '2021-09-12 03:12:32', '2021-09-12 03:12:32');
-INSERT INTO `recipe_ingredient_list` VALUES (163, 10, '银耳', '2021-09-12 03:12:41', '2021-09-12 03:12:41');
-INSERT INTO `recipe_ingredient_list` VALUES (164, 10, '蟹味菇', '2021-09-12 03:12:53', '2021-09-12 03:12:53');
-INSERT INTO `recipe_ingredient_list` VALUES (165, 10, '鸡腿菇', '2021-09-12 03:13:00', '2021-09-12 03:13:00');
-INSERT INTO `recipe_ingredient_list` VALUES (166, 10, '元蘑', '2021-09-12 03:13:11', '2021-09-12 03:13:11');
-INSERT INTO `recipe_ingredient_list` VALUES (167, 10, '海鲜菇', '2021-09-12 03:13:19', '2021-09-12 03:13:19');
-INSERT INTO `recipe_ingredient_list` VALUES (168, 10, '干香菇', '2021-09-12 03:13:26', '2021-09-12 03:13:26');
-INSERT INTO `recipe_ingredient_list` VALUES (169, 10, '松蘑', '2021-09-12 03:13:35', '2021-09-12 03:13:35');
-INSERT INTO `recipe_ingredient_list` VALUES (170, 11, '洋葱', '2021-09-12 03:14:05', '2021-09-12 03:14:05');
-INSERT INTO `recipe_ingredient_list` VALUES (171, 11, '韭黄', '2021-09-12 03:14:14', '2021-09-12 03:14:14');
-INSERT INTO `recipe_ingredient_list` VALUES (172, 11, '大蒜', '2021-09-12 03:14:21', '2021-09-12 03:14:21');
-INSERT INTO `recipe_ingredient_list` VALUES (173, 11, '葱白', '2021-09-12 03:14:27', '2021-09-12 03:14:27');
-INSERT INTO `recipe_ingredient_list` VALUES (174, 11, '韭菜', '2021-09-12 03:14:36', '2021-09-12 03:14:36');
-INSERT INTO `recipe_ingredient_list` VALUES (175, 11, '大葱', '2021-09-12 03:14:49', '2021-09-12 03:14:49');
-INSERT INTO `recipe_ingredient_list` VALUES (176, 11, '小葱', '2021-09-12 03:14:55', '2021-09-12 03:14:55');
-INSERT INTO `recipe_ingredient_list` VALUES (177, 11, '青蒜', '2021-09-12 03:15:06', '2021-09-12 03:15:06');
-INSERT INTO `recipe_ingredient_list` VALUES (178, 11, '蒜苔', '2021-09-12 03:15:24', '2021-09-12 03:15:24');
-INSERT INTO `recipe_ingredient_list` VALUES (179, 11, '蒜', '2021-09-12 03:15:30', '2021-09-12 03:15:30');
-INSERT INTO `recipe_ingredient_list` VALUES (180, 11, '蒜苗', '2021-09-12 03:15:40', '2021-09-12 03:15:40');
-INSERT INTO `recipe_ingredient_list` VALUES (181, 12, '豆角', '2021-09-12 03:15:52', '2021-09-12 03:15:52');
-INSERT INTO `recipe_ingredient_list` VALUES (182, 12, '绿豆芽', '2021-09-12 03:16:02', '2021-09-12 03:16:02');
-INSERT INTO `recipe_ingredient_list` VALUES (183, 12, '扁豆', '2021-09-12 03:16:10', '2021-09-12 03:16:10');
-INSERT INTO `recipe_ingredient_list` VALUES (184, 12, '刀豆', '2021-09-12 03:16:17', '2021-09-12 03:16:17');
-INSERT INTO `recipe_ingredient_list` VALUES (185, 12, '芸豆', '2021-09-12 03:16:27', '2021-09-12 03:16:27');
-INSERT INTO `recipe_ingredient_list` VALUES (186, 12, '山药豆', '2021-09-12 03:16:36', '2021-09-12 03:16:36');
-INSERT INTO `recipe_ingredient_list` VALUES (187, 12, '四季豆', '2021-09-12 03:16:46', '2021-09-12 03:16:46');
-INSERT INTO `recipe_ingredient_list` VALUES (188, 12, '黄豆芽', '2021-09-12 03:16:54', '2021-09-12 03:16:54');
-INSERT INTO `recipe_ingredient_list` VALUES (189, 12, '豌豆苗', '2021-09-12 03:17:01', '2021-09-12 03:17:01');
-INSERT INTO `recipe_ingredient_list` VALUES (190, 12, '蚕豆', '2021-09-12 03:17:22', '2021-09-12 03:17:22');
-INSERT INTO `recipe_ingredient_list` VALUES (191, 12, '荷兰豆', '2021-09-12 03:17:30', '2021-09-12 03:17:30');
-INSERT INTO `recipe_ingredient_list` VALUES (192, 12, '毛豆', '2021-09-12 03:17:41', '2021-09-12 03:17:41');
-INSERT INTO `recipe_ingredient_list` VALUES (193, 12, '豇豆', '2021-09-12 03:17:50', '2021-09-12 03:17:50');
-INSERT INTO `recipe_ingredient_list` VALUES (194, 12, '豆荚', '2021-09-12 03:17:59', '2021-09-12 03:17:59');
-INSERT INTO `recipe_ingredient_list` VALUES (195, 12, '鲜豌豆', '2021-09-12 03:19:23', '2021-09-12 03:19:23');
-INSERT INTO `recipe_ingredient_list` VALUES (196, 13, '猪小排', '2021-09-12 03:19:35', '2021-09-12 03:19:35');
-INSERT INTO `recipe_ingredient_list` VALUES (197, 13, '五花肉', '2021-09-12 03:19:43', '2021-09-12 03:19:43');
-INSERT INTO `recipe_ingredient_list` VALUES (198, 13, '猪血', '2021-09-12 03:19:56', '2021-09-12 03:19:56');
-INSERT INTO `recipe_ingredient_list` VALUES (199, 13, '猪肘', '2021-09-12 03:20:06', '2021-09-12 03:20:06');
-INSERT INTO `recipe_ingredient_list` VALUES (200, 13, '猪肺', '2021-09-12 03:20:18', '2021-09-12 03:20:18');
-INSERT INTO `recipe_ingredient_list` VALUES (201, 13, '排骨', '2021-09-12 03:20:25', '2021-09-12 03:20:25');
-INSERT INTO `recipe_ingredient_list` VALUES (202, 13, '猪排', '2021-09-12 03:20:32', '2021-09-12 03:20:32');
-INSERT INTO `recipe_ingredient_list` VALUES (203, 13, '猪肉', '2021-09-12 03:20:40', '2021-09-12 03:20:40');
-INSERT INTO `recipe_ingredient_list` VALUES (204, 13, '猪肝', '2021-09-12 03:20:48', '2021-09-12 03:20:48');
-INSERT INTO `recipe_ingredient_list` VALUES (205, 13, '猪腰', '2021-09-12 03:20:56', '2021-09-12 03:20:56');
-INSERT INTO `recipe_ingredient_list` VALUES (206, 13, '猪耳朵', '2021-09-12 03:21:06', '2021-09-12 03:21:06');
-INSERT INTO `recipe_ingredient_list` VALUES (207, 13, '猪大肠', '2021-09-12 03:21:13', '2021-09-12 03:21:13');
-INSERT INTO `recipe_ingredient_list` VALUES (208, 13, '猪里脊肉', '2021-09-12 03:21:24', '2021-09-12 03:21:24');
-INSERT INTO `recipe_ingredient_list` VALUES (209, 13, '猪舌头', '2021-09-12 03:21:33', '2021-09-12 03:21:33');
-INSERT INTO `recipe_ingredient_list` VALUES (210, 13, '猪蹄', '2021-09-12 03:21:40', '2021-09-12 03:21:40');
-INSERT INTO `recipe_ingredient_list` VALUES (211, 13, '猪肚', '2021-09-12 03:21:47', '2021-09-12 03:21:47');
-INSERT INTO `recipe_ingredient_list` VALUES (212, 13, '猪皮', '2021-09-12 03:21:59', '2021-09-12 03:21:59');
-INSERT INTO `recipe_ingredient_list` VALUES (213, 13, '猪心', '2021-09-12 03:22:07', '2021-09-12 03:22:07');
-INSERT INTO `recipe_ingredient_list` VALUES (214, 13, '猪大骨头', '2021-09-12 03:22:19', '2021-09-12 03:22:19');
-INSERT INTO `recipe_ingredient_list` VALUES (215, 13, '猪脑', '2021-09-12 03:22:26', '2021-09-12 03:22:26');
-INSERT INTO `recipe_ingredient_list` VALUES (216, 14, '牛肉', '2021-09-12 03:22:36', '2021-09-12 03:22:36');
-INSERT INTO `recipe_ingredient_list` VALUES (217, 14, '牛肚', '2021-09-12 03:22:44', '2021-09-12 03:22:44');
-INSERT INTO `recipe_ingredient_list` VALUES (218, 14, '牛筋', '2021-09-12 03:22:54', '2021-09-12 03:22:54');
-INSERT INTO `recipe_ingredient_list` VALUES (219, 14, '牛仔骨', '2021-09-12 03:23:01', '2021-09-12 03:23:01');
-INSERT INTO `recipe_ingredient_list` VALUES (220, 14, '牛肾', '2021-09-12 03:23:20', '2021-09-12 03:23:20');
-INSERT INTO `recipe_ingredient_list` VALUES (221, 14, '牛排', '2021-09-12 03:23:30', '2021-09-12 03:23:30');
-INSERT INTO `recipe_ingredient_list` VALUES (222, 14, '牛尾', '2021-09-12 03:23:38', '2021-09-12 03:23:38');
-INSERT INTO `recipe_ingredient_list` VALUES (223, 14, '牛骨', '2021-09-12 03:23:49', '2021-09-12 03:23:49');
-INSERT INTO `recipe_ingredient_list` VALUES (224, 14, '牛腩', '2021-09-12 03:23:56', '2021-09-12 03:23:56');
-INSERT INTO `recipe_ingredient_list` VALUES (225, 14, '牛鞭', '2021-09-12 03:24:05', '2021-09-12 03:24:05');
-INSERT INTO `recipe_ingredient_list` VALUES (226, 14, '肥牛', '2021-09-12 03:24:11', '2021-09-12 03:24:11');
-INSERT INTO `recipe_ingredient_list` VALUES (227, 14, '牛柳', '2021-09-12 03:24:18', '2021-09-12 03:24:18');
-INSERT INTO `recipe_ingredient_list` VALUES (228, 14, '牛蹄筋', '2021-09-12 03:24:27', '2021-09-12 03:24:27');
-INSERT INTO `recipe_ingredient_list` VALUES (229, 14, '牛肺', '2021-09-12 03:24:37', '2021-09-12 03:24:37');
-INSERT INTO `recipe_ingredient_list` VALUES (230, 15, '羊肉', '2021-09-12 03:24:47', '2021-09-12 03:24:47');
-INSERT INTO `recipe_ingredient_list` VALUES (231, 15, '羊蝎子', '2021-09-12 03:24:57', '2021-09-12 03:24:57');
-INSERT INTO `recipe_ingredient_list` VALUES (232, 15, '羊肾', '2021-09-12 03:25:14', '2021-09-12 03:25:14');
-INSERT INTO `recipe_ingredient_list` VALUES (233, 15, '羊排', '2021-09-12 03:25:22', '2021-09-12 03:25:22');
-INSERT INTO `recipe_ingredient_list` VALUES (234, 15, '羊肝', '2021-09-12 03:25:35', '2021-09-12 03:25:35');
-INSERT INTO `recipe_ingredient_list` VALUES (235, 15, '羊血', '2021-09-12 03:25:45', '2021-09-12 03:25:45');
-INSERT INTO `recipe_ingredient_list` VALUES (236, 15, '羊腿', '2021-09-12 03:25:53', '2021-09-12 03:25:53');
-INSERT INTO `recipe_ingredient_list` VALUES (237, 15, '羊肚', '2021-09-12 03:26:03', '2021-09-12 03:26:03');
-INSERT INTO `recipe_ingredient_list` VALUES (238, 15, '羊骨', '2021-09-12 03:26:11', '2021-09-12 03:26:11');
-INSERT INTO `recipe_ingredient_list` VALUES (239, 16, '鸡翅', '2021-09-12 03:26:31', '2021-09-12 03:26:31');
-INSERT INTO `recipe_ingredient_list` VALUES (240, 16, '鸡爪', '2021-09-12 03:26:41', '2021-09-12 03:27:03');
-INSERT INTO `recipe_ingredient_list` VALUES (241, 16, '鸡心', '2021-09-12 03:27:12', '2021-09-12 03:27:12');
-INSERT INTO `recipe_ingredient_list` VALUES (242, 16, '童子鸡', '2021-09-12 03:27:19', '2021-09-12 03:27:19');
-INSERT INTO `recipe_ingredient_list` VALUES (243, 16, '柴鸡', '2021-09-12 03:27:41', '2021-09-12 03:27:41');
-INSERT INTO `recipe_ingredient_list` VALUES (244, 16, '鸡腿', '2021-09-12 03:27:48', '2021-09-12 03:27:48');
-INSERT INTO `recipe_ingredient_list` VALUES (245, 16, '鸡胗', '2021-09-12 03:27:57', '2021-09-12 03:27:57');
-INSERT INTO `recipe_ingredient_list` VALUES (246, 16, '鸡肝', '2021-09-12 03:28:04', '2021-09-12 03:28:04');
-INSERT INTO `recipe_ingredient_list` VALUES (247, 16, '乌骨鸡', '2021-09-12 03:28:11', '2021-09-12 03:28:11');
-INSERT INTO `recipe_ingredient_list` VALUES (248, 16, '鸡血', '2021-09-12 03:28:17', '2021-09-12 03:28:17');
-INSERT INTO `recipe_ingredient_list` VALUES (249, 16, '鸡肉', '2021-09-12 03:28:25', '2021-09-12 03:28:25');
-INSERT INTO `recipe_ingredient_list` VALUES (250, 16, '鸡翅根', '2021-09-12 03:28:34', '2021-09-12 03:28:34');
-INSERT INTO `recipe_ingredient_list` VALUES (251, 16, '鸡脖', '2021-09-12 03:28:43', '2021-09-12 03:28:43');
-INSERT INTO `recipe_ingredient_list` VALUES (252, 16, '三黄鸡', '2021-09-12 03:28:53', '2021-09-12 03:28:53');
-INSERT INTO `recipe_ingredient_list` VALUES (253, 16, '鸡翅中', '2021-09-12 03:29:01', '2021-09-12 03:29:01');
-INSERT INTO `recipe_ingredient_list` VALUES (254, 17, '鸭肉', '2021-09-12 03:29:09', '2021-09-12 03:29:09');
-INSERT INTO `recipe_ingredient_list` VALUES (255, 17, '鸭胗', '2021-09-12 03:29:17', '2021-09-12 03:29:17');
-INSERT INTO `recipe_ingredient_list` VALUES (256, 17, '鸭掌', '2021-09-12 03:29:30', '2021-09-12 03:29:30');
-INSERT INTO `recipe_ingredient_list` VALUES (257, 17, '鸭肝', '2021-09-12 03:29:39', '2021-09-12 03:29:39');
-INSERT INTO `recipe_ingredient_list` VALUES (258, 17, '鸭腿', '2021-09-12 03:29:46', '2021-09-12 03:29:46');
-INSERT INTO `recipe_ingredient_list` VALUES (259, 17, '鸭翅', '2021-09-12 03:29:53', '2021-09-12 03:29:53');
-INSERT INTO `recipe_ingredient_list` VALUES (260, 17, '鸭头', '2021-09-12 03:30:01', '2021-09-12 03:30:01');
-INSERT INTO `recipe_ingredient_list` VALUES (261, 17, '鸭血', '2021-09-12 03:30:10', '2021-09-12 03:30:10');
-INSERT INTO `recipe_ingredient_list` VALUES (262, 17, '鸭舌', '2021-09-12 03:30:18', '2021-09-12 03:30:18');
-INSERT INTO `recipe_ingredient_list` VALUES (263, 17, '鸭肠', '2021-09-12 03:30:28', '2021-09-12 03:30:28');
-INSERT INTO `recipe_ingredient_list` VALUES (264, 18, '腊肉', '2021-09-12 03:30:37', '2021-09-12 03:30:37');
-INSERT INTO `recipe_ingredient_list` VALUES (265, 18, '咸肉', '2021-09-12 03:30:46', '2021-09-12 03:30:46');
-INSERT INTO `recipe_ingredient_list` VALUES (266, 18, '午餐肉', '2021-09-12 03:30:55', '2021-09-12 03:30:55');
-INSERT INTO `recipe_ingredient_list` VALUES (267, 18, '腊鱼', '2021-09-12 03:31:06', '2021-09-12 03:31:06');
-INSERT INTO `recipe_ingredient_list` VALUES (268, 18, '火腿', '2021-09-12 03:31:14', '2021-09-12 03:31:14');
-INSERT INTO `recipe_ingredient_list` VALUES (269, 18, '肉松', '2021-09-12 03:31:20', '2021-09-12 03:31:20');
-INSERT INTO `recipe_ingredient_list` VALUES (270, 18, '熏肉', '2021-09-12 03:31:33', '2021-09-12 03:31:33');
-INSERT INTO `recipe_ingredient_list` VALUES (271, 18, '熏鱼', '2021-09-12 03:31:41', '2021-09-12 03:31:41');
-INSERT INTO `recipe_ingredient_list` VALUES (272, 18, '香肠', '2021-09-12 03:31:51', '2021-09-12 03:31:51');
-INSERT INTO `recipe_ingredient_list` VALUES (273, 18, '培根', '2021-09-12 03:32:02', '2021-09-12 03:32:02');
-INSERT INTO `recipe_ingredient_list` VALUES (274, 19, '鹌鹑', '2021-09-12 03:32:18', '2021-09-12 03:32:18');
-INSERT INTO `recipe_ingredient_list` VALUES (275, 19, '牛蛙', '2021-09-12 03:32:25', '2021-09-12 03:32:25');
-INSERT INTO `recipe_ingredient_list` VALUES (276, 19, '驴肉', '2021-09-12 03:32:35', '2021-09-12 03:32:35');
-INSERT INTO `recipe_ingredient_list` VALUES (277, 19, '鹧鸪', '2021-09-12 03:32:45', '2021-09-12 03:32:45');
-INSERT INTO `recipe_ingredient_list` VALUES (278, 19, '乳鸽', '2021-09-12 03:32:53', '2021-09-12 03:32:53');
-INSERT INTO `recipe_ingredient_list` VALUES (279, 19, '鸽子', '2021-09-12 03:33:01', '2021-09-12 03:33:01');
-INSERT INTO `recipe_ingredient_list` VALUES (280, 19, '兔肉', '2021-09-12 03:33:10', '2021-09-12 03:33:10');
-INSERT INTO `recipe_ingredient_list` VALUES (281, 19, '鹅肉', '2021-09-12 03:33:17', '2021-09-12 03:33:17');
-INSERT INTO `recipe_ingredient_list` VALUES (282, 19, '蚕蛹', '2021-09-12 03:33:36', '2021-09-12 03:33:36');
-INSERT INTO `recipe_ingredient_list` VALUES (283, 19, '鸽肉', '2021-09-12 03:33:46', '2021-09-12 03:33:46');
-INSERT INTO `recipe_ingredient_list` VALUES (284, 19, '火鸡', '2021-09-12 03:33:54', '2021-09-12 03:33:54');
-INSERT INTO `recipe_ingredient_list` VALUES (285, 19, '鹿肉（梅花鹿）', '2021-09-12 03:34:03', '2021-09-12 03:34:03');
-INSERT INTO `recipe_ingredient_list` VALUES (286, 19, '雪蛤', '2021-09-12 03:34:10', '2021-09-12 03:34:10');
-INSERT INTO `recipe_ingredient_list` VALUES (287, 19, '鹅肝', '2021-09-12 03:34:18', '2021-09-12 03:34:18');
-INSERT INTO `recipe_ingredient_list` VALUES (288, 20, '草鱼', '2021-09-12 03:34:29', '2021-09-12 03:34:29');
-INSERT INTO `recipe_ingredient_list` VALUES (289, 20, '鲢鱼', '2021-09-12 03:34:39', '2021-09-12 03:34:39');
-INSERT INTO `recipe_ingredient_list` VALUES (290, 20, '银鱼', '2021-09-12 03:34:48', '2021-09-12 03:34:48');
-INSERT INTO `recipe_ingredient_list` VALUES (291, 20, '鳊鱼', '2021-09-12 03:34:56', '2021-09-12 03:34:56');
-INSERT INTO `recipe_ingredient_list` VALUES (292, 20, '鮰鱼', '2021-09-12 03:35:04', '2021-09-12 03:35:04');
-INSERT INTO `recipe_ingredient_list` VALUES (293, 20, '鲤鱼', '2021-09-12 03:35:12', '2021-09-12 03:35:12');
-INSERT INTO `recipe_ingredient_list` VALUES (294, 20, '青鱼', '2021-09-12 03:35:21', '2021-09-12 03:35:21');
-INSERT INTO `recipe_ingredient_list` VALUES (295, 20, '罗非鱼', '2021-09-12 03:35:30', '2021-09-12 03:35:30');
-INSERT INTO `recipe_ingredient_list` VALUES (296, 20, '桂鱼', '2021-09-12 03:35:37', '2021-09-12 03:35:37');
-INSERT INTO `recipe_ingredient_list` VALUES (297, 20, '鲫鱼', '2021-09-12 03:35:49', '2021-09-12 03:35:49');
-INSERT INTO `recipe_ingredient_list` VALUES (298, 20, '鲶鱼', '2021-09-12 03:35:57', '2021-09-12 03:35:57');
-INSERT INTO `recipe_ingredient_list` VALUES (299, 20, '武昌鱼', '2021-09-12 03:36:08', '2021-09-12 03:36:08');
-INSERT INTO `recipe_ingredient_list` VALUES (300, 20, '泥鳅', '2021-09-12 03:36:17', '2021-09-12 03:36:17');
-INSERT INTO `recipe_ingredient_list` VALUES (301, 21, '带鱼', '2021-09-12 03:36:27', '2021-09-12 03:36:27');
-INSERT INTO `recipe_ingredient_list` VALUES (302, 21, '鲅鱼', '2021-09-12 03:36:38', '2021-09-12 03:36:38');
-INSERT INTO `recipe_ingredient_list` VALUES (303, 21, '鳗鱼', '2021-09-12 03:36:46', '2021-09-12 03:36:46');
-INSERT INTO `recipe_ingredient_list` VALUES (304, 21, '梭鱼', '2021-09-12 03:36:56', '2021-09-12 03:36:56');
-INSERT INTO `recipe_ingredient_list` VALUES (305, 21, '沙丁鱼', '2021-09-12 03:37:05', '2021-09-12 03:37:05');
-INSERT INTO `recipe_ingredient_list` VALUES (306, 21, '石斑鱼', '2021-09-12 03:37:12', '2021-09-12 03:37:12');
-INSERT INTO `recipe_ingredient_list` VALUES (307, 21, '老板鱼', '2021-09-12 03:37:26', '2021-09-12 03:37:26');
-INSERT INTO `recipe_ingredient_list` VALUES (308, 21, '马面鱼', '2021-09-12 03:37:35', '2021-09-12 03:37:35');
-INSERT INTO `recipe_ingredient_list` VALUES (309, 21, '鲈鱼', '2021-09-12 03:37:44', '2021-09-12 03:37:44');
-INSERT INTO `recipe_ingredient_list` VALUES (310, 21, '金枪鱼', '2021-09-12 03:37:57', '2021-09-12 03:37:57');
-INSERT INTO `recipe_ingredient_list` VALUES (311, 21, '三文鱼', '2021-09-12 03:38:05', '2021-09-12 03:38:05');
-INSERT INTO `recipe_ingredient_list` VALUES (312, 21, '秋刀鱼', '2021-09-12 03:38:12', '2021-09-12 03:38:12');
-INSERT INTO `recipe_ingredient_list` VALUES (313, 21, '多春鱼', '2021-09-12 03:38:23', '2021-09-12 03:38:23');
-INSERT INTO `recipe_ingredient_list` VALUES (314, 21, '鲷鱼', '2021-09-12 03:38:34', '2021-09-12 03:38:34');
-INSERT INTO `recipe_ingredient_list` VALUES (315, 21, '小黄花鱼', '2021-09-12 03:38:41', '2021-09-12 03:38:41');
-INSERT INTO `recipe_ingredient_list` VALUES (316, 21, '鳕鱼', '2021-09-12 03:38:51', '2021-09-12 03:38:51');
-INSERT INTO `recipe_ingredient_list` VALUES (317, 21, '鲳鱼', '2021-09-12 03:39:00', '2021-09-12 03:39:00');
-INSERT INTO `recipe_ingredient_list` VALUES (318, 21, '龙利鱼', '2021-09-12 03:39:10', '2021-09-12 03:39:10');
-INSERT INTO `recipe_ingredient_list` VALUES (319, 21, '比目鱼', '2021-09-12 03:39:18', '2021-09-12 03:39:18');
-INSERT INTO `recipe_ingredient_list` VALUES (320, 21, '明太鱼', '2021-09-12 03:39:28', '2021-09-12 03:39:28');
-INSERT INTO `recipe_ingredient_list` VALUES (321, 21, '沙尖鱼', '2021-09-12 03:39:37', '2021-09-12 03:39:37');
-INSERT INTO `recipe_ingredient_list` VALUES (322, 21, '湟鱼', '2021-09-12 03:39:47', '2021-09-12 03:39:47');
-INSERT INTO `recipe_ingredient_list` VALUES (323, 22, '鱼丸', '2021-09-12 03:40:00', '2021-09-12 03:40:00');
-INSERT INTO `recipe_ingredient_list` VALUES (324, 22, '鱼籽', '2021-09-12 03:40:09', '2021-09-12 03:40:09');
-INSERT INTO `recipe_ingredient_list` VALUES (325, 22, '鱼头', '2021-09-12 03:40:16', '2021-09-12 03:40:16');
-INSERT INTO `recipe_ingredient_list` VALUES (326, 22, '花胶', '2021-09-12 03:40:27', '2021-09-12 03:40:27');
-INSERT INTO `recipe_ingredient_list` VALUES (327, 22, '鱼干', '2021-09-12 03:40:37', '2021-09-12 03:40:37');
-INSERT INTO `recipe_ingredient_list` VALUES (328, 23, '虾', '2021-09-12 03:40:43', '2021-09-12 03:40:43');
-INSERT INTO `recipe_ingredient_list` VALUES (329, 23, '河虾', '2021-09-12 03:40:50', '2021-09-12 03:40:50');
-INSERT INTO `recipe_ingredient_list` VALUES (330, 23, '皮皮虾', '2021-09-12 03:40:57', '2021-09-12 03:40:57');
-INSERT INTO `recipe_ingredient_list` VALUES (331, 23, '虾仁', '2021-09-12 03:41:05', '2021-09-12 03:41:05');
-INSERT INTO `recipe_ingredient_list` VALUES (332, 23, '虾米', '2021-09-12 03:41:11', '2021-09-12 03:41:11');
-INSERT INTO `recipe_ingredient_list` VALUES (333, 23, '对虾', '2021-09-12 03:41:19', '2021-09-12 03:41:19');
-INSERT INTO `recipe_ingredient_list` VALUES (334, 23, '海虾', '2021-09-12 03:41:32', '2021-09-12 03:41:32');
-INSERT INTO `recipe_ingredient_list` VALUES (335, 23, '龙虾', '2021-09-12 03:41:39', '2021-09-12 03:41:39');
-INSERT INTO `recipe_ingredient_list` VALUES (336, 23, '虾皮', '2021-09-12 03:41:46', '2021-09-12 03:41:46');
-INSERT INTO `recipe_ingredient_list` VALUES (337, 23, '明虾', '2021-09-12 03:41:53', '2021-09-12 03:41:53');
-INSERT INTO `recipe_ingredient_list` VALUES (338, 23, '基围虾', '2021-09-12 03:42:00', '2021-09-12 03:42:00');
-INSERT INTO `recipe_ingredient_list` VALUES (339, 23, '北极虾', '2021-09-12 03:42:08', '2021-09-12 03:42:08');
-INSERT INTO `recipe_ingredient_list` VALUES (340, 23, '海米', '2021-09-12 03:42:17', '2021-09-12 03:42:17');
-INSERT INTO `recipe_ingredient_list` VALUES (341, 24, '螃蟹', '2021-09-12 03:42:25', '2021-09-12 03:42:25');
-INSERT INTO `recipe_ingredient_list` VALUES (342, 24, '青蟹', '2021-09-12 03:42:34', '2021-09-12 03:42:34');
-INSERT INTO `recipe_ingredient_list` VALUES (343, 24, '河蟹', '2021-09-12 03:42:42', '2021-09-12 03:42:42');
-INSERT INTO `recipe_ingredient_list` VALUES (344, 24, '梭子蟹', '2021-09-12 03:42:49', '2021-09-12 03:42:49');
-INSERT INTO `recipe_ingredient_list` VALUES (345, 24, '海蟹', '2021-09-12 03:42:58', '2021-09-12 03:42:58');
-INSERT INTO `recipe_ingredient_list` VALUES (346, 24, '大闸蟹', '2021-09-12 03:43:05', '2021-09-12 03:43:05');
-INSERT INTO `recipe_ingredient_list` VALUES (347, 25, '海带', '2021-09-12 03:43:17', '2021-09-12 03:43:17');
-INSERT INTO `recipe_ingredient_list` VALUES (348, 25, '海肠', '2021-09-12 03:43:26', '2021-09-12 03:43:26');
-INSERT INTO `recipe_ingredient_list` VALUES (349, 25, '发菜', '2021-09-12 03:43:34', '2021-09-12 03:43:34');
-INSERT INTO `recipe_ingredient_list` VALUES (350, 25, '海藻', '2021-09-12 03:43:42', '2021-09-12 03:43:42');
-INSERT INTO `recipe_ingredient_list` VALUES (351, 25, '苔菜', '2021-09-12 03:43:51', '2021-09-12 03:43:51');
-INSERT INTO `recipe_ingredient_list` VALUES (352, 25, '紫菜', '2021-09-12 03:44:04', '2021-09-12 03:44:04');
-INSERT INTO `recipe_ingredient_list` VALUES (353, 25, '裙带菜', '2021-09-12 03:44:14', '2021-09-12 03:44:14');
-INSERT INTO `recipe_ingredient_list` VALUES (354, 26, '鲍鱼', '2021-09-12 03:44:23', '2021-09-12 03:44:23');
-INSERT INTO `recipe_ingredient_list` VALUES (355, 26, '蛏子', '2021-09-12 03:44:37', '2021-09-12 03:44:37');
-INSERT INTO `recipe_ingredient_list` VALUES (356, 26, '干贝', '2021-09-12 03:44:47', '2021-09-12 03:44:47');
-INSERT INTO `recipe_ingredient_list` VALUES (357, 26, '贻贝', '2021-09-12 03:44:56', '2021-09-12 03:44:56');
-INSERT INTO `recipe_ingredient_list` VALUES (358, 26, '北极贝', '2021-09-12 03:45:04', '2021-09-12 03:45:04');
-INSERT INTO `recipe_ingredient_list` VALUES (359, 26, '生蚝', '2021-09-12 03:45:12', '2021-09-12 03:45:12');
-INSERT INTO `recipe_ingredient_list` VALUES (360, 26, '蛤蜊', '2021-09-12 03:45:20', '2021-09-12 03:45:20');
-INSERT INTO `recipe_ingredient_list` VALUES (361, 26, '海螺', '2021-09-12 03:45:30', '2021-09-12 03:45:30');
-INSERT INTO `recipe_ingredient_list` VALUES (362, 26, '鲜贝', '2021-09-12 03:45:49', '2021-09-12 03:45:49');
-INSERT INTO `recipe_ingredient_list` VALUES (363, 26, '青口', '2021-09-12 03:45:58', '2021-09-12 03:45:58');
-INSERT INTO `recipe_ingredient_list` VALUES (364, 26, '牡蛎', '2021-09-12 03:46:12', '2021-09-12 03:46:12');
-INSERT INTO `recipe_ingredient_list` VALUES (365, 26, '毛蛤蜊', '2021-09-12 03:46:20', '2021-09-12 03:46:20');
-INSERT INTO `recipe_ingredient_list` VALUES (366, 26, '文蛤', '2021-09-12 03:46:29', '2021-09-12 03:46:29');
-INSERT INTO `recipe_ingredient_list` VALUES (367, 26, '田螺', '2021-09-12 03:46:35', '2021-09-12 03:46:35');
-INSERT INTO `recipe_ingredient_list` VALUES (368, 26, '扇贝', '2021-09-12 03:46:42', '2021-09-12 03:46:42');
-INSERT INTO `recipe_ingredient_list` VALUES (369, 26, '河蚌', '2021-09-12 03:46:53', '2021-09-12 03:46:53');
-INSERT INTO `recipe_ingredient_list` VALUES (370, 26, '花螺', '2021-09-12 03:47:02', '2021-09-12 03:47:02');
-INSERT INTO `recipe_ingredient_list` VALUES (371, 26, '淡菜', '2021-09-12 03:47:11', '2021-09-12 03:47:11');
-INSERT INTO `recipe_ingredient_list` VALUES (372, 27, '海参', '2021-09-12 03:47:19', '2021-09-12 03:47:19');
-INSERT INTO `recipe_ingredient_list` VALUES (373, 27, '田鸡', '2021-09-12 03:47:28', '2021-09-12 03:47:28');
-INSERT INTO `recipe_ingredient_list` VALUES (374, 27, '海蜇皮', '2021-09-12 03:47:37', '2021-09-12 03:47:37');
-INSERT INTO `recipe_ingredient_list` VALUES (375, 27, '鱿鱼', '2021-09-12 03:47:44', '2021-09-12 03:47:44');
-INSERT INTO `recipe_ingredient_list` VALUES (376, 27, '甲鱼', '2021-09-12 03:47:52', '2021-09-12 03:47:52');
-INSERT INTO `recipe_ingredient_list` VALUES (377, 27, '墨鱼', '2021-09-12 03:48:00', '2021-09-12 03:48:00');
-INSERT INTO `recipe_ingredient_list` VALUES (378, 27, '海胆', '2021-09-12 03:48:07', '2021-09-12 03:48:07');
-INSERT INTO `recipe_ingredient_list` VALUES (379, 28, '鸡蛋', '2021-09-12 03:48:16', '2021-09-12 03:48:16');
-INSERT INTO `recipe_ingredient_list` VALUES (380, 28, '咸鸭蛋', '2021-09-12 03:48:23', '2021-09-12 03:48:23');
-INSERT INTO `recipe_ingredient_list` VALUES (381, 28, '鹅蛋', '2021-09-12 03:48:29', '2021-09-12 03:48:29');
-INSERT INTO `recipe_ingredient_list` VALUES (382, 28, '鸭蛋', '2021-09-12 03:48:36', '2021-09-12 03:48:36');
-INSERT INTO `recipe_ingredient_list` VALUES (383, 28, '鸽子蛋', '2021-09-12 03:48:44', '2021-09-12 03:48:44');
-INSERT INTO `recipe_ingredient_list` VALUES (384, 28, '鹌鹑蛋', '2021-09-12 03:48:52', '2021-09-12 03:48:52');
-INSERT INTO `recipe_ingredient_list` VALUES (385, 28, '松花蛋', '2021-09-12 03:48:59', '2021-09-12 03:48:59');
-INSERT INTO `recipe_ingredient_list` VALUES (386, 29, '奶酪', '2021-09-12 03:49:10', '2021-09-12 03:49:10');
-INSERT INTO `recipe_ingredient_list` VALUES (387, 29, '黄油', '2021-09-12 03:49:19', '2021-09-12 03:49:19');
-INSERT INTO `recipe_ingredient_list` VALUES (388, 29, '奶油', '2021-09-12 03:49:26', '2021-09-12 03:49:26');
-INSERT INTO `recipe_ingredient_list` VALUES (389, 30, '红豆', '2021-09-12 03:49:42', '2021-09-12 03:49:42');
-INSERT INTO `recipe_ingredient_list` VALUES (390, 30, '黑豆', '2021-09-12 03:49:50', '2021-09-12 03:49:50');
-INSERT INTO `recipe_ingredient_list` VALUES (391, 30, '绿豆', '2021-09-12 03:49:57', '2021-09-12 03:49:57');
-INSERT INTO `recipe_ingredient_list` VALUES (392, 30, '蚕豆', '2021-09-12 03:50:04', '2021-09-12 03:50:04');
-INSERT INTO `recipe_ingredient_list` VALUES (393, 30, '黄豆', '2021-09-12 03:50:11', '2021-09-12 03:50:11');
-INSERT INTO `recipe_ingredient_list` VALUES (394, 30, '青豆', '2021-09-12 03:50:17', '2021-09-12 03:50:17');
-INSERT INTO `recipe_ingredient_list` VALUES (395, 30, '豌豆', '2021-09-12 03:50:24', '2021-09-12 03:50:24');
-INSERT INTO `recipe_ingredient_list` VALUES (396, 31, '豆腐', '2021-09-12 03:50:32', '2021-09-12 03:50:32');
-INSERT INTO `recipe_ingredient_list` VALUES (397, 31, '豆腐干', '2021-09-12 03:50:43', '2021-09-12 03:50:43');
-INSERT INTO `recipe_ingredient_list` VALUES (398, 31, '豆浆', '2021-09-12 03:50:53', '2021-09-12 03:50:53');
-INSERT INTO `recipe_ingredient_list` VALUES (399, 31, '豆渣', '2021-09-12 03:51:01', '2021-09-12 03:51:01');
-INSERT INTO `recipe_ingredient_list` VALUES (400, 31, '豆腐丝', '2021-09-12 03:51:09', '2021-09-12 03:51:09');
-INSERT INTO `recipe_ingredient_list` VALUES (401, 31, '豆腐渣', '2021-09-12 03:51:19', '2021-09-12 03:51:19');
-INSERT INTO `recipe_ingredient_list` VALUES (402, 31, '内脂豆腐', '2021-09-12 03:51:41', '2021-09-12 03:51:41');
-INSERT INTO `recipe_ingredient_list` VALUES (403, 31, '千张', '2021-09-12 03:51:49', '2021-09-12 03:51:49');
-INSERT INTO `recipe_ingredient_list` VALUES (404, 31, '豆腐皮', '2021-09-12 03:51:59', '2021-09-12 03:51:59');
-INSERT INTO `recipe_ingredient_list` VALUES (405, 31, '油豆腐', '2021-09-12 03:52:09', '2021-09-12 03:52:09');
-INSERT INTO `recipe_ingredient_list` VALUES (406, 31, '素鸡', '2021-09-12 03:52:20', '2021-09-12 03:52:20');
-INSERT INTO `recipe_ingredient_list` VALUES (407, 31, '烤麸', '2021-09-12 03:52:29', '2021-09-12 03:52:29');
-INSERT INTO `recipe_ingredient_list` VALUES (408, 31, '豆腐卷', '2021-09-12 03:52:42', '2021-09-12 03:52:42');
-INSERT INTO `recipe_ingredient_list` VALUES (409, 31, '南豆腐', '2021-09-12 03:52:54', '2021-09-12 03:52:54');
-INSERT INTO `recipe_ingredient_list` VALUES (410, 31, '腐竹', '2021-09-12 03:53:03', '2021-09-12 03:53:03');
-INSERT INTO `recipe_ingredient_list` VALUES (411, 31, '豆豉', '2021-09-12 03:53:11', '2021-09-12 03:53:11');
-INSERT INTO `recipe_ingredient_list` VALUES (412, 31, '冻豆腐', '2021-09-12 03:53:20', '2021-09-12 03:53:20');
-INSERT INTO `recipe_ingredient_list` VALUES (413, 31, '红豆沙', '2021-09-12 03:53:32', '2021-09-12 03:53:32');
-INSERT INTO `recipe_ingredient_list` VALUES (414, 31, '北豆腐', '2021-09-12 03:53:40', '2021-09-12 03:53:40');
-INSERT INTO `recipe_ingredient_list` VALUES (415, 31, '鸡蛋豆腐', '2021-09-12 03:53:51', '2021-09-12 03:53:51');
-INSERT INTO `recipe_ingredient_list` VALUES (416, 32, '柚子', '2021-09-12 03:54:03', '2021-09-12 03:54:03');
-INSERT INTO `recipe_ingredient_list` VALUES (417, 32, '柿子', '2021-09-12 03:54:14', '2021-09-12 03:54:14');
-INSERT INTO `recipe_ingredient_list` VALUES (418, 32, '橘子', '2021-09-12 03:54:21', '2021-09-12 03:54:21');
-INSERT INTO `recipe_ingredient_list` VALUES (419, 32, '木瓜', '2021-09-12 03:54:31', '2021-09-12 03:54:31');
-INSERT INTO `recipe_ingredient_list` VALUES (420, 32, '橙子', '2021-09-12 03:54:38', '2021-09-12 03:54:38');
-INSERT INTO `recipe_ingredient_list` VALUES (421, 32, '枣', '2021-09-12 03:54:45', '2021-09-12 03:54:45');
-INSERT INTO `recipe_ingredient_list` VALUES (422, 32, '草莓', '2021-09-12 03:54:52', '2021-09-12 03:54:52');
-INSERT INTO `recipe_ingredient_list` VALUES (423, 32, '葡萄干', '2021-09-12 03:55:00', '2021-09-12 03:55:00');
-INSERT INTO `recipe_ingredient_list` VALUES (424, 32, '椰汁', '2021-09-12 03:55:07', '2021-09-12 03:55:07');
-INSERT INTO `recipe_ingredient_list` VALUES (425, 32, '百香果', '2021-09-12 03:55:18', '2021-09-12 03:55:18');
-INSERT INTO `recipe_ingredient_list` VALUES (426, 32, '桑葚', '2021-09-12 03:55:26', '2021-09-12 03:55:26');
-INSERT INTO `recipe_ingredient_list` VALUES (427, 32, '石榴', '2021-09-12 03:55:37', '2021-09-12 03:55:37');
-INSERT INTO `recipe_ingredient_list` VALUES (428, 32, '西瓜皮', '2021-09-12 03:55:44', '2021-09-12 03:55:44');
-INSERT INTO `recipe_ingredient_list` VALUES (429, 32, '杨梅', '2021-09-12 03:55:51', '2021-09-12 03:55:51');
-INSERT INTO `recipe_ingredient_list` VALUES (430, 32, '哈密瓜', '2021-09-12 03:55:59', '2021-09-12 03:55:59');
-INSERT INTO `recipe_ingredient_list` VALUES (431, 32, '冬枣', '2021-09-12 03:56:05', '2021-09-12 03:56:05');
-INSERT INTO `recipe_ingredient_list` VALUES (432, 32, '樱桃西红柿', '2021-09-12 03:56:19', '2021-09-12 03:56:19');
-INSERT INTO `recipe_ingredient_list` VALUES (433, 32, '雪莲果', '2021-09-12 03:56:29', '2021-09-12 03:56:29');
-INSERT INTO `recipe_ingredient_list` VALUES (434, 32, '枇杷', '2021-09-12 03:56:38', '2021-09-12 03:56:38');
-INSERT INTO `recipe_ingredient_list` VALUES (435, 32, '仙人掌果', '2021-09-12 03:56:48', '2021-09-12 03:56:48');
-INSERT INTO `recipe_ingredient_list` VALUES (436, 32, '金丝小枣', '2021-09-12 03:56:59', '2021-09-12 03:56:59');
-INSERT INTO `recipe_ingredient_list` VALUES (437, 32, '黄皮果', '2021-09-12 03:57:08', '2021-09-12 03:57:08');
-INSERT INTO `recipe_ingredient_list` VALUES (438, 32, '黑加仑子', '2021-09-12 03:57:17', '2021-09-12 03:57:17');
-INSERT INTO `recipe_ingredient_list` VALUES (439, 32, '猕猴桃', '2021-09-12 03:57:24', '2021-09-12 03:57:24');
-INSERT INTO `recipe_ingredient_list` VALUES (440, 32, '甘蔗', '2021-09-12 03:57:46', '2021-09-12 03:57:46');
-INSERT INTO `recipe_ingredient_list` VALUES (441, 32, '山楂', '2021-09-12 03:57:53', '2021-09-12 03:57:53');
-INSERT INTO `recipe_ingredient_list` VALUES (442, 32, '苹果', '2021-09-12 03:58:01', '2021-09-12 03:58:01');
-INSERT INTO `recipe_ingredient_list` VALUES (443, 32, '榴莲', '2021-09-12 03:58:21', '2021-09-12 03:58:21');
-INSERT INTO `recipe_ingredient_list` VALUES (444, 32, '菠萝', '2021-09-12 03:58:29', '2021-09-12 03:58:29');
-INSERT INTO `recipe_ingredient_list` VALUES (445, 32, '桂圆', '2021-09-12 03:58:38', '2021-09-12 03:58:38');
-INSERT INTO `recipe_ingredient_list` VALUES (446, 32, '樱桃', '2021-09-12 03:58:51', '2021-09-12 03:58:51');
-INSERT INTO `recipe_ingredient_list` VALUES (447, 32, '荔枝', '2021-09-12 03:59:01', '2021-09-12 03:59:01');
-INSERT INTO `recipe_ingredient_list` VALUES (448, 32, '金桔', '2021-09-12 03:59:23', '2021-09-12 03:59:23');
-INSERT INTO `recipe_ingredient_list` VALUES (449, 32, '杏', '2021-09-12 03:59:31', '2021-09-12 03:59:31');
-INSERT INTO `recipe_ingredient_list` VALUES (450, 32, '椰子', '2021-09-12 03:59:38', '2021-09-12 03:59:38');
-INSERT INTO `recipe_ingredient_list` VALUES (451, 32, '蔓越莓', '2021-09-12 03:59:47', '2021-09-12 03:59:47');
-INSERT INTO `recipe_ingredient_list` VALUES (452, 32, '柑桔', '2021-09-12 03:59:54', '2021-09-12 03:59:54');
-INSERT INTO `recipe_ingredient_list` VALUES (453, 32, '酸枣', '2021-09-12 04:00:04', '2021-09-12 04:00:04');
-INSERT INTO `recipe_ingredient_list` VALUES (454, 32, '鸭梨', '2021-09-12 04:00:21', '2021-09-12 04:00:21');
-INSERT INTO `recipe_ingredient_list` VALUES (455, 32, '覆盆子', '2021-09-12 04:00:30', '2021-09-12 04:00:30');
-INSERT INTO `recipe_ingredient_list` VALUES (456, 32, '葡萄柚', '2021-09-12 04:00:43', '2021-09-12 04:00:43');
-INSERT INTO `recipe_ingredient_list` VALUES (457, 32, '树莓', '2021-09-12 04:00:51', '2021-09-12 04:00:51');
-INSERT INTO `recipe_ingredient_list` VALUES (458, 32, '香梨', '2021-09-12 04:01:00', '2021-09-12 04:01:00');
-INSERT INTO `recipe_ingredient_list` VALUES (459, 32, '莲雾', '2021-09-12 04:01:08', '2021-09-12 04:01:08');
-INSERT INTO `recipe_ingredient_list` VALUES (460, 32, '人参果', '2021-09-12 04:01:15', '2021-09-12 04:01:15');
-INSERT INTO `recipe_ingredient_list` VALUES (461, 32, '梨', '2021-09-12 04:01:32', '2021-09-12 04:01:32');
-INSERT INTO `recipe_ingredient_list` VALUES (462, 32, '火龙果', '2021-09-12 04:01:40', '2021-09-12 04:01:40');
-INSERT INTO `recipe_ingredient_list` VALUES (463, 32, '香蕉', '2021-09-12 04:01:48', '2021-09-12 04:01:48');
-INSERT INTO `recipe_ingredient_list` VALUES (464, 32, '葡萄', '2021-09-12 04:01:56', '2021-09-12 04:01:56');
-INSERT INTO `recipe_ingredient_list` VALUES (465, 32, '芒果', '2021-09-12 04:02:02', '2021-09-12 04:02:02');
-INSERT INTO `recipe_ingredient_list` VALUES (466, 32, '柠檬', '2021-09-12 04:02:10', '2021-09-12 04:02:10');
-INSERT INTO `recipe_ingredient_list` VALUES (467, 32, '蓝莓', '2021-09-12 04:02:18', '2021-09-12 04:02:18');
-INSERT INTO `recipe_ingredient_list` VALUES (468, 32, '西瓜', '2021-09-12 04:02:24', '2021-09-12 04:02:24');
-INSERT INTO `recipe_ingredient_list` VALUES (469, 32, '桃', '2021-09-12 04:02:31', '2021-09-12 04:02:31');
-INSERT INTO `recipe_ingredient_list` VALUES (470, 32, '牛油果', '2021-09-12 04:02:39', '2021-09-12 04:02:39');
-INSERT INTO `recipe_ingredient_list` VALUES (471, 32, '李子', '2021-09-12 04:02:47', '2021-09-12 04:02:47');
-INSERT INTO `recipe_ingredient_list` VALUES (472, 32, '无花果', '2021-09-12 04:02:54', '2021-09-12 04:02:54');
-INSERT INTO `recipe_ingredient_list` VALUES (473, 32, '香瓜', '2021-09-12 04:03:02', '2021-09-12 04:03:02');
-INSERT INTO `recipe_ingredient_list` VALUES (474, 32, '杨桃', '2021-09-12 04:03:12', '2021-09-12 04:03:12');
-INSERT INTO `recipe_ingredient_list` VALUES (475, 32, '佛手柑', '2021-09-12 04:03:25', '2021-09-12 04:03:25');
-INSERT INTO `recipe_ingredient_list` VALUES (476, 32, '槟榔', '2021-09-12 04:03:32', '2021-09-12 04:03:32');
-INSERT INTO `recipe_ingredient_list` VALUES (477, 32, '山竹', '2021-09-12 04:03:40', '2021-09-12 04:03:40');
-INSERT INTO `recipe_ingredient_list` VALUES (478, 32, '黑橄榄', '2021-09-12 04:03:48', '2021-09-12 04:03:48');
-INSERT INTO `recipe_ingredient_list` VALUES (479, 32, '番石榴', '2021-09-12 04:04:07', '2021-09-12 04:04:07');
-INSERT INTO `recipe_ingredient_list` VALUES (480, 32, '红毛丹', '2021-09-12 04:04:16', '2021-09-12 04:04:16');
-INSERT INTO `recipe_ingredient_list` VALUES (481, 32, '车厘子', '2021-09-12 04:04:24', '2021-09-12 04:04:24');
-INSERT INTO `recipe_ingredient_list` VALUES (482, 32, '提子', '2021-09-12 04:04:31', '2021-09-12 04:04:31');
-INSERT INTO `recipe_ingredient_list` VALUES (483, 33, '花生', '2021-09-12 04:04:55', '2021-09-12 04:04:55');
-INSERT INTO `recipe_ingredient_list` VALUES (484, 33, '核桃', '2021-09-12 04:05:04', '2021-09-12 04:05:04');
-INSERT INTO `recipe_ingredient_list` VALUES (485, 33, '莲子', '2021-09-12 04:05:12', '2021-09-12 04:05:12');
-INSERT INTO `recipe_ingredient_list` VALUES (486, 33, '海底椰', '2021-09-12 04:05:20', '2021-09-12 04:05:20');
-INSERT INTO `recipe_ingredient_list` VALUES (487, 33, '开心果', '2021-09-12 04:05:26', '2021-09-12 04:05:26');
-INSERT INTO `recipe_ingredient_list` VALUES (488, 33, '蜜枣', '2021-09-12 04:05:35', '2021-09-12 04:05:35');
-INSERT INTO `recipe_ingredient_list` VALUES (489, 33, '山核桃（干）', '2021-09-12 04:05:44', '2021-09-12 04:05:44');
-INSERT INTO `recipe_ingredient_list` VALUES (490, 33, '碧根果', '2021-09-12 04:05:58', '2021-09-12 04:05:58');
-INSERT INTO `recipe_ingredient_list` VALUES (491, 33, '腰果', '2021-09-12 04:06:07', '2021-09-12 04:06:07');
-INSERT INTO `recipe_ingredient_list` VALUES (492, 33, '芝麻', '2021-09-12 04:06:12', '2021-09-12 04:06:12');
-INSERT INTO `recipe_ingredient_list` VALUES (493, 33, '榛子', '2021-09-12 04:06:21', '2021-09-12 04:06:21');
-INSERT INTO `recipe_ingredient_list` VALUES (494, 33, '红枣干', '2021-09-12 04:06:29', '2021-09-12 04:06:29');
-INSERT INTO `recipe_ingredient_list` VALUES (495, 33, '板栗', '2021-09-12 04:06:36', '2021-09-12 04:06:36');
-INSERT INTO `recipe_ingredient_list` VALUES (496, 33, '阿胶枣', '2021-09-12 04:06:45', '2021-09-12 04:06:45');
-INSERT INTO `recipe_ingredient_list` VALUES (497, 33, '柿饼', '2021-09-12 04:06:52', '2021-09-12 04:06:52');
-INSERT INTO `recipe_ingredient_list` VALUES (498, 33, '亚麻籽', '2021-09-12 04:07:02', '2021-09-12 04:07:02');
-INSERT INTO `recipe_ingredient_list` VALUES (499, 33, '松子', '2021-09-12 04:07:10', '2021-09-12 04:07:10');
-INSERT INTO `recipe_ingredient_list` VALUES (500, 33, '杏仁（炒）', '2021-09-12 04:07:19', '2021-09-12 04:07:19');
-INSERT INTO `recipe_ingredient_list` VALUES (501, 33, '夏威夷果', '2021-09-12 04:07:26', '2021-09-12 04:07:26');
-INSERT INTO `recipe_ingredient_list` VALUES (502, 33, '南瓜子', '2021-09-12 04:07:37', '2021-09-12 04:07:37');
-INSERT INTO `recipe_ingredient_list` VALUES (503, 33, '白果（干）', '2021-09-12 04:07:46', '2021-09-12 04:07:46');
-INSERT INTO `recipe_ingredient_list` VALUES (504, 33, '桂圆肉', '2021-09-12 04:07:58', '2021-09-12 04:07:58');
-INSERT INTO `recipe_ingredient_list` VALUES (505, 33, '葡萄干', '2021-09-12 04:08:07', '2021-09-12 04:08:07');
-INSERT INTO `recipe_ingredient_list` VALUES (506, 3, '糯米', '2021-09-12 04:08:27', '2021-09-12 04:08:27');
-INSERT INTO `recipe_ingredient_list` VALUES (507, 3, '黑米', '2021-09-12 04:08:37', '2021-09-12 04:08:37');
-INSERT INTO `recipe_ingredient_list` VALUES (508, 3, '面粉', '2021-09-12 04:08:49', '2021-09-12 04:08:49');
-INSERT INTO `recipe_ingredient_list` VALUES (509, 3, '芝麻', '2021-09-12 04:08:54', '2021-09-12 04:08:54');
-INSERT INTO `recipe_ingredient_list` VALUES (510, 3, '麦芽', '2021-09-12 04:09:03', '2021-09-12 04:09:03');
-INSERT INTO `recipe_ingredient_list` VALUES (511, 3, '糙米', '2021-09-12 04:09:11', '2021-09-12 04:09:11');
-INSERT INTO `recipe_ingredient_list` VALUES (512, 3, '谷芽', '2021-09-12 04:09:19', '2021-09-12 04:09:19');
-INSERT INTO `recipe_ingredient_list` VALUES (513, 3, '青稞', '2021-09-12 04:09:29', '2021-09-12 04:09:29');
-INSERT INTO `recipe_ingredient_list` VALUES (514, 3, '红曲米', '2021-09-12 04:09:36', '2021-09-12 04:09:36');
-INSERT INTO `recipe_ingredient_list` VALUES (515, 3, '大米', '2021-09-12 04:09:42', '2021-09-12 04:09:42');
-INSERT INTO `recipe_ingredient_list` VALUES (516, 3, '红米', '2021-09-12 04:09:48', '2021-09-12 04:09:48');
-INSERT INTO `recipe_ingredient_list` VALUES (517, 3, '低筋面粉', '2021-09-12 04:09:57', '2021-09-12 04:09:57');
-INSERT INTO `recipe_ingredient_list` VALUES (518, 3, '薏米', '2021-09-12 04:10:06', '2021-09-12 04:10:06');
-INSERT INTO `recipe_ingredient_list` VALUES (519, 3, '西米', '2021-09-12 04:10:13', '2021-09-12 04:10:13');
-INSERT INTO `recipe_ingredient_list` VALUES (520, 3, '香米', '2021-09-12 04:10:21', '2021-09-12 04:10:21');
-INSERT INTO `recipe_ingredient_list` VALUES (521, 3, '黄米', '2021-09-12 04:10:29', '2021-09-12 04:10:29');
-INSERT INTO `recipe_ingredient_list` VALUES (522, 3, '鸭血糯', '2021-09-12 04:10:37', '2021-09-12 04:10:37');
-INSERT INTO `recipe_ingredient_list` VALUES (523, 3, '小米', '2021-09-12 04:10:43', '2021-09-12 04:10:43');
-INSERT INTO `recipe_ingredient_list` VALUES (524, 3, '紫米', '2021-09-12 04:10:50', '2021-09-12 04:10:50');
-INSERT INTO `recipe_ingredient_list` VALUES (525, 3, '高筋面粉', '2021-09-12 04:10:58', '2021-09-12 04:10:58');
-INSERT INTO `recipe_ingredient_list` VALUES (526, 3, '荞麦', '2021-09-12 04:11:06', '2021-09-12 04:11:06');
-INSERT INTO `recipe_ingredient_list` VALUES (527, 3, '燕麦', '2021-09-12 04:11:11', '2021-09-12 04:11:11');
-INSERT INTO `recipe_ingredient_list` VALUES (528, 3, '大麦', '2021-09-12 04:11:28', '2021-09-12 04:11:28');
-INSERT INTO `recipe_ingredient_list` VALUES (529, 3, '苦荞麦粉', '2021-09-12 04:11:36', '2021-09-12 04:11:36');
-INSERT INTO `recipe_ingredient_list` VALUES (530, 34, '燕窝', '2021-09-12 04:11:49', '2021-09-12 04:11:49');
-INSERT INTO `recipe_ingredient_list` VALUES (531, 34, '何首乌', '2021-09-12 04:11:59', '2021-09-12 04:11:59');
-INSERT INTO `recipe_ingredient_list` VALUES (532, 34, '葛根', '2021-09-12 04:12:08', '2021-09-12 04:12:08');
-INSERT INTO `recipe_ingredient_list` VALUES (533, 34, '当归', '2021-09-12 04:12:16', '2021-09-12 04:12:16');
-INSERT INTO `recipe_ingredient_list` VALUES (534, 34, '芡实', '2021-09-12 04:12:27', '2021-09-12 04:12:27');
-INSERT INTO `recipe_ingredient_list` VALUES (535, 34, '茯苓', '2021-09-12 04:12:36', '2021-09-12 04:12:36');
-INSERT INTO `recipe_ingredient_list` VALUES (536, 34, '板蓝根', '2021-09-12 04:12:45', '2021-09-12 04:12:45');
-INSERT INTO `recipe_ingredient_list` VALUES (537, 34, '车前草', '2021-09-12 04:12:54', '2021-09-12 04:12:54');
-INSERT INTO `recipe_ingredient_list` VALUES (538, 34, '山楂叶', '2021-09-12 04:13:02', '2021-09-12 04:13:02');
-INSERT INTO `recipe_ingredient_list` VALUES (539, 34, '白术', '2021-09-12 04:13:10', '2021-09-12 04:13:10');
-INSERT INTO `recipe_ingredient_list` VALUES (540, 34, '甘草', '2021-09-12 04:13:17', '2021-09-12 04:13:17');
-INSERT INTO `recipe_ingredient_list` VALUES (541, 34, '荷叶', '2021-09-12 04:13:25', '2021-09-12 04:13:25');
-INSERT INTO `recipe_ingredient_list` VALUES (542, 34, '白芷', '2021-09-12 04:13:34', '2021-09-12 04:13:34');
-INSERT INTO `recipe_ingredient_list` VALUES (543, 34, '玉竹', '2021-09-12 04:13:42', '2021-09-12 04:13:42');
-INSERT INTO `recipe_ingredient_list` VALUES (544, 34, '桔皮', '2021-09-12 04:13:50', '2021-09-12 04:13:50');
-INSERT INTO `recipe_ingredient_list` VALUES (545, 34, '兰香子', '2021-09-12 04:13:57', '2021-09-12 04:13:57');
-INSERT INTO `recipe_ingredient_list` VALUES (546, 34, '天麻', '2021-09-12 04:14:05', '2021-09-12 04:14:05');
-INSERT INTO `recipe_ingredient_list` VALUES (547, 34, '菟丝子', '2021-09-12 04:14:13', '2021-09-12 04:14:13');
-INSERT INTO `recipe_ingredient_list` VALUES (548, 34, '紫苏', '2021-09-12 04:14:25', '2021-09-12 04:14:25');
-INSERT INTO `recipe_ingredient_list` VALUES (549, 34, '罗汉果', '2021-09-12 04:14:34', '2021-09-12 04:14:34');
-INSERT INTO `recipe_ingredient_list` VALUES (550, 34, '乌梅', '2021-09-12 04:14:41', '2021-09-12 04:14:41');
-INSERT INTO `recipe_ingredient_list` VALUES (551, 34, '肉桂', '2021-09-12 04:14:50', '2021-09-12 04:14:50');
-INSERT INTO `recipe_ingredient_list` VALUES (552, 34, '乌树叶', '2021-09-12 04:14:58', '2021-09-12 04:14:58');
-INSERT INTO `recipe_ingredient_list` VALUES (553, 34, '土三七', '2021-09-12 04:15:06', '2021-09-12 04:15:06');
-INSERT INTO `recipe_ingredient_list` VALUES (554, 34, '巴戟天', '2021-09-12 04:15:14', '2021-09-12 04:15:14');
-INSERT INTO `recipe_ingredient_list` VALUES (555, 34, '橘红', '2021-09-12 04:15:22', '2021-09-12 04:15:22');
-INSERT INTO `recipe_ingredient_list` VALUES (556, 34, '牡丹花', '2021-09-12 04:15:31', '2021-09-12 04:15:31');
-INSERT INTO `recipe_ingredient_list` VALUES (557, 34, '白矾', '2021-09-12 04:15:39', '2021-09-12 04:15:39');
-INSERT INTO `recipe_ingredient_list` VALUES (558, 34, '知了', '2021-09-12 04:15:46', '2021-09-12 04:15:46');
-INSERT INTO `recipe_ingredient_list` VALUES (559, 34, '紫苏子', '2021-09-12 04:15:54', '2021-09-12 04:15:54');
-INSERT INTO `recipe_ingredient_list` VALUES (560, 34, '艾叶', '2021-09-12 04:16:06', '2021-09-12 04:16:06');
-INSERT INTO `recipe_ingredient_list` VALUES (561, 34, '草果', '2021-09-12 04:16:19', '2021-09-12 04:16:19');
-INSERT INTO `recipe_ingredient_list` VALUES (562, 34, '虎杖（鲜）', '2021-09-12 04:16:27', '2021-09-12 04:16:27');
-INSERT INTO `recipe_ingredient_list` VALUES (563, 34, '藿香叶（鲜）', '2021-09-12 04:16:37', '2021-09-12 04:16:37');
-INSERT INTO `recipe_ingredient_list` VALUES (564, 34, '通草', '2021-09-12 04:16:47', '2021-09-12 04:16:47');
-INSERT INTO `recipe_ingredient_list` VALUES (565, 34, '锁阳', '2021-09-12 04:16:54', '2021-09-12 04:16:54');
-INSERT INTO `recipe_ingredient_list` VALUES (566, 34, '鼠尾草', '2021-09-12 04:17:02', '2021-09-12 04:17:02');
-INSERT INTO `recipe_ingredient_list` VALUES (567, 34, '五味子', '2021-09-12 04:17:10', '2021-09-12 04:17:10');
-INSERT INTO `recipe_ingredient_list` VALUES (568, 34, '酸枣仁', '2021-09-12 04:17:18', '2021-09-12 04:17:18');
-INSERT INTO `recipe_ingredient_list` VALUES (569, 34, '防风', '2021-09-12 04:17:26', '2021-09-12 04:17:26');
-INSERT INTO `recipe_ingredient_list` VALUES (570, 34, '白参', '2021-09-12 04:17:34', '2021-09-12 04:17:34');
-INSERT INTO `recipe_ingredient_list` VALUES (571, 34, '蛋白粉', '2021-09-12 04:17:41', '2021-09-12 04:17:41');
-INSERT INTO `recipe_ingredient_list` VALUES (572, 34, '枇杷叶', '2021-09-12 04:17:51', '2021-09-12 04:17:51');
-INSERT INTO `recipe_ingredient_list` VALUES (573, 34, '川贝母', '2021-09-12 04:18:00', '2021-09-12 04:18:00');
-INSERT INTO `recipe_ingredient_list` VALUES (574, 34, '月季花茶', '2021-09-12 04:18:09', '2021-09-12 04:18:09');
-INSERT INTO `recipe_ingredient_list` VALUES (575, 34, '茵陈蒿', '2021-09-12 04:18:18', '2021-09-12 04:18:18');
-INSERT INTO `recipe_ingredient_list` VALUES (576, 34, '栀子', '2021-09-12 04:18:26', '2021-09-12 04:18:26');
-INSERT INTO `recipe_ingredient_list` VALUES (577, 34, '珍珠粉圆', '2021-09-12 04:18:34', '2021-09-12 04:18:34');
-INSERT INTO `recipe_ingredient_list` VALUES (578, 34, '玫瑰茄', '2021-09-12 04:18:43', '2021-09-12 04:18:43');
-INSERT INTO `recipe_ingredient_list` VALUES (579, 34, '迷迭香', '2021-09-12 04:18:50', '2021-09-12 04:18:50');
-INSERT INTO `recipe_ingredient_list` VALUES (580, 34, '紫草', '2021-09-12 04:19:00', '2021-09-12 04:19:00');
-INSERT INTO `recipe_ingredient_list` VALUES (581, 34, '荆芥', '2021-09-12 04:19:09', '2021-09-12 04:19:09');
-INSERT INTO `recipe_ingredient_list` VALUES (582, 34, '吴茱萸', '2021-09-12 04:19:18', '2021-09-12 04:19:18');
-INSERT INTO `recipe_ingredient_list` VALUES (583, 34, '枇杷花', '2021-09-12 04:19:27', '2021-09-12 04:19:27');
-INSERT INTO `recipe_ingredient_list` VALUES (584, 34, '火麻仁', '2021-09-12 04:19:37', '2021-09-12 04:19:37');
-INSERT INTO `recipe_ingredient_list` VALUES (585, 34, '人参', '2021-09-12 04:19:47', '2021-09-12 04:19:47');
-INSERT INTO `recipe_ingredient_list` VALUES (586, 34, '枸杞', '2021-09-12 04:19:55', '2021-09-12 04:19:55');
-INSERT INTO `recipe_ingredient_list` VALUES (587, 34, '黄芪', '2021-09-12 04:20:07', '2021-09-12 04:20:07');
-INSERT INTO `recipe_ingredient_list` VALUES (588, 34, '玉米须', '2021-09-12 04:20:15', '2021-09-12 04:20:15');
-INSERT INTO `recipe_ingredient_list` VALUES (589, 34, '益母草', '2021-09-12 04:20:23', '2021-09-12 04:20:23');
-INSERT INTO `recipe_ingredient_list` VALUES (590, 34, '灵芝', '2021-09-12 04:20:31', '2021-09-12 04:20:31');
-INSERT INTO `recipe_ingredient_list` VALUES (591, 34, '白芍', '2021-09-12 04:20:39', '2021-09-12 04:20:39');
-INSERT INTO `recipe_ingredient_list` VALUES (592, 34, '鸡骨草', '2021-09-12 04:20:47', '2021-09-12 04:20:47');
-INSERT INTO `recipe_ingredient_list` VALUES (593, 34, '田七', '2021-09-12 04:21:03', '2021-09-12 04:21:03');
-INSERT INTO `recipe_ingredient_list` VALUES (594, 34, '桂皮', '2021-09-12 04:21:12', '2021-09-12 04:21:12');
-INSERT INTO `recipe_ingredient_list` VALUES (595, 34, '西洋参', '2021-09-12 04:21:20', '2021-09-12 04:21:20');
-INSERT INTO `recipe_ingredient_list` VALUES (596, 34, '干黄花菜', '2021-09-12 04:21:37', '2021-09-12 04:21:37');
-INSERT INTO `recipe_ingredient_list` VALUES (597, 34, '丁香', '2021-09-12 04:21:45', '2021-09-12 04:21:45');
-INSERT INTO `recipe_ingredient_list` VALUES (598, 34, '冬虫夏草', '2021-09-12 04:21:55', '2021-09-12 04:21:55');
-INSERT INTO `recipe_ingredient_list` VALUES (599, 34, '石斛', '2021-09-12 04:22:03', '2021-09-12 04:22:03');
-INSERT INTO `recipe_ingredient_list` VALUES (600, 34, '黄莲', '2021-09-12 04:22:18', '2021-09-12 04:22:18');
-INSERT INTO `recipe_ingredient_list` VALUES (601, 34, '桂花', '2021-09-12 04:22:26', '2021-09-12 04:22:26');
-INSERT INTO `recipe_ingredient_list` VALUES (602, 34, '鱼腥草', '2021-09-12 04:22:34', '2021-09-12 04:22:34');
-INSERT INTO `recipe_ingredient_list` VALUES (603, 34, '紫苏叶', '2021-09-12 04:22:41', '2021-09-12 04:22:41');
-INSERT INTO `recipe_ingredient_list` VALUES (604, 34, '胖大海', '2021-09-12 04:22:50', '2021-09-12 04:22:50');
-INSERT INTO `recipe_ingredient_list` VALUES (605, 34, '五指毛桃', '2021-09-12 04:23:03', '2021-09-12 04:23:03');
-INSERT INTO `recipe_ingredient_list` VALUES (606, 34, '大黄', '2021-09-12 04:23:15', '2021-09-12 04:23:15');
-INSERT INTO `recipe_ingredient_list` VALUES (607, 34, '杜鹃花', '2021-09-12 04:23:23', '2021-09-12 04:23:23');
-INSERT INTO `recipe_ingredient_list` VALUES (608, 34, '欧石楠', '2021-09-12 04:23:31', '2021-09-12 04:23:31');
-INSERT INTO `recipe_ingredient_list` VALUES (609, 34, '玉兰花', '2021-09-12 04:23:39', '2021-09-12 04:23:39');
-INSERT INTO `recipe_ingredient_list` VALUES (610, 34, '白豆蔻', '2021-09-12 04:23:48', '2021-09-12 04:23:48');
-INSERT INTO `recipe_ingredient_list` VALUES (611, 34, '砂仁', '2021-09-12 04:23:56', '2021-09-12 04:23:56');
-INSERT INTO `recipe_ingredient_list` VALUES (612, 34, '紫藤花', '2021-09-12 04:24:03', '2021-09-12 04:24:03');
-INSERT INTO `recipe_ingredient_list` VALUES (613, 34, '芙蓉花', '2021-09-12 04:24:10', '2021-09-12 04:24:10');
-INSERT INTO `recipe_ingredient_list` VALUES (614, 34, '蒲公英叶', '2021-09-12 04:24:16', '2021-09-12 04:24:16');
-INSERT INTO `recipe_ingredient_list` VALUES (615, 34, '薰衣草', '2021-09-12 04:24:30', '2021-09-12 04:24:30');
-INSERT INTO `recipe_ingredient_list` VALUES (616, 34, '豆蔻', '2021-09-12 04:24:40', '2021-09-12 04:24:40');
-INSERT INTO `recipe_ingredient_list` VALUES (617, 34, '野蒜', '2021-09-12 04:24:50', '2021-09-12 04:24:50');
-INSERT INTO `recipe_ingredient_list` VALUES (618, 34, '香附', '2021-09-12 04:25:01', '2021-09-12 04:25:01');
-INSERT INTO `recipe_ingredient_list` VALUES (619, 34, '鸡屎藤', '2021-09-12 04:25:18', '2021-09-12 04:25:18');
-INSERT INTO `recipe_ingredient_list` VALUES (620, 34, '太子参', '2021-09-12 04:25:26', '2021-09-12 04:25:26');
-INSERT INTO `recipe_ingredient_list` VALUES (621, 34, '红景天', '2021-09-12 04:25:39', '2021-09-12 04:25:39');
-INSERT INTO `recipe_ingredient_list` VALUES (622, 34, '鸡内金', '2021-09-12 04:25:49', '2021-09-12 04:25:49');
-INSERT INTO `recipe_ingredient_list` VALUES (623, 34, '板兰叶', '2021-09-12 04:25:58', '2021-09-12 04:25:58');
-INSERT INTO `recipe_ingredient_list` VALUES (624, 34, '柚子皮', '2021-09-12 04:26:06', '2021-09-12 04:26:06');
-INSERT INTO `recipe_ingredient_list` VALUES (625, 34, '沙棘', '2021-09-12 04:26:14', '2021-09-12 04:26:14');
-INSERT INTO `recipe_ingredient_list` VALUES (626, 34, '桃胶', '2021-09-12 04:26:22', '2021-09-12 04:26:22');
-INSERT INTO `recipe_ingredient_list` VALUES (627, 34, '刺梨', '2021-09-12 04:26:33', '2021-09-12 04:26:33');
-INSERT INTO `recipe_ingredient_list` VALUES (628, 34, '桑寄生', '2021-09-12 04:26:42', '2021-09-12 04:26:42');
-INSERT INTO `recipe_ingredient_list` VALUES (629, 34, '土茯苓', '2021-09-12 04:26:51', '2021-09-12 04:26:51');
-INSERT INTO `recipe_ingredient_list` VALUES (630, 34, '石菖蒲', '2021-09-12 04:27:05', '2021-09-12 04:27:05');
-INSERT INTO `recipe_ingredient_list` VALUES (631, 34, '地骨皮', '2021-09-12 04:27:15', '2021-09-12 04:27:15');
-INSERT INTO `recipe_ingredient_list` VALUES (632, 34, '积雪草', '2021-09-12 04:27:25', '2021-09-12 04:27:25');
-INSERT INTO `recipe_ingredient_list` VALUES (633, 34, '百合花', '2021-09-12 04:27:33', '2021-09-12 04:27:33');
-INSERT INTO `recipe_ingredient_list` VALUES (634, 34, '牛膝', '2021-09-12 04:27:41', '2021-09-12 04:27:41');
-INSERT INTO `recipe_ingredient_list` VALUES (635, 34, '威灵仙', '2021-09-12 04:27:49', '2021-09-12 04:27:49');
-INSERT INTO `recipe_ingredient_list` VALUES (636, 34, '鸭跖草', '2021-09-12 04:27:58', '2021-09-12 04:27:58');
-INSERT INTO `recipe_ingredient_list` VALUES (637, 35, '味精', '2021-09-12 04:28:11', '2021-09-12 04:28:11');
-INSERT INTO `recipe_ingredient_list` VALUES (638, 35, '白糖', '2021-09-12 04:28:19', '2021-09-12 04:28:19');
-INSERT INTO `recipe_ingredient_list` VALUES (639, 35, '豆瓣酱', '2021-09-12 04:28:27', '2021-09-12 04:28:27');
-INSERT INTO `recipe_ingredient_list` VALUES (640, 35, '辣根', '2021-09-12 04:28:35', '2021-09-12 04:28:35');
-INSERT INTO `recipe_ingredient_list` VALUES (641, 35, '芥末', '2021-09-12 04:28:43', '2021-09-12 04:28:43');
-INSERT INTO `recipe_ingredient_list` VALUES (642, 35, '胡椒粉', '2021-09-12 04:28:51', '2021-09-12 04:28:51');
-INSERT INTO `recipe_ingredient_list` VALUES (643, 35, '茴香籽', '2021-09-12 04:28:59', '2021-09-12 04:28:59');
-INSERT INTO `recipe_ingredient_list` VALUES (644, 35, '花生油', '2021-09-12 04:29:09', '2021-09-12 04:29:09');
-INSERT INTO `recipe_ingredient_list` VALUES (645, 35, '料酒', '2021-09-12 04:29:19', '2021-09-12 04:29:19');
-INSERT INTO `recipe_ingredient_list` VALUES (646, 35, '亚麻籽油', '2021-09-12 04:29:29', '2021-09-12 04:29:29');
-INSERT INTO `recipe_ingredient_list` VALUES (647, 35, '葡萄籽油', '2021-09-12 04:29:37', '2021-09-12 04:29:37');
-INSERT INTO `recipe_ingredient_list` VALUES (648, 35, '红糖', '2021-09-12 04:29:46', '2021-09-12 04:29:46');
-INSERT INTO `recipe_ingredient_list` VALUES (649, 35, '姜', '2021-09-12 04:29:53', '2021-09-12 04:29:53');
-INSERT INTO `recipe_ingredient_list` VALUES (650, 35, '番茄酱', '2021-09-12 04:30:01', '2021-09-12 04:30:01');
-INSERT INTO `recipe_ingredient_list` VALUES (651, 35, '干辣椒', '2021-09-12 04:30:11', '2021-09-12 04:30:11');
-INSERT INTO `recipe_ingredient_list` VALUES (652, 35, '咖喱', '2021-09-12 04:30:19', '2021-09-12 04:30:19');
-INSERT INTO `recipe_ingredient_list` VALUES (653, 35, '花椒', '2021-09-12 04:30:28', '2021-09-12 04:30:28');
-INSERT INTO `recipe_ingredient_list` VALUES (654, 35, '八角', '2021-09-12 04:30:36', '2021-09-12 04:30:36');
-INSERT INTO `recipe_ingredient_list` VALUES (655, 35, '苏打粉', '2021-09-12 04:30:44', '2021-09-12 04:30:44');
-INSERT INTO `recipe_ingredient_list` VALUES (656, 35, '蚝油', '2021-09-12 04:30:52', '2021-09-12 04:30:52');
-INSERT INTO `recipe_ingredient_list` VALUES (657, 35, '茶油', '2021-09-12 04:31:00', '2021-09-12 04:31:00');
-INSERT INTO `recipe_ingredient_list` VALUES (658, 35, '草寇', '2021-09-12 04:31:07', '2021-09-12 04:31:07');
-INSERT INTO `recipe_ingredient_list` VALUES (659, 35, '冰糖', '2021-09-12 04:31:16', '2021-09-12 04:31:16');
-INSERT INTO `recipe_ingredient_list` VALUES (660, 35, '醋', '2021-09-12 04:31:29', '2021-09-12 04:31:29');
-INSERT INTO `recipe_ingredient_list` VALUES (661, 35, '山葵', '2021-09-12 04:31:36', '2021-09-12 04:31:36');
-INSERT INTO `recipe_ingredient_list` VALUES (662, 35, '胡椒', '2021-09-12 04:31:44', '2021-09-12 04:31:44');
-INSERT INTO `recipe_ingredient_list` VALUES (663, 35, '芝麻油', '2021-09-12 04:31:52', '2021-09-12 04:31:52');
-INSERT INTO `recipe_ingredient_list` VALUES (664, 35, '酱油', '2021-09-12 04:31:59', '2021-09-12 04:31:59');
-INSERT INTO `recipe_ingredient_list` VALUES (665, 35, '猪油', '2021-09-12 04:32:07', '2021-09-12 04:32:07');
-INSERT INTO `recipe_ingredient_list` VALUES (666, 35, '椰子油', '2021-09-12 04:32:17', '2021-09-12 04:32:17');
-INSERT INTO `recipe_ingredient_list` VALUES (667, 35, '孜然', '2021-09-12 04:32:25', '2021-09-12 04:32:25');
-INSERT INTO `recipe_ingredient_list` VALUES (668, 35, '胡麻油', '2021-09-12 04:32:36', '2021-09-12 04:32:36');
-
--- ----------------------------
--- Table structure for three_meals_today_first_category_list
--- ----------------------------
-DROP TABLE IF EXISTS `three_meals_today_first_category_list`;
-CREATE TABLE `three_meals_today_first_category_list`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of three_meals_today_first_category_list
--- ----------------------------
-INSERT INTO `three_meals_today_first_category_list` VALUES (1, '早餐');
-INSERT INTO `three_meals_today_first_category_list` VALUES (2, '午餐');
-INSERT INTO `three_meals_today_first_category_list` VALUES (3, '下午茶');
-INSERT INTO `three_meals_today_first_category_list` VALUES (4, '晚餐');
-INSERT INTO `three_meals_today_first_category_list` VALUES (5, '夜宵');
-
--- ----------------------------
--- Table structure for three_meals_today_second_category_list
--- ----------------------------
-DROP TABLE IF EXISTS `three_meals_today_second_category_list`;
-CREATE TABLE `three_meals_today_second_category_list`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `parentId` int NULL DEFAULT NULL,
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `coverUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of three_meals_today_second_category_list
--- ----------------------------
-INSERT INTO `three_meals_today_second_category_list` VALUES (1, 1, '五彩虾仁炒饭', '营养丰富，早餐最爱', 'https://z3.ax1x.com/2021/08/29/hGguKx.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (2, 1, '爱心满满的黑椒蔬菜牛排', '简单快手，分分钟搞定', 'https://z3.ax1x.com/2021/08/29/hGgRs0.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (3, 1, '鲜活时蔬面', '简单美味，几分钟搞定早餐', 'https://z3.ax1x.com/2021/08/29/hGghZT.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (4, 2, '蜜汁烤五花肉', '经典家常，上桌就光盘', 'https://z3.ax1x.com/2021/08/29/hGgTJJ.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (5, 2, '家常小炒', '经济实惠，有滋有味', 'https://z3.ax1x.com/2021/08/29/hG2Eef.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (6, 2, '酱香洋葱烤鸡', '营养美味，一吃停不下来', 'https://z3.ax1x.com/2021/08/29/hG2mFg.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (7, 3, '花朵酥脆曲奇', '香气扑鼻，好吃过瘾', 'https://z3.ax1x.com/2021/08/29/hG2lyq.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (8, 3, '舒芙蕾厚松饼', '惊艳味蕾，好吃到爆', 'https://z3.ax1x.com/2021/08/29/hG2NY4.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (9, 3, '紫薯西米露', '美味下午茶，让人欲罢不能', 'https://z3.ax1x.com/2021/08/29/hG2BOx.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (10, 4, '红烧猪蹄', '美味飘香，满足味蕾', 'https://z3.ax1x.com/2021/08/29/hG22fH.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (11, 4, '凉拌西兰花', '鲜香可口，美味下饭', 'https://z3.ax1x.com/2021/08/29/hG2Wpd.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (12, 4, '减肥餐～苦瓜酿肉', '家常经典，上桌被抢光', 'https://z3.ax1x.com/2021/08/29/hG24Xt.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (13, 5, '孜然土豆', '味道超赞，无比解馋', 'https://z3.ax1x.com/2021/08/29/hG2T78.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (14, 5, '酸辣鸡爪', '均衡营养，滋补养生', 'https://z3.ax1x.com/2021/08/29/hG2qhQ.jpg');
-INSERT INTO `three_meals_today_second_category_list` VALUES (15, 5, '风味花生', '美味过瘾，好吃停不下嘴', 'https://z3.ax1x.com/2021/08/29/hG2jcn.jpg');
+INSERT INTO `today_three_meals_list` VALUES (1, '早餐', 3, 'ef9961c6-ab54-4605-915e-1b3650077ac5,0,营养丰富，早餐最爱;ea94f86d-ce5b-4895-a1b1-54b918d1e490,1,简单快手，分分钟搞定;a502c2fc-20f6-40b9-b2d9-a056da783dca,2,简单美味，几分钟搞定早餐;', 0, '2021-09-17 13:46:29', '2021-09-17 13:46:29');
+INSERT INTO `today_three_meals_list` VALUES (2, '午餐', 3, '6068a3bd-2f43-4485-91f5-4873fcc4d826,0,色香味俱佳，惊艳味蕾;432d2522-44da-408e-9902-10af55b3111a,1,鲜美入味，好吃到爆;ce4a5ba4-c849-4e81-8271-d6fd7763b495,2,营养美味，一吃停不下来;', 1, '2021-09-17 13:47:55', '2021-09-17 13:47:55');
+INSERT INTO `today_three_meals_list` VALUES (3, '下午茶', 3, '154c03f9-49e6-40fc-8a8b-19d70fe6540b,0,香气扑鼻，好吃过瘾;432ff9d8-f9a5-44c9-9cb9-ce32339df939,1,无比美味，吃一口就爱上;92483c8f-9c61-44c9-808c-46ecccb2d675,2,美味下午茶，让人欲罢不能;', 2, '2021-09-17 13:49:31', '2021-09-17 13:49:31');
+INSERT INTO `today_three_meals_list` VALUES (4, '晚餐', 3, 'ebc54936-abe7-432e-aa7f-80522f46cf02,0,鲜香可口，美味下饭;ba067802-84df-481d-b3d1-f831e4ce0f51,1,香味浓郁，让人食欲大增;a3003d22-7660-44f6-993b-03313076268b,2,味道鲜美，瞬间打开胃口;', 3, '2021-09-17 13:50:59', '2021-09-17 13:51:43');
+INSERT INTO `today_three_meals_list` VALUES (5, '夜宵', 3, '468911e0-9788-49e1-b8cd-d6f1c05c407f,0,味道超赞，无比解馋;d881d3fa-a977-428f-a240-5dbc2651004d,1,鲜香美味，让人口水直流;318e9304-beae-46c2-8b10-16ba5b4059e0,2,美味过瘾，好吃停不下嘴;', 4, '2021-09-17 13:52:32', '2021-09-17 13:52:32');
 
 -- ----------------------------
 -- Table structure for user_list
@@ -976,13 +196,38 @@ CREATE TABLE `user_list`  (
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_list
 -- ----------------------------
-INSERT INTO `user_list` VALUES (1, NULL, '469337ca-28f5-4feb-b70c-ddffb9df1e2b', '469337ca-28f5-4feb-b70c-ddffb9df1e2b', '美食小编', 'https://s1.st.meishij.net/user/41/203/t113291_86576.jpg', 0, '2021-09-16 07:06:59', '2021-09-16 07:06:59');
-INSERT INTO `user_list` VALUES (2, NULL, 'ca163053-f9da-494b-84f7-78584f19a10d', 'ca163053-f9da-494b-84f7-78584f19a10d', '红豆厨坊', 'https://s1.st.meishij.net/user/150/151/t14787900_161011039628014.jpg', 0, '2021-09-16 07:07:22', '2021-09-16 07:07:22');
-INSERT INTO `user_list` VALUES (3, NULL, '46c501d1-70ee-4510-a3ad-d9d6ec5ab35f', '46c501d1-70ee-4510-a3ad-d9d6ec5ab35f', '青柠食记', 'https://s1.st.meishij.net/user/239/17/t2941989_157043044493736.jpg', 0, '2021-09-16 07:07:42', '2021-09-16 07:07:42');
+INSERT INTO `user_list` VALUES (1, NULL, 'd088a19e-d5b5-40a1-bfb4-825ffbbfa5ea', 'd088a19e-d5b5-40a1-bfb4-825ffbbfa5ea', '孔老师教做菜', 'https://s1.st.meishij.net/user/10/120/t30010_143755475579937.jpg', 0, '2021-09-17 13:45:19', '2021-09-17 13:45:19');
+INSERT INTO `user_list` VALUES (2, NULL, '0556c198-06f7-43a4-8cb4-18254c805887', '0556c198-06f7-43a4-8cb4-18254c805887', '秋食工作室', 'https://s1.st.meishij.net/user/102/220/t13242602_153905599494607.jpg', 0, '2021-09-17 13:45:31', '2021-09-17 13:45:31');
+INSERT INTO `user_list` VALUES (3, NULL, '9c467fa0-0576-4fea-ae05-941845f092ef', '9c467fa0-0576-4fea-ae05-941845f092ef', '宸希麻麻厨房', 'https://s1.st.meishij.net/user/136/141/t13410386_157234494390208.jpg', 0, '2021-09-17 13:45:42', '2021-09-17 13:45:42');
+INSERT INTO `user_list` VALUES (4, NULL, '6a6856c2-8a5d-4f1d-b553-e2a6ee312238', '6a6856c2-8a5d-4f1d-b553-e2a6ee312238', '美美家的厨房', 'https://s1.st.meishij.net/user/208/102/t1025708_143108176835021.jpg', 0, '2021-09-17 13:46:45', '2021-09-17 13:46:45');
+INSERT INTO `user_list` VALUES (5, NULL, '2654915b-3620-4966-b9eb-ec30bd632f29', '2654915b-3620-4966-b9eb-ec30bd632f29', '格丽思小厨房', 'https://s1.c.meishij.net/images/default/tx2_5.png', 0, '2021-09-17 13:46:57', '2021-09-17 13:46:57');
+INSERT INTO `user_list` VALUES (6, NULL, '3979888a-5191-4da7-8c58-174718b78aca', '3979888a-5191-4da7-8c58-174718b78aca', '食尚煮易', 'https://s1.st.meishij.net/user/246/137/t1534496_159790954971278.jpg', 0, '2021-09-17 13:48:17', '2021-09-17 13:48:17');
+INSERT INTO `user_list` VALUES (7, NULL, '5a4edb32-cc75-4ca1-a318-3b0e462b024f', '5a4edb32-cc75-4ca1-a318-3b0e462b024f', '罐头视频', 'https://s1.st.meishij.net/user/152/221/t9805402_149181424048398.jpg', 0, '2021-09-17 13:48:27', '2021-09-17 13:48:27');
+INSERT INTO `user_list` VALUES (8, NULL, '31462d22-2bce-4b3a-82c2-48f413f6c9c0', '31462d22-2bce-4b3a-82c2-48f413f6c9c0', '笑对明天(来自腾讯.)', 'https://s1.st.meishij.net/user/178/49/t1824928_26384.jpg', 0, '2021-09-17 13:48:38', '2021-09-17 13:48:38');
+INSERT INTO `user_list` VALUES (9, NULL, 'b5a55e85-f521-4f38-bd5f-4da878ff9787', 'b5a55e85-f521-4f38-bd5f-4da878ff9787', '紫默（小草根家庭美食）', 'https://s1.st.meishij.net/user/53/149/t2912303_147644565234925.jpg', 0, '2021-09-17 13:49:48', '2021-09-17 13:49:48');
+INSERT INTO `user_list` VALUES (10, NULL, '3905f7b4-df1a-4e50-bc51-b0ead73a5533', '3905f7b4-df1a-4e50-bc51-b0ead73a5533', '18LS28xgl零落', 'https://s1.st.meishij.net/user/115/13/t2253365_62483.jpg', 0, '2021-09-17 13:49:59', '2021-09-17 13:49:59');
+INSERT INTO `user_list` VALUES (11, NULL, '0b03521d-d96e-4b11-b783-cbedb0c4c6ca', '0b03521d-d96e-4b11-b783-cbedb0c4c6ca', 'lin悠然', 'https://s1.st.meishij.net/user/245/200/t4487745_143626112997061.jpg', 0, '2021-09-17 13:50:09', '2021-09-17 13:50:09');
+INSERT INTO `user_list` VALUES (12, NULL, '112b35ba-c33b-44d8-84c3-a449afc5426f', '112b35ba-c33b-44d8-84c3-a449afc5426f', '林妈爱美食', 'https://s1.st.meishij.net/user/32/219/t3992282_145761023143409.jpg', 0, '2021-09-17 13:51:35', '2021-09-17 13:51:35');
+INSERT INTO `user_list` VALUES (13, NULL, 'd531b42a-c56f-45ad-837b-c5e43a51fe6e', 'd531b42a-c56f-45ad-837b-c5e43a51fe6e', '美食小编', 'https://s1.st.meishij.net/user/41/203/t113291_86576.jpg', 0, '2021-09-17 13:52:58', '2021-09-17 13:52:58');
+INSERT INTO `user_list` VALUES (14, NULL, '82056bf3-a684-45c1-a3b7-1f1f5cd120a2', '82056bf3-a684-45c1-a3b7-1f1f5cd120a2', '红豆厨坊', 'https://s1.st.meishij.net/user/150/151/t14787900_161011039628014.jpg', 0, '2021-09-17 13:53:07', '2021-09-17 13:53:07');
+INSERT INTO `user_list` VALUES (15, NULL, 'effab836-2872-4b9b-b4a3-5ac285345665', 'effab836-2872-4b9b-b4a3-5ac285345665', '青柠食记', 'https://s1.st.meishij.net/user/239/17/t2941989_157043044493736.jpg', 0, '2021-09-17 13:53:17', '2021-09-17 13:53:17');
+INSERT INTO `user_list` VALUES (16, NULL, 'ffed9065-9f57-4ede-9dba-6b7d314cea89', 'ffed9065-9f57-4ede-9dba-6b7d314cea89', '雪峰儿', 'https://s1.st.meishij.net/user/30/75/t4706280_157196159259154.jpg', 0, '2021-09-17 13:53:25', '2021-09-17 13:53:25');
+INSERT INTO `user_list` VALUES (17, NULL, 'a4f8487f-bcc6-407c-93f5-59b31f1532fb', 'a4f8487f-bcc6-407c-93f5-59b31f1532fb', '白茶home', 'https://s1.st.meishij.net/user/96/156/t6789096_156549897688970.jpg', 0, '2021-09-17 13:54:48', '2021-09-17 13:54:48');
+INSERT INTO `user_list` VALUES (18, NULL, 'c44e1382-9034-4cdc-9233-9076adda3f3e', 'c44e1382-9034-4cdc-9233-9076adda3f3e', '东菱厨坊', 'https://s1.st.meishij.net/user/191/07/t3939441_142975584370681.jpg', 0, '2021-09-17 13:54:59', '2021-09-17 13:54:59');
+INSERT INTO `user_list` VALUES (19, NULL, '65880ebd-ea11-4126-8020-a1efa1724858', '65880ebd-ea11-4126-8020-a1efa1724858', '翻糖MM-白之猫猫', 'https://s1.st.meishij.net/user/04/143/t2598254_44865.jpg', 0, '2021-09-17 13:55:31', '2021-09-17 13:55:31');
+INSERT INTO `user_list` VALUES (20, NULL, '350d5584-d20b-4130-8c09-0513a6af66d6', '350d5584-d20b-4130-8c09-0513a6af66d6', '宁小麦96', 'https://s1.st.meishij.net/user/235/249/t13687485_156664047941204.jpg', 0, '2021-09-17 13:56:40', '2021-09-17 13:56:40');
+INSERT INTO `user_list` VALUES (21, NULL, 'b5462014-60db-431c-bbfd-46971ad72158', 'b5462014-60db-431c-bbfd-46971ad72158', '二狗妈A', 'https://s1.st.meishij.net/user/93/190/t13922593_156345442796464.jpg', 0, '2021-09-17 13:56:50', '2021-09-17 13:56:50');
+INSERT INTO `user_list` VALUES (22, NULL, '63235562-9bc4-4a15-a471-13e832c3a5a3', '63235562-9bc4-4a15-a471-13e832c3a5a3', '飘零星', 'https://s1.st.meishij.net/user/62/147/t599312_58182.jpg', 0, '2021-09-17 13:56:59', '2021-09-17 13:56:59');
+INSERT INTO `user_list` VALUES (23, NULL, 'a7a66dbe-47b6-48c3-b094-a8e6a67ef312', 'a7a66dbe-47b6-48c3-b094-a8e6a67ef312', '小鱼哥的私房', 'https://s1.st.meishij.net/user/220/165/t13666470_155353102090913.jpg', 0, '2021-09-17 13:57:20', '2021-09-17 13:57:20');
+INSERT INTO `user_list` VALUES (24, NULL, 'a2c44e90-e540-4314-a074-fcf25f08364f', 'a2c44e90-e540-4314-a074-fcf25f08364f', '水怜忧', 'https://s1.st.meishij.net/user/73/127/t10031823_154579600302699.jpg', 0, '2021-09-17 13:58:38', '2021-09-17 13:58:38');
+INSERT INTO `user_list` VALUES (25, NULL, '22b91516-51b0-43d2-9f04-a991753dd3b2', '22b91516-51b0-43d2-9f04-a991753dd3b2', '小英子美食', 'https://s1.st.meishij.net/user/72/104/t4151072_159168176753360.jpg', 0, '2021-09-17 13:58:48', '2021-09-17 13:58:48');
+INSERT INTO `user_list` VALUES (26, NULL, '2455e2a6-8b52-4335-94a4-a6596c180200', '2455e2a6-8b52-4335-94a4-a6596c180200', '恬萝姑娘', 'https://s1.st.meishij.net/user/87/44/t636087_41821.jpg', 0, '2021-09-17 13:59:01', '2021-09-17 13:59:01');
+INSERT INTO `user_list` VALUES (27, NULL, '4708b403-e667-4686-b298-a31ca802693a', '4708b403-e667-4686-b298-a31ca802693a', '大海微澜微博', 'https://s1.st.meishij.net/user/106/232/t3995606_150916473977598.jpg', 0, '2021-09-17 13:59:11', '2021-09-17 13:59:11');
+INSERT INTO `user_list` VALUES (28, NULL, '763481e4-45f3-4cf6-984b-2b33d2773c91', '763481e4-45f3-4cf6-984b-2b33d2773c91', '深蓝小米粥', 'https://s1.st.meishij.net/user/141/154/t4351141_143641422651509.jpg', 0, '2021-09-17 13:59:20', '2021-09-17 13:59:20');
 
 SET FOREIGN_KEY_CHECKS = 1;
