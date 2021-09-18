@@ -3,7 +3,7 @@
     <img class="cover" v-if="!isVideo" :src="coverUrl" />
     <div class="video-wrap" v-else @click="toggleVideoPlayStatus">
       <img class="video-bg" :src="coverUrl" />
-      <video ref="videoRef" v-show="isVideoPlayed" loop="loop" :src="videoUrl"></video>
+      <video ref="videoRef" loop="loop" :src="videoUrl"></video>
       <div class="btn play-btn" v-show="!isPlayingVideoNow"></div>
       <div class="btn pause-btn" v-show="isPlayingVideoNow"></div>
     </div>
@@ -107,7 +107,6 @@ export default defineComponent({
   setup(props:any) {
     const createDate = computed(() => props.createTime && props.createTime.split(' ')[0])
     const isPlayingVideoNow = ref(false)
-    const isVideoPlayed = ref(false)
     const videoRef = ref(null)
     function toggleVideoPlayStatus() {
       if (!videoRef.value) {
@@ -117,11 +116,10 @@ export default defineComponent({
         (videoRef as any).value.pause()
       } else {
         (videoRef as any).value.play()
-        isVideoPlayed.value = true
       }
       isPlayingVideoNow.value = !isPlayingVideoNow.value
     }
-    return { createDate, isPlayingVideoNow, isVideoPlayed, videoRef, toggleVideoPlayStatus }
+    return { createDate, isPlayingVideoNow, videoRef, toggleVideoPlayStatus }
   }
 })
 </script>
@@ -159,6 +157,7 @@ export default defineComponent({
         width: 100%;
         height: 100%;
         object-fit: cover;
+        filter: blur(10px);
       }
 
       video {
