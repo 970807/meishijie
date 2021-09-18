@@ -1,6 +1,12 @@
 <template>
   <div class="recipe-detail-header">
-    <img class="cover" :src="coverUrl" />
+    <img class="cover" v-if="!isVideo" :src="coverUrl" />
+    <div class="video-wrap" v-else @click="toggleVideoPlayStatus">
+      <img class="video-bg" :src="coverUrl" />
+      <video ref="videoRef" v-show="isVideoPlayed" loop="loop" :src="videoUrl"></video>
+      <div class="btn play-btn" v-show="!isPlayingVideoNow"></div>
+      <div class="btn pause-btn" v-show="isPlayingVideoNow"></div>
+    </div>
     <div class="info">
       <h1 class="title">{{recipeName}}</h1>
       <div class="statistics">
@@ -78,7 +84,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 
 export default defineComponent({
   props: {
@@ -100,7 +106,22 @@ export default defineComponent({
   },
   setup(props:any) {
     const createDate = computed(() => props.createTime && props.createTime.split(' ')[0])
-    return { createDate }
+    const isPlayingVideoNow = ref(false)
+    const isVideoPlayed = ref(false)
+    const videoRef = ref(null)
+    function toggleVideoPlayStatus() {
+      if (!videoRef.value) {
+        return
+      }
+      if (isPlayingVideoNow.value) {
+        (videoRef as any).value.pause()
+      } else {
+        (videoRef as any).value.play()
+        isVideoPlayed.value = true
+      }
+      isPlayingVideoNow.value = !isPlayingVideoNow.value
+    }
+    return { createDate, isPlayingVideoNow, isVideoPlayed, videoRef, toggleVideoPlayStatus }
   }
 })
 </script>
@@ -116,6 +137,65 @@ export default defineComponent({
       height: 535px;
       object-fit: cover;
       border-radius: 4px;
+    }
+
+    .video-wrap {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      width: 350px;
+      height: 535px;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+
+      &:hover {
+        .pause-btn {
+          visibility: visible;
+        }
+      }
+
+      .video-bg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      video {
+        width: 350px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+      }
+
+      .btn {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: url(../assets/images/sprite_03.png) no-repeat;
+        background-size: 100px 250px;
+        opacity: .8;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .play-btn {
+        background-position: 0px -20px;
+        z-index: 22;
+      }
+
+      .pause-btn {
+        visibility: hidden;
+        background-position: 0px -120px;
+        z-index: 22;
+      }
     }
 
     .info {
