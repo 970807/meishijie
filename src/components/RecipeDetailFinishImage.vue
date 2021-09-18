@@ -1,15 +1,38 @@
 <template>
   <h2 class="title">{{recipeName}}的成品图</h2>
-  <div class="finish-image-box">
+  <!-- <div class="finish-images-swiper">
     <img :src="finishFoodImgList[0]">
+  </div> -->
+  <div class="finish-images-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" v-for="(item, index) in finishFoodImgList" :key="index">
+        <img :src="item">
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
   </div>
 </template>
 
 <script>
+import Swiper, { Pagination } from 'swiper'
+import { onMounted } from 'vue'
+import 'swiper/swiper-bundle.min.css'
+Swiper.use([Pagination])
+
 export default {
   props: {
     recipeName: String,
     finishFoodImgList: Array
+  },
+  setup() {
+    onMounted(() => {
+      const swiper = new Swiper('.finish-images-swiper', {
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
+      })
+    })
   }
 }
 </script>
@@ -26,17 +49,35 @@ export default {
     font-weight: 600;
   }
 
-  .finish-image-box {
+  .finish-images-swiper {
+    position: relative;
     width: 900px;
+    height: 500px;
     margin: 0 auto;
-    padding: 24px;
+    padding: 24px 0;
     background: #fff;
     border-radius: 12px;
     box-sizing: border-box;
+    overflow: hidden;
 
-    img {
-      width: 100%;
+    .swiper-slide {
+      position: relative;
+
+      img {
+        width: calc(900px - 48px);
+        height: calc(500px - 48px);
+        padding: 0 24px;
+        object-fit: cover;
+      }
+    }
+
+    .swiper-pagination {
+      bottom: 36px;
+      left: 0;
+      right: 0;
+      :deep(.swiper-pagination-bullet-active) {
+        background: #f42e2b;
+      }
     }
   }
-
 </style>
