@@ -63,6 +63,15 @@ exports.getDetail = async (req, res, next) => {
     // 根据作者id查询作者昵称
     promiseList.push(db.query('select * from user_list where id=?', authorId))
 
+    // 菜谱浏览数+1
+    recipeDetail.browerCount++
+    promiseList.push(
+      db.query('update recipe_detail_list set brower_count=? where id=?', [
+        recipeDetail.browerCount,
+        id
+      ])
+    )
+
     const r = await Promise.all(promiseList)
     const authorRecipeCount = r[0][0].count
     const authorInfo = r[1][0]
@@ -77,6 +86,7 @@ exports.getDetail = async (req, res, next) => {
     recipeDetail.authorAvatar = authorInfo && authorInfo.avatar
     recipeDetail.authorFanCount = authorInfo && authorInfo.fanCount
     recipeDetail = formatTime(recipeDetail, ['createTime', 'updateTime'])
+
     res.json({
       code: '200',
       data: recipeDetail
