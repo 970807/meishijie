@@ -2,7 +2,7 @@
   <nav class="login-nav">
     <div class="inner">
       <a class="logo" href="javascript:;">
-        <img src="@/assets/images/logo.png" />
+        <img src="../assets/images/logo.png" />
       </a>
       <ul>
         <li>
@@ -31,57 +31,49 @@
   </nav>
 </template>
 
-<script>
-import undevelopedTip from '@/utils/undevelopedTip'
-export default {
-  name: 'LoginNav',
-  setup() {
-    return {
-      undevelopedTip
-    }
-  }
-}
+<script setup lang="ts">
+import undevelopedTip from '../utils/undevelopedTip'
 </script>
 
 <style lang="scss" scoped>
-  .login-nav {
-    width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,.08);
+.login-nav {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-    .inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 1200px;
-      height: 108px;
-      margin: 0 auto;
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
+    height: 108px;
+    margin: 0 auto;
 
-      .logo {
-        width: 150px;
-        display: block;
-        margin-right: 22px;
+    .logo {
+      width: 150px;
+      display: block;
+      margin-right: 22px;
 
-        img {
-          width: 100%;
-          height: 100%;
-        }
+      img {
+        width: 100%;
+        height: 100%;
       }
+    }
 
-      ul {
-        display: flex;
+    ul {
+      display: flex;
 
-        a {
-          padding: 0 20px;
-          color: #fff;
-          font-size: 18px;
-          opacity: .8;
+      a {
+        padding: 0 20px;
+        color: #fff;
+        font-size: 18px;
+        opacity: 0.8;
 
-          &:hover {
-            opacity: 1;
-            text-decoration: underline;
-          }
+        &:hover {
+          opacity: 1;
+          text-decoration: underline;
         }
       }
     }
   }
+}
 </style>

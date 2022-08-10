@@ -1,27 +1,34 @@
 <template>
   <div class="home-recomment-area">
     <div class="list-wrap" v-for="item in recommentList" :key="item.id">
-      <div class="title">{{item.columnTitle}}</div>
+      <div class="title">{{ item.columnTitle }}</div>
       <div class="list">
         <router-link
           class="item"
-          :to="{path:`/recipe-detail/${item2.id}`}"
+          :to="{ path: `/recipe-detail/${item2.id}` }"
           v-for="item2 in item.list"
           :key="item2.id"
         >
           <div
             class="cover"
-            :style="{backgroundImage: `url(${item2.coverUrl})`}"
+            :style="{ backgroundImage: `url(${item2.coverUrl})` }"
           >
             <i class="video-icon" v-if="item2.isVideo"></i>
             <div class="author-info">
-              <div class="author-avatar" :style="{backgroundImage: `url(${item2.authorAvatar})`}"></div>
-              <strong class="author-name ellipsis-l1">{{item2.authorName}}</strong>
+              <div
+                class="author-avatar"
+                :style="{ backgroundImage: `url(${item2.authorAvatar})` }"
+              ></div>
+              <strong class="author-name ellipsis-l1">{{
+                item2.authorName
+              }}</strong>
             </div>
           </div>
           <div class="info">
-            <strong class="t ellipsis-l1">{{item2.recipeName}}</strong>
-            <span class="ingredient ellipsis-l1">{{item2.ingredientStr}}</span>
+            <strong class="t ellipsis-l1">{{ item2.recipeName }}</strong>
+            <span class="ingredient ellipsis-l1">{{
+              item2.ingredientStr
+            }}</span>
           </div>
         </router-link>
       </div>
@@ -29,15 +36,16 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    recommentList: {
-      type: Array,
-      default: () => []
-    }
-  }
+<script setup lang="ts">
+import { IRecommentItem } from '../types/home'
+
+interface IProps {
+  recommentList?: IRecommentItem[]
 }
+
+withDefaults(defineProps<IProps>(), {
+  recommentList: () => []
+})
 </script>
 
 <style lang="scss" scoped>
@@ -64,7 +72,7 @@ export default {
         border-radius: 12px;
         overflow: hidden;
         margin: 0 20px 20px 0;
-        transition: all ease .3s;
+        transition: all ease 0.3s;
 
         &:hover {
           box-shadow: 0px 4px 12px rgb(0 0 0 /10%);
@@ -104,12 +112,12 @@ export default {
             bottom: -60px;
             width: 100%;
             height: 60px;
-            background: rgba(0,0,0,.5);
+            background: rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
             padding: 0 20px;
             box-sizing: border-box;
-            transition: bottom ease .3s;
+            transition: bottom ease 0.3s;
 
             &:hover {
               .author-name {

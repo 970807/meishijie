@@ -47,11 +47,15 @@
         <li>友情链接</li>
       </ul>
 
-        <a class="beian" style="margin-right: 20px;" href="https://beian.miit.gov.cn/">桂ICP备20006161号-2</a>
-        <!-- <img src="https://st-cn.meishij.net/p2/20180208/20180208111357_93713.png" /> -->
-        <!-- <p>京公网安备11010802026928</p> -->
-        <p>© 2009-2019 Aliyun.com 版权所有。</p>
-
+      <a
+        class="beian"
+        style="margin-right: 20px"
+        href="https://beian.miit.gov.cn/"
+        >桂ICP备20006161号-2</a
+      >
+      <!-- <img src="https://st-cn.meishij.net/p2/20180208/20180208111357_93713.png" /> -->
+      <!-- <p>京公网安备11010802026928</p> -->
+      <p>© 2009-2019 Aliyun.com 版权所有。</p>
     </div>
   </footer>
 </template>
@@ -59,7 +63,7 @@
 <style lang="scss" scoped>
 footer {
   width: 100%;
-  background: rgba(11, 11, 10, .9);
+  background: rgba(11, 11, 10, 0.9);
   padding-top: 40px;
   margin-right: 40px;
 
@@ -87,7 +91,7 @@ footer {
         width: 280px;
         height: 80px;
         margin: 0 0 20px 20px;
-        background: rgba(255, 255, 255, .1);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 4px;
 
         .icon {
@@ -96,7 +100,7 @@ footer {
           top: 15px;
           width: 50px;
           height: 50px;
-          background: url(../assets/images/sprite_05.png)  no-repeat;
+          background: url(../assets/images/sprite_05.png) no-repeat;
           background-size: 50px 200px;
         }
 
@@ -128,7 +132,7 @@ footer {
 
           .desc {
             font-size: 14px;
-            color: rgba(255, 255, 255, .5);
+            color: rgba(255, 255, 255, 0.5);
             line-height: 22px;
           }
         }

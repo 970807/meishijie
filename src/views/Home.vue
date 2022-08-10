@@ -3,72 +3,62 @@
     <HeaderArea />
 
     <!-- 今日热门视频菜谱 -->
-    <HomeHotTodayVideo :hotTodayVideoList="hotTodayVideoList" />
+    <HomeHotTodayVideo :hotTodayVideoList="state.hotTodayVideoList" />
 
+    <!-- 今日热搜、今日三餐 -->
     <HomeCenterArea
-      :hotTodaySearchList="hotTodaySearchList"
-      :threeMealsTodayList="threeMealsTodayList"
+      :hotTodaySearchList="state.hotTodaySearchList"
+      :threeMealsTodayList="state.threeMealsTodayList"
     />
 
-    <HomeRecommentArea :recommentList="recommentList" />
+    <!-- 推荐列表 -->
+    <HomeRecommentArea :recommentList="state.recommentList" />
 
-    <HomeFooter/>
+    <HomeFooter />
   </div>
 </template>
 
-<script>
-import { reactive, toRefs } from 'vue'
-import { getHotTodayVideoList, getHotTodaySearchList, getThreeMealsTodayList, getRecommentList } from '@/service/home'
-import HeaderArea from '@/components/HeaderArea'
-import HomeHotTodayVideo from '@/components/HomeHotTodayVideo'
-import HomeCenterArea from '@/components/HomeCenterArea'
-import HomeRecommentArea from '@/components/HomeRecommentArea'
-import HomeFooter from '@/components/HomeFooter'
+<script setup lang="ts">
+import { reactive } from 'vue'
+import {
+  getHotTodayVideoList,
+  getHotTodaySearchList,
+  getThreeMealsTodayList,
+  getRecommentList
+} from '../service/home'
+import {
+  IState,
+  IHotTodayVideoItem,
+  IHotTodaySearchItem,
+  IThreeMealsTodayItem,
+  IRecommentItem
+} from '../types/home'
+import HeaderArea from '../components/HeaderArea.vue'
+import HomeHotTodayVideo from '../components/HomeHotTodayVideo.vue'
+import HomeCenterArea from '../components/HomeCenterArea.vue'
+import HomeRecommentArea from '../components/HomeRecommentArea.vue'
+import HomeFooter from '../components/HomeFooter.vue'
 
-export default {
-  name: 'Home',
-  components: {
-    HeaderArea,
-    HomeHotTodayVideo,
-    HomeCenterArea,
-    HomeRecommentArea,
-    HomeFooter
-  },
-  setup() {
-    const state = reactive({
-      hotTodayVideoList: [],
-      hotTodaySearchList: [],
-      threeMealsTodayList: [],
-      recommentList: []
-    })
+const state = reactive<IState>({
+  hotTodayVideoList: [],
+  hotTodaySearchList: [],
+  threeMealsTodayList: [],
+  recommentList: []
+})
 
-    getHotTodayVideoList().then(res => {
-      state.hotTodayVideoList = res.data
-    }).catch(err => {
-      console.error(err)
-    })
+getHotTodayVideoList<IHotTodayVideoItem[]>().then((res) => {
+  state.hotTodayVideoList = res.data
+})
 
-    getHotTodaySearchList().then(res => {
-      state.hotTodaySearchList = res.data
-    }).catch(err => {
-      console.error(err)
-    })
+getHotTodaySearchList<IHotTodaySearchItem[]>().then((res) => {
+  state.hotTodaySearchList = res.data
+})
 
-    getThreeMealsTodayList().then(res => {
-      state.threeMealsTodayList = res.data
-    }).catch(err => {
-      console.error(err)
-    })
+getThreeMealsTodayList<IThreeMealsTodayItem[]>().then((res) => {
+  state.threeMealsTodayList = res.data
+})
 
-    getRecommentList().then(res => {
-      state.recommentList = res.data
-    }).catch(err => {
-      console.error(err)
-    })
-
-    return {
-      ...toRefs(state)
-    }
-  }
-}
+getRecommentList<IRecommentItem[]>().then((res) => {
+  state.recommentList = res.data
+})
 </script>

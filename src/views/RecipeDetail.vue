@@ -42,10 +42,11 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, reactive, toRefs } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { getDetail } from '@/service/recipe'
+import { IRecipeInfo } from '../types/recipeDetail'
+import { getDetail } from '../service/recipe'
 import HeaderArea from '../components/HeaderArea.vue'
 import RecipeDetailHeader from '../components/RecipeDetailHeader.vue'
 import RecipeDetailAuthorInfo from '../components/RecipeDetailAuthorInfo.vue'
@@ -53,34 +54,19 @@ import RecipeDetailRecipeStep from '../components/RecipeDetailRecipeStep.vue'
 import RecipeDetailFinishImage from '../components/RecipeDetailFinishImage.vue'
 import RecipeDetailRecipeTip from '../components/RecipeDetailRecipeTip.vue'
 
-export default defineComponent({
-  components: {
-    HeaderArea,
-    RecipeDetailHeader,
-    RecipeDetailAuthorInfo,
-    RecipeDetailRecipeStep,
-    RecipeDetailFinishImage,
-    RecipeDetailRecipeTip
-  },
-  setup() {
-    const route = useRoute()
-    const recipeId = route.params.id
+const route = useRoute()
 
-    const state = reactive({
-      recipeInfo: []
-    })
+let recipeId = route.params.id
+if (Array.isArray(recipeId)) {
+  recipeId = recipeId[0]
+}
+const recipeInfo = ref<IRecipeInfo>({} as IRecipeInfo)
 
-    function getRecipeDetail(id) {
-      getDetail({ id }).then(res => {
-        state.recipeInfo = res.data
-      })
-    }
+function getRecipeDetail(id: string | number) {
+  getDetail<IRecipeInfo>({ id }).then((res) => {
+    recipeInfo.value = res.data
+  })
+}
 
-    getRecipeDetail(recipeId)
-
-    return {
-      ...toRefs(state)
-    }
-  }
-})
+getRecipeDetail(recipeId)
 </script>

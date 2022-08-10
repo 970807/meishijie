@@ -15,54 +15,54 @@
   </nav>
 </template>
 
-<script setup>
-import HeaderCategoryMenu from './HeaderCategoryMenu'
-import undevelopedTip from '@/utils/undevelopedTip'
+<script setup lang="ts">
+import HeaderCategoryMenu from './HeaderCategoryMenu.vue'
+import undevelopedTip from '../utils/undevelopedTip'
 </script>
 
 <style lang="scss" scoped>
-  .navbar {
-    flex: 1;
+.navbar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+
+  .item {
     display: flex;
-    justify-content: center;
+    align-items: center;
     height: 100%;
+    padding: 0 20px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0);
+    font-size: 17px;
+    font-weight: 600;
 
-    .item {
-      display: flex;
-      align-items: center;
-      height: 100%;
-      padding: 0 20px;
-      color: #fff;
-      background: rgba(255,255,255,0);
-      font-size: 17px;
-      font-weight: 600;
+    &.category:hover .category-menu {
+      display: block;
+    }
 
-      &.category:hover .category-menu {
-        display: block;
-      }
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
 
-      &:hover {
-        background: rgba(255,255,255,.1);
-      }
+    .arrow-icon {
+      display: inline-block;
+      background: url('../assets/images/sprite_01.png') 0 -90px;
+      background-size: 30px 150px;
+      width: 10px;
+      height: 6px;
+      margin-left: 8px;
+    }
 
-      .arrow-icon {
-        display: inline-block;
-        background: url('../assets/images/sprite_01.png') 0 -90px;
-        background-size: 30px 150px;
-        width: 10px;
-        height: 6px;
-        margin-left: 8px;
-      }
-
-      .app-icon {
-        display: inline-block;
-        background: url('../assets/images/sprite_01.png') 0 -120px;
-        background-size: 30px 150px;
-        width: 20px;
-        height: 22px;
-        margin-top: 2px;
-        margin-right: 11px;
-      }
+    .app-icon {
+      display: inline-block;
+      background: url('../assets/images/sprite_01.png') 0 -120px;
+      background-size: 30px 150px;
+      width: 20px;
+      height: 22px;
+      margin-top: 2px;
+      margin-right: 11px;
     }
   }
+}
 </style>

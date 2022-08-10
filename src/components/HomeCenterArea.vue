@@ -4,8 +4,13 @@
     <div class="hot-today-search">
       <h1 class="title">今日热搜</h1>
       <ul class="list">
-        <li class="item" :class="{hot: item.isHot}" v-for="item in hotTodaySearchList" :key="item.id">
-          {{item.label}}
+        <li
+          class="item"
+          :class="{ hot: item.isHot }"
+          v-for="item in hotTodaySearchList"
+          :key="item.id"
+        >
+          {{ item.label }}
         </li>
       </ul>
     </div>
@@ -18,11 +23,13 @@
         <ul class="tabs">
           <li
             class="item"
-            :class="{current: index===currentThreeMealsTabIndex}"
+            :class="{ current: index === currentThreeMealsTabIndex }"
             v-for="(item, index) in threeMealsTodayList"
             :key="item.id"
             @click="onThreeMealsTabItemClick(index)"
-          >{{item.label}}</li>
+          >
+            {{ item.label }}
+          </li>
         </ul>
       </h1>
       <swiper
@@ -31,19 +38,20 @@
         @slideChange="onThreeMealsSlideChange"
       >
         <swiper-slide
+          :swiperRef="('swiper' as any)"
           v-for="item in threeMealsTodayList"
           :key="item.id"
         >
-           <router-link
-              class="item"
-              v-for="item2 in item.list"
-              :key="item2.id"
-              :to="`/recipe-detail/${item2.id}`"
-            >
-              <img class="cover" :src="item2.coverUrl" />
-              <strong class="t ellipsis-l1">{{item2.recipeName}}</strong>
-              <p class="desc ellipsis-l1">{{item2.desc}}</p>
-            </router-link>
+          <router-link
+            class="item"
+            v-for="item2 in item.list"
+            :key="item2.id"
+            :to="`/recipe-detail/${item2.id}`"
+          >
+            <img class="cover" :src="item2.coverUrl" />
+            <strong class="t ellipsis-l1">{{ item2.recipeName }}</strong>
+            <p class="desc ellipsis-l1">{{ item2.desc }}</p>
+          </router-link>
         </swiper-slide>
       </swiper>
     </div>
@@ -51,9 +59,9 @@
 
     <!-- 二维码-start -->
     <div class="qrcode">
-      <img class="bg-img" :src="require('@/assets/images/qr-code-bg.jpg')" />
-      <img class="qr-img" :src="require('@/assets/images/qr-code.png')" />
-      <img class="phone-img" :src="require('@/assets/images/qr-code-phone.png')" />
+      <img class="bg-img" src="../assets/images/qr-code-bg.jpg" />
+      <img class="qr-img" src="../assets/images/qr-code.png" />
+      <img class="phone-img" src="../assets/images/qr-code-phone.png" />
       <div class="desc">
         <strong>让吃饭变简单</strong>
         <span>www.Meishi.cc</span>
@@ -63,50 +71,37 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper.min.css'
+import { IHotTodaySearchItem, IThreeMealsTodayItem } from '../types/home'
 
-export default {
-  props: {
-    hotTodaySearchList: {
-      type: Array,
-      default: () => []
-    },
-    threeMealsTodayList: {
-      type: Array,
-      default: () => []
-    }
-  },
-  components: {
-    Swiper,
-    SwiperSlide
-  },
-  setup() {
-    const currentThreeMealsTabIndex = ref(0)
+interface IProps {
+  hotTodaySearchList?: IHotTodaySearchItem[]
+  threeMealsTodayList?: IThreeMealsTodayItem[]
+}
 
-    let threeMealsSwiper = null
+withDefaults(defineProps<IProps>(), {
+  hotTodaySearchList: () => [],
+  threeMealsTodayList: () => []
+})
 
-    function onThreeMealsTabItemClick(index) {
-      currentThreeMealsTabIndex.value = index
-      threeMealsSwiper && threeMealsSwiper.slideTo(index)
-    }
+const currentThreeMealsTabIndex = ref(0)
 
-    const onThreeMealsSwiper = (swiper) => {
-      threeMealsSwiper = swiper
-    }
+let threeMealsSwiper: any = null
 
-    const onThreeMealsSlideChange = (e) => {
-      currentThreeMealsTabIndex.value = e.activeIndex
-    }
-    return {
-      currentThreeMealsTabIndex,
-      onThreeMealsTabItemClick,
-      onThreeMealsSwiper,
-      onThreeMealsSlideChange
-    }
-  }
+function onThreeMealsTabItemClick(index: number) {
+  currentThreeMealsTabIndex.value = index
+  threeMealsSwiper && threeMealsSwiper.slideTo(index)
+}
+
+const onThreeMealsSwiper = (swiper: any) => {
+  threeMealsSwiper = swiper
+}
+
+const onThreeMealsSlideChange = (e: any) => {
+  currentThreeMealsTabIndex.value = e.activeIndex
 }
 </script>
 
@@ -149,11 +144,11 @@ export default {
         }
 
         &.hot {
-          background: rgba(246, 77, 54, .15);
+          background: rgba(246, 77, 54, 0.15);
           color: #f64d36;
 
           &:hover {
-            background: rgba(246, 77, 54, .2);
+            background: rgba(246, 77, 54, 0.2);
           }
         }
       }
@@ -284,14 +279,14 @@ export default {
       strong {
         display: block;
         font-size: 19px;
-        color: rgba(255, 255, 255, .95);
+        color: rgba(255, 255, 255, 0.95);
         text-shadow: 0 0 4px rgb(0 0 0 / 90%);
         line-height: 28px;
       }
 
       span {
         font-size: 14px;
-        color: rgba(255, 255, 255, .8);
+        color: rgba(255, 255, 255, 0.8);
         text-shadow: 0 0 4px rgb(0 0 0 / 90%);
         line-height: 20px;
       }
@@ -300,31 +295,31 @@ export default {
 }
 
 @keyframes qr-bg-ani {
-    0% {
-      transform: scale(1);
-      filter: blur(0)
-    }
-
-    44% {
-      transform: scale(1);
-      filter: blur(0);
-    }
-
-    50% {
-      transform: scale(1.2);
-      filter: blur(4px);
-    }
-
-    94% {
-      transform: scale(1.2);
-      filter: blur(4px);
-    }
-
-    100% {
-      transform: scale(1);
-      filter: blur(0);
-    }
+  0% {
+    transform: scale(1);
+    filter: blur(0);
   }
+
+  44% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+    filter: blur(4px);
+  }
+
+  94% {
+    transform: scale(1.2);
+    filter: blur(4px);
+  }
+
+  100% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
 
 @keyframes qr-phone-ani {
   0% {

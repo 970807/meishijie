@@ -7,24 +7,26 @@
           class="item"
           v-for="(item, index) in hotTodayVideoList"
           :key="item.id"
-          :style="{width: getVideoWrapperWidth(index)}"
+          :style="{ width: getVideoWrapperWidth(index) }"
         >
           <div class="mask"></div>
           <img class="cover" :src="item.coverUrl" />
           <i class="play-btn" @click="onPlayBtnClick(index)"></i>
           <video
-            loop="loop"
-            :ref="setVideoRef"
+            :loop="true"
+            :ref="(el) => setVideoRef(el as HTMLVideoElement)"
             :src="item.videoUrl"
             @click="onPauseVideo(index)"
             v-show="isPlayingVideoNow && currentPlayVideoIndex === index"
           ></video>
           <div class="info">
-            <div class="t">{{item.title}}</div>
+            <div class="t">{{ item.title }}</div>
             <div class="row">
-              <div class="avatar"
-                    :style="{backgroundImage: `url(${item.userAvatar})`}"></div>
-              <div class="username">{{item.username}}</div>
+              <div
+                class="avatar"
+                :style="{ backgroundImage: `url(${item.userAvatar})` }"
+              ></div>
+              <div class="username">{{ item.username }}</div>
             </div>
           </div>
         </div>
@@ -33,64 +35,58 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue'
+import { IHotTodayVideoItem } from '../types/home'
 
-export default {
-  props: {
-    hotTodayVideoList: {
-      type: Array,
-      default: () => []
-    }
-  },
-  setup() {
-    const videRefList = []
+interface IProps {
+  hotTodayVideoList?: IHotTodayVideoItem[]
+}
 
-    const isPlayingVideoNow = ref(false)
-    const currentPlayVideoIndex = ref(0)
-    function onPlayBtnClick(index) {
-      isPlayingVideoNow.value = true
-      currentPlayVideoIndex.value = index
-      videRefList.forEach((item, index) => {
-        if (index !== currentPlayVideoIndex.value) {
-          item.pause()
-        }
-      })
-      const willPlayVideEl = videRefList[index]
-      if (!willPlayVideEl) {
-        return
-      }
-      willPlayVideEl.play()
-    }
+withDefaults(defineProps<IProps>(), {
+  hotTodayVideoList: () => []
+})
 
-    function onPauseVideo(index) {
-      videRefList[index].pause()
-      isPlayingVideoNow.value = false
-    }
+const videoRefList: (HTMLVideoElement | null)[] = []
 
-    function setVideoRef(el) {
-      videRefList.push(el)
-    }
+const isPlayingVideoNow = ref(false)
+const currentPlayVideoIndex = ref(0)
+function onPlayBtnClick(index: number): void {
+  isPlayingVideoNow.value = true
+  currentPlayVideoIndex.value = index
 
-    function getVideoWrapperWidth(index) {
-      if (!isPlayingVideoNow.value) {
-        return '285px'
-      }
-      if (currentPlayVideoIndex.value === index) {
-        return '350px'
-      } else {
-        return '263px'
-      }
+  videoRefList.forEach((item, index) => {
+    if (index !== currentPlayVideoIndex.value) {
+      item?.pause()
     }
+  })
+  const willPlayVideEl = videoRefList[index]
 
-    return {
-      isPlayingVideoNow,
-      currentPlayVideoIndex,
-      onPlayBtnClick,
-      onPauseVideo,
-      setVideoRef,
-      getVideoWrapperWidth
-    }
+  if (!willPlayVideEl) {
+    return
+  }
+  willPlayVideEl.play()
+}
+
+function onPauseVideo(index: number): void {
+  if (videoRefList[index]) {
+    videoRefList[index]!.pause()
+    isPlayingVideoNow.value = false
+  }
+}
+
+function setVideoRef(el: HTMLVideoElement | null): void {
+  videoRefList.push(el)
+}
+
+function getVideoWrapperWidth(index: number): string {
+  if (!isPlayingVideoNow.value) {
+    return '285px'
+  }
+  if (currentPlayVideoIndex.value === index) {
+    return '350px'
+  } else {
+    return '263px'
   }
 }
 </script>
@@ -121,7 +117,7 @@ export default {
         margin-right: 20px;
         border-radius: 12px;
         overflow: hidden;
-        transition: width .4s ease;
+        transition: width 0.4s ease;
         cursor: pointer;
 
         &:nth-child(4n) {
@@ -134,7 +130,7 @@ export default {
           right: 0;
           top: 0;
           bottom: 0;
-          background: rgba(0,0,0,.5);
+          background: rgba(0, 0, 0, 0.5);
           z-index: 1;
         }
 
@@ -143,7 +139,7 @@ export default {
           height: 100%;
           object-fit: cover;
           filter: blur(8px);
-          opacity: .5;
+          opacity: 0.5;
         }
 
         video {
@@ -166,8 +162,8 @@ export default {
           background: url(../assets/images/sprite_03.png) 0px -20px no-repeat;
           background-size: 100px 250px;
           z-index: 10;
-          opacity: .8;
-          transform: all ease .3s;
+          opacity: 0.8;
+          transform: all ease 0.3s;
 
           &:hover {
             opacity: 1;
@@ -209,8 +205,6 @@ export default {
         }
       }
     }
-
   }
-
 }
 </style>

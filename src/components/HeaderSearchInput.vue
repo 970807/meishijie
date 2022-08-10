@@ -1,6 +1,5 @@
 <template>
-  <div class="search-box"
-       :style="{'--extra-width': extraWidth}">
+  <div class="search-box" :style="{ '--extra-width': extraWidth }">
     <input
       type="text"
       :placeholder="placeholderText"
@@ -14,25 +13,27 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 const searchValue = ref('')
 const isFocus = ref(false)
 
-function onFocus () {
+function onFocus() {
   isFocus.value = true
 }
 
-function onBlur () {
+function onBlur() {
   isFocus.value = false
 }
 
-function onSearch () {
-  window.open(`https://so.meishi.cc/?q=${encodeURIComponent(searchValue.value)}`)
+function onSearch() {
+  window.open(
+    `https://so.meishi.cc/?q=${encodeURIComponent(searchValue.value)}`
+  )
 }
 
-const extraWidth = computed(() => isFocus.value ? '70px' : '0px')
-const placeholderText = computed(() => isFocus.value ? '' : '菜谱名、食材名')
+const extraWidth = computed(() => (isFocus.value ? '70px' : '0px'))
+const placeholderText = computed(() => (isFocus.value ? '' : '菜谱名、食材名'))
 </script>
 
 <style lang="scss" scoped>
@@ -43,7 +44,7 @@ const placeholderText = computed(() => isFocus.value ? '' : '菜谱名、食材�
   height: 44px;
   border-radius: 22px;
   overflow: hidden;
-  transition: all ease .3s;
+  transition: all ease 0.3s;
 
   .input {
     border: none;
