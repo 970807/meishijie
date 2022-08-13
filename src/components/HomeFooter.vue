@@ -75,7 +75,7 @@ footer {
       display: inline-block;
       width: 600px;
       height: 180px;
-      background: url(../assets/images/logo_02.png) left center no-repeat;
+      background: url(@/assets/images/logo_02.png) left center no-repeat;
       background-size: 440px auto;
     }
 
@@ -100,7 +100,7 @@ footer {
           top: 15px;
           width: 50px;
           height: 50px;
-          background: url(../assets/images/sprite_05.png) no-repeat;
+          background: url(@/assets/images/sprite_05.png) no-repeat;
           background-size: 50px 200px;
         }
 

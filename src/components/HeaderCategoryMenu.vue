@@ -499,7 +499,7 @@ const list: IList = {
   display: inline-block;
   width: 22px;
   height: 22px;
-  background: url(../assets/images/sprite_02.png) no-repeat;
+  background: url(@/assets/images/sprite_02.png) no-repeat;
   background-size: 22px 154px;
   vertical-align: top;
   margin-left: 2px;

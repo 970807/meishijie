@@ -78,15 +78,15 @@
 <script setup lang="ts">
 import { reactive, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useUserStore } from '../store/user'
-import { ILoginByAccount } from '../types/login'
-import { registerByAccount, loginByAccount } from '../service/login'
-import LoginNav from '../components/LoginNav.vue'
-import LoginPhoneInputGroup from '../components/LoginPhoneInputGroup.vue'
-import LoginAccountInputGroup from '../components/LoginAccountInputGroup.vue'
-import LoginOperationBtns from '../components/LoginOperationBtns.vue'
-import LoginRegisterOperationBtns from '../components/LoginRegisterOperationBtns.vue'
-import undevelopedTip from '../utils/undevelopedTip'
+import { useUserStore } from '@/store/user'
+import { ILoginByAccount } from '@/types/login'
+import { registerByAccount, loginByAccount } from '@/service/login'
+import LoginNav from '@/components/LoginNav.vue'
+import LoginPhoneInputGroup from '@/components/LoginPhoneInputGroup.vue'
+import LoginAccountInputGroup from '@/components/LoginAccountInputGroup.vue'
+import LoginOperationBtns from '@/components/LoginOperationBtns.vue'
+import LoginRegisterOperationBtns from '@/components/LoginRegisterOperationBtns.vue'
+import undevelopedTip from '@/utils/undevelopedTip'
 
 const router = useRouter()
 const route = useRoute()
@@ -216,7 +216,7 @@ function onRegisterBtnClick() {
 
 <style lang="scss" scoped>
 .login {
-  background: #fff url(../assets/images/login_bg.jpg) center top no-repeat;
+  background: #fff url(@/assets/images/login_bg.jpg) center top no-repeat;
   padding-bottom: 200px;
 
   .login-title {

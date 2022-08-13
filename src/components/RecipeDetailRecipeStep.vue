@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { IStepListItem } from '../types/recipeDetail'
+import { IStepListItem } from '@/types/recipeDetail'
 
 interface IProps {
   recipeName: String

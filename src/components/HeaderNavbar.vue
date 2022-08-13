@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import HeaderCategoryMenu from './HeaderCategoryMenu.vue'
-import undevelopedTip from '../utils/undevelopedTip'
+import undevelopedTip from '@/utils/undevelopedTip'
 </script>
 
 <style lang="scss" scoped>
@@ -47,7 +47,7 @@ import undevelopedTip from '../utils/undevelopedTip'
 
     .arrow-icon {
       display: inline-block;
-      background: url('../assets/images/sprite_01.png') 0 -90px;
+      background: url('@/assets/images/sprite_01.png') 0 -90px;
       background-size: 30px 150px;
       width: 10px;
       height: 6px;

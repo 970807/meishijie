@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { IRecommentItem } from '../types/home'
+import { IRecommentItem } from '@/types/home'
 
 interface IProps {
   recommentList?: IRecommentItem[]
@@ -103,7 +103,7 @@ withDefaults(defineProps<IProps>(), {
             right: 15px;
             width: 30px;
             height: 30px;
-            background: url(../assets/images/sprite_04.png) 0px 0px no-repeat;
+            background: url(@/assets/images/sprite_04.png) 0px 0px no-repeat;
             background-size: 30px 60px;
           }
 
@@ -177,7 +177,7 @@ withDefaults(defineProps<IProps>(), {
               top: 8px;
               width: 16px;
               height: 16px;
-              background: url(../assets/images/sprite_01.png) 0px -60px no-repeat;
+              background: url(@/assets/images/sprite_01.png) 0px -60px no-repeat;
               background-size: 30px 150px;
             }
           }

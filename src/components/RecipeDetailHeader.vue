@@ -93,7 +93,7 @@ import { ref, computed } from 'vue'
 import {
   IMainIngredientListItem,
   ISubIngredientListItem
-} from '../types/recipeDetail'
+} from '@/types/recipeDetail'
 
 interface IProps {
   isVideo: number
@@ -184,7 +184,7 @@ function toggleVideoPlayStatus() {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      background: url(../assets/images/sprite_03.png) no-repeat;
+      background: url(@/assets/images/sprite_03.png) no-repeat;
       background-size: 100px 250px;
       opacity: 0.8;
 
@@ -235,7 +235,7 @@ function toggleVideoPlayStatus() {
         width: 80px;
         height: 160px;
         margin-right: 20px;
-        background: #fff url(../assets/images/sprite_06.png) no-repeat;
+        background: #fff url(@/assets/images/sprite_06.png) no-repeat;
         background-size: 80px 640px;
         border-radius: 16px;
 
@@ -408,7 +408,7 @@ function toggleVideoPlayStatus() {
       width: 24px;
       height: 20px;
       margin: 14px 10px 0 0;
-      background: url(../assets/images/sprite_01.png) 0 -30px no-repeat;
+      background: url(@/assets/images/sprite_01.png) 0 -30px no-repeat;
       background-size: 30px 150px;
       vertical-align: top;
     }

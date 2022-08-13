@@ -59,9 +59,9 @@
 
     <!-- 二维码-start -->
     <div class="qrcode">
-      <img class="bg-img" src="../assets/images/qr-code-bg.jpg" />
-      <img class="qr-img" src="../assets/images/qr-code.png" />
-      <img class="phone-img" src="../assets/images/qr-code-phone.png" />
+      <img class="bg-img" src="@/assets/images/qr-code-bg.jpg" />
+      <img class="qr-img" src="@/assets/images/qr-code.png" />
+      <img class="phone-img" src="@/assets/images/qr-code-phone.png" />
       <div class="desc">
         <strong>让吃饭变简单</strong>
         <span>www.Meishi.cc</span>
@@ -75,7 +75,7 @@
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper.min.css'
-import { IHotTodaySearchItem, IThreeMealsTodayItem } from '../types/home'
+import { IHotTodaySearchItem, IThreeMealsTodayItem } from '@/types/home'
 
 interface IProps {
   hotTodaySearchList?: IHotTodaySearchItem[]

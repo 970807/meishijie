@@ -1,4 +1,4 @@
-import request from '../utils/axios'
+import request from '@/utils/axios'
 
 // 账号密码方式注册
 export function registerByAccount<T>(params: any) {

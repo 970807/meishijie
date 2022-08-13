@@ -2,7 +2,7 @@
   <nav class="login-nav">
     <div class="inner">
       <a class="logo" href="javascript:;">
-        <img src="../assets/images/logo.png" />
+        <img src="@/assets/images/logo.png" />
       </a>
       <ul>
         <li>
@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import undevelopedTip from '../utils/undevelopedTip'
+import undevelopedTip from '@/utils/undevelopedTip'
 </script>
 
 <style lang="scss" scoped>

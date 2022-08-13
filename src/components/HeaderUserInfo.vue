@@ -28,10 +28,10 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { IState, IUserInfo } from '../types/headerArea'
-import { useUserStore } from '../store/user'
-import { getUserInfo } from '../service/user'
-import defaultAvatar from '../assets/images/avatar_default.png'
+import { IState, IUserInfo } from '@/types/headerArea'
+import { useUserStore } from '@/store/user'
+import { getUserInfo } from '@/service/user'
+import defaultAvatar from '@/assets/images/avatar_default.png'
 
 const userStore = useUserStore()
 const state = reactive<IState>({
@@ -47,7 +47,7 @@ getUserInfo<IUserInfo>()
 
 function onLogout() {
   localStorage.removeItem('token')
-  userStore.token = ''
+  userStore.$reset()
 }
 </script>
 
@@ -92,7 +92,7 @@ function onLogout() {
         position: absolute;
         right: 0;
         bottom: 0;
-        background: url(../assets/images/daren.png) center no-repeat;
+        background: url(@/assets/images/daren.png) center no-repeat;
         background-size: 100% 100%;
         width: 16px;
         height: 16px;
@@ -156,7 +156,7 @@ function onLogout() {
           position: absolute;
           top: 12px;
           right: 15px;
-          background: url(../assets/images/arrow_right.png) center no-repeat;
+          background: url(@/assets/images/arrow_right.png) center no-repeat;
           background-size: 100% 100%;
           width: 4px;
           height: 7px;

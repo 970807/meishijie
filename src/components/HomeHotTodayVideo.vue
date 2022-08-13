@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { IHotTodayVideoItem } from '../types/home'
+import { IHotTodayVideoItem } from '@/types/home'
 
 interface IProps {
   hotTodayVideoList?: IHotTodayVideoItem[]
@@ -159,7 +159,7 @@ function getVideoWrapperWidth(index: number): string {
           display: block;
           width: 100px;
           height: 100px;
-          background: url(../assets/images/sprite_03.png) 0px -20px no-repeat;
+          background: url(@/assets/images/sprite_03.png) 0px -20px no-repeat;
           background-size: 100px 250px;
           z-index: 10;
           opacity: 0.8;

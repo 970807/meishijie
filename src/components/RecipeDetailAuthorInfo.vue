@@ -5,7 +5,7 @@
         class="avatar"
         :style="{
           backgroundImage: `url(${
-            authorAvatar || '../assets/images/avatar_default.png'
+            authorAvatar || '@/assets/images/avatar_default.png'
           })`
         }"
       ></div>
@@ -93,7 +93,7 @@ defineProps<IProps>()
     top: 25px;
     width: 28px;
     height: 20px;
-    background: url(../assets/images/sprite_01.png) 0px 0px no-repeat;
+    background: url(@/assets/images/sprite_01.png) 0px 0px no-repeat;
     background-size: 30px 150px;
   }
 

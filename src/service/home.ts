@@ -1,4 +1,4 @@
-import request from '../utils/axios'
+import request from '@/utils/axios'
 
 // 今日热门视频菜谱
 export function getHotTodayVideoList<T>() {

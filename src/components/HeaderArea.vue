@@ -3,7 +3,7 @@
     <div class="inner-wrapper">
       <div class="box">
         <a class="logo" href="https://meishij.net" target="_blank">
-          <img src="../assets/images/logo.png" />
+          <img src="@/assets/images/logo.png" />
         </a>
         <HeaderSearchInput />
         <HeaderNavbar />
@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useUserStore } from '../store/user'
+import { useUserStore } from '@/store/user'
 import HeaderSearchInput from './HeaderSearchInput.vue'
 import HeaderNavbar from './HeaderNavbar.vue'
 import HeaderLoginBtns from './HeaderLoginBtns.vue'

@@ -1,10 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { IResponseData } from '../types/axios'
-import { useUserStore } from '../store/user'
+import { IResponseData } from '@/types/axios'
+import { useUserStore } from '@/store/user'
 
-axios.defaults.baseURL = import.meta.env.DEV
-  ? '//localhost:3000'
-  : '//meishijie.ggh0807.cn'
+axios.defaults.baseURL = import.meta.env.VITE_REQUEST_BASE_URL
 
 const userStore = useUserStore()
 
@@ -23,7 +21,7 @@ axios.interceptors.response.use((res: AxiosResponse<IResponseData>) => {
     if (res.data.code === '401') {
       // token过期或不正确
       localStorage.removeItem('token')
-      userStore.token = ''
+      userStore.$reset()
     }
     return Promise.reject(res.data)
   }

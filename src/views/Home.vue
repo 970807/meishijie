@@ -25,19 +25,19 @@ import {
   getHotTodaySearchList,
   getThreeMealsTodayList,
   getRecommentList
-} from '../service/home'
+} from '@/service/home'
 import {
   IState,
   IHotTodayVideoItem,
   IHotTodaySearchItem,
   IThreeMealsTodayItem,
   IRecommentItem
-} from '../types/home'
-import HeaderArea from '../components/HeaderArea.vue'
-import HomeHotTodayVideo from '../components/HomeHotTodayVideo.vue'
-import HomeCenterArea from '../components/HomeCenterArea.vue'
-import HomeRecommentArea from '../components/HomeRecommentArea.vue'
-import HomeFooter from '../components/HomeFooter.vue'
+} from '@/types/home'
+import HeaderArea from '@/components/HeaderArea.vue'
+import HomeHotTodayVideo from '@/components/HomeHotTodayVideo.vue'
+import HomeCenterArea from '@/components/HomeCenterArea.vue'
+import HomeRecommentArea from '@/components/HomeRecommentArea.vue'
+import HomeFooter from '@/components/HomeFooter.vue'
 
 const state = reactive<IState>({
   hotTodayVideoList: [],

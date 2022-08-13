@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import undevelopedTip from '../utils/undevelopedTip'
+import undevelopedTip from '@/utils/undevelopedTip'
 
 interface IProps {
   phone: string

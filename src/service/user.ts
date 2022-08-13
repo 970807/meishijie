@@ -1,4 +1,4 @@
-import request from '../utils/axios'
+import request from '@/utils/axios'
 
 // 获取用户信息
 export function getUserInfo<T>() {
