@@ -28,7 +28,7 @@ exports.getDetail = async (req, res, next) => {
     const { id } = req.params
     // 查询菜谱详情
     let [recipeDetail] = await db.query(
-      'select * from recipe_detail_list where id=?',
+      'select * from recipe_list where id=?',
       id
     )
     if (!recipeDetail) {
@@ -56,7 +56,7 @@ exports.getDetail = async (req, res, next) => {
     // 查询作者的菜谱数
     promiseList.push(
       db.query(
-        'select count(*) as count from recipe_detail_list where author_id=?',
+        'select count(*) as count from recipe_list where author_id=?',
         authorId
       )
     )
@@ -66,7 +66,7 @@ exports.getDetail = async (req, res, next) => {
     // 菜谱浏览数+1
     recipeDetail.browerCount++
     promiseList.push(
-      db.query('update recipe_detail_list set brower_count=? where id=?', [
+      db.query('update recipe_list set brower_count=? where id=?', [
         recipeDetail.browerCount,
         id
       ])

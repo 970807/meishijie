@@ -40,7 +40,7 @@ exports.getThreeMealsTodayList = async (req, res, next) => {
       .flat(1)
       .map((item) => item.split(',')[0])
     const allRecipeList = await db.query(
-      'select * from recipe_detail_list where id in (?)',
+      'select * from recipe_list where id in (?)',
       [allRecipeIdList]
     )
     const columnList = []
@@ -84,7 +84,7 @@ exports.getRecommentList = async (req, res, next) => {
       .flat(1)
       .map((item) => item.split(',')[0])
     const allRecipeList = await db.query(
-      'select * from recipe_detail_list where id in (?)',
+      'select * from recipe_list where id in (?)',
       [allRecipeIdList]
     )
     const allAuthorIdList = []
