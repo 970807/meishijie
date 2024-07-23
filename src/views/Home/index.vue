@@ -34,10 +34,10 @@ import {
   IRecommentItem
 } from '@/types/home'
 import HeaderArea from '@/components/HeaderArea.vue'
-import HomeHotTodayVideo from '@/components/HomeHotTodayVideo.vue'
-import HomeCenterArea from '@/components/HomeCenterArea.vue'
-import HomeRecommentArea from '@/components/HomeRecommentArea.vue'
-import HomeFooter from '@/components/HomeFooter.vue'
+import HomeHotTodayVideo from './components/HomeHotTodayVideo.vue'
+import HomeCenterArea from './components/HomeCenterArea.vue'
+import HomeRecommentArea from './components/HomeRecommentArea.vue'
+import HomeFooter from './components/HomeFooter.vue'
 
 const state = reactive<IState>({
   hotTodayVideoList: [],
