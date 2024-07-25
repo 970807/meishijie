@@ -75,7 +75,7 @@
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper.min.css'
-import { IHotTodaySearchItem, IThreeMealsTodayItem } from '@/types/home'
+import { IHotTodaySearchItem, IThreeMealsTodayItem } from '../types'
 
 interface IProps {
   hotTodaySearchList?: IHotTodaySearchItem[]

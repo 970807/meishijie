@@ -14,7 +14,7 @@
           <i class="play-btn" @click="onPlayBtnClick(index)"></i>
           <video
             :loop="true"
-            :ref="(el) => setVideoRef(el as HTMLVideoElement)"
+            :ref="(el: HTMLVideoElement) => setVideoRef(el)"
             :src="item.videoUrl"
             @click="onPauseVideo(index)"
             v-show="isPlayingVideoNow && currentPlayVideoIndex === index"
@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { IHotTodayVideoItem } from '@/types/home'
+import { IHotTodayVideoItem } from '../types'
 
 interface IProps {
   hotTodayVideoList?: IHotTodayVideoItem[]

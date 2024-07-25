@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { IRecommentItem } from '@/types/home'
+import { IRecommentItem } from '../types'
 
 interface IProps {
   recommentList?: IRecommentItem[]

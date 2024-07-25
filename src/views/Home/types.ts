@@ -1,10 +1,3 @@
-export interface IState {
-  hotTodayVideoList: IHotTodayVideoItem[]
-  hotTodaySearchList: IHotTodaySearchItem[]
-  threeMealsTodayList: IThreeMealsTodayItem[]
-  recommentList: IRecommentItem[]
-}
-
 // 今日热门视频菜谱
 export interface IHotTodayVideoItem {
   id: number
@@ -16,12 +9,13 @@ export interface IHotTodayVideoItem {
   videoUrl: string
 }
 
-// 今日热搜
+// 是否今日热搜
 export enum EnumHotTodaySearchIsHot {
   hot = 1,
   normal = 0
 }
 
+// 今日热搜
 export interface IHotTodaySearchItem {
   id: number
   label: string
