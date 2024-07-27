@@ -12,12 +12,10 @@
 </template>
 
 <script setup lang="ts">
-interface IProps {
+defineProps<{
   recipeName: string
   recipeTips: string
-}
-
-defineProps<IProps>()
+}>()
 </script>
 
 <style lang="scss" scoped>

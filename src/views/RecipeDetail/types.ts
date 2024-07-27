@@ -1,3 +1,18 @@
+export interface IMainIngredientListItem {
+  ingredientName: string
+  ingredientDose: string
+}
+
+export interface ISubIngredientListItem {
+  ingredientName: string
+  ingredientDose: string
+}
+
+export interface IStepListItem {
+  content: string
+  img: string
+}
+
 export interface IRecipeInfo {
   authorAvatar: string
   authorFanCount: number
@@ -26,19 +41,4 @@ export interface IRecipeInfo {
   stepList: IStepListItem[]
   updateTime: string
   videoUrl: string | null
-}
-
-export interface IMainIngredientListItem {
-  ingredientName: string
-  ingredientDose: string
-}
-
-export interface ISubIngredientListItem {
-  ingredientName: string
-  ingredientDose: string
-}
-
-export interface IStepListItem {
-  content: string
-  img: string
 }

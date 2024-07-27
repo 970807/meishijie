@@ -16,14 +16,12 @@
 </template>
 
 <script setup lang="ts">
-import { IStepListItem } from '@/types/recipeDetail'
+import type { IStepListItem } from '../types'
 
-interface IProps {
+defineProps<{
   recipeName: String
   stepList: IStepListItem[]
-}
-
-defineProps<IProps>()
+}>()
 </script>
 
 <style lang="scss" scoped>

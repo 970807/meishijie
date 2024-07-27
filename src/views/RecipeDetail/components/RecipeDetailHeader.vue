@@ -90,12 +90,9 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import {
-  IMainIngredientListItem,
-  ISubIngredientListItem,
-} from '@/types/recipeDetail'
+import type { IMainIngredientListItem, ISubIngredientListItem } from '../types'
 
-interface IProps {
+const props = defineProps<{
   isVideo: number
   coverUrl: string
   videoUrl: string | null
@@ -111,11 +108,9 @@ interface IProps {
   subIngredientList: ISubIngredientListItem[]
   recipeQrcode: string
   createTime: string
-}
-
-const props = defineProps<IProps>()
+}>()
 const createDate = computed(
-  () => props.createTime && props.createTime.split(' ')[0],
+  () => props.createTime && props.createTime.split(' ')[0]
 )
 const isPlayingVideoNow = ref(false)
 const videoRef = ref<HTMLVideoElement | null>(null)

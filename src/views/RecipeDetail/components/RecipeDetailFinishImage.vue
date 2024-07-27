@@ -23,12 +23,10 @@ import { onMounted } from 'vue'
 import 'swiper/swiper-bundle.min.css'
 Swiper.use([Pagination])
 
-interface IProps {
+defineProps<{
   recipeName: string
   finishFoodImgList: string[]
-}
-
-defineProps<IProps>()
+}>()
 
 onMounted(() => {
   const swiper = new Swiper('.finish-images-swiper', {

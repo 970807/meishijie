@@ -45,7 +45,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { IRecipeInfo } from '@/types/recipeDetail'
 import { getDetail } from '@/service/recipe'
 import HeaderArea from '@/components/HeaderArea.vue'
 import RecipeDetailHeader from './components/RecipeDetailHeader.vue'
@@ -53,6 +52,7 @@ import RecipeDetailAuthorInfo from './components/RecipeDetailAuthorInfo.vue'
 import RecipeDetailRecipeStep from './components/RecipeDetailRecipeStep.vue'
 import RecipeDetailFinishImage from './components/RecipeDetailFinishImage.vue'
 import RecipeDetailRecipeTip from './components/RecipeDetailRecipeTip.vue'
+import type { IRecipeInfo } from './types'
 
 const route = useRoute()
 

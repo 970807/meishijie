@@ -24,15 +24,13 @@
 </template>
 
 <script setup lang="ts">
-interface IProps {
+defineProps<{
   authorNickname: string
   authorAvatar: string
   authorRecipeCount: number
   authorFanCount: number
   authorWords: string
-}
-
-defineProps<IProps>()
+}>()
 </script>
 
 <style lang="scss" scoped>

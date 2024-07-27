@@ -79,7 +79,6 @@
 import { reactive, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from '@/store/user'
-import { ILoginByAccount } from '@/types/login'
 import { registerByAccount, loginByAccount } from '@/service/login'
 import LoginNav from './components/LoginNav.vue'
 import LoginPhoneInputGroup from './components/LoginPhoneInputGroup.vue'
@@ -118,7 +117,7 @@ const state = reactive({
 let btnLoading = false
 
 const isPhoneLogin = computed(
-  () => state.loginModel.currentLoginWay === 'phone',
+  () => state.loginModel.currentLoginWay === 'phone'
 )
 
 function changeLoginWay(loginWay: string) {
@@ -159,7 +158,7 @@ function onLoginBtnClick() {
     return
   }
   btnLoading = true
-  loginByAccount<ILoginByAccount>({ account, password })
+  loginByAccount<{ userId: number; token: string }>({ account, password })
     .then((res) => {
       state.loginErrorText = ''
       btnLoading = false
