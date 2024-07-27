@@ -28,7 +28,7 @@ function onBlur() {
 
 function onSearch() {
   window.open(
-    `https://so.meishi.cc/?q=${encodeURIComponent(searchValue.value)}`
+    `https://so.meishi.cc/?q=${encodeURIComponent(searchValue.value)}`,
   )
 }
 

@@ -34,8 +34,8 @@ onMounted(() => {
   const swiper = new Swiper('.finish-images-swiper', {
     pagination: {
       el: '.swiper-pagination',
-      clickable: true
-    }
+      clickable: true,
+    },
   })
 })
 </script>

@@ -7,12 +7,12 @@ async function generateTokenByUserId(userId) {
   // 生成token
   const token = await jwt.sign(
     {
-      userId
+      userId,
     },
     jwtSecret,
     {
-      expiresIn: '12h'
-    }
+      expiresIn: '12h',
+    },
   )
   return token
 }
@@ -26,12 +26,12 @@ exports.registerByAccount = async (req, res, next) => {
       account,
       password: md5(password),
       createTime: curTime,
-      updateTime: curTime
+      updateTime: curTime,
     })
     const token = await generateTokenByUserId(userId)
     res.json({
       code: '200',
-      data: { userId, account, token }
+      data: { userId, account, token },
     })
   } catch (err) {
     next(err)
@@ -46,7 +46,7 @@ exports.loginByAccount = async (req, res, next) => {
     const token = await generateTokenByUserId(userId)
     res.json({
       code: '200',
-      data: { userId, token }
+      data: { userId, token },
     })
   } catch (err) {
     next(err)

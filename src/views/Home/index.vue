@@ -24,13 +24,13 @@ import {
   getHotTodayVideoList,
   getHotTodaySearchList,
   getThreeMealsTodayList,
-  getRecommentList
+  getRecommentList,
 } from '@/service/home'
 import {
   IHotTodayVideoItem,
   IHotTodaySearchItem,
   IThreeMealsTodayItem,
-  IRecommentItem
+  IRecommentItem,
 } from './types'
 import HeaderArea from '@/components/HeaderArea.vue'
 import HomeHotTodayVideo from './components/HomeHotTodayVideo.vue'
@@ -43,12 +43,11 @@ const state = reactive<{
   hotTodaySearchList: IHotTodaySearchItem[]
   threeMealsTodayList: IThreeMealsTodayItem[]
   recommentList: IRecommentItem[]
-}
->({
+}>({
   hotTodayVideoList: [],
   hotTodaySearchList: [],
   threeMealsTodayList: [],
-  recommentList: []
+  recommentList: [],
 })
 
 getHotTodayVideoList<IHotTodayVideoItem[]>().then((res) => {

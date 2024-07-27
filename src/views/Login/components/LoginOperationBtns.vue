@@ -32,7 +32,7 @@ interface IProps {
 }
 
 withDefaults(defineProps<IProps>(), {
-  isAutoLoginNext: false
+  isAutoLoginNext: false,
 })
 
 const emit = defineEmits<{

@@ -8,14 +8,14 @@ const router = express.Router()
 router.post(
   '/registerByAccount',
   validator.registerByAccountValidator,
-  loginCtrl.registerByAccount
+  loginCtrl.registerByAccount,
 )
 
 // 通过账号密码登录
 router.post(
   '/loginByAccount',
   validator.loginByAccountValidator,
-  loginCtrl.loginByAccount
+  loginCtrl.loginByAccount,
 )
 
 module.exports = router

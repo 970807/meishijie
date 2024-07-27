@@ -11,14 +11,14 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src') // 路径别名
+      '@': resolve(__dirname, 'src'), // 路径别名
     },
-    extensions: ['.js', '.json', '.ts'] // 使用路径别名时想要省略的后缀名
-  }
+    extensions: ['.js', '.json', '.ts'], // 使用路径别名时想要省略的后缀名
+  },
 })

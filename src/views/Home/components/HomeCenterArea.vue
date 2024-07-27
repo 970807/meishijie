@@ -38,7 +38,7 @@
         @slideChange="onThreeMealsSlideChange"
       >
         <swiper-slide
-          :swiperRef="('swiper' as any)"
+          :swiperRef="'swiper' as any"
           v-for="item in threeMealsTodayList"
           :key="item.id"
         >
@@ -84,7 +84,7 @@ interface IProps {
 
 withDefaults(defineProps<IProps>(), {
   hotTodaySearchList: () => [],
-  threeMealsTodayList: () => []
+  threeMealsTodayList: () => [],
 })
 
 const currentThreeMealsTabIndex = ref(0)

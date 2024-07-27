@@ -44,7 +44,7 @@ interface IProps {
 }
 
 withDefaults(defineProps<IProps>(), {
-  recommentList: () => []
+  recommentList: () => [],
 })
 </script>
 

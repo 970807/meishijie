@@ -29,18 +29,18 @@ exports.getDetail = async (req, res, next) => {
     // 查询菜谱详情
     let [recipeDetail] = await db.query(
       'select * from recipe_list where id=?',
-      id
+      id,
     )
     if (!recipeDetail) {
       return res.json({ code: '-1', message: '获取详情失败，该菜谱不存在' })
     }
     // 格式化主料
     recipeDetail.mainIngredientList = formatIngredientsStrToList(
-      recipeDetail.mainIngredientsStr
+      recipeDetail.mainIngredientsStr,
     )
     delete recipeDetail.mainIngredientsStr
     recipeDetail.subIngredientList = formatIngredientsStrToList(
-      recipeDetail.subIngredientsStr
+      recipeDetail.subIngredientsStr,
     )
     delete recipeDetail.subIngredientsStr
     // 格式化菜谱步骤
@@ -48,7 +48,7 @@ exports.getDetail = async (req, res, next) => {
     delete recipeDetail.stepsStr
     // 格式化成品图
     recipeDetail.finishFoodImgList = formatFinishGoodImgStrToList(
-      recipeDetail.finishFoodImgsStr
+      recipeDetail.finishFoodImgsStr,
     )
     delete recipeDetail.finishFoodImgsStr
     const authorId = recipeDetail.authorId
@@ -57,8 +57,8 @@ exports.getDetail = async (req, res, next) => {
     promiseList.push(
       db.query(
         'select count(*) as count from recipe_list where author_id=?',
-        authorId
-      )
+        authorId,
+      ),
     )
     // 根据作者id查询作者昵称
     promiseList.push(db.query('select * from user_list where id=?', authorId))
@@ -68,8 +68,8 @@ exports.getDetail = async (req, res, next) => {
     promiseList.push(
       db.query('update recipe_list set brower_count=? where id=?', [
         recipeDetail.browerCount,
-        id
-      ])
+        id,
+      ]),
     )
 
     const r = await Promise.all(promiseList)
@@ -89,7 +89,7 @@ exports.getDetail = async (req, res, next) => {
 
     res.json({
       code: '200',
-      data: recipeDetail
+      data: recipeDetail,
     })
   } catch (err) {
     next(err)

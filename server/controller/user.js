@@ -4,7 +4,7 @@ exports.getUserInfo = (req, res, next) => {
     delete userInfo.password
     res.json({
       code: '200',
-      data: userInfo
+      data: userInfo,
     })
   } catch (err) {
     next(err)

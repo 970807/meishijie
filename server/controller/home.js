@@ -4,11 +4,11 @@ exports.getHotTodayVideoList = async (req, res, next) => {
   try {
     const hotTodayVideoList = await db.query(
       'select * from hot_today_video_list',
-      null
+      null,
     )
     res.json({
       code: '200',
-      data: hotTodayVideoList
+      data: hotTodayVideoList,
     })
   } catch (err) {
     next(err)
@@ -19,11 +19,11 @@ exports.getHotTodaySearchList = async (req, res, next) => {
   try {
     const hotTodaySearchList = await db.query(
       'select * from hot_today_search_list',
-      null
+      null,
     )
     res.json({
       code: '200',
-      data: hotTodaySearchList
+      data: hotTodaySearchList,
     })
   } catch (err) {
     next(err)
@@ -33,7 +33,7 @@ exports.getHotTodaySearchList = async (req, res, next) => {
 exports.getThreeMealsTodayList = async (req, res, next) => {
   try {
     const results = await db.query(
-      'select * from today_three_meals_list order by sort'
+      'select * from today_three_meals_list order by sort',
     )
     const allRecipeIdList = results
       .map((item) => item.recipeListStr.slice(0, -1).split(';'))
@@ -41,7 +41,7 @@ exports.getThreeMealsTodayList = async (req, res, next) => {
       .map((item) => item.split(',')[0])
     const allRecipeList = await db.query(
       'select * from recipe_list where id in (?)',
-      [allRecipeIdList]
+      [allRecipeIdList],
     )
     const columnList = []
     for (const item of results) {
@@ -63,7 +63,7 @@ exports.getThreeMealsTodayList = async (req, res, next) => {
             id,
             coverUrl,
             recipeName,
-            desc: item2.desc
+            desc: item2.desc,
           }
         })
       columnList.push({ id, label, list: recipeList })
@@ -77,7 +77,7 @@ exports.getThreeMealsTodayList = async (req, res, next) => {
 exports.getRecommentList = async (req, res, next) => {
   try {
     const results = await db.query(
-      'select * from home_recommend_column_list order by sort'
+      'select * from home_recommend_column_list order by sort',
     )
     const allRecipeIdList = results
       .map((item) => item.recipeListStr.slice(0, -1).split(';'))
@@ -85,7 +85,7 @@ exports.getRecommentList = async (req, res, next) => {
       .map((item) => item.split(',')[0])
     const allRecipeList = await db.query(
       'select * from recipe_list where id in (?)',
-      [allRecipeIdList]
+      [allRecipeIdList],
     )
     const allAuthorIdList = []
     const columnList = []
@@ -109,7 +109,7 @@ exports.getRecommentList = async (req, res, next) => {
             coverUrl,
             isVideo,
             mainIngredientsStr,
-            recipeName
+            recipeName,
           } = r
           allAuthorIdList.push(authorId)
           const ingredientStr = mainIngredientsStr
@@ -123,19 +123,19 @@ exports.getRecommentList = async (req, res, next) => {
             coverUrl,
             isVideo: Boolean(isVideo),
             recipeName,
-            ingredientStr
+            ingredientStr,
           }
         })
       columnList.push({ id, columnTitle, list: recipeList })
     }
     const authorList = await db.query(
       'select id,nickname,avatar from user_list where id in (?)',
-      [allAuthorIdList]
+      [allAuthorIdList],
     )
     for (const item of columnList) {
       for (const item2 of item.list) {
         const { nickname: authorName, avatar: authorAvatar } = authorList.find(
-          (item3) => item3.id === item2.authorId
+          (item3) => item3.id === item2.authorId,
         )
         item2.authorName = authorName
         item2.authorAvatar = authorAvatar

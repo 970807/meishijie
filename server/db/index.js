@@ -7,7 +7,7 @@ const path = require('path')
 const { underlinetoCamelCase, camelCasetoUnderline } = require('../utils/tools')
 
 const pool = mysql.createPool(
-  require(path.join(__dirname, '../config/mysql.config.js'))
+  require(path.join(__dirname, '../config/mysql.config.js')),
 )
 
 exports.query = (sql, data) => {
@@ -18,7 +18,7 @@ exports.query = (sql, data) => {
       }
       if (!connection) {
         return reject(
-          new Error('mysql连接池，创建连接失败！-- connection为undefined')
+          new Error('mysql连接池，创建连接失败！-- connection为undefined'),
         )
       }
       // 操作数据库（数据库操作也是异步的）

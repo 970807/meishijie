@@ -92,7 +92,7 @@
 import { ref, computed } from 'vue'
 import {
   IMainIngredientListItem,
-  ISubIngredientListItem
+  ISubIngredientListItem,
 } from '@/types/recipeDetail'
 
 interface IProps {
@@ -115,7 +115,7 @@ interface IProps {
 
 const props = defineProps<IProps>()
 const createDate = computed(
-  () => props.createTime && props.createTime.split(' ')[0]
+  () => props.createTime && props.createTime.split(' ')[0],
 )
 const isPlayingVideoNow = ref(false)
 const videoRef = ref<HTMLVideoElement | null>(null)

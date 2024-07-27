@@ -6,7 +6,7 @@
         :style="{
           backgroundImage: `url(${
             authorAvatar || '@/assets/images/avatar_default.png'
-          })`
+          })`,
         }"
       ></div>
       <div class="info">

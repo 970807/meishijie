@@ -33,7 +33,7 @@ interface IProps {
 }
 
 withDefaults(defineProps<IProps>(), {
-  isAcceptArgument: true
+  isAcceptArgument: true,
 })
 
 const emit = defineEmits<{

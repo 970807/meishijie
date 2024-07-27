@@ -12,7 +12,7 @@ export interface IHotTodayVideoItem {
 // 是否今日热搜
 export enum EnumHotTodaySearchIsHot {
   hot = 1,
-  normal = 0
+  normal = 0,
 }
 
 // 今日热搜

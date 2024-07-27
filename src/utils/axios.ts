@@ -41,7 +41,7 @@ const request = {
   },
   delete<T>(url: string, params?: object): Promise<IResponseData<T>> {
     return axios.delete(url, { params })
-  }
+  },
 }
 
 export default request

@@ -77,5 +77,5 @@ function formatTime(target, fieldArr) {
 module.exports = {
   underlinetoCamelCase,
   camelCasetoUnderline,
-  formatTime
+  formatTime,
 }

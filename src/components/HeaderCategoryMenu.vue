@@ -98,309 +98,309 @@ const list: IList = {
       id: '0',
       title: '视频菜谱',
       isHot: true,
-      isActive: false
+      isActive: false,
     },
     {
       id: '1',
       title: '家常菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '2',
       title: '下饭菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '3',
       title: '凉菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '4',
       title: '海鲜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '5',
       title: '热菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '6',
       title: '汤粥',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '7',
       title: '素食',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '8',
       title: '浆料蘸料',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '9',
       title: '微波炉',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '10',
       title: '火锅底料',
       isHot: false,
-      isActive: true
+      isActive: true,
     },
     {
       id: '11',
       title: '方便面',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '12',
       title: '糕点主食',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '13',
       title: '干果',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '14',
       title: '卤味',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '15',
       title: '饮品',
       isHot: false,
-      isActive: false
-    }
+      isActive: false,
+    },
   ],
   threeMeals: [
     {
       id: '0',
       title: '早餐',
       isHot: false,
-      isActive: true
+      isActive: true,
     },
     {
       id: '1',
       title: '午餐',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '2',
       title: '晚餐',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '3',
       title: '下午茶',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '4',
       title: '夜宵',
       isHot: false,
-      isActive: false
-    }
+      isActive: false,
+    },
   ],
   snack: [
     {
       id: '0',
       title: '四川小吃',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '1',
       title: '广东小吃',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '2',
       title: '北京小吃',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '3',
       title: '陕西小吃',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '4',
       title: '山东小吃',
       isHot: false,
-      isActive: false
-    }
+      isActive: false,
+    },
   ],
   foreignMenu: [
     {
       id: '0',
       title: '法国菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '1',
       title: '西餐面点',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '2',
       title: '餐前小吃',
       isHot: false,
-      isActive: true
+      isActive: true,
     },
     {
       id: '3',
       title: '主菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '4',
       title: '甜点',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '5',
       title: '日本料理',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '6',
       title: '韩国料理',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '7',
       title: '主食',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '8',
       title: '饮品',
       isHot: false,
-      isActive: false
-    }
+      isActive: false,
+    },
   ],
   crowd: [
     {
       id: '0',
       title: '孕妇',
       isHot: false,
-      isActive: true
+      isActive: true,
     },
     {
       id: '1',
       title: '产妇',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '2',
       title: '幼儿辅食',
       isHot: false,
-      isActive: true
+      isActive: true,
     },
     {
       id: '3',
       title: '老年人',
       isHot: false,
-      isActive: false
-    }
+      isActive: false,
+    },
   ],
   baking: [
     {
       id: '0',
       title: '蛋糕面包',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '1',
       title: '饼干配方',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '2',
       title: '甜品点心',
       isHot: false,
-      isActive: false
-    }
+      isActive: false,
+    },
   ],
   cookingStyle: [
     {
       id: '0',
       title: '川菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '1',
       title: '湘菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '2',
       title: '粤菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '3',
       title: '京菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '4',
       title: '东北菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '5',
       title: '鲁菜',
       isHot: false,
-      isActive: false
+      isActive: false,
     },
     {
       id: '6',
       title: '浙菜',
       isHot: false,
-      isActive: false
-    }
-  ]
+      isActive: false,
+    },
+  ],
 }
 </script>
 

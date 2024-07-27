@@ -4,7 +4,7 @@
       <div
         class="avatar"
         :style="{
-          backgroundImage: `url(${state.userInfo.avatar || defaultAvatar})`
+          backgroundImage: `url(${state.userInfo.avatar || defaultAvatar})`,
         }"
       >
         <i class="icon"></i>
@@ -35,7 +35,7 @@ import defaultAvatar from '@/assets/images/avatar_default.png'
 
 const userStore = useUserStore()
 const state = reactive<IState>({
-  userInfo: {}
+  userInfo: {},
 })
 getUserInfo<IUserInfo>()
   .then((res) => {

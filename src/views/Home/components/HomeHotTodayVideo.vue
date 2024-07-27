@@ -14,7 +14,7 @@
           <i class="play-btn" @click="onPlayBtnClick(index)"></i>
           <video
             :loop="true"
-            :ref="(el: HTMLVideoElement) => setVideoRef(el)"
+            :ref="(el: any) => setVideoRef(el)"
             :src="item.videoUrl"
             @click="onPauseVideo(index)"
             v-show="isPlayingVideoNow && currentPlayVideoIndex === index"
@@ -44,7 +44,7 @@ interface IProps {
 }
 
 withDefaults(defineProps<IProps>(), {
-  hotTodayVideoList: () => []
+  hotTodayVideoList: () => [],
 })
 
 const videoRefList: (HTMLVideoElement | null)[] = []

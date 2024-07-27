@@ -98,27 +98,27 @@ const state = reactive({
     phoneLoginModel: {
       phone: '',
       verificationCode: '',
-      isAutoLoginNext: true
+      isAutoLoginNext: true,
     },
     accountLoginModel: {
       account: '',
       password: '',
-      isAutoLoginNext: true
-    }
+      isAutoLoginNext: true,
+    },
   },
   registerModel: {
     account: '',
     password: '',
-    isAcceptArgument: true
+    isAcceptArgument: true,
   },
   loginErrorText: '',
-  registerErrorText: ''
+  registerErrorText: '',
 })
 
 let btnLoading = false
 
 const isPhoneLogin = computed(
-  () => state.loginModel.currentLoginWay === 'phone'
+  () => state.loginModel.currentLoginWay === 'phone',
 )
 
 function changeLoginWay(loginWay: string) {

@@ -4,7 +4,7 @@ module.exports = () => {
     console.error(err)
     res.json({
       code: '-1',
-      message: '未知错误'
+      message: '未知错误',
     })
   }
 }
