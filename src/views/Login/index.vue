@@ -7,13 +7,13 @@
         <div class="title">
           <span
             :class="{ current: isPhoneLogin }"
-            @click="changeLoginWay('phone')"
+            @click="changeLoginWay(loginWayType.phone)"
             >手机号登录</span
           >
           &nbsp;&nbsp;|&nbsp;&nbsp;
           <span
             :class="{ current: !isPhoneLogin }"
-            @click="changeLoginWay('account')"
+            @click="changeLoginWay(loginWayType.account)"
             >账号密码登录</span
           >
         </div>
@@ -87,13 +87,45 @@ import LoginOperationBtns from './components/LoginOperationBtns.vue'
 import LoginRegisterOperationBtns from './components/LoginRegisterOperationBtns.vue'
 import undevelopedTip from '@/utils/undevelopedTip'
 
+// 登录方式枚举
+enum loginWayType {
+  phone = 'phone',
+  account = 'account',
+}
+
 const router = useRouter()
 const route = useRoute()
 const userStore = useUserStore()
-const state = reactive({
+const state = reactive<{
+  isRegister: boolean // 注册还是登录 true：注册 false：登录
+  loginModel: {
+    // 登录的model数据
+    currentLoginWay: loginWayType // 登录方式  phone：手机号登录 account：账号密码登录
+    phoneLoginModel: {
+      // 使用手机号登录的数据
+      phone: string // 手机号
+      verificationCode: string // 验证码
+      isAutoLoginNext: boolean // 是否下次自动登录
+    }
+    accountLoginModel: {
+      // 使用账号密码登录的数据
+      account: string // 账号
+      password: string // 密码
+      isAutoLoginNext: boolean // 是否下次自动登录
+    }
+  }
+  registerModel: {
+    // 注册的model数据
+    account: string // 账号
+    password: string // 密码
+    isAcceptArgument: boolean // 是否阅读并且同意《用户协议》和《隐私政策》
+  }
+  loginErrorText: string // 登录报错信息
+  registerErrorText: string // 注册报错信息
+}>({
   isRegister: !!route.query.isRegister,
   loginModel: {
-    currentLoginWay: 'phone',
+    currentLoginWay: loginWayType.phone,
     phoneLoginModel: {
       phone: '',
       verificationCode: '',
@@ -116,18 +148,32 @@ const state = reactive({
 
 let btnLoading = false
 
+// 是否是手机号登录 true：手机号登录 false：账号密码登录
 const isPhoneLogin = computed(
-  () => state.loginModel.currentLoginWay === 'phone'
+  () => state.loginModel.currentLoginWay === loginWayType.phone
 )
 
-function changeLoginWay(loginWay: string) {
+/**
+ * 切换登录登录方式
+ * @param loginWay
+ */
+function changeLoginWay(loginWay: loginWayType) {
   state.loginModel.currentLoginWay = loginWay
 }
 
+/**
+ * 切换当前是登录还是注册
+ */
 function onToggleIsRegister() {
   state.isRegister = !state.isRegister
 }
 
+/**
+ * 账号密码校验
+ * @param account 账号
+ * @param password 密码
+ * @returns 校验成功为true，失败为false
+ */
 function accountAndPasswordValidator(account: string, password: string) {
   if (!account || !password) {
     alert('请输入账号或密码')
@@ -144,19 +190,18 @@ function accountAndPasswordValidator(account: string, password: string) {
   return true
 }
 
+/**
+ * 登录按钮被点击
+ */
 function onLoginBtnClick() {
-  if (state.loginModel.currentLoginWay === 'phone') {
+  if (state.loginModel.currentLoginWay === loginWayType.phone) {
     undevelopedTip('功能暂未开发，请使用账号密码登录')
     return
   }
   const { account, password, isAutoLoginNext } =
     state.loginModel.accountLoginModel
-  if (!accountAndPasswordValidator(account, password)) {
-    return
-  }
-  if (btnLoading) {
-    return
-  }
+  if (!accountAndPasswordValidator(account, password)) return
+  if (btnLoading) return
   btnLoading = true
   loginByAccount<{ userId: number; token: string }>({ account, password })
     .then((res) => {
@@ -179,25 +224,24 @@ function onLoginBtnClick() {
     })
 }
 
+/**
+ * 注册按钮被点击
+ */
 function onRegisterBtnClick() {
   const { account, password, isAcceptArgument } = state.registerModel
-  if (!accountAndPasswordValidator(account, password)) {
-    return
-  }
+  if (!accountAndPasswordValidator(account, password)) return
   if (!isAcceptArgument) {
     alert('请阅读并同意《用户协议》和《隐私策略》')
     return
   }
-  if (btnLoading) {
-    return
-  }
+  if (btnLoading) return
   btnLoading = true
   registerByAccount({ account, password })
     .then(() => {
       state.registerErrorText = ''
       btnLoading = false
       alert('注册成功')
-      state.loginModel.currentLoginWay = 'account'
+      state.loginModel.currentLoginWay = loginWayType.account
       state.isRegister = false
     })
     .catch((err) => {

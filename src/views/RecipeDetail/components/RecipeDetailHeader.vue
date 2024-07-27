@@ -93,21 +93,21 @@ import { ref, computed } from 'vue'
 import type { IMainIngredientListItem, ISubIngredientListItem } from '../types'
 
 const props = defineProps<{
-  isVideo: number
-  coverUrl: string
-  videoUrl: string | null
-  recipeName: string
-  authorNickname: string
-  favCount: number
-  browerCount: number
-  simpleIntroductionTechnology: string
-  simpleIntroductionTaste: string
-  simpleIntroductionTime: string
-  simpleIntroductionDifficulty: string
-  mainIngredientList: IMainIngredientListItem[]
-  subIngredientList: ISubIngredientListItem[]
-  recipeQrcode: string
-  createTime: string
+  isVideo: number // 是否是视频菜谱 1 => 是 0 => 否
+  coverUrl: string // 封面图url
+  videoUrl: string | null // 视频url
+  recipeName: string // 菜谱名称
+  authorNickname: string // 作者昵称
+  favCount: number // 收藏数
+  browerCount: number // 浏览数
+  simpleIntroductionTechnology: string // 工艺
+  simpleIntroductionTaste: string // 口味
+  simpleIntroductionTime: string // 时间
+  simpleIntroductionDifficulty: string // 难度
+  mainIngredientList: IMainIngredientListItem[] // 主料列表
+  subIngredientList: ISubIngredientListItem[] // 辅料列表
+  recipeQrcode: string // 菜谱二维码url
+  createTime: string // 创建时间
 }>()
 const createDate = computed(
   () => props.createTime && props.createTime.split(' ')[0]

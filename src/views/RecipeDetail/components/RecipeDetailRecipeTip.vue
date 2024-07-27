@@ -13,8 +13,8 @@
 
 <script setup lang="ts">
 defineProps<{
-  recipeName: string
-  recipeTips: string
+  recipeName: string // 菜谱名称
+  recipeTips: string // 菜谱烹饪技巧
 }>()
 </script>
 

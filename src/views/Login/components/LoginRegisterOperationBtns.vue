@@ -28,13 +28,14 @@
 </template>
 
 <script setup lang="ts">
-interface IProps {
-  isAcceptArgument?: boolean
-}
-
-withDefaults(defineProps<IProps>(), {
-  isAcceptArgument: true,
-})
+withDefaults(
+  defineProps<{
+    isAcceptArgument?: boolean // 是否已阅读并且《用户协议》和《隐私政策》
+  }>(),
+  {
+    isAcceptArgument: true,
+  }
+)
 
 const emit = defineEmits<{
   (e: 'update:isAcceptArgument', value: boolean): void

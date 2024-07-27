@@ -40,7 +40,7 @@
 import { IRecommentItem } from '../types'
 
 interface IProps {
-  recommentList?: IRecommentItem[]
+  recommentList?: IRecommentItem[] // 推荐列表
 }
 
 withDefaults(defineProps<IProps>(), {

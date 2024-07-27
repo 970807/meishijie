@@ -30,19 +30,15 @@
 <script setup lang="ts">
 import undevelopedTip from '@/utils/undevelopedTip'
 
-interface IProps {
+defineProps<{
   phone: string
   verificationCode: string
-}
+}>()
 
-interface IEmits {
+const emit = defineEmits<{
   (e: 'update:phone', value: string): void
   (e: 'update:verificationCode', value: string): void
-}
-
-defineProps<IProps>()
-
-const emit = defineEmits<IEmits>()
+}>()
 
 const onPhoneInput = (evt: Event): void => {
   emit('update:phone', (evt.target as HTMLInputElement).value)

@@ -25,11 +25,11 @@
 
 <script setup lang="ts">
 defineProps<{
-  authorNickname: string
-  authorAvatar: string
-  authorRecipeCount: number
-  authorFanCount: number
-  authorWords: string
+  authorNickname: string // 作者昵称
+  authorAvatar: string // 作者头像url
+  authorRecipeCount: number // 作者菜谱数
+  authorFanCount: number // 作者粉丝数
+  authorWords: string // 作者语录
 }>()
 </script>
 

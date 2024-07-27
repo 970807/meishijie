@@ -62,6 +62,10 @@ if (Array.isArray(recipeId)) {
 }
 const recipeInfo = ref<IRecipeInfo>({} as IRecipeInfo)
 
+/**
+ * 获取菜谱详情
+ * @param id 菜谱id
+ */
 function getRecipeDetail(id: string | number) {
   getDetail<IRecipeInfo>({ id }).then((res) => {
     recipeInfo.value = res.data

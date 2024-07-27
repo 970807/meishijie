@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <!-- 顶部导航栏 -->
     <HeaderArea />
 
     <!-- 今日热门视频菜谱 -->
@@ -39,10 +40,10 @@ import HomeRecommentArea from './components/HomeRecommentArea.vue'
 import HomeFooter from './components/HomeFooter.vue'
 
 const state = reactive<{
-  hotTodayVideoList: IHotTodayVideoItem[]
-  hotTodaySearchList: IHotTodaySearchItem[]
-  threeMealsTodayList: IThreeMealsTodayItem[]
-  recommentList: IRecommentItem[]
+  hotTodayVideoList: IHotTodayVideoItem[] // 今日热门视频菜谱列表
+  hotTodaySearchList: IHotTodaySearchItem[] // 今日热搜列表
+  threeMealsTodayList: IThreeMealsTodayItem[] // 今日三餐列表
+  recommentList: IRecommentItem[] // 推荐列表
 }>({
   hotTodayVideoList: [],
   hotTodaySearchList: [],
@@ -50,18 +51,30 @@ const state = reactive<{
   recommentList: [],
 })
 
+/**
+ * 获取今日热门视频菜谱列表
+ */
 getHotTodayVideoList<IHotTodayVideoItem[]>().then((res) => {
   state.hotTodayVideoList = res.data
 })
 
+/**
+ * 获取今日热搜列表
+ */
 getHotTodaySearchList<IHotTodaySearchItem[]>().then((res) => {
   state.hotTodaySearchList = res.data
 })
 
+/**
+ * 获取今日三餐列表
+ */
 getThreeMealsTodayList<IThreeMealsTodayItem[]>().then((res) => {
   state.threeMealsTodayList = res.data
 })
 
+/**
+ * 获取推荐列表
+ */
 getRecommentList<IRecommentItem[]>().then((res) => {
   state.recommentList = res.data
 })

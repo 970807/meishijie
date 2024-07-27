@@ -24,8 +24,8 @@ import 'swiper/swiper-bundle.min.css'
 Swiper.use([Pagination])
 
 defineProps<{
-  recipeName: string
-  finishFoodImgList: string[]
+  recipeName: string // 菜谱名称
+  finishFoodImgList: string[] // 成品图url列表
 }>()
 
 onMounted(() => {

@@ -81,18 +81,14 @@
 </template>
 
 <script setup lang="ts">
-interface IListItem {
-  id: string
-  title: string
-  isHot: boolean
-  isActive: boolean
-}
-
-interface IList {
-  [propName: string]: IListItem[]
-}
-
-const list: IList = {
+const list: {
+  [propName: string]: Array<{
+    id: string
+    title: string // 分类标题
+    isHot: boolean // 是否热门标签
+    isActive: boolean // 是否标红
+  }>
+} = {
   hotLabel: [
     {
       id: '0',

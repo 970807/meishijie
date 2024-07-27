@@ -21,12 +21,10 @@
 </template>
 
 <script setup lang="ts">
-interface IProps {
-  account: string
-  password: string
-}
-
-defineProps<IProps>()
+defineProps<{
+  account: string // 账号
+  password: string // 密码
+}>()
 
 const emit = defineEmits<{
   (e: 'update:account', value: string): void

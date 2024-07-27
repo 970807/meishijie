@@ -27,13 +27,14 @@
 <script setup lang="ts">
 import undevelopedTip from '@/utils/undevelopedTip'
 
-interface IProps {
-  isAutoLoginNext?: boolean
-}
-
-withDefaults(defineProps<IProps>(), {
-  isAutoLoginNext: false,
-})
+withDefaults(
+  defineProps<{
+    isAutoLoginNext?: boolean // 是否下次自动登录
+  }>(),
+  {
+    isAutoLoginNext: false,
+  }
+)
 
 const emit = defineEmits<{
   (e: 'update:isAutoLoginNext', value: boolean): void
@@ -41,6 +42,7 @@ const emit = defineEmits<{
   (e: 'loginBtnClick'): void
 }>()
 
+// 切换'下次自动登录'
 const onIsAutoLoginInputChange = (evt: Event): void => {
   emit('update:isAutoLoginNext', (evt.target as HTMLInputElement).checked)
 }

@@ -44,13 +44,18 @@ interface IProps {
 }
 
 withDefaults(defineProps<IProps>(), {
-  hotTodayVideoList: () => [],
+  hotTodayVideoList: () => [], // 今日热门视频菜谱列表
 })
 
 const videoRefList: (HTMLVideoElement | null)[] = []
 
-const isPlayingVideoNow = ref(false)
-const currentPlayVideoIndex = ref(0)
+const isPlayingVideoNow = ref(false) // 当前是否有视频在播放
+const currentPlayVideoIndex = ref(0) // 当前播放的视频索引
+
+/**
+ * 播放按钮被点击
+ * @param index 点击的item索引
+ */
 function onPlayBtnClick(index: number): void {
   isPlayingVideoNow.value = true
   currentPlayVideoIndex.value = index
@@ -68,6 +73,10 @@ function onPlayBtnClick(index: number): void {
   willPlayVideEl.play()
 }
 
+/**
+ * 视频播放中，再点击时，暂停视频
+ * @param index 点击的item索引
+ */
 function onPauseVideo(index: number): void {
   if (videoRefList[index]) {
     videoRefList[index]!.pause()
@@ -79,6 +88,10 @@ function setVideoRef(el: HTMLVideoElement | null): void {
   videoRefList.push(el)
 }
 
+/**
+ * 获取视频包裹容器的宽度
+ * @param index 点击的item索引
+ */
 function getVideoWrapperWidth(index: number): string {
   if (!isPlayingVideoNow.value) {
     return '285px'

@@ -77,31 +77,43 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper.min.css'
 import { IHotTodaySearchItem, IThreeMealsTodayItem } from '../types'
 
-interface IProps {
-  hotTodaySearchList?: IHotTodaySearchItem[]
-  threeMealsTodayList?: IThreeMealsTodayItem[]
-}
+withDefaults(
+  defineProps<{
+    hotTodaySearchList?: IHotTodaySearchItem[] // 今日热搜列表
+    threeMealsTodayList?: IThreeMealsTodayItem[] // 今日三餐列表
+  }>(),
+  {
+    hotTodaySearchList: () => [],
+    threeMealsTodayList: () => [],
+  }
+)
 
-withDefaults(defineProps<IProps>(), {
-  hotTodaySearchList: () => [],
-  threeMealsTodayList: () => [],
-})
+const currentThreeMealsTabIndex = ref(0) // 当前轮播的index
 
-const currentThreeMealsTabIndex = ref(0)
+let threeMealsSwiper: any = null // 轮播图实例
 
-let threeMealsSwiper: any = null
-
+/**
+ * 今日三餐tab被点击
+ */
 function onThreeMealsTabItemClick(index: number) {
   currentThreeMealsTabIndex.value = index
   threeMealsSwiper && threeMealsSwiper.slideTo(index)
 }
 
+/**
+ * 今日三餐轮播初始化完成
+ * @param swiper swiper实例
+ */
 const onThreeMealsSwiper = (swiper: any) => {
   threeMealsSwiper = swiper
 }
 
-const onThreeMealsSlideChange = (e: any) => {
-  currentThreeMealsTabIndex.value = e.activeIndex
+/**
+ * 今日三餐轮播切换
+ * @param swiper swiper实例
+ */
+const onThreeMealsSlideChange = (swiper: any) => {
+  currentThreeMealsTabIndex.value = swiper.activeIndex
 }
 </script>
 
