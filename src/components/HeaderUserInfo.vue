@@ -28,15 +28,24 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { IState, IUserInfo } from '@/types/headerArea'
 import { useUserStore } from '@/store/user'
 import { getUserInfo } from '@/service/user'
 import defaultAvatar from '@/assets/images/avatar_default.png'
 
+interface IUserInfo {
+  id?: number
+  avatar?: string
+  account?: string
+  [propsName: string]: any
+}
+
 const userStore = useUserStore()
-const state = reactive<IState>({
+const state = reactive<{
+  userInfo: IUserInfo
+}>({
   userInfo: {},
 })
+
 getUserInfo<IUserInfo>()
   .then((res) => {
     state.userInfo = res.data

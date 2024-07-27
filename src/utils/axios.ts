@@ -1,6 +1,10 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { IResponseData } from '@/types/axios'
 import { useUserStore } from '@/store/user'
+
+interface IResponseData<T = any> {
+  code: string
+  data: T
+}
 
 axios.defaults.baseURL = import.meta.env.VITE_REQUEST_BASE_URL
 
