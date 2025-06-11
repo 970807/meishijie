@@ -96,6 +96,11 @@ h2.title {
         line-height: 28px;
         font-weight: 600;
         padding: 2px 0 10px 0;
+
+        &:first-child {
+          // 没有图片时，给一点上边距
+          margin-top: 10px;
+        }
       }
     }
   }
