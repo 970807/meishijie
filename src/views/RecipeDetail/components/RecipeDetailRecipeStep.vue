@@ -19,7 +19,7 @@
 import type { IStepListItem } from '../types'
 
 defineProps<{
-  recipeName: String // 菜谱名称
+  recipeName: string // 菜谱名称
   stepList: IStepListItem[] // 菜谱步骤列表
 }>()
 </script>

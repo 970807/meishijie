@@ -40,7 +40,7 @@ export interface IRecommentItem {
   columnTitle: string // 栏目标题
   list: Array<{
     id: string
-    authorId: number // 作者id
+    authorId: string // 作者id
     authorAvatar: string // 作者头像url
     authorName: string // 作者名称
     coverUrl: string // 封面图url

@@ -20,7 +20,7 @@ export interface IStepListItem {
 export interface IRecipeInfo {
   authorAvatar: string // 作者头像url
   authorFanCount: number // 作者粉丝数
-  authorId: number // 作者Id
+  authorId: string // 作者Id
   authorNickname: string // 作者昵称
   authorRecipeCount: number // 作者菜谱数
   authorWords: string // 作者语录
