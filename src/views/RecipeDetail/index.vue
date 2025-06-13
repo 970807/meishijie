@@ -15,7 +15,6 @@
       :simpleIntroductionDifficulty="recipeInfo.simpleIntroductionDifficulty"
       :mainIngredientList="recipeInfo.mainIngredientList"
       :subIngredientList="recipeInfo.subIngredientList"
-      :recipeQrcode="recipeInfo.recipeQrcode"
       :createTime="recipeInfo.createTime"
     />
     <RecipeDetailAuthorInfo

@@ -62,7 +62,7 @@
     </div>
     <div class="qrcode-box">
       <div class="qrcode">
-        <img v-if="recipeQrcode" :src="recipeQrcode" />
+        <img :src="qrcodeImg" />
       </div>
       <div class="qrcode-des">
         <span class="t">扫描手机二维码</span>
@@ -91,6 +91,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import type { IMainIngredientListItem, ISubIngredientListItem } from '../types'
+import qrcodeImg from '@/assets/images/qrcode.png'
 
 const props = defineProps<{
   isVideo: number // 是否是视频菜谱 1 => 是 0 => 否
@@ -106,7 +107,6 @@ const props = defineProps<{
   simpleIntroductionDifficulty: string // 难度
   mainIngredientList: IMainIngredientListItem[] // 主料列表
   subIngredientList: ISubIngredientListItem[] // 辅料列表
-  recipeQrcode: string // 菜谱二维码url
   createTime: string // 创建时间
 }>()
 const createDate = computed(
@@ -357,6 +357,11 @@ function toggleVideoPlayStatus() {
       width: 128px;
       height: 128px;
       margin: 40px auto 0;
+
+      > img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .qrcode-des {

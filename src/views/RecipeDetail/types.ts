@@ -36,7 +36,6 @@ export interface IRecipeInfo {
   originWebLink: string // 美食杰官方对应的链接
   peopleCount: number // 人份 例：3人份
   recipeName: string // 菜谱名称
-  recipeQrcode: string // 菜谱二维码url
   recipeTips: string // 烹饪技巧
   simpleIntroductionDifficulty: string // 难度
   simpleIntroductionTaste: string // 口味
