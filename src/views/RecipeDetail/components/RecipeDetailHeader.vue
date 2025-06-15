@@ -129,7 +129,7 @@ function toggleVideoPlayStatus() {
 
 <style lang="scss" scoped>
 .recipe-detail-header {
-  width: 1200px;
+  width: $pc-min-width;
   margin: 0 auto;
   padding: 40px 0;
 

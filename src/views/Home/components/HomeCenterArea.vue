@@ -1,73 +1,118 @@
 <template>
   <div class="home-center-area">
-    <!-- 今日热搜-start -->
-    <div class="hot-today-search">
-      <h1 class="title">今日热搜</h1>
-      <ul class="list">
-        <li
-          class="item"
-          :class="{ hot: item.isHot }"
-          v-for="item in hotTodaySearchList"
-          :key="item.id"
-        >
-          {{ item.label }}
-        </li>
-      </ul>
-    </div>
-    <!-- 今日热搜-end -->
-
-    <!-- 今日三餐-start -->
-    <div class="three-meals-today" v-if="threeMealsTodayList.length">
-      <h1 class="title">
-        今日三餐
-        <ul class="tabs">
+    <!-- pc端 -->
+    <template v-if="pcDevice">
+      <!-- 今日热搜-start -->
+      <div class="hot-today-search">
+        <h1 class="title">今日热搜</h1>
+        <ul class="list">
           <li
             class="item"
-            :class="{ current: index === currentThreeMealsTabIndex }"
-            v-for="(item, index) in threeMealsTodayList"
+            :class="{ hot: item.isHot }"
+            v-for="item in hotTodaySearchList"
             :key="item.id"
-            @click="onThreeMealsTabItemClick(index)"
           >
             {{ item.label }}
           </li>
         </ul>
-      </h1>
-      <swiper
-        class="swiper"
-        @swiper="onThreeMealsSwiper"
-        @slideChange="onThreeMealsSlideChange"
-      >
-        <swiper-slide
-          :swiperRef="'swiper' as any"
-          v-for="item in threeMealsTodayList"
-          :key="item.id"
-        >
-          <router-link
-            class="item"
-            v-for="item2 in item.list"
-            :key="item2.id"
-            :to="`/recipe-detail/${item2.id}`"
-          >
-            <img class="cover" :src="item2.coverUrl" />
-            <strong class="t ellipsis-l1">{{ item2.recipeName }}</strong>
-            <p class="desc ellipsis-l1">{{ item2.desc }}</p>
-          </router-link>
-        </swiper-slide>
-      </swiper>
-    </div>
-    <!-- 今日三餐-end -->
-
-    <!-- 二维码-start -->
-    <div class="qrcode">
-      <img class="bg-img" src="@/assets/images/qr-code-bg.jpg" />
-      <img class="qr-img" src="@/assets/images/qr-code.png" />
-      <img class="phone-img" src="@/assets/images/qr-code-phone.png" />
-      <div class="desc">
-        <strong>让吃饭变简单</strong>
-        <span>www.Meishi.cc</span>
       </div>
-    </div>
-    <!-- 二维码-end -->
+      <!-- 今日热搜-end -->
+
+      <!-- 今日三餐-start -->
+      <div class="three-meals-today__pc" v-if="threeMealsTodayList.length">
+        <h1 class="title">
+          今日三餐
+          <ul class="tabs">
+            <li
+              class="item"
+              :class="{ current: index === currentThreeMealsTabIndex }"
+              v-for="(item, index) in threeMealsTodayList"
+              :key="item.id"
+              @click="onThreeMealsTabItemClick(index)"
+            >
+              {{ item.label }}
+            </li>
+          </ul>
+        </h1>
+        <swiper
+          class="swiper"
+          @swiper="onThreeMealsSwiper"
+          @slideChange="onThreeMealsSlideChange"
+        >
+          <swiper-slide
+            :swiperRef="'swiper' as any"
+            v-for="item in threeMealsTodayList"
+            :key="item.id"
+          >
+            <router-link
+              class="item"
+              v-for="item2 in item.list"
+              :key="item2.id"
+              :to="`/recipe-detail/${item2.id}`"
+            >
+              <img class="cover" :src="item2.coverUrl" />
+              <strong class="t ellipsis-l1">{{ item2.recipeName }}</strong>
+              <p class="desc ellipsis-l1">{{ item2.desc }}</p>
+            </router-link>
+          </swiper-slide>
+        </swiper>
+      </div>
+      <!-- 今日三餐-end -->
+
+      <!-- 二维码-start -->
+      <div class="qrcode">
+        <img class="bg-img" src="@/assets/images/qr-code-bg.jpg" />
+        <img class="qr-img" src="@/assets/images/qr-code.png" />
+        <img class="phone-img" src="@/assets/images/qr-code-phone.png" />
+        <div class="desc">
+          <strong>让吃饭变简单</strong>
+          <span>www.Meishi.cc</span>
+        </div>
+      </div>
+      <!-- 二维码-end -->
+    </template>
+    <!-- 手机端 -->
+    <template v-else>
+      <!-- 今日三餐-start -->
+      <div class="three-meals-today__mobile" v-if="threeMealsTodayList.length">
+        <h1 class="title">
+          今日{{ threeMealsTodayList[currentThreeMealsTabIndex].label }}
+        </h1>
+        <swiper
+          class="swiper"
+          @swiper="onThreeMealsSwiper"
+          @slideChange="onThreeMealsSlideChange"
+        >
+          <swiper-slide
+            :swiperRef="'swiper' as any"
+            v-for="item in threeMealsTodayList"
+            :key="item.id"
+          >
+            <div class="slide-item-box">
+              <router-link
+                v-for="item2 in item.list.slice(0, 3)"
+                :key="item2.id"
+                class="item"
+                :to="`/recipe-detail/${item2.id}`"
+              >
+                <img class="cover" :src="item2.coverUrl" />
+                <strong class="t ellipsis-l1">{{ item2.recipeName }}</strong>
+                <p class="desc ellipsis-l1">{{ item2.desc }}</p>
+              </router-link>
+            </div>
+          </swiper-slide>
+        </swiper>
+        <div class="swiper-dots">
+          <div
+            class="dot"
+            v-for="(item, index) in threeMealsTodayList"
+            :key="item.id"
+            :class="{ active: index === currentThreeMealsTabIndex }"
+          ></div>
+        </div>
+      </div>
+      <!-- 今日三餐-end -->
+    </template>
   </div>
 </template>
 
@@ -76,6 +121,9 @@ import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper.min.css'
 import { IHotTodaySearchItem, IThreeMealsTodayItem } from '../types'
+import { useDeviceStore } from '@/store/device'
+
+const pcDevice = useDeviceStore().pcDevice
 
 withDefaults(
   defineProps<{
@@ -120,8 +168,11 @@ const onThreeMealsSlideChange = (swiper: any) => {
 <style lang="scss" scoped>
 .home-center-area {
   position: relative;
-  width: 1200px;
-  margin: 40px auto 0;
+
+  @include pc {
+    width: $pc-min-width;
+    margin: 40px auto 0;
+  }
 
   .hot-today-search {
     width: 810px;
@@ -167,7 +218,7 @@ const onThreeMealsSlideChange = (swiper: any) => {
     }
   }
 
-  .three-meals-today {
+  .three-meals-today__pc {
     width: 810px;
     margin-top: 40px;
     border-radius: 12px;
@@ -301,6 +352,101 @@ const onThreeMealsSlideChange = (swiper: any) => {
         color: rgba(255, 255, 255, 0.8);
         text-shadow: 0 0 4px rgb(0 0 0 / 90%);
         line-height: 20px;
+      }
+    }
+  }
+
+  .three-meals-today__mobile {
+    margin-top: 20px;
+
+    .title {
+      color: #000;
+      font-size: 24px;
+      padding: 0 16px 16px;
+    }
+
+    .slide-item-box {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: 1fr 1fr;
+      grid-gap: 8px;
+      padding: 0 16px;
+
+      .item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+
+        &:nth-child(1) {
+          grid-column-start: 1;
+          grid-column-end: 5;
+          grid-row-start: 1;
+          grid-row-end: 3;
+        }
+
+        &:nth-child(2) {
+          aspect-ratio: 1;
+          grid-column-start: 5;
+          grid-column-end: 8;
+          grid-row-start: 1;
+          grid-row-end: 2;
+        }
+
+        &:nth-child(3) {
+          aspect-ratio: 1;
+          grid-column-start: 5;
+          grid-column-end: 8;
+          grid-row-start: 2;
+          grid-row-end: 3;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .t {
+          position: absolute;
+          left: 12px;
+          right: 12px;
+          bottom: 43px;
+          height: 28px;
+          line-height: 28px;
+          color: #fff;
+          font-size: 18px;
+        }
+
+        .desc {
+          position: absolute;
+          left: 12px;
+          right: 12px;
+          bottom: 19px;
+          height: 20px;
+          line-height: 20px;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .swiper-dots {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e5e7eb;
+
+      &.active {
+        background: rgba(246, 77, 54, 0.8);
+      }
+
+      &:nth-child(n + 2) {
+        margin-left: 6px;
       }
     }
   }

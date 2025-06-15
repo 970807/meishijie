@@ -1,6 +1,6 @@
 <template>
   <div class="recipe-detail">
-    <HeaderArea />
+    <HeaderNav />
     <RecipeDetailHeader
       :isVideo="recipeInfo.isVideo"
       :coverUrl="recipeInfo.coverUrl"
@@ -45,7 +45,7 @@
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { getDetail } from '@/service/recipe'
-import HeaderArea from '@/components/HeaderArea.vue'
+import HeaderNav from '@/components/HeaderNav/index.vue'
 import RecipeDetailHeader from './components/RecipeDetailHeader.vue'
 import RecipeDetailAuthorInfo from './components/RecipeDetailAuthorInfo.vue'
 import RecipeDetailRecipeStep from './components/RecipeDetailRecipeStep.vue'

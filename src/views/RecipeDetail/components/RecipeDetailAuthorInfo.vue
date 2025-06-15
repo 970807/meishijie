@@ -4,9 +4,7 @@
       <div
         class="avatar"
         :style="{
-          backgroundImage: `url(${
-            authorAvatar || '@/assets/images/avatar_default.png'
-          })`,
+          backgroundImage: `url(${authorAvatar || defaultAvatarImg})`,
         }"
       ></div>
       <div class="info">
@@ -24,6 +22,8 @@
 </template>
 
 <script setup lang="ts">
+import defaultAvatarImg from '@/assets/images/avatar_default.png'
+
 defineProps<{
   authorNickname: string // 作者昵称
   authorAvatar: string // 作者头像url

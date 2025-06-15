@@ -48,7 +48,7 @@ $headerHeight: 80px;
       position: relative;
       display: flex;
       align-items: center;
-      width: 1200px;
+      width: $pc-min-width;
       height: 100%;
       margin: 0 auto;
 

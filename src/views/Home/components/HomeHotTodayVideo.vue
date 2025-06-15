@@ -1,6 +1,8 @@
+<!-- 今日热门视频菜谱 -->
 <template>
   <div class="hot-today-video-wrap">
-    <div class="inner">
+    <!-- pc端 -->
+    <div v-if="pcDevice" class="inner__pc">
       <h1 class="title">今日热门视频菜谱</h1>
       <div class="video-list">
         <div
@@ -20,16 +22,48 @@
             v-show="isPlayingVideoNow && currentPlayVideoIndex === index"
           ></video>
           <div class="info">
-            <div class="t">{{ item.title }}</div>
+            <div class="t ellipsis-l1">{{ item.title }}</div>
             <div class="row">
               <div
                 class="avatar"
                 :style="{ backgroundImage: `url(${item.userAvatar})` }"
               ></div>
-              <div class="username">{{ item.username }}</div>
+              <div class="username ellipsis-l1">{{ item.username }}</div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <!-- 手机端 -->
+    <div v-else class="inner__mobile">
+      <h1 class="title">今日热门视频菜谱</h1>
+      <div class="video-list">
+        <router-link
+          class="item"
+          :to="{ path: `/recipe-detail/${item.id}` }"
+          v-for="(item, index) in hotTodayVideoList"
+          :key="item.id"
+          :style="{ backgroundImage: `url(${item.coverUrl})` }"
+        >
+          <div class="icon-play">
+            <object
+              width="32"
+              height="32"
+              :data="PlayIcon"
+              type="image/svg+xml"
+            />
+          </div>
+          <div class="info">
+            <div class="t ellipsis-l1">{{ item.title }}</div>
+            <div class="row">
+              <div
+                class="avatar"
+                :style="{ backgroundImage: `url(${item.userAvatar})` }"
+              ></div>
+              <div class="username ellipsis-l1">{{ item.username }}</div>
+            </div>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -37,7 +71,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import PlayIcon from '@/assets/images/play.svg'
 import { IHotTodayVideoItem } from '../types'
+import { useDeviceStore } from '@/store/device'
+
+const pcDevice = useDeviceStore().pcDevice
 
 interface IProps {
   hotTodayVideoList?: IHotTodayVideoItem[]
@@ -106,10 +144,15 @@ function getVideoWrapperWidth(index: number): string {
 
 <style lang="scss" scoped>
 .hot-today-video-wrap {
-  background: #efeeec;
+  @include pc {
+    background: #efeeec;
+  }
+  @include mobile {
+    margin-top: 16px;
+  }
 
-  .inner {
-    width: 1200px;
+  .inner__pc {
+    width: $pc-min-width;
     margin: 0 auto;
     padding: 14px 0 40px;
 
@@ -213,6 +256,92 @@ function getVideoWrapperWidth(index: number): string {
               font-size: 14px;
               font-weight: 600;
               padding-left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .inner__mobile {
+    .title {
+      color: #000;
+      font-size: 24px;
+      padding: 0 16px;
+    }
+
+    .video-list {
+      margin-top: 16px;
+      display: flex;
+      overflow-x: auto;
+
+      // 隐藏滚动条
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .item {
+        position: relative;
+        flex-shrink: 0;
+        width: 140px;
+        height: 180px;
+        background-size: cover;
+        border-radius: 12px;
+        overflow: hidden;
+
+        &:first-child {
+          margin-left: 16px;
+        }
+
+        &:last-child {
+          margin-right: 16px;
+        }
+
+        &:nth-child(n + 2) {
+          margin-left: 12px;
+        }
+
+        .icon-play {
+          position: absolute;
+          top: 4px;
+          right: 4px;
+        }
+
+        .info {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 72px;
+          padding: 12px;
+          box-sizing: border-box;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0)
+          );
+
+          .t {
+            color: #fff;
+            font-size: 14px;
+          }
+
+          .row {
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+
+            .avatar {
+              flex-shrink: 0;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background-size: cover;
+            }
+
+            .username {
+              margin-left: 8px;
+              color: #fff;
+              font-size: 12px;
             }
           }
         }

@@ -1,5 +1,6 @@
 <template>
-  <footer>
+  <!-- pc端 -->
+  <footer v-if="pcDevice">
     <div class="top">
       <div class="left-logo"></div>
       <div class="right-qrcodes">
@@ -58,120 +59,134 @@
       <p>© 2009-2019 Aliyun.com 版权所有。</p>
     </div>
   </footer>
+  <!-- 手机端 -->
+  <footer v-else></footer>
 </template>
+
+<script lang="ts" setup>
+import { useDeviceStore } from '@/store/device'
+
+const pcDevice = useDeviceStore().pcDevice
+</script>
 
 <style lang="scss" scoped>
 footer {
-  width: 100%;
-  background: rgba(11, 11, 10, 0.9);
-  padding-top: 40px;
-  margin-right: 40px;
+  @include pc {
+    width: 100%;
+    background: rgba(11, 11, 10, 0.9);
+    padding-top: 40px;
+    margin-right: 40px;
 
-  .top {
-    width: 1200px;
-    margin: 0 auto;
+    .top {
+      width: $pc-min-width;
+      margin: 0 auto;
 
-    .left-logo {
-      display: inline-block;
-      width: 600px;
-      height: 180px;
-      background: url(@/assets/images/logo_02.png) left center no-repeat;
-      background-size: 440px auto;
+      .left-logo {
+        display: inline-block;
+        width: 600px;
+        height: 180px;
+        background: url(@/assets/images/logo_02.png) left center no-repeat;
+        background-size: 440px auto;
+      }
+
+      .right-qrcodes {
+        display: inline-block;
+        width: 600px;
+        height: 200px;
+        vertical-align: top;
+
+        .item {
+          position: relative;
+          display: inline-block;
+          width: 280px;
+          height: 80px;
+          margin: 0 0 20px 20px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 4px;
+
+          .icon {
+            position: absolute;
+            left: 35px;
+            top: 15px;
+            width: 50px;
+            height: 50px;
+            background: url(@/assets/images/sprite_05.png) no-repeat;
+            background-size: 50px 200px;
+          }
+
+          .icon-01 {
+            background-position: 0px 0px;
+          }
+
+          .icon-02 {
+            background-position: 0 -50px;
+          }
+
+          .icon-03 {
+            background-position: 0 -100px;
+          }
+
+          .icon-04 {
+            background-position: 0px -150px;
+          }
+
+          .info {
+            padding-left: 100px;
+            padding-top: 16px;
+
+            .title {
+              color: #fff;
+              font-size: 17px;
+              line-height: 26px;
+            }
+
+            .desc {
+              font-size: 14px;
+              color: rgba(255, 255, 255, 0.5);
+              line-height: 22px;
+            }
+          }
+        }
+      }
     }
 
-    .right-qrcodes {
-      display: inline-block;
-      width: 600px;
-      height: 200px;
-      vertical-align: top;
+    .bottom {
+      width: $pc-min-width;
+      height: 120px;
+      margin: 50px auto 0;
+      text-align: center;
 
-      .item {
-        position: relative;
+      ul {
+        margin-bottom: 20px;
+
+        li {
+          display: inline-block;
+          height: 30px;
+          line-height: 30px;
+          color: #fff;
+          font-size: 16px;
+          font-weight: 600;
+          padding: 0 12px;
+          cursor: pointer;
+
+          &:hover {
+            color: #f64d36;
+          }
+        }
+      }
+
+      p,
+      a {
         display: inline-block;
-        width: 280px;
-        height: 80px;
-        margin: 0 0 20px 20px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-
-        .icon {
-          position: absolute;
-          left: 35px;
-          top: 15px;
-          width: 50px;
-          height: 50px;
-          background: url(@/assets/images/sprite_05.png) no-repeat;
-          background-size: 50px 200px;
-        }
-
-        .icon-01 {
-          background-position: 0px 0px;
-        }
-
-        .icon-02 {
-          background-position: 0 -50px;
-        }
-
-        .icon-03 {
-          background-position: 0 -100px;
-        }
-
-        .icon-04 {
-          background-position: 0px -150px;
-        }
-
-        .info {
-          padding-left: 100px;
-          padding-top: 16px;
-
-          .title {
-            color: #fff;
-            font-size: 17px;
-            line-height: 26px;
-          }
-
-          .desc {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 22px;
-          }
-        }
+        color: #999;
+        font-size: 12px;
+        line-height: 30px;
       }
     }
   }
 
-  .bottom {
-    width: 1200px;
-    height: 120px;
-    margin: 50px auto 0;
-    text-align: center;
-
-    ul {
-      margin-bottom: 20px;
-
-      li {
-        display: inline-block;
-        height: 30px;
-        line-height: 30px;
-        color: #fff;
-        font-size: 16px;
-        font-weight: 600;
-        padding: 0 12px;
-        cursor: pointer;
-
-        &:hover {
-          color: #f64d36;
-        }
-      }
-    }
-
-    p,
-    a {
-      display: inline-block;
-      color: #999;
-      font-size: 12px;
-      line-height: 30px;
-    }
+  @include mobile {
+    height: 24px;
   }
 }
 </style>

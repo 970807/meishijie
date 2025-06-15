@@ -21,4 +21,11 @@ export default defineConfig({
     },
     extensions: ['.js', '.json', '.ts'], // 使用路径别名时想要省略的后缀名
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/variable.scss";@import "@/styles/common.scss";`,
+      },
+    },
+  },
 })

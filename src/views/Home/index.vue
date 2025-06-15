@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- 顶部导航栏 -->
-    <HeaderArea />
+    <HeaderNav />
 
     <!-- 今日热门视频菜谱 -->
     <HomeHotTodayVideo :hotTodayVideoList="state.hotTodayVideoList" />
@@ -33,7 +33,7 @@ import {
   IThreeMealsTodayItem,
   IRecommentItem,
 } from './types'
-import HeaderArea from '@/components/HeaderArea.vue'
+import HeaderNav from '@/components/HeaderNav/index.vue'
 import HomeHotTodayVideo from './components/HomeHotTodayVideo.vue'
 import HomeCenterArea from './components/HomeCenterArea.vue'
 import HomeRecommentArea from './components/HomeRecommentArea.vue'

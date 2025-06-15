@@ -1,0 +1,11 @@
+@mixin pc {
+  .is-pc-device & {
+    @content;
+  }
+}
+
+@mixin mobile {
+  .is-mobile-device & {
+    @content;
+  }
+}

@@ -44,7 +44,7 @@ import undevelopedTip from '@/utils/undevelopedTip'
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1200px;
+    width: $pc-min-width;
     height: 108px;
     margin: 0 auto;
 
