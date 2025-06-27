@@ -50,7 +50,7 @@
         <div class="box">
           <div class="left">
             <strong>辅料</strong>
-            <span>main</span>
+            <span>auxiliary</span>
           </div>
           <div class="right">
             <strong v-for="(item, index) in subIngredientList" :key="index"
@@ -90,7 +90,10 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import type { IMainIngredientListItem, ISubIngredientListItem } from '../types'
+import type {
+  IMainIngredientListItem,
+  ISubIngredientListItem,
+} from '../../types'
 import qrcodeImg from '@/assets/images/qrcode.png'
 
 const props = defineProps<{

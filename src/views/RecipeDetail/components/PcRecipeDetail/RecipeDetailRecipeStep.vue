@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IStepListItem } from '../types'
+import type { IStepListItem } from '../../types'
 
 defineProps<{
   recipeName: string // 菜谱名称

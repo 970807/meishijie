@@ -1,43 +1,11 @@
 <template>
   <div class="recipe-detail">
-    <HeaderNav />
-    <RecipeDetailHeader
-      :isVideo="recipeInfo.isVideo"
-      :coverUrl="recipeInfo.coverUrl"
-      :videoUrl="recipeInfo.videoUrl"
-      :recipeName="recipeInfo.recipeName"
-      :authorNickname="recipeInfo.authorNickname"
-      :favCount="recipeInfo.favCount"
-      :browerCount="recipeInfo.browerCount"
-      :simpleIntroductionTechnology="recipeInfo.simpleIntroductionTechnology"
-      :simpleIntroductionTaste="recipeInfo.simpleIntroductionTaste"
-      :simpleIntroductionTime="recipeInfo.simpleIntroductionTime"
-      :simpleIntroductionDifficulty="recipeInfo.simpleIntroductionDifficulty"
-      :mainIngredientList="recipeInfo.mainIngredientList"
-      :subIngredientList="recipeInfo.subIngredientList"
-      :createTime="recipeInfo.createTime"
-    />
-    <RecipeDetailAuthorInfo
-      :authorNickname="recipeInfo.authorNickname"
-      :authorAvatar="recipeInfo.authorAvatar"
-      :authorRecipeCount="recipeInfo.authorRecipeCount"
-      :authorFanCount="recipeInfo.authorFanCount"
-      :authorWords="recipeInfo.authorWords"
-    />
-    <RecipeDetailRecipeStep
-      :recipeName="recipeInfo.recipeName"
-      :stepList="recipeInfo.stepList"
-    />
-    <RecipeDetailFinishImage
-      v-if="recipeInfo.finishFoodImgList && recipeInfo.finishFoodImgList.length"
-      :recipeName="recipeInfo.recipeName"
-      :finishFoodImgList="recipeInfo.finishFoodImgList"
-    />
-    <RecipeDetailRecipeTip
-      v-if="recipeInfo.recipeTips"
-      :recipeTips="recipeInfo.recipeTips"
-      :recipeName="recipeInfo.recipeName"
-    />
+    <!-- pc端头部 -->
+    <HeaderNav v-if="pcDevice" />
+    <!-- 移动端页面标题 -->
+    <AppHead v-if="!pcDevice" :title="recipeInfo.recipeName" />
+    <PcRecipeDetail v-if="pcDevice" :recipeInfo="recipeInfo" />
+    <MobileRecipeDetail v-if="!pcDevice" :recipeInfo="recipeInfo" />
   </div>
 </template>
 
@@ -46,12 +14,13 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { getDetail } from '@/service/recipe'
 import HeaderNav from '@/components/HeaderNav/index.vue'
-import RecipeDetailHeader from './components/RecipeDetailHeader.vue'
-import RecipeDetailAuthorInfo from './components/RecipeDetailAuthorInfo.vue'
-import RecipeDetailRecipeStep from './components/RecipeDetailRecipeStep.vue'
-import RecipeDetailFinishImage from './components/RecipeDetailFinishImage.vue'
-import RecipeDetailRecipeTip from './components/RecipeDetailRecipeTip.vue'
+import AppHead from '@/components/AppHead.vue'
 import type { IRecipeInfo } from './types'
+import { useDeviceStore } from '@/store/device'
+import PcRecipeDetail from './components/PcRecipeDetail/index.vue'
+import MobileRecipeDetail from './components/MobileRecipeDetail/index.vue'
+
+const pcDevice = useDeviceStore().pcDevice
 
 const route = useRoute()
 
