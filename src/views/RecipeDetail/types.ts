@@ -33,7 +33,6 @@ export interface IRecipeInfo {
   isVideo: number // 是否是视频菜谱 1 => 是 0 => 否
   mainIngredientList: IMainIngredientListItem[] // 主料列表
   subIngredientList: ISubIngredientListItem[] // 辅料列表
-  originWebLink: string // 美食杰官方对应的链接
   peopleCount: number // 人份 例：3人份
   recipeName: string // 菜谱名称
   recipeTips: string // 烹饪技巧

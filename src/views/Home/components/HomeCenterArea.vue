@@ -3,23 +3,23 @@
     <!-- pc端 -->
     <template v-if="pcDevice">
       <!-- 今日热搜-start -->
-      <div class="hot-today-search">
+      <div v-if="showHotTodaySearchColumn" class="hot-today-search">
         <h1 class="title">今日热搜</h1>
         <ul class="list">
           <li
             class="item"
-            :class="{ hot: item.isHot }"
+            :class="{ hot: item.superHot }"
             v-for="item in hotTodaySearchList"
             :key="item.id"
           >
-            {{ item.label }}
+            {{ item.keyword }}
           </li>
         </ul>
       </div>
       <!-- 今日热搜-end -->
 
       <!-- 今日三餐-start -->
-      <div class="three-meals-today__pc" v-if="threeMealsTodayList.length">
+      <div v-if="showThreeMealsTodayColumn" class="three-meals-today__pc">
         <h1 class="title">
           今日三餐
           <ul class="tabs">
@@ -52,7 +52,7 @@
             >
               <img class="cover" :src="item2.coverUrl" />
               <strong class="t ellipsis-l1">{{ item2.recipeName }}</strong>
-              <p class="desc ellipsis-l1">{{ item2.desc }}</p>
+              <p class="desc ellipsis-l1">{{ item2.recommendWords }}</p>
             </router-link>
           </swiper-slide>
         </swiper>
@@ -97,7 +97,7 @@
               >
                 <img class="cover" :src="item2.coverUrl" />
                 <strong class="t ellipsis-l1">{{ item2.recipeName }}</strong>
-                <p class="desc ellipsis-l1">{{ item2.desc }}</p>
+                <p class="desc ellipsis-l1">{{ item2.recommendWords }}</p>
               </router-link>
             </div>
           </swiper-slide>
@@ -127,10 +127,14 @@ const pcDevice = useDeviceStore().pcDevice
 
 withDefaults(
   defineProps<{
+    showHotTodaySearchColumn?: boolean // 是否显示'今日热搜'栏位
+    showThreeMealsTodayColumn?: boolean // 是否显示'今日三餐'栏位
     hotTodaySearchList?: IHotTodaySearchItem[] // 今日热搜列表
     threeMealsTodayList?: IThreeMealsTodayItem[] // 今日三餐列表
   }>(),
   {
+    showHotTodaySearchColumn: false,
+    showThreeMealsTodayColumn: false,
     hotTodaySearchList: () => [],
     threeMealsTodayList: () => [],
   }
@@ -291,6 +295,8 @@ const onThreeMealsSlideChange = (swiper: any) => {
         }
 
         .desc {
+          height: 14px;
+          line-height: 14px;
           font-size: 14px;
           color: #999;
         }

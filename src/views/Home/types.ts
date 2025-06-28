@@ -1,11 +1,18 @@
+// 首页系统栏位配置
+export interface IHomeSystemColumnConfig {
+  id: string // 栏位id
+  columnName: string // 栏位名称
+  available: 1 | 0 // 是否启用
+  sortNo: number // 排序值
+}
 // 今日热门视频菜谱
 export interface IHotTodayVideoItem {
-  id: number
-  title: string // 菜谱标题
+  id: string
+  recipeName: string // 菜谱标题
   coverUrl: string // 封面图url
   linkUrl: string // 美食杰官方菜谱链接
-  userAvatar: string // 菜谱作者头像
-  username: string // 菜谱作者名称
+  authorName: string // 菜谱作者名称
+  authorAvatar: string // 菜谱作者头像
   videoUrl: string // 视频url
 }
 
@@ -17,9 +24,10 @@ export enum EnumHotTodaySearchIsHot {
 
 // 今日热搜
 export interface IHotTodaySearchItem {
-  id: number
-  label: string // 热搜标签
-  isHot: EnumHotTodaySearchIsHot // 是否热门热搜
+  id: string
+  keyword: string // 热搜关键词
+  superHot: EnumHotTodaySearchIsHot // 是否热门热搜
+  sortNo: number
 }
 
 // 今日三餐
@@ -28,24 +36,24 @@ export interface IThreeMealsTodayItem {
   label: string // 栏目标题
   list: Array<{
     id: string
-    recipeName: string // 食谱标题
+    recipeName: string // 菜谱名称
     coverUrl: string // 封面图url
-    desc: string // 描述
+    recommendWords: string // 推荐词
   }>
 }
 
-// 推荐列表
-export interface IRecommentItem {
-  id: number
-  columnTitle: string // 栏目标题
+// 首页自定义栏位
+export interface IHomeCustomColumns {
+  id: string // 栏位id
+  columnName: string // 栏位名称
   list: Array<{
     id: string
-    authorId: string // 作者id
-    authorAvatar: string // 作者头像url
-    authorName: string // 作者名称
-    coverUrl: string // 封面图url
-    ingredientStr: string // 菜谱材料
     recipeName: string // 菜谱名称
-    isVideo: boolean // 是否视频菜谱 1：是 0：否
+    coverUrl: string // 封面图url
+    isVideo: 1 | 0 // 是否是视频菜谱
+    authorId: string // 作者id
+    authorAvatar: string // 作者头像
+    authorName: string // 作者名称
+    ingredientStr: string // 食材
   }>
 }

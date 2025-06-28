@@ -1,7 +1,7 @@
 <template>
-  <div class="home-recomment-area">
-    <div class="list-wrap" v-for="item in recommentList" :key="item.id">
-      <div class="title">{{ item.columnTitle }}</div>
+  <div class="home-custom-columns">
+    <div class="list-wrap" v-for="item in columnList" :key="item.id">
+      <div class="title">{{ item.columnName }}</div>
       <div class="list">
         <router-link
           class="item"
@@ -59,23 +59,23 @@
 </template>
 
 <script setup lang="ts">
-import { IRecommentItem } from '../types'
+import { IHomeCustomColumns } from '../types'
 import { useDeviceStore } from '@/store/device'
 import PlayIcon from '@/assets/images/play.svg'
 
 const pcDevice = useDeviceStore().pcDevice
 
 interface IProps {
-  recommentList?: IRecommentItem[] // 推荐列表
+  columnList?: IHomeCustomColumns[] // 栏位列表
 }
 
 withDefaults(defineProps<IProps>(), {
-  recommentList: () => [],
+  columnList: () => [],
 })
 </script>
 
 <style lang="scss" scoped>
-.home-recomment-area {
+.home-custom-columns {
   @include pc {
     width: $pc-min-width;
     margin: 0 auto;

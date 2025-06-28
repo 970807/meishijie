@@ -22,13 +22,13 @@
             v-show="isPlayingVideoNow && currentPlayVideoIndex === index"
           ></video>
           <div class="info">
-            <div class="t ellipsis-l1">{{ item.title }}</div>
+            <div class="t ellipsis-l1">{{ item.recipeName }}</div>
             <div class="row">
               <div
                 class="avatar"
-                :style="{ backgroundImage: `url(${item.userAvatar})` }"
+                :style="{ backgroundImage: `url(${item.authorAvatar})` }"
               ></div>
-              <div class="username ellipsis-l1">{{ item.username }}</div>
+              <div class="username ellipsis-l1">{{ item.authorName }}</div>
             </div>
           </div>
         </div>
@@ -54,13 +54,13 @@
             />
           </div>
           <div class="info">
-            <div class="t ellipsis-l1">{{ item.title }}</div>
+            <div class="t ellipsis-l1">{{ item.recipeName }}</div>
             <div class="row">
               <div
                 class="avatar"
-                :style="{ backgroundImage: `url(${item.userAvatar})` }"
+                :style="{ backgroundImage: `url(${item.authorAvatar})` }"
               ></div>
-              <div class="username ellipsis-l1">{{ item.username }}</div>
+              <div class="username ellipsis-l1">{{ item.authorName }}</div>
             </div>
           </div>
         </router-link>
@@ -180,6 +180,10 @@ function getVideoWrapperWidth(index: number): string {
           margin-right: 0;
         }
 
+        &:nth-child(n + 5) {
+          margin-top: 20px;
+        }
+
         .mask {
           position: absolute;
           left: 0;
@@ -250,6 +254,7 @@ function getVideoWrapperWidth(index: number): string {
               width: 32px;
               height: 32px;
               border-radius: 50%;
+              background-size: 100% 100%;
             }
 
             .username {

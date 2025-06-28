@@ -41,7 +41,6 @@ const recipeInfo = ref<IRecipeInfo>({
   isVideo: 0, // 是否是视频菜谱 1 => 是 0 => 否
   mainIngredientList: [], // 主料列表
   subIngredientList: [], // 辅料列表
-  originWebLink: '', // 美食杰官方对应的链接
   peopleCount: 0, // 人份 例：3人份
   recipeName: '', // 菜谱名称
   recipeTips: '', // 烹饪技巧

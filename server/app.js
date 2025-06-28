@@ -13,12 +13,12 @@ app.use(morgan('combined'))
 
 app.use(cors())
 
+app.use(router)
+
 app.use(history())
 
 app.use(express.static('public'))
 app.use(express.static('public/dist'))
-
-app.use(router)
 
 app.use(errorHandler())
 
