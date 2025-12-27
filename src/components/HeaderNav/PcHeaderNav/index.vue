@@ -2,9 +2,9 @@
   <header class="header-wrapper">
     <div class="inner-wrapper">
       <div class="box">
-        <a class="logo" href="https://meishij.net" target="_blank">
+        <div class="logo">
           <img src="@/assets/images/logo.png" />
-        </a>
+        </div>
         <HeaderSearchInput />
         <HeaderNavbar />
         <HeaderLoginBtns v-if="!hasToken" />
@@ -55,7 +55,6 @@ $headerHeight: 80px;
       .logo {
         width: 106px;
         height: 54px;
-        display: block;
         margin-right: 22px;
 
         img {

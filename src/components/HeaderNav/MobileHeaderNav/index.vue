@@ -3,7 +3,7 @@
     <div class="icon-add">
       <object width="24" height="24" :data="AddIcon" type="image/svg+xml" />
     </div>
-    <div class="input-wrap">
+    <div class="input-wrap" @click="goMobileSearch()">
       <div class="icon-search">
         <object
           width="16"
@@ -12,7 +12,7 @@
           type="image/svg+xml"
         />
       </div>
-      <span>搜索菜谱、食材</span>
+      <span>请输入菜谱名</span>
     </div>
     <div class="icon-menu">
       <object width="24" height="24" :data="MenuIcon" type="image/svg+xml" />
@@ -24,6 +24,16 @@
 import AddIcon from '@/assets/images/add.svg'
 import SearchIcon from '@/assets/images/search.svg'
 import MenuIcon from '@/assets/images/menu.svg'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+/**
+ * 跳转到手机端搜索页
+ */
+const goMobileSearch = () => {
+  router.push({ name: 'MobileSearch' })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -35,11 +45,7 @@ import MenuIcon from '@/assets/images/menu.svg'
   box-sizing: border-box;
 
   .icon-add {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // width: 40px;
-    // height: 40px;
+    cursor: pointer;
   }
 
   .input-wrap {

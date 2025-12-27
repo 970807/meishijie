@@ -29,18 +29,18 @@ exports.getDetail = async (req, res, next) => {
     // 查询菜谱详情
     let [recipeDetail] = await db.query(
       'select * from recipe_list where id=?',
-      id,
+      id
     )
     if (!recipeDetail) {
       return res.json({ code: '-1', message: '获取详情失败，该菜谱不存在' })
     }
     // 格式化主料
     recipeDetail.mainIngredientList = formatIngredientsStrToList(
-      recipeDetail.mainIngredientsStr,
+      recipeDetail.mainIngredientsStr
     )
     delete recipeDetail.mainIngredientsStr
     recipeDetail.subIngredientList = formatIngredientsStrToList(
-      recipeDetail.subIngredientsStr,
+      recipeDetail.subIngredientsStr
     )
     delete recipeDetail.subIngredientsStr
     // 格式化菜谱步骤
@@ -48,7 +48,7 @@ exports.getDetail = async (req, res, next) => {
     delete recipeDetail.stepsStr
     // 格式化成品图
     recipeDetail.finishFoodImgList = formatFinishGoodImgStrToList(
-      recipeDetail.finishFoodImgsStr,
+      recipeDetail.finishFoodImgsStr
     )
     delete recipeDetail.finishFoodImgsStr
     const authorId = recipeDetail.authorId
@@ -57,8 +57,8 @@ exports.getDetail = async (req, res, next) => {
     promiseList.push(
       db.query(
         'select count(*) as count from recipe_list where author_id=?',
-        authorId,
-      ),
+        authorId
+      )
     )
     // 根据作者id查询作者昵称
     promiseList.push(db.query('select * from user_list where id=?', authorId))
@@ -69,7 +69,7 @@ exports.getDetail = async (req, res, next) => {
       db.query('update recipe_list set brower_count=? where id=?', [
         recipeDetail.browerCount,
         id,
-      ]),
+      ])
     )
 
     const r = await Promise.all(promiseList)
@@ -90,6 +90,47 @@ exports.getDetail = async (req, res, next) => {
     res.json({
       code: '200',
       data: recipeDetail,
+    })
+  } catch (err) {
+    next(err)
+  }
+}
+
+exports.search = async (req, res, next) => {
+  try {
+    const { searchKey } = req.body
+    if (!searchKey) {
+      res.json({ code: '-1', message: '请输入搜索关键词!' })
+      return
+    }
+    const list = await db.query(
+      `SELECT
+        rl.id,
+        rl.recipe_name,
+        rl.cover_url,
+        rl.is_video,
+        rl.main_ingredients_str,
+        ul.id AS author_id,
+        ul.avatar AS author_avatar,
+        ul.nickname AS author_name
+      FROM
+        recipe_list rl
+      INNER JOIN
+        user_list ul ON rl.author_id = ul.id
+      WHERE rl.recipe_name LIKE ? AND rl.publish = 1`,
+      [`%${searchKey}%`]
+    )
+    list.forEach((item) => {
+      item.ingredientStr = item.mainIngredientsStr
+        .slice(0, -1)
+        .split(';')
+        .map((item3) => item3.split(':')[0])
+        .join(',')
+      delete item.mainIngredientsStr
+    })
+    res.json({
+      code: '200',
+      data: list,
     })
   } catch (err) {
     next(err)

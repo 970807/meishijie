@@ -9,14 +9,21 @@
       @blur="onBlur"
       @keyup.enter="onSearch"
     />
-    <a href="javascript:;" class="btn" @click="onSearch">搜索</a>
+    <div class="btn" @click="onSearch">搜索</div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
 const searchValue = ref('')
 const isFocus = ref(false)
+
+const extraWidth = computed(() => (isFocus.value ? '70px' : '0px'))
+const placeholderText = computed(() => (isFocus.value ? '' : '请输入菜谱名'))
 
 function onFocus() {
   isFocus.value = true
@@ -27,13 +34,8 @@ function onBlur() {
 }
 
 function onSearch() {
-  window.open(
-    `https://so.meishi.cc/?q=${encodeURIComponent(searchValue.value)}`,
-  )
+  router.push({ name: 'SearchResult', query: { q: searchValue.value } })
 }
-
-const extraWidth = computed(() => (isFocus.value ? '70px' : '0px'))
-const placeholderText = computed(() => (isFocus.value ? '' : '菜谱名、食材名'))
 </script>
 
 <style lang="scss" scoped>
@@ -70,6 +72,7 @@ const placeholderText = computed(() => (isFocus.value ? '' : '菜谱名、食材
     text-align: center;
     color: #fff;
     font-weight: 600;
+    cursor: pointer;
 
     &:hover {
       background: #eb4b34;

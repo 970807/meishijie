@@ -38,19 +38,20 @@
           </div>
           <div class="info" v-if="pcDevice">
             <strong class="t ellipsis-l1">{{ item2.recipeName }}</strong>
-            <span class="ingredient ellipsis-l1">{{
+            <!-- <span class="ingredient ellipsis-l1">{{
               item2.ingredientStr
-            }}</span>
+            }}</span> -->
+            <IngredientTags
+              v-if="item2.ingredientStr"
+              :ingredientStr="item2.ingredientStr"
+            />
           </div>
           <div class="info" v-if="!pcDevice">
             <strong class="t">{{ item2.recipeName }}</strong>
-            <div class="ingredient-list" v-if="item2.ingredientStr">
-              <span
-                class="ingredient"
-                v-for="ingredient of item2.ingredientStr.split(',')"
-                >{{ ingredient }}</span
-              >
-            </div>
+            <IngredientTags
+              v-if="item2.ingredientStr"
+              :ingredientStr="item2.ingredientStr"
+            />
           </div>
         </router-link>
       </div>
@@ -61,6 +62,7 @@
 <script setup lang="ts">
 import { IHomeCustomColumns } from '../types'
 import { useDeviceStore } from '@/store/device'
+import IngredientTags from '@/components/IngredientTags.vue'
 import PlayIcon from '@/assets/images/play.svg'
 
 const pcDevice = useDeviceStore().pcDevice

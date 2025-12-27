@@ -19,6 +19,18 @@ const routes: RouteRecordRaw[] = [
     name: 'recipeDetail',
     component: () => import('@/views/RecipeDetail/index.vue'),
   },
+  // 搜索结果页
+  {
+    path: '/search-result',
+    name: 'SearchResult',
+    component: () => import('@/views/SearchResult/index.vue'),
+  },
+  // 手机端搜索
+  {
+    path: '/mobile-search',
+    name: 'MobileSearch',
+    component: () => import('@/views/MobileSearch/index.vue'),
+  },
 ]
 
 const router = createRouter({
