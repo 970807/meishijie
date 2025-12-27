@@ -4,12 +4,7 @@
     <AppHead v-if="!pcDevice" title="搜索" />
     <div class="search-input-wrap">
       <div class="icon-search">
-        <object
-          width="20"
-          height="20"
-          :data="SearchIcon"
-          type="image/svg+xml"
-        />
+        <SvgIcon name="search" color="#757575" :size="20" />
       </div>
       <input
         v-model="searchValue"
@@ -29,12 +24,7 @@
           @click="goSearchResult(item)"
         >
           <div class="icon-hot">
-            <object
-              width="16"
-              height="16"
-              :data="HotIcon"
-              type="image/svg+xml"
-            />
+            <SvgIcon name="hot" color="#ff3f34" :size="16" />
           </div>
           <span>{{ item }}</span>
         </li>
@@ -46,12 +36,7 @@
         <div class="common-title">搜索历史</div>
         <div class="clear-btn" @click="handleClear">
           <div class="icon-clear">
-            <object
-              width="16"
-              height="16"
-              :data="DeleteIcon"
-              type="image/svg+xml"
-            />
+            <SvgIcon name="delete" color="#757575" :size="16" />
           </div>
           <span>清空历史</span>
         </div>
@@ -73,9 +58,6 @@
 import { reactive, toRefs } from 'vue'
 import AppHead from '@/components/AppHead.vue'
 import { useDeviceStore } from '@/store/device'
-import SearchIcon from '@/assets/images/search_01.svg'
-import HotIcon from '@/assets/images/hot.svg'
-import DeleteIcon from '@/assets/images/delete.svg'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()

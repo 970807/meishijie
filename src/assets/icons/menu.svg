@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+	<defs>
+		<clipPath id="clipPath9154747654">
+			<path d="M0 0L24 0L24 24L0 24L0 0Z" fill-rule="nonzero" transform="matrix(1 0 0 1 0 0)"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clipPath9154747654)">
+		<rect width="8.25" height="8.25" rx="0.9375" ry="0.9375" stroke-linejoin="round" stroke-width="1.5" transform="matrix(1 0 0 1 2.25 2.25)" stroke="currentColor" fill="transparent"/>
+		<rect width="8.25" height="8.25" rx="0.9375" ry="0.9375" stroke-linejoin="round" stroke-width="1.5" transform="matrix(1 0 0 1 13.5 2.25)" stroke="currentColor" fill="transparent"/>
+		<rect width="8.25" height="8.25" rx="0.9375" ry="0.9375" stroke-linejoin="round" stroke-width="1.5" transform="matrix(1 0 0 1 2.25 13.5)" stroke="currentColor" fill="transparent"/>
+		<rect width="8.25" height="8.25" rx="0.9375" ry="0.9375" stroke-linejoin="round" stroke-width="1.5" transform="matrix(1 0 0 1 13.5 13.5)" stroke="currentColor" fill="transparent"/>
+	</g>
+</svg>

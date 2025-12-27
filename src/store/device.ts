@@ -18,9 +18,9 @@ export const useDeviceStore = defineStore('device', {
       )
 
       // 方法二：使用window.matchMedia()检测
-      //   const flag = !window.matchMedia('(min-width: 1200px)').matches
+      const flag2 = !window.matchMedia('(min-width: 1200px)').matches
 
-      this.mobileDevice = flag
+      this.mobileDevice = flag || flag2
     },
   },
 })

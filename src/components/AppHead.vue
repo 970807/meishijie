@@ -2,14 +2,13 @@
 <template>
   <div class="app-head-wrap">
     <div class="icon-back" @click="goBack">
-      <img width="24" height="24" :src="BackIcon" />
+      <SvgIcon name="back" color="#1f2937" :size="24" />
     </div>
     <span>{{ title }}</span>
   </div>
 </template>
 
 <script lang="ts" setup>
-import BackIcon from '@/assets/images/back.svg'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()

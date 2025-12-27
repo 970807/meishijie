@@ -1,29 +1,21 @@
 <template>
   <div class="header-nav-mobile">
     <div class="icon-add">
-      <object width="24" height="24" :data="AddIcon" type="image/svg+xml" />
+      <SvgIcon name="add" color="#4b5563" :size="24" />
     </div>
     <div class="input-wrap" @click="goMobileSearch()">
       <div class="icon-search">
-        <object
-          width="16"
-          height="16"
-          :data="SearchIcon"
-          type="image/svg+xml"
-        />
+        <SvgIcon name="search" color="#9ca3af" :size="16" />
       </div>
       <span>请输入菜谱名</span>
     </div>
     <div class="icon-menu">
-      <object width="24" height="24" :data="MenuIcon" type="image/svg+xml" />
+      <SvgIcon name="menu" color="#1f2937" :size="24" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import AddIcon from '@/assets/images/add.svg'
-import SearchIcon from '@/assets/images/search.svg'
-import MenuIcon from '@/assets/images/menu.svg'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -67,11 +59,6 @@ const goMobileSearch = () => {
 
   .icon-menu {
     margin-left: 12px;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // width: 40px;
-    // height: 40px;
   }
 }
 </style>

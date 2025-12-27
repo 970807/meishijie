@@ -3,7 +3,7 @@
     <div class="cover-wrap" @click="onCoverClick">
       <img class="cover-image" :src="recipeInfo.coverUrl" />
       <div class="view-play-icon" v-if="recipeInfo.isVideo">
-        <img width="36" height="36" :src="Play_2Icon" />
+        <SvgIcon name="play_2" :size="36" />
       </div>
     </div>
 
@@ -21,29 +21,23 @@
     </div>
     <div class="evaluation">
       <div class="item">
-        <object width="24" height="24" :data="ClockIcon" type="image/svg+xml" />
+        <SvgIcon name="clock" color="#e94e3c" :size="24" />
         <span>烹饪时间</span>
         <span>{{ recipeInfo.simpleIntroductionTime }}</span>
       </div>
       <div class="item">
-        <object width="24" height="24" :data="ForkIcon" type="image/svg+xml" />
+        <SvgIcon name="fork" color="#e94e3c" :size="24" />
         <span>口味</span>
         <span>{{ recipeInfo.simpleIntroductionTaste }}</span>
       </div>
       <div class="item">
         <!-- 这个图标比其他的小一号，要放大1.2倍（TODO：后续更换一样大小的图片） -->
-        <object
-          style="transform: scale(1.2)"
-          width="24"
-          height="24"
-          :data="ChefIcon"
-          type="image/svg+xml"
-        />
+        <SvgIcon name="chef" color="#e94e3c" :size="24" />
         <span>难度</span>
         <span>{{ recipeInfo.simpleIntroductionDifficulty }}</span>
       </div>
       <div class="item">
-        <object width="24" height="24" :data="FireIcon" type="image/svg+xml" />
+        <SvgIcon name="fire" color="#e94e3c" :size="24" />
         <span>烹饪方式</span>
         <span>{{ recipeInfo.simpleIntroductionTechnology }}</span>
       </div>
@@ -125,11 +119,6 @@ import { watch, nextTick, ref } from 'vue'
 import defaultAvatarImg from '@/assets/images/avatar_default.png'
 import VideoPlayer from '@/components/VideoPlayer.vue'
 import type { IRecipeInfo } from '../../types'
-import ClockIcon from '@/assets/images/clock.svg'
-import ForkIcon from '@/assets/images/fork.svg'
-import ChefIcon from '@/assets/images/chef.svg'
-import FireIcon from '@/assets/images/fire.svg'
-import Play_2Icon from '@/assets/images/play_2.svg'
 import 'swiper/swiper-bundle.min.css'
 
 Swiper.use([Pagination])

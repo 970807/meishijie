@@ -56,7 +56,7 @@ import undevelopedTip from '@/utils/undevelopedTip'
 
     .app-icon {
       display: inline-block;
-      background: url('../assets/images/sprite_01.png') 0 -120px;
+      background: url('@/assets/images/sprite_01.png') 0 -120px;
       background-size: 30px 150px;
       width: 20px;
       height: 22px;

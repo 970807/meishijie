@@ -46,12 +46,7 @@
               </template>
               <template v-else>
                 <div class="icon-play" v-if="item.isVideo">
-                  <object
-                    width="32"
-                    height="32"
-                    :data="PlayIcon"
-                    type="image/svg+xml"
-                  />
+                  <SvgIcon name="play" color="#ffffff" :size="32" />
                 </div>
               </template>
             </div>
@@ -84,7 +79,6 @@ import AppHead from '@/components/AppHead.vue'
 import IngredientTags from '@/components/IngredientTags.vue'
 import { useDeviceStore } from '@/store/device'
 import { searchReipce } from '@/service/recipe'
-import PlayIcon from '@/assets/images/play.svg'
 
 const route = useRoute()
 

@@ -46,12 +46,7 @@
           :style="{ backgroundImage: `url(${item.coverUrl})` }"
         >
           <div class="icon-play">
-            <object
-              width="32"
-              height="32"
-              :data="PlayIcon"
-              type="image/svg+xml"
-            />
+            <SvgIcon name="play" :size="32" color="#ffffff" />
           </div>
           <div class="info">
             <div class="t ellipsis-l1">{{ item.recipeName }}</div>
@@ -71,7 +66,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import PlayIcon from '@/assets/images/play.svg'
 import { IHotTodayVideoItem } from '../types'
 import { useDeviceStore } from '@/store/device'
 

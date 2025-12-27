@@ -17,12 +17,7 @@
     }}</span>
     <!-- 省略号 -->
     <div class="icon-ellipsis" ref="iconEllipsisRef">
-      <object
-        width="16"
-        height="16"
-        :data="EllipsisIcon"
-        type="image/svg+xml"
-      />
+      <SvgIcon name="ellipsis" color="#4b5563" :size="16" />
     </div>
   </div>
 </template>
@@ -30,7 +25,6 @@
 <script lang="ts" setup>
 import { useDeviceStore } from '@/store/device'
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
-import EllipsisIcon from '@/assets/images/ellipsis.svg'
 
 const props = withDefaults(
   defineProps<{

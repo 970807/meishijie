@@ -27,12 +27,7 @@
             </template>
             <template v-else>
               <div class="icon-play" v-if="item2.isVideo">
-                <object
-                  width="32"
-                  height="32"
-                  :data="PlayIcon"
-                  type="image/svg+xml"
-                />
+                <SvgIcon name="play" color="#ffffff" :size="32" />
               </div>
             </template>
           </div>
@@ -63,7 +58,6 @@
 import { IHomeCustomColumns } from '../types'
 import { useDeviceStore } from '@/store/device'
 import IngredientTags from '@/components/IngredientTags.vue'
-import PlayIcon from '@/assets/images/play.svg'
 
 const pcDevice = useDeviceStore().pcDevice
 
