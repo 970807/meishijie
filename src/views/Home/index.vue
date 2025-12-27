@@ -41,7 +41,6 @@ import {
   IThreeMealsTodayItem,
   IHomeCustomColumns,
 } from './types'
-import HeaderNav from '@/components/HeaderNav/index.vue'
 import HomeHotTodayVideo from './components/HomeHotTodayVideo.vue'
 import HomeCenterArea from './components/HomeCenterArea.vue'
 import HomeCustomColumns from './components/HomeCustomColumns.vue'

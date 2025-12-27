@@ -32,7 +32,6 @@ const props = defineProps({
   rotate: {
     type: Number,
     default: 0,
-    validator: (value: number) => value > 0 && value <= 360,
   },
 })
 
@@ -58,8 +57,6 @@ const computedStyle = computed(() => {
     // 设置垂直对齐方式
     // verticalAlign: 'middle',
   } as any
-
-  console.log('props', props.color)
 
   // 如果有旋转角度，添加旋转样式
   if (props.rotate !== 0) {

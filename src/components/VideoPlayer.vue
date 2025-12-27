@@ -14,7 +14,7 @@ import { defineComponent } from 'vue'
 defineComponent({ name: 'VideoPlayer' })
 </script>
 <script lang="ts" setup>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, onUnmounted } from 'vue'
 
 const state = reactive<{
   visible: boolean
@@ -37,6 +37,11 @@ const close = () => {
   // 恢复滚动
   document.body.style.overflow = ''
 }
+
+onUnmounted(() => {
+  // 在组件销毁时，也恢复滚动(有可能直接点左上角的返回按钮返回到上一页，不经过close方法)
+  document.body.style.overflow = ''
+})
 
 defineExpose({ show })
 </script>

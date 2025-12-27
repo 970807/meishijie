@@ -46,6 +46,7 @@
           class="list-item"
           v-for="(item, index) of searchHistoryKeys"
           :key="index"
+          @click="goSearchResult(item)"
         >
           <span>{{ item }}</span>
         </li>
@@ -56,7 +57,6 @@
 
 <script lang="ts" setup>
 import { reactive, toRefs } from 'vue'
-import AppHead from '@/components/AppHead.vue'
 import { useDeviceStore } from '@/store/device'
 import { useRouter } from 'vue-router'
 

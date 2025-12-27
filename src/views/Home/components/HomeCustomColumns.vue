@@ -57,7 +57,6 @@
 <script setup lang="ts">
 import { IHomeCustomColumns } from '../types'
 import { useDeviceStore } from '@/store/device'
-import IngredientTags from '@/components/IngredientTags.vue'
 
 const pcDevice = useDeviceStore().pcDevice
 

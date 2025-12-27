@@ -116,8 +116,8 @@
 <script lang="ts" setup>
 import Swiper, { Pagination } from 'swiper'
 import { watch, nextTick, ref } from 'vue'
-import defaultAvatarImg from '@/assets/images/avatar_default.png'
 import VideoPlayer from '@/components/VideoPlayer.vue'
+import defaultAvatarImg from '@/assets/images/avatar_default.png'
 import type { IRecipeInfo } from '../../types'
 import 'swiper/swiper-bundle.min.css'
 

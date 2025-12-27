@@ -73,10 +73,6 @@
 <script setup lang="ts">
 import { reactive, toRefs, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import Loading from '@/components/Loading.vue'
-import HeaderNav from '@/components/HeaderNav/index.vue'
-import AppHead from '@/components/AppHead.vue'
-import IngredientTags from '@/components/IngredientTags.vue'
 import { useDeviceStore } from '@/store/device'
 import { searchReipce } from '@/service/recipe'
 

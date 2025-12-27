@@ -13,8 +13,6 @@
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { getDetail } from '@/service/recipe'
-import HeaderNav from '@/components/HeaderNav/index.vue'
-import AppHead from '@/components/AppHead.vue'
 import type { IRecipeInfo } from './types'
 import { useDeviceStore } from '@/store/device'
 import PcRecipeDetail from './components/PcRecipeDetail/index.vue'
