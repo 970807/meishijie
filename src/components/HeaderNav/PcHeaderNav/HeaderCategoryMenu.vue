@@ -6,7 +6,11 @@
         <i class="icon icon-01"></i>
       </dt>
       <dd>
-        <a v-for="item in list.hotLabel" :key="item.id">
+        <a
+          v-for="item in list.hotLabel"
+          :key="item.id"
+          @click="undevelopedTip()"
+        >
           <span :class="{ active: item.isActive }">{{ item.title }}</span>
         </a>
       </dd>
@@ -17,7 +21,11 @@
         <i class="icon icon-02"></i>
       </dt>
       <dd>
-        <a v-for="item in list.threeMeals" :key="item.id">
+        <a
+          v-for="item in list.threeMeals"
+          :key="item.id"
+          @click="undevelopedTip()"
+        >
           <span :class="{ active: item.isActive }">{{ item.title }}</span>
         </a>
       </dd>
@@ -28,7 +36,7 @@
         <i class="icon icon-03"></i>
       </dt>
       <dd>
-        <a v-for="item in list.snack" :key="item.id">
+        <a v-for="item in list.snack" :key="item.id" @click="undevelopedTip()">
           <span :class="{ active: item.isActive }">{{ item.title }}</span>
         </a>
       </dd>
@@ -39,7 +47,11 @@
         <i class="icon icon-04"></i>
       </dt>
       <dd>
-        <a v-for="item in list.foreignMenu" :key="item.id">
+        <a
+          v-for="item in list.foreignMenu"
+          :key="item.id"
+          @click="undevelopedTip()"
+        >
           <span :class="{ active: item.isActive }">{{ item.title }}</span>
         </a>
       </dd>
@@ -50,7 +62,7 @@
         <i class="icon icon-05"></i>
       </dt>
       <dd>
-        <a v-for="item in list.crowd" :key="item.id">
+        <a v-for="item in list.crowd" :key="item.id" @click="undevelopedTip()">
           <span :class="{ active: item.isActive }">{{ item.title }}</span>
         </a>
       </dd>
@@ -61,7 +73,7 @@
         <i class="icon icon-06"></i>
       </dt>
       <dd>
-        <a v-for="item in list.baking" :key="item.id">
+        <a v-for="item in list.baking" :key="item.id" @click="undevelopedTip()">
           <span :class="{ active: item.isActive }">{{ item.title }}</span>
         </a>
       </dd>
@@ -72,7 +84,11 @@
         <i class="icon icon-07"></i>
       </dt>
       <dd>
-        <a v-for="item in list.cookingStyle" :key="item.id">
+        <a
+          v-for="item in list.cookingStyle"
+          :key="item.id"
+          @click="undevelopedTip()"
+        >
           <span :class="{ active: item.isActive }">{{ item.title }}</span>
         </a>
       </dd>
@@ -81,6 +97,8 @@
 </template>
 
 <script setup lang="ts">
+import undevelopedTip from '@/utils/undevelopedTip'
+
 const list: {
   [propName: string]: Array<{
     id: string

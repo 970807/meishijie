@@ -6,18 +6,19 @@
       <i class="arrow-icon"></i>
       <HeaderCategoryMenu class="category-menu" />
     </a>
-    <a class="item" href="javascript:;" @click="undevelopedTip()">美食达人</a>
-    <a class="item" href="javascript:;" @click="undevelopedTip()">家居馆</a>
-    <a class="item" href="https://j.meishi.cc/" target="_blank">
-      <i class="app-icon"></i>
-      APP下载
+    <a class="item" href="https://github.com/970807/meishijie" target="_blank">
+      <SvgIcon class="github-icon" name="github" :size="24" />
+      github源码
+    </a>
+    <a class="item" href="https://admin.ggh0807.cn/" target="_blank">
+      <SvgIcon class="jump-icon" name="jump" :size="24" />
+      去管理端
     </a>
   </nav>
 </template>
 
 <script setup lang="ts">
 import HeaderCategoryMenu from './HeaderCategoryMenu.vue'
-import undevelopedTip from '@/utils/undevelopedTip'
 </script>
 
 <style lang="scss" scoped>
@@ -54,14 +55,9 @@ import undevelopedTip from '@/utils/undevelopedTip'
       margin-left: 8px;
     }
 
-    .app-icon {
-      display: inline-block;
-      background: url('@/assets/images/sprite_01.png') 0 -120px;
-      background-size: 30px 150px;
-      width: 20px;
-      height: 22px;
-      margin-top: 2px;
-      margin-right: 11px;
+    .github-icon,
+    .jump-icon {
+      margin-right: 8px;
     }
   }
 }
