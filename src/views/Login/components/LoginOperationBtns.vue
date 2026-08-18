@@ -17,6 +17,7 @@
     >登录</a
   >
   <a
+    v-if="canRegister"
     class="go-register-btn"
     href="javascript:;"
     @click="emit('toggleIsRegister')"
@@ -26,6 +27,7 @@
 
 <script setup lang="ts">
 import undevelopedTip from '@/utils/undevelopedTip'
+import { useSystemConfigsStore } from '@/store/systemConfigs'
 
 withDefaults(
   defineProps<{
@@ -33,8 +35,13 @@ withDefaults(
   }>(),
   {
     isAutoLoginNext: false,
-  }
+  },
 )
+
+const {
+  // 允许注册
+  canRegister,
+} = useSystemConfigsStore()
 
 const emit = defineEmits<{
   (e: 'update:isAutoLoginNext', value: boolean): void
@@ -72,7 +79,7 @@ const onIsAutoLoginInputChange = (evt: Event): void => {
 
 .login-btn {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 22px;
   width: 240px;
   height: 56px;
   line-height: 56px;
@@ -85,6 +92,10 @@ const onIsAutoLoginInputChange = (evt: Event): void => {
   &:hover {
     background: #db432e;
   }
+
+  &:last-child {
+    margin-bottom: 26px;
+  }
 }
 
 .go-register-btn {
@@ -93,10 +104,13 @@ const onIsAutoLoginInputChange = (evt: Event): void => {
   font-size: 18px;
   font-weight: 600;
   text-align: center;
-  padding: 22px 0 26px;
 
   &:hover {
     text-decoration: underline;
+  }
+
+  &:last-child {
+    margin-bottom: 26px;
   }
 }
 </style>

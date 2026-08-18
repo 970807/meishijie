@@ -5,12 +5,14 @@
     <main>
       <div class="login-box" v-show="!state.isRegister">
         <div class="title">
-          <span
-            :class="{ current: isPhoneLogin }"
-            @click="changeLoginWay(loginWayType.phone)"
-            >手机号登录</span
-          >
-          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <template v-if="canPhoneLogin">
+            <span
+              :class="{ current: isPhoneLogin }"
+              @click="changeLoginWay(loginWayType.phone)"
+              >手机号登录</span
+            >
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+          </template>
           <span
             :class="{ current: !isPhoneLogin }"
             @click="changeLoginWay(loginWayType.account)"
@@ -79,6 +81,7 @@
 import { reactive, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from '@/store/user'
+import { useSystemConfigsStore } from '@/store/systemConfigs'
 import { registerByAccount, loginByAccount } from '@/service/login'
 import LoginNav from './components/LoginNav.vue'
 import LoginPhoneInputGroup from './components/LoginPhoneInputGroup.vue'
@@ -95,7 +98,23 @@ enum loginWayType {
 
 const router = useRouter()
 const route = useRoute()
+
 const userStore = useUserStore()
+const {
+  // 允许登录
+  canLogin,
+  // 允许注册
+  canRegister,
+  // 允许手机号登录
+  canPhoneLogin,
+} = useSystemConfigsStore()
+
+// 不允许登录且不允许注册时，弹出提示
+if (!canLogin && !canRegister) {
+  window.alert('当前系统不允许登录&注册')
+  router.replace('/')
+}
+
 const state = reactive<{
   isRegister: boolean // 注册还是登录 true：注册 false：登录
   loginModel: {
@@ -123,9 +142,9 @@ const state = reactive<{
   loginErrorText: string // 登录报错信息
   registerErrorText: string // 注册报错信息
 }>({
-  isRegister: !!route.query.isRegister,
+  isRegister: !!route.query.isRegister || !canLogin,
   loginModel: {
-    currentLoginWay: loginWayType.phone,
+    currentLoginWay: canPhoneLogin ? loginWayType.phone : loginWayType.account,
     phoneLoginModel: {
       phone: '',
       verificationCode: '',
@@ -150,7 +169,7 @@ let btnLoading = false
 
 // 是否是手机号登录 true：手机号登录 false：账号密码登录
 const isPhoneLogin = computed(
-  () => state.loginModel.currentLoginWay === loginWayType.phone
+  () => state.loginModel.currentLoginWay === loginWayType.phone,
 )
 
 /**
@@ -327,6 +346,7 @@ function onRegisterBtnClick() {
     .register-box {
       width: 480px;
       margin: 0 auto;
+      overflow: hidden;
 
       .title {
         padding: 50px 0;

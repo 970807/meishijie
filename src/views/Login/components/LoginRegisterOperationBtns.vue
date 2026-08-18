@@ -22,19 +22,25 @@
   <a class="register-btn" href="javascript:;" @click="emit('registerBtnClick')"
     >注册</a
   >
-  <a class="go-login-btn" href="javascript:;" @click="emit('toggleIsRegister')"
+  <a
+    v-if="canLogin"
+    class="go-login-btn"
+    href="javascript:;"
+    @click="emit('toggleIsRegister')"
     >已有账号？立即登录</a
   >
 </template>
 
 <script setup lang="ts">
+import { useSystemConfigsStore } from '@/store/systemConfigs'
+
 withDefaults(
   defineProps<{
     isAcceptArgument?: boolean // 是否已阅读并且《用户协议》和《隐私政策》
   }>(),
   {
     isAcceptArgument: true,
-  }
+  },
 )
 
 const emit = defineEmits<{
@@ -42,6 +48,11 @@ const emit = defineEmits<{
   (e: 'registerBtnClick'): void
   (e: 'toggleIsRegister'): void
 }>()
+
+const {
+  // 允许登录
+  canLogin,
+} = useSystemConfigsStore()
 
 const onIsAcceptArgumentInputChange = (evt: Event): void => {
   emit('update:isAcceptArgument', (evt.target as HTMLInputElement).checked)
@@ -75,7 +86,7 @@ const onIsAcceptArgumentInputChange = (evt: Event): void => {
 
 .register-btn {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 22px;
   width: 240px;
   height: 56px;
   line-height: 56px;
@@ -88,6 +99,10 @@ const onIsAcceptArgumentInputChange = (evt: Event): void => {
   &:hover {
     background: #db432e;
   }
+
+  &:last-child {
+    margin-bottom: 26px;
+  }
 }
 
 .go-login-btn {
@@ -96,10 +111,13 @@ const onIsAcceptArgumentInputChange = (evt: Event): void => {
   font-size: 18px;
   font-weight: 600;
   text-align: center;
-  padding: 22px 0 26px;
 
   &:hover {
     text-decoration: underline;
+  }
+
+  &:last-child {
+    margin-bottom: 26px;
   }
 }
 </style>

@@ -6,11 +6,21 @@
       <i class="arrow-icon"></i>
       <HeaderCategoryMenu class="category-menu" />
     </a>
-    <a class="item" href="https://github.com/970807/meishijie" target="_blank">
+    <a
+      v-if="githubCodeEntry"
+      class="item"
+      href="https://github.com/970807/meishijie"
+      target="_blank"
+    >
       <SvgIcon class="github-icon" name="github" :size="24" />
       github源码
     </a>
-    <a class="item" href="https://admin.ggh0807.cn/" target="_blank">
+    <a
+      v-if="adminSystemEntry"
+      class="item"
+      href="https://admin.ggh0807.cn/"
+      target="_blank"
+    >
       <SvgIcon class="jump-icon" name="jump" :size="24" />
       去管理端
     </a>
@@ -19,6 +29,14 @@
 
 <script setup lang="ts">
 import HeaderCategoryMenu from './HeaderCategoryMenu.vue'
+import { useSystemConfigsStore } from '@/store/systemConfigs'
+
+const {
+  // 开启github源码入口
+  githubCodeEntry,
+  // 开启去管理端入口
+  adminSystemEntry,
+} = useSystemConfigsStore()
 </script>
 
 <style lang="scss" scoped>
